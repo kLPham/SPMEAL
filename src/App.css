@@ -1,6 +1,3 @@
-/* .App {
-  text-align: left;
-} */
 /* 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -20,7 +17,7 @@
 .header {
   position: relative;
   display: flex;
-  margin-right: 2%;
+  /* margin-right: 2%; */
   /* justify-content: space-around; */
 }
 .secondHeader {
@@ -36,7 +33,7 @@
 }
 .icon {
   font-size: 40px;
-  margin-left: -19%;
+  margin-left: -15%;
 }
 .span {
   position: relative;
@@ -44,7 +41,8 @@
   justify-content: space-around;
   text-decoration: none;
   color: black;
-  padding: 2%;
+  padding: 5%;
+  font-size: 15.5px;
 }
 
 .App-title {
