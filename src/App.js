@@ -29,6 +29,9 @@ class App extends Component {
             <img className="logo" alt="logo" src={SpsLogo} />SPMeals
           </div> */}
           <div className="list">
+            <Link to="/" className="span">
+              <span>Home</span>
+            </Link>
             <Link to="/Shop" className="span">
               <span>Shop</span>
             </Link>
@@ -43,7 +46,7 @@ class App extends Component {
             </Link>
           </div>
         </div>
-        <LandingPage />
+        {/* <LandingPage /> */}
         {router}
       </div>
     );

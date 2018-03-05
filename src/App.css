@@ -44,12 +44,12 @@
   justify-content: space-around;
   text-decoration: none;
   color: black;
-  padding: 4%;
+  padding: 3%;
   font-size: 13px;
 }
 .list {
   width: 100%;
-  margin-left: 70%;
+  margin-left: 60%;
 }
 /* .App-title {
   font-size: 1em;
