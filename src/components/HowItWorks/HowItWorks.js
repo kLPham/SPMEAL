@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Contact extends Component {
+export default class HowItWorks extends Component {
   constructor(props) {
     super(props);
 
@@ -8,6 +8,6 @@ export default class Contact extends Component {
   }
 
   render() {
-    return <div>Please Contact Us here</div>;
+    return <div>We can look at How It works</div>;
   }
 }

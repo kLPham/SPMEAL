@@ -3,7 +3,6 @@
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
 } */
-
 .App-header {
   background-color: #222;
   height: 45px;
@@ -13,6 +12,9 @@
   padding-top: 1%;
   padding-left: 2%;
   padding-right: 2%;
+  top: 0px;
+
+  /* position: fixed; */
 }
 .header {
   position: relative;
@@ -22,7 +24,8 @@
 }
 .secondHeader {
   background-color: #fffafa;
-  height: 65px;
+  height: 70px;
+  width: 100%;
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -32,7 +35,7 @@
   text-decoration: none;
 }
 .icon {
-  font-size: 40px;
+  font-size: 30px;
   margin-left: -15%;
 }
 .span {
@@ -41,18 +44,27 @@
   justify-content: space-around;
   text-decoration: none;
   color: black;
-  padding: 5%;
-  font-size: 15.5px;
+  padding: 4%;
+  font-size: 13px;
 }
-
-.App-title {
+.list {
+  width: 100%;
+  margin-left: 70%;
+}
+/* .App-title {
   font-size: 1em;
   text-align: left;
   padding-top: 1%;
-}
+} */
 
-.App-intro {
+/* .App-intro {
   font-size: 5%;
+} */
+.logo {
+  height: 20px;
+  width: 20px;
+  z-index: 1;
+  margin-right: 75%;
 }
 
 @keyframes App-logo-spin {

@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import router from './router';
+import { Link } from 'react-router-dom';
 // import HeaderBar from './components/Header/HeaderBar';
 import SearchBar from './components/SearchBar/SearchBar';
 import Login from './components/Login/Login';
 // import Cart from './components/Cart/Cart';
-import { Link } from 'react-router-dom';
+import LandingPage from './components/LandingPage/LandingPage';
+// import SpsLogo from './SpsLogo.jpeg';
 
 class App extends Component {
   render() {
@@ -23,7 +25,9 @@ class App extends Component {
           {/* <h1 className="App-title">SPMeals</h1> */}
         </header>{' '}
         <div className="secondHeader">
-          <div className="icon">SPMeals</div>
+          {/* <div className="icon">
+            <img className="logo" alt="logo" src={SpsLogo} />SPMeals
+          </div> */}
           <div className="list">
             <Link to="/Shop" className="span">
               <span>Shop</span>
@@ -39,6 +43,7 @@ class App extends Component {
             </Link>
           </div>
         </div>
+        <LandingPage />
         {router}
       </div>
     );
