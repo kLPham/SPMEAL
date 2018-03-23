@@ -1,0 +1,47 @@
+.footer {
+  height: 200px;
+  width: 100%;
+  font-size: 20px;
+  background-color: gainsboro;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5%;
+  padding-top: 5%;
+}
+.SpanLeft {
+  margin-left: 8%;
+  text-align: center;
+}
+
+.SpanRight {
+  margin-right: 10%;
+  text-align: center;
+}
+.size {
+  font-size: 18px;
+  color: lightslategray;
+}
+.goButton {
+  background-color: black;
+  color: white;
+  height: 5%;
+  width: 15%;
+  padding: 3%;
+  font-size: 18px;
+}
+.goButton:hover {
+  background-color: white;
+  color: black;
+  border-color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
+.input {
+  border-color: black;
+  background-color: gainsboro;
+  height: 4%;
+  width: 78%;
+  padding: 2.5%;
+  font-size: 18px;
+}

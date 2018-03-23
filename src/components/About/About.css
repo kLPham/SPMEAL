@@ -1,0 +1,63 @@
+.overall {
+  height: 100%;
+  width: 100%;
+}
+.About {
+  text-align: center;
+  text-transform: uppercase;
+}
+.AboutImage {
+  /* background-size: 1000px; */
+  background-image: url('https://cdn.shopify.com/s/files/1/1957/2713/files/header-about-pizza.jpg?v=1499439632');
+  background-repeat: no-repeat;
+  height: 650px;
+  width: 1500px;
+}
+.midSection {
+  text-align: center;
+}
+.p {
+  color: green;
+  font-size: 20px;
+}
+.AImage {
+  background-image: url('https://cdn.shopify.com/s/files/1/1957/2713/files/header-about-02.jpg?v=1499440204');
+  background-repeat: no-repeat;
+  height: 340px;
+  width: 1500px;
+  margin-top: 4%;
+}
+h1,
+h2 {
+  text-align: center;
+}
+h3 {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.Image2 {
+  background-image: url('https://cdn.shopify.com/s/files/1/1957/2713/files/header-about-03.jpg?v=1499440237');
+  background-repeat: no-repeat;
+  height: 340px;
+  width: 1500px;
+  margin-top: 4%;
+}
+
+.button1 {
+  margin-left: 40%;
+  margin-bottom: 2%;
+  cursor: pointer;
+  border-color: green;
+  height: 50px;
+  width: 290px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: black;
+  font-size: 15px;
+}
+.button1:hover {
+  background-color: green;
+  color: white;
+  border-color: black;
+}

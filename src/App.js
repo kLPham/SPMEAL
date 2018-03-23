@@ -9,6 +9,7 @@ import Login from './components/Login/Login';
 // import Cart from './components/Cart/Cart';
 import LandingPage from './components/LandingPage/LandingPage';
 // import SpsLogo from './SpsLogo.jpeg';
+import Footer from './components/Footer/Footer';
 
 class App extends Component {
   render() {
@@ -48,6 +49,7 @@ class App extends Component {
         </div>
         {/* <LandingPage /> */}
         {router}
+        <Footer />
       </div>
     );
   }
