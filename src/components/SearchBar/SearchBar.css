@@ -1,3 +1,19 @@
 .search {
   padding-right: 10px;
+  width: 60%;
+}
+.topInput {
+  margin-left: 1%;
+  height: 20px;
+  width: 150px;
+}
+.submitButton {
+  height: 30px;
+  width: 65px;
+  color: black;
+  background-color: white;
+  border-color: black;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
 }

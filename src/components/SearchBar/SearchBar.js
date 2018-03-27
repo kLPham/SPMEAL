@@ -7,7 +7,7 @@ export default class SearchBar extends Component {
 
     this.state = {
       searchInput: '',
-      searchItem: ''
+      searchButtonItem: ''
     };
 
     //BIND ALL ACTION CHANGE:
@@ -17,7 +17,7 @@ export default class SearchBar extends Component {
   handleInputChange(searchInput) {
     this.setState({ searchInput });
   }
-  handleButtonChange(searchItem) {
+  handleButtonChange(searchButtonItem) {
     window.location.href = 'http://localhost:3000/Shop';
   }
 
@@ -26,11 +26,14 @@ export default class SearchBar extends Component {
       <div className="search">
         Search
         <input
+          className="topInput"
           onChange={this.handleInputChange}
           placeholder="Search meals"
           type="text"
         />
-        <button onClick={this.handleButtonChange}>Submit</button>
+        <button className="submitButton" onClick={this.handleButtonChange}>
+          Submit
+        </button>
       </div>
     );
   }

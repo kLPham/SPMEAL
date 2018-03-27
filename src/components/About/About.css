@@ -48,7 +48,7 @@ h3 {
   margin-left: 40%;
   margin-bottom: 2%;
   cursor: pointer;
-  border-color: green;
+  border-color: red;
   height: 50px;
   width: 290px;
   text-transform: uppercase;
@@ -57,7 +57,7 @@ h3 {
   font-size: 15px;
 }
 .button1:hover {
-  background-color: green;
+  background-color: red;
   color: white;
   border-color: black;
 }
