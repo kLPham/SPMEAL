@@ -2,6 +2,9 @@
   text-align: center;
   text-transform: uppercase;
 }
+.help {
+  margin-right: 80%;
+}
 .text {
   text-align: center;
   background: rgba(255, 255, 255, 0.9);
@@ -13,6 +16,17 @@
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.contactSecondPart {
+  background-color: rgb(250, 248, 248);
+  margin: 3%;
+  padding: 40px;
+  -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 9px 9px 9px rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 5px;
   border-radius: 5px;
 }
 .hover:hover {

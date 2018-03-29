@@ -25,25 +25,27 @@ export default class Contact extends Component {
       <div className="text">
         <h1 className="contact">Contact Us</h1>
         <hr />
-        <h2>"I need help with..."</h2>
-        <button className="hover" style={buttonStyle}>
-          Free Consultation
-        </button>
-        <button className="hover" style={buttonStyle}>
-          Custom Meals
-        </button>
-        <button className="hover" style={buttonStyle}>
-          Food By The LB
-        </button>
-        <button className="hover" style={buttonStyle}>
-          Shipping Orders
-        </button>
-        <button className="hover" style={buttonStyle}>
-          PickUp Orders
-        </button>
-        <button className="hover" style={buttonStyle}>
-          Payments
-        </button>
+        <div className="contactSecondPart">
+          <h2 className="help">"I need help with..."</h2>
+          <button className="hover" style={buttonStyle}>
+            Free Consultation
+          </button>
+          <button className="hover" style={buttonStyle}>
+            Custom Meals
+          </button>
+          <button className="hover" style={buttonStyle}>
+            Food By The LB
+          </button>
+          <button className="hover" style={buttonStyle}>
+            Shipping Orders
+          </button>
+          <button className="hover" style={buttonStyle}>
+            PickUp Orders
+          </button>
+          <button className="hover" style={buttonStyle}>
+            Payments
+          </button>
+        </div>
 
         {/* <div className="bothBoxes">
           <div className="box1">

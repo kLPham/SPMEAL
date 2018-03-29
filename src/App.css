@@ -19,11 +19,13 @@
 .header {
   position: relative;
   display: flex;
+  font-size: 15px;
   /* margin-right: 2%; */
   /* justify-content: space-around; */
 }
 .secondHeader {
-  background-color: #fffafa;
+  background-color: rgb(250, 248, 248);
+
   height: 70px;
   width: 100%;
   position: relative;
@@ -45,7 +47,7 @@
   text-decoration: none;
   color: black;
   padding: 3%;
-  font-size: 13px;
+  font-size: 15px;
 }
 .list {
   width: 100%;

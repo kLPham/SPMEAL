@@ -11,7 +11,8 @@
   background-image: url('https://cdn.shopify.com/s/files/1/1957/2713/files/header-about-pizza.jpg?v=1499439632');
   background-repeat: no-repeat;
   height: 650px;
-  width: 1500px;
+  width: 1335px;
+  margin: 3%;
 }
 .midSection {
   text-align: center;
@@ -24,8 +25,9 @@
   background-image: url('https://cdn.shopify.com/s/files/1/1957/2713/files/header-about-02.jpg?v=1499440204');
   background-repeat: no-repeat;
   height: 340px;
-  width: 1500px;
+  width: 1335px;
   margin-top: 4%;
+  margin: 3%;
 }
 h1,
 h2 {
@@ -40,8 +42,9 @@ h3 {
   background-image: url('https://cdn.shopify.com/s/files/1/1957/2713/files/header-about-03.jpg?v=1499440237');
   background-repeat: no-repeat;
   height: 340px;
-  width: 1500px;
+  width: 1335px;
   margin-top: 4%;
+  margin: 3%;
 }
 
 .button1 {

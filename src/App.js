@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 // import HeaderBar from './components/Header/HeaderBar';
 import SearchBar from './components/SearchBar/SearchBar';
 import Login from './components/Login/Login';
+import Cart from './components/Cart/Cart';
 // import SpsLogo from './SpsLogo.jpeg';
 import Footer from './components/Footer/Footer';
 
@@ -18,7 +19,7 @@ class App extends Component {
           <hr />
           <div className="header">
             <Login />
-            {/* <Cart /> */}
+            <Cart />
           </div>
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           {/* <h1 className="App-title">SPMeals</h1> */}
@@ -31,8 +32,8 @@ class App extends Component {
             <Link to="/" className="span">
               <span>Home</span>
             </Link>
-            <Link to="/Shop" className="span">
-              <span>Shop</span>
+            <Link to="/Meals" className="span">
+              <span>Meals</span>
             </Link>
             <Link to="/HowItWorks" className="span">
               <span>How It Works</span>
