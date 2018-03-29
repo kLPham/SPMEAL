@@ -10,26 +10,40 @@ export default class Contact extends Component {
 
   render() {
     const buttonStyle = {
-      border: '5px solid red',
+      border: '3px solid red',
       textTransform: 'uppercase',
-      fontSize: '20px',
-      color: 'red',
+      fontSize: '15px',
+      color: 'black',
       textAlign: 'center',
       padding: '20px',
       cursor: 'pointer',
-      boxShadow: '0 3px 10px -3px rgba(0, 0, 0, 0.25)'
+      boxShadow: '0 3px 10px -3px rgba(0, 0, 0, 0.25)',
+      marginBottom: '50px',
+      marginRight: '15px'
     };
     return (
       <div className="text">
         <h1 className="contact">Contact Us</h1>
         <hr />
         <h2>"I need help with..."</h2>
-        <button style={buttonStyle}>Free Consultation</button>
-        <button style={buttonStyle}>Custom Meals</button>
-        <button style={buttonStyle}>Food By The LB</button>
-        <button style={buttonStyle}>Shipping Orders</button>
-        <button style={buttonStyle}>PickUp Orders</button>
-        <button style={buttonStyle}>Payments</button>
+        <button className="hover" style={buttonStyle}>
+          Free Consultation
+        </button>
+        <button className="hover" style={buttonStyle}>
+          Custom Meals
+        </button>
+        <button className="hover" style={buttonStyle}>
+          Food By The LB
+        </button>
+        <button className="hover" style={buttonStyle}>
+          Shipping Orders
+        </button>
+        <button className="hover" style={buttonStyle}>
+          PickUp Orders
+        </button>
+        <button className="hover" style={buttonStyle}>
+          Payments
+        </button>
 
         {/* <div className="bothBoxes">
           <div className="box1">
