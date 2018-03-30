@@ -8,6 +8,12 @@ export default class Login extends Component {
   }
 
   render() {
-    return <div>Login/Create Account</div>;
+    const style = {
+      color: 'white',
+      fontSize: '35px',
+      textTransform: 'uppercase',
+      marginRight: '30px'
+    };
+    return <div style={style} />;
   }
 }

@@ -9,15 +9,15 @@ export default class Cart extends Component {
 
   render() {
     const cartButton = {
-      marginLeft: '20px',
+      marginLeft: '500px',
       marginBottom: '20px',
       backgroundColor: 'red',
       color: 'white',
       borderColor: 'black',
       padding: '7px',
-      paddingLeft: '15px',
       fontSize: '15px',
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      cursor: 'pointer'
     };
     return (
       <div>

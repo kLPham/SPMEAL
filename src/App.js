@@ -1,33 +1,40 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import router from './router';
 import { Link } from 'react-router-dom';
-// import HeaderBar from './components/Header/HeaderBar';
 import SearchBar from './components/SearchBar/SearchBar';
 import Login from './components/Login/Login';
 import Cart from './components/Cart/Cart';
-// import SpsLogo from './SpsLogo.jpeg';
+import mealsLogo from './mealsLogo.png';
+import secondLogo from './secondLogo.jpeg';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
   render() {
+    // const logoStyle = {
+    //   height: '70px',
+    //   width: '90px',
+    //   marginLeft: '30px',
+    //   marginBottom: '90px'
+    // };
+    const secondLogos = {
+      height: '100px',
+      width: '300px',
+      marginLeft: '25px',
+      border: '4px solid lightgray'
+    };
     return (
       <div className="App">
         <header className="App-header">
           <SearchBar />
-          <hr />
           <div className="header">
-            <Login />
+            {/* <Login /> <br /> */}
             <Cart />
           </div>
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          {/* <h1 className="App-title">SPMeals</h1> */}
         </header>{' '}
         <div className="secondHeader">
-          {/* <div className="icon">
-            <img className="logo" alt="logo" src={SpsLogo} />SPMeals
-          </div> */}
+          {/* <img alt="logo" src={mealsLogo} style={logoStyle} /> */}
+          <img alt="secondLogo" src={secondLogo} style={secondLogos} />
           <div className="list">
             <Link to="/" className="span">
               <span>Home</span>
@@ -38,11 +45,11 @@ class App extends Component {
             <Link to="/HowItWorks" className="span">
               <span>How It Works</span>
             </Link>
-            <Link to="/Contact" className="span">
-              <span>Contact</span>
-            </Link>
             <Link to="/About" className="span">
               <span>About Us</span>
+            </Link>
+            <Link to="/Contact" className="span">
+              <span>Contact</span>
             </Link>
           </div>
         </div>
