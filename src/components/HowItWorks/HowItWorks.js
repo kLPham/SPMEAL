@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import mealsBgg from './mealsBgg.jpeg';
 import mealsBg from './mealsBg.jpeg';
+import './HowItWorks.css';
+
+import plan from './plan.jpg';
+import shoppingg from './shoppingg.jpeg';
+import cookingg from './cookingg.jpeg';
+import delivery from './delivery.jpeg';
 
 export default class HowItWorks extends Component {
   constructor(props) {
@@ -43,7 +49,7 @@ export default class HowItWorks extends Component {
       fontSize: '20px',
       position: 'absolute',
       top: '80%',
-      left: '45%',
+      left: '42%',
       height: '10%',
       width: '15%',
       backgroundColor: 'green',
@@ -52,6 +58,23 @@ export default class HowItWorks extends Component {
       padding: '12px',
       textTransform: 'uppercase',
       cursor: 'pointer'
+    };
+
+    const imageStyle = {
+      height: '15%',
+      width: '15%',
+      marginLeft: '7%'
+    };
+    const shopImageStyle = {
+      height: '250px',
+      width: '15%',
+      marginLeft: '7%'
+    };
+    const cookImageStyle = {
+      height: '200px',
+      width: '20%',
+      marginLeft: '7%',
+      marginTop: '7%'
     };
 
     return (
@@ -70,7 +93,39 @@ export default class HowItWorks extends Component {
           <button style={buttonStyle}>Get Started</button>
         </div>
         <div>
-          <h2>From Our Kitchens To Your Table</h2>
+          <h2 className="secondPartBanner">From Our Kitchens To Your Table</h2>
+          <p2 className="subTitle">What goes into a balance meal</p2>
+          <br />
+
+          <img src={plan} style={imageStyle} />
+          <img src={shoppingg} style={shopImageStyle} />
+          <img src={cookingg} style={cookImageStyle} />
+          <img src={delivery} style={imageStyle} />
+          <div>
+            <h3 className="plan">Planning</h3>
+            <p3 className="plans">
+              We take care of the recipes and nutrition.
+            </p3>{' '}
+            <br />
+            <p3 className="secondText">Relax, you deserve it!</p3>
+            <br />
+            <br />
+          </div>
+          <div>
+            <h3 className="shop">Shopping</h3>
+            <p3 className="shops">No more waiting in long lines at the</p3>
+            <p3 className="shopping">grocery store.</p3>
+          </div>
+          <div>
+            <h3 className="cook">Cooking</h3>
+            <p3 className="cooks">Why cook when you can have </p3>
+            <p3 className="cooking">world-class chefs do it for you?</p3>
+          </div>
+          <div>
+            <h3 className="delivery">Delivery</h3>
+            <p3 className="deliverys">Spend your time doing things you want</p3>
+            <p3 className="deliverying">to do. We'll take care of delivery.</p3>
+          </div>
         </div>
       </div>
     );
