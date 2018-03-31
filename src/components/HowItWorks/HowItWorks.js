@@ -8,6 +8,8 @@ import shoppingg from './shoppingg.jpeg';
 import cookingg from './cookingg.jpeg';
 import delivery from './delivery.jpeg';
 
+import ingredients from './ingredients.jpg';
+
 export default class HowItWorks extends Component {
   constructor(props) {
     super(props);
@@ -76,6 +78,29 @@ export default class HowItWorks extends Component {
       marginLeft: '7%',
       marginTop: '7%'
     };
+    const bottomImageStyle = {
+      marginTop: '6%',
+      height: '40%',
+      width: '100%',
+      opacity: '1.5'
+    };
+    const bottomTextStyle = {
+      position: 'absolute',
+      top: '237%',
+      left: '20%',
+      textAlign: 'center',
+      color: 'white',
+      fontSize: '40px',
+      zIndex: '1'
+    };
+    const textStyle = {
+      position: 'absolute',
+      top: '249%',
+      left: '13%',
+      color: 'white',
+      fontSize: '20px',
+      fontWeight: 'bold'
+    };
 
     return (
       <div>
@@ -90,7 +115,9 @@ export default class HowItWorks extends Component {
           <h2 style={tagStyle}>
             Enjoy the convenience of great-tasting meals delivered to your door
           </h2>
-          <button style={buttonStyle}>Get Started</button>
+          <button className="button" style={buttonStyle}>
+            Get Started
+          </button>
         </div>
         <div>
           <h2 className="secondPartBanner">From Our Kitchens To Your Table</h2>
@@ -126,6 +153,18 @@ export default class HowItWorks extends Component {
             <p3 className="deliverys">Spend your time doing things you want</p3>
             <p3 className="deliverying">to do. We'll take care of delivery.</p3>
           </div>
+        </div>
+        <div>
+          <img
+            alt="list of ingredients"
+            src={ingredients}
+            style={bottomImageStyle}
+          />
+          <h3 style={bottomTextStyle}>We Use Fresh and Healthy Ingredients</h3>
+          <p3 style={textStyle}>
+            We source ingredients directly from independent producers and
+            deliver our top quality products nationwide.
+          </p3>
         </div>
       </div>
     );

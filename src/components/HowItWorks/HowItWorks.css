@@ -11,6 +11,11 @@
   margin-left: 37%;
   font-style: oblique;
 }
+.button:hover {
+  /* background-color: red;
+  color: white; */
+  border-color: yellow;
+}
 
 .plan {
   margin-left: 9%;
