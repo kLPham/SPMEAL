@@ -69,6 +69,9 @@ export default class HowItWorks extends Component {
           </h2>
           <button style={buttonStyle}>Get Started</button>
         </div>
+        <div>
+          <h2>From Our Kitchens To Your Table</h2>
+        </div>
       </div>
     );
   }
