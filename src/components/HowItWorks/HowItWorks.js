@@ -48,7 +48,7 @@ export default class HowItWorks extends Component {
       width: '15%',
       backgroundColor: 'green',
       color: 'white',
-      borderRadius: '15px',
+      borderRadius: '10px',
       padding: '12px',
       textTransform: 'uppercase',
       cursor: 'pointer'
