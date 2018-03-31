@@ -99,7 +99,8 @@ export default class HowItWorks extends Component {
       left: '13%',
       color: 'white',
       fontSize: '20px',
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      fontStyle: 'oblique'
     };
 
     return (
