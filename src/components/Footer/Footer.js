@@ -13,7 +13,7 @@ export default class Footer extends Component {
     const urls = [
       'https://www.facebook.com/Spartanperformancemeals/',
       'https://www.instagram.com/spartanperformancemeals/',
-      'https://www.gmail.com/Spartanperformancemeals'
+      'mailto:spartan@Spartanperformancemeals'
     ];
     const iconsStyle = {
       margin: '20px'
@@ -45,9 +45,12 @@ export default class Footer extends Component {
           <br />
           <br />
           <p1 className="size">921 Redbud blvd ste 200 Mckinney Tx, 75069</p1>
-          <br />
-          <br />
-          <SocialIcons urls={urls} style={iconsStyle} color="black" />
+          <SocialIcons
+            urls={urls}
+            style={iconsStyle}
+            color="black"
+            className="icons"
+          />
         </span>
         <div>
           {/* <SocialIcons urls={urls} color="black" backgroundColor="white" /> */}

@@ -45,3 +45,9 @@
   padding: 2.5%;
   font-size: 18px;
 }
+.icons {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  margin-right: 10px;
+}
