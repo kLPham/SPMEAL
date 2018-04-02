@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Footer.css';
+import { SocialIcons } from 'react-social-icons';
 
 export default class Footer extends Component {
   constructor(props) {
@@ -9,6 +10,15 @@ export default class Footer extends Component {
   }
 
   render() {
+    const urls = [
+      'https://www.facebook.com/Spartanperformancemeals/',
+      'https://www.instagram.com/spartanperformancemeals/',
+      'https://www.gmail.com/Spartanperformancemeals'
+    ];
+    const iconsStyle = {
+      margin: '20px'
+    };
+
     return (
       <div className="footer">
         <span className="SpanLeft">
@@ -35,7 +45,13 @@ export default class Footer extends Component {
           <br />
           <br />
           <p1 className="size">921 Redbud blvd ste 200 Mckinney Tx, 75069</p1>
+          <br />
+          <br />
+          <SocialIcons urls={urls} style={iconsStyle} color="black" />
         </span>
+        <div>
+          {/* <SocialIcons urls={urls} color="black" backgroundColor="white" /> */}
+        </div>
       </div>
     );
   }

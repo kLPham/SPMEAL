@@ -5,23 +5,16 @@ import { Link } from 'react-router-dom';
 import SearchBar from './components/SearchBar/SearchBar';
 import Login from './components/Login/Login';
 import Cart from './components/Cart/Cart';
-import mealsLogo from './mealsLogo.png';
-import secondLogo from './secondLogo.jpeg';
+import icons from './icons.jpg';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
   render() {
-    // const logoStyle = {
-    //   height: '70px',
-    //   width: '90px',
-    //   marginLeft: '30px',
-    //   marginBottom: '90px'
-    // };
-    const secondLogos = {
-      height: '100px',
-      width: '300px',
+    const iconsLogo = {
+      height: '97px',
+      width: '230px',
       marginLeft: '25px',
-      border: '4px solid lightgray'
+      border: '5px solid lightgray'
     };
     return (
       <div className="App">
@@ -33,8 +26,7 @@ class App extends Component {
           </div>
         </header>{' '}
         <div className="secondHeader">
-          {/* <img alt="logo" src={mealsLogo} style={logoStyle} /> */}
-          <img alt="secondLogo" src={secondLogo} style={secondLogos} />
+          <img alt="icon" src={icons} style={iconsLogo} />
           <div className="list">
             <Link to="/" className="span">
               <span>Home</span>
