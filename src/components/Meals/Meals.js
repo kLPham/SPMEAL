@@ -16,25 +16,37 @@ export default class Meals extends Component {
       width: '100%'
     };
     const sideBar = {
-      marginTop: '5%',
-      marginLeft: '2%',
+      marginLeft: '4.5%',
       marginBottom: '5%',
       paddingTop: '3%',
-      height: '500px',
+      height: '400px',
       width: '25%'
     };
+    const menuTitle = {
+      fontSize: '24px',
+      color: 'Green',
+      textTransform: 'uppercase',
+      fontFamily: 'cursive'
+    };
+
     return (
       <div>
         <img src={pageHeader} style={pageHeaderStyle} />
+        <h2 style={menuTitle}>Our Menu</h2>
         <div>
           <div style={sideBar} className="sideBar">
-            <h3 className="title">Lunch/Dinner</h3>
+            <Link to="/Meals/Breakfast" className="meals">
+              <span>Spartan Custom Meals</span>
+            </Link>
 
-            <span>Breakfast</span>
+            <Link to="/Meals/Lunch" className="meals">
+              <span>Spartan Signature Meals</span>
+            </Link>
 
-            <span>Lunch</span>
-
-            <span>Dinner</span>
+            <Link to="Meals/Dinner" className="meals">
+              <span>Spartan By the LB</span>
+            </Link>
+            <button className="customOrder">+Create Custom Order</button>
           </div>
         </div>
       </div>

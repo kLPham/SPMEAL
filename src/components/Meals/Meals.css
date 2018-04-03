@@ -1,18 +1,43 @@
-.title {
+.meals {
   text-align: center;
-  color: #5f9ea0;
-  font-size: 35px;
-  margin-bottom: 20%;
+  color: red;
+  font-size: 17px;
+  margin-bottom: 15%;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.meals:hover span {
+  color: red;
+  text-decoration-line: underline;
 }
 .sideBar {
   background-color: #f5f5f5;
-  border-radius: 25px;
 }
 .sideBar span {
   position: relative;
   display: flex;
-  padding-bottom: 20%;
-  justify-content: center;
-  font-size: 30px;
-  color: darkgrey;
+  padding-bottom: 10%;
+  /* justify-content: center; */
+  text-align: left;
+  margin-left: 15%;
+  color: black;
+  text-decoration: none;
+  padding-top: 10%;
+}
+.customOrder {
+  border-radius: 45px;
+  border-color: red;
+  color: red;
+  background-color: #f5f5f5;
+  font-size: 20px;
+  margin-left: 7.5%;
+  margin-top: 8%;
+  padding: 6%;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.customOrder:hover {
+  background-color: red;
+  color: white;
 }
