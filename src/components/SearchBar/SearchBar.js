@@ -24,7 +24,6 @@ export default class SearchBar extends Component {
   render() {
     return (
       <div className="search">
-        Search
         <input
           className="topInput"
           onChange={this.handleInputChange}

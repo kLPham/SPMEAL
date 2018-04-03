@@ -52,9 +52,6 @@ export default class Footer extends Component {
             className="icons"
           />
         </span>
-        <div>
-          {/* <SocialIcons urls={urls} color="black" backgroundColor="white" /> */}
-        </div>
       </div>
     );
   }

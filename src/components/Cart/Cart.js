@@ -9,8 +9,8 @@ export default class Cart extends Component {
 
   render() {
     const cartButton = {
-      marginLeft: '500px',
-      marginBottom: '20px',
+      marginRight: '50px',
+      marginTop: '8.5%',
       backgroundColor: 'red',
       color: 'white',
       borderColor: 'black',

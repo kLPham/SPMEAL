@@ -1,39 +1,21 @@
-/* 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-} */
-.App-header {
-  background-color: #222;
-  height: 45px;
-  color: white;
-  position: relative;
-  display: flex;
-  padding-top: 1%;
-  padding-left: 2%;
-  padding-right: 2%;
-  top: 0px;
-
-  /* position: fixed; */
-}
-.header {
+/* .header {
   position: relative;
   display: flex;
   font-size: 15px;
-  /* margin-right: 2%; */
-  /* justify-content: space-around; */
-}
+  margin-right: 2%; 
+  justify-content: space-around; 
+} */
 .secondHeader {
   background-color: rgb(250, 248, 248);
-
-  height: 70px;
+  height: 50px;
   width: 100%;
   position: relative;
   display: flex;
   justify-content: space-around;
   text-transform: uppercase;
   font-weight: bold;
-  padding-top: 2%;
+  padding-bottom: 1%;
+  padding-top: 0.5%;
   text-decoration: none;
 }
 .icon {
@@ -45,13 +27,18 @@
   display: inline-block;
   justify-content: space-around;
   text-decoration: none;
-  color: black;
-  padding: 3%;
+  color: rgba(0, 0, 0, 0.836);
+  padding: 1.5%;
+  float: left;
   font-size: 15px;
 }
 .list {
   width: 100%;
-  margin-left: 40%;
+}
+.list span {
+  float: left;
+  display: block;
+  text-align: center;
 }
 .span:hover {
   color: red;

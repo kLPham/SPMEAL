@@ -11,31 +11,41 @@ import Footer from './components/Footer/Footer';
 class App extends Component {
   render() {
     const iconsLogo = {
-      height: '97px',
-      width: '230px',
+      height: '95px',
+      width: '120px',
       marginLeft: '25px',
-      border: '5px solid lightgray'
+      border: '5px solid lightgray',
+      marginTop: '.5%'
+    };
+    const header = {
+      position: 'fixed'
+    };
+    const bannerStyle = {
+      color: 'white',
+      backgroundColor: 'red',
+      textAlign: 'center',
+      padding: '1.5%',
+      fontWeight: 'bold',
+      fontSize: '22px'
     };
     return (
-      <div className="App">
-        <header className="App-header">
+      <div>
+        {/* <div className="appHeader"> */}
+        {/* <header className="App-header">
           <SearchBar />
-          <div className="header">
-            {/* <Login /> <br /> */}
-            <Cart />
-          </div>
-        </header>{' '}
-        <div className="secondHeader">
+          <div className="header" />
+        </header> */}
+        <div className="secondHeader" style={header}>
           <img alt="icon" src={icons} style={iconsLogo} />
           <div className="list">
             <Link to="/" className="span">
               <span>Home</span>
             </Link>
-            <Link to="/Meals" className="span">
-              <span>Meals</span>
-            </Link>
             <Link to="/HowItWorks" className="span">
               <span>How It Works</span>
+            </Link>
+            <Link to="/Meals" className="span">
+              <span>Menus</span>
             </Link>
             <Link to="/About" className="span">
               <span>About Us</span>
@@ -44,7 +54,11 @@ class App extends Component {
               <span>Contact</span>
             </Link>
           </div>
+          {/* <SearchBar /> */}
+          <Cart />
         </div>
+        <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
+        {/* </div> */}
         {router}
         <Footer />
       </div>
