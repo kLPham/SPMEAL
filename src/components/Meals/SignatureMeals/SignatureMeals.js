@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Lunch extends Component {
+export default class SignatureMeals extends Component {
   constructor(props) {
     super(props);
 
@@ -9,7 +9,7 @@ export default class Lunch extends Component {
   render() {
     return (
       <div>
-        <h2>Where is my Lunch?</h2>
+        <h2>Where is my SignatureMeals?</h2>
       </div>
     );
   }

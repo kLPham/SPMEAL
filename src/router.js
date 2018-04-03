@@ -7,8 +7,8 @@ import Cart from './components/Cart/Cart';
 
 import Meals from './components/Meals/Meals';
 import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
-import Lunch from './components/Meals/Lunch/Lunch';
-import Dinner from './components/Meals/Dinner/Dinner';
+import SignatureMeals from './components/Meals/SignatureMeals/SignatureMeals';
+import ByLB from './components/Meals/ByLB/ByLB';
 
 import HowItWorks from './components/HowItWorks/HowItWorks';
 
@@ -25,8 +25,8 @@ export default (
         <Meals>
           <Switch>
             <Route path="/Meals/CustomMeals" component={CustomMeals} />
-            <Route path="/Meals/Lunch" component={Lunch} />
-            <Route path="/Meals/Dinner" component={Dinner} />
+            <Route path="/Meals/SignatureMeals" component={SignatureMeals} />
+            <Route path="/Meals/ByLB" component={ByLB} />
           </Switch>
         </Meals>
       )}

@@ -16,7 +16,7 @@ export default class Meals extends Component {
       width: '100%'
     };
     const sideBar = {
-      marginLeft: '4.5%',
+      marginLeft: '4.2%',
       marginBottom: '5%',
       paddingTop: '3%',
       height: '400px',
