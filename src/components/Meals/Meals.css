@@ -1,0 +1,18 @@
+.title {
+  text-align: center;
+  color: #5f9ea0;
+  font-size: 35px;
+  margin-bottom: 20%;
+}
+.sideBar {
+  background-color: #f5f5f5;
+  border-radius: 25px;
+}
+.sideBar span {
+  position: relative;
+  display: flex;
+  padding-bottom: 20%;
+  justify-content: center;
+  font-size: 30px;
+  color: darkgrey;
+}

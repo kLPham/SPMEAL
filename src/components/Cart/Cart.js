@@ -9,12 +9,14 @@ export default class Cart extends Component {
 
   render() {
     const cartButton = {
-      marginRight: '50px',
-      marginTop: '8.5%',
+      marginRight: '60px',
+      marginTop: '3%',
       backgroundColor: 'red',
       color: 'white',
       borderColor: 'black',
-      padding: '7px',
+      padding: '15px',
+      paddingLeft: '19%',
+      paddingRight: '19%',
       fontSize: '15px',
       textTransform: 'uppercase',
       cursor: 'pointer'
