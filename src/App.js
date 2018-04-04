@@ -11,7 +11,7 @@ import Footer from './components/Footer/Footer';
 class App extends Component {
   render() {
     const iconsLogo = {
-      height: '95px',
+      height: '100px',
       width: '120px',
       marginLeft: '25px',
       border: '5px solid lightgray',
