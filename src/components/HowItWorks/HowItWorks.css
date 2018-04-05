@@ -11,6 +11,10 @@
   margin-left: 37%;
   font-style: oblique;
 }
+.getStartBtn {
+  text-decoration: none;
+  color: white;
+}
 .button:hover {
   /* background-color: red;
   color: white; */

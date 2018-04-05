@@ -9,6 +9,17 @@ import icons from './icons.jpg';
 import Footer from './components/Footer/Footer';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    //SET INITIAL STATE BELOW:
+    this.state = {};
+
+    //BIND ACTION BELOW:
+  }
+
+  //CREATE HANDLE CHANGE METHOD BELOW:
+
   render() {
     const iconsLogo = {
       height: '100px',

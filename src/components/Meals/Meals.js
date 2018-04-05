@@ -7,7 +7,10 @@ export default class Meals extends Component {
   constructor(props) {
     super(props);
 
+    //SET INITIAL STATE BELOW:
     this.state = {};
+
+    //BIND METHODS BELOW:
   }
 
   render() {

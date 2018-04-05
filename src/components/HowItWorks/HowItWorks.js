@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import mealsBgg from './mealsBgg.jpeg';
 import mealsBg from './mealsBg.jpeg';
 import './HowItWorks.css';
@@ -14,7 +15,10 @@ export default class HowItWorks extends Component {
   constructor(props) {
     super(props);
 
+    //SET INITIAL STATE BELOW:
     this.state = {};
+
+    //BIND METHODS BELOW:
   }
 
   render() {
@@ -117,7 +121,10 @@ export default class HowItWorks extends Component {
             Enjoy the convenience of great-tasting meals delivered to your door
           </h2>
           <button className="button" style={buttonStyle}>
-            Get Started
+            <Link className="getStartBtn" to="/Meals">
+              {' '}
+              Get Started
+            </Link>
           </button>
         </div>
         <div>
