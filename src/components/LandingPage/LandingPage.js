@@ -3,6 +3,7 @@ import './LandingPage.css';
 import { Link } from 'react-router-dom';
 import topLandingImage from './topLandingImage.jpg';
 import FaTablet from 'react-icons/lib/fa/tablet';
+import FaTruck from 'react-icons/lib/fa/truck';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -58,6 +59,10 @@ export default class LandingPage extends Component {
       width: '150px',
       marginLeft: '10%'
     };
+    const leftLetterStyle = {
+      fontSize: '30px',
+      textAlign: 'left'
+    };
     return (
       <div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
@@ -80,9 +85,17 @@ export default class LandingPage extends Component {
         {/* //SECOND SECTION// */}
         <div className="secondSection">
           <h2>
-            HOW IT WORKS<br /> <br />Order, Deliver, Heat & Enjoy!
+            HOW IT WORKS<br />
           </h2>
-          <FaTablet style={iconStyle} />
+          <div>
+            <FaTablet style={iconStyle} />
+            <h2 style={leftLetterStyle} className="order">
+              Order
+            </h2>
+          </div>
+          <div>
+            <FaTruck tyle={iconStyle} />
+          </div>
         </div>
       </div>
     );
