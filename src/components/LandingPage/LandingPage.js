@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import topLandingImage from './topLandingImage.jpg';
 import FaTablet from 'react-icons/lib/fa/tablet';
 import FaTruck from 'react-icons/lib/fa/truck';
+import FaFire from 'react-icons/lib/fa/fire';
+import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
+import pageHeader from './../Meals/pageHeader.jpg';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -26,10 +29,11 @@ export default class LandingPage extends Component {
       width: '100%'
     };
     const smallerMessage = {
-      fontSize: '21px',
+      fontSize: '22px',
+      fontFamily: 'lato',
       color: 'green',
       fontWeight: 'bold',
-      marginLeft: '9%',
+      marginLeft: '11.5%',
       marginRight: '9%'
     };
 
@@ -37,13 +41,13 @@ export default class LandingPage extends Component {
       fontSize: '18px',
       position: 'absolute',
       top: '62%',
-      left: '9%',
+      left: '11.5%',
       height: '20%',
       width: '25%',
       fontFamily: 'osward',
       backgroundColor: 'green',
       color: 'white',
-      borderRadius: '15px',
+      borderRadius: '10px',
       textAlign: 'center',
       textTransform: 'uppercase',
       cursor: 'pointer'
@@ -57,46 +61,91 @@ export default class LandingPage extends Component {
     const iconStyle = {
       height: '170px',
       width: '150px',
-      marginLeft: '10%'
+      marginLeft: '8.5%',
+      marginRight: '5.5%'
     };
     const leftLetterStyle = {
       fontSize: '30px',
       textAlign: 'left'
     };
+    const pageHeaderStyle = {
+      height: '20%',
+      width: '100%',
+      opacity: '0.5'
+    };
+    const buttonStyles = {
+      fontSize: '25px',
+      position: 'absolute',
+      top: '190%',
+      left: '37%',
+      height: '12%',
+      width: '23%',
+      fontFamily: 'osward',
+      backgroundColor: 'green',
+      color: 'white',
+      borderRadius: '10px',
+      textAlign: 'center',
+      textTransform: 'uppercase',
+      cursor: 'pointer'
+    };
     return (
       <div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
         {/* //FIRST SECTION// */}
-        <div>
+        <section>
           <img src={topLandingImage} style={topImageStyle} />
           <div className="whiteBox">
             <h2 className="banner">Work Hard. Eat Right.</h2>
             <p2 style={smallerMessage}>
               Heat & Eat Gourmet Meals. Delivered to Your Door
             </p2>
-
             <button className="button" style={buttonStyle}>
               <Link className="getStartBtn" to="/Meals">
                 Shop Meals
               </Link>
             </button>
           </div>
-        </div>
+        </section>
         {/* //SECOND SECTION// */}
-        <div className="secondSection">
-          <h2>
+        <section className="secondSection">
+          <h2 className="titleName">
             HOW IT WORKS<br />
           </h2>
           <div>
             <FaTablet style={iconStyle} />
-            <h2 style={leftLetterStyle} className="order">
-              Order
-            </h2>
+            <FaTruck style={iconStyle} className="flip" />
+            <FaFire style={iconStyle} />
+            <FaThumbsOUp style={iconStyle} />
           </div>
-          <div>
-            <FaTruck tyle={iconStyle} />
+          <div className="ODHE">
+            <span>Order</span>
+            <span>Deliver</span>
+            <span>Heat</span>
+            <span>Enjoy</span>
           </div>
-        </div>
+          <div className="odhes">
+            <span className="odhe">Order meals weekly from our website </span>
+            <span className="odhe">
+              Prepped ships nationwide. Your order of freshly prepared meals are
+              delivered weekly to your door.
+            </span>
+            <span className="odhe">
+              Open up your meal and heat for the allotted time.
+            </span>
+            <span className="odhe">
+              Enjoy your delicious meal at your home, office, or on the go.
+            </span>
+          </div>
+        </section>
+        <section>
+          <img src={pageHeader} style={pageHeaderStyle} />
+          <h2 className="banners">CHECK OUT THIS WEEK’S MEALS</h2>
+          <button className="button" style={buttonStyles}>
+            <Link className="getStartBtn" to="/Meals">
+              CREATE YOUR MENU
+            </Link>
+          </button>
+        </section>
       </div>
     );
   }

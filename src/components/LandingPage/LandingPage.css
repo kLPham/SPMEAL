@@ -6,10 +6,11 @@
   border-radius: 15px;
   top: 40%;
   left: 40%;
+  opacity: 0.9;
 }
 .banner {
   font-size: 52px;
-  font-family: Oswald, sans-serif;
+  font-family: lato;
   color: rgb(4, 70, 4);
   margin-bottom: 3%;
 }
@@ -23,6 +24,45 @@
   height: 90%;
   width: 100%;
 }
-.order {
-  margin-left: 12.5%;
+.titleName {
+  font-size: 56px;
+  font-family: lato;
+  padding-top: 1%;
+}
+.flip {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: 'FlipH';
+}
+.ODHE {
+  font-size: 55px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+  font-family: Liberation Serif;
+}
+.odhe {
+  font-size: 20px;
+  font-family: lato;
+  width: 315px;
+  padding-left: 1.5%;
+  text-align: center;
+}
+.odhes {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5%;
+  margin-top: 1%;
+}
+.banners {
+  position: absolute;
+  top: 178%;
+  left: 25%;
+  font-size: 40px;
+  font-family: lato;
+  color: rgb(4, 70, 4);
+  margin-bottom: 3%;
 }
