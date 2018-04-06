@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './LandingPage.css';
 import { Link } from 'react-router-dom';
 import topLandingImage from './topLandingImage.jpg';
+import FaTablet from 'react-icons/lib/fa/tablet';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -24,8 +25,9 @@ export default class LandingPage extends Component {
       width: '100%'
     };
     const smallerMessage = {
-      fontSize: '16px',
+      fontSize: '21px',
       color: 'green',
+      fontWeight: 'bold',
       marginLeft: '9%',
       marginRight: '9%'
     };
@@ -45,16 +47,27 @@ export default class LandingPage extends Component {
       textTransform: 'uppercase',
       cursor: 'pointer'
     };
+    const imageStyle = {
+      height: '15%',
+      width: '15%',
+      marginLeft: '7%'
+    };
+
+    const iconStyle = {
+      height: '170px',
+      width: '150px',
+      marginLeft: '10%'
+    };
     return (
       <div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
+        {/* //FIRST SECTION// */}
         <div>
           <img src={topLandingImage} style={topImageStyle} />
           <div className="whiteBox">
             <h2 className="banner">Work Hard. Eat Right.</h2>
             <p2 style={smallerMessage}>
-              Our meals is always fresh and delivers right to your door in all
-              50 states.
+              Heat & Eat Gourmet Meals. Delivered to Your Door
             </p2>
 
             <button className="button" style={buttonStyle}>
@@ -64,10 +77,13 @@ export default class LandingPage extends Component {
             </button>
           </div>
         </div>
-
-        <h2>
-          It is Simple.<br /> Order, deliver, and enjoy!
-        </h2>
+        {/* //SECOND SECTION// */}
+        <div className="secondSection">
+          <h2>
+            HOW IT WORKS<br /> <br />Order, Deliver, Heat & Enjoy!
+          </h2>
+          <FaTablet style={iconStyle} />
+        </div>
       </div>
     );
   }
