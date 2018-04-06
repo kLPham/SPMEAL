@@ -7,6 +7,8 @@ import FaTruck from 'react-icons/lib/fa/truck';
 import FaFire from 'react-icons/lib/fa/fire';
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
 import pageHeader from './../Meals/pageHeader.jpg';
+import FaQuoteLeft from 'react-icons/lib/fa/quote-left';
+import FaQuoteRight from 'react-icons/lib/fa/quote-right';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -88,6 +90,9 @@ export default class LandingPage extends Component {
       textTransform: 'uppercase',
       cursor: 'pointer'
     };
+    const quoteBottomStyle = {
+      marginTop: '23%'
+    };
     return (
       <div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
@@ -109,7 +114,7 @@ export default class LandingPage extends Component {
         {/* //SECOND SECTION// */}
         <section className="secondSection">
           <h2 className="titleName">
-            HOW IT WORKS<br />
+            How It Works<br />
           </h2>
           <div>
             <FaTablet style={iconStyle} />
@@ -145,6 +150,50 @@ export default class LandingPage extends Component {
               CREATE YOUR MENU
             </Link>
           </button>
+        </section>
+        <section className="Testimonials">
+          <h2 className="titleName">Testimonials</h2>
+
+          <div className="speechBubble">
+            <FaQuoteLeft />
+            <p2 className="odhe">
+              {' '}
+              The taste is much better than any other company i have ever used.
+              Hands down.
+            </p2>
+            <FaQuoteRight style={quoteBottomStyle} />
+          </div>
+
+          <br />
+          <br />
+
+          <p2 className="author">Coby Lewis</p2>
+          <br />
+          <div className="speechBubble">
+            <FaQuoteLeft />
+            <p2 className="odhe">
+              {' '}
+              They got the job done! Just started a 20 week program with my
+              bikini competition coach. But I work full time and in college full
+              time, with such a busy schedule they were the perfect fit to make
+              my meal plan easier to stick to!.
+            </p2>
+            <br />
+            <FaQuoteRight style={quoteBottomStyle} />
+          </div>
+          <br />
+          <br />
+
+          <div className="speechBubble">
+            <br />
+            <FaQuoteLeft />
+            <p2 className="odhe">
+              {' '}
+              Every meal I've had at this point has been great!!! Great taste
+              and texture. Not your plain Jane meals. Best I've had yet.
+            </p2>
+            <FaQuoteRight style={quoteBottomStyle} />
+          </div>
         </section>
       </div>
     );

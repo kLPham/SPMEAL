@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Meals.css';
 import pageHeader from './pageHeader.jpg';
 import { Link } from 'react-router-dom';
+import FaCutlery from 'react-icons/lib/fa/cutlery';
 
 export default class Meals extends Component {
   constructor(props) {
@@ -18,11 +19,17 @@ export default class Meals extends Component {
       height: '20%',
       width: '100%'
     };
+    const cutleryStyle = {
+      height: '55px',
+      width: '55px',
+      marginLeft: '40%',
+      color: 'gray'
+    };
     const sideBar = {
       marginLeft: '4.2%',
       marginBottom: '5%',
-      paddingTop: '3%',
-      height: '400px',
+      paddingTop: '2%',
+      height: '460px',
       width: '25%'
     };
     const menuTitle = {
@@ -38,6 +45,7 @@ export default class Meals extends Component {
         <h2 style={menuTitle}>Our Menu</h2>
         <div>
           <div style={sideBar} className="sideBar">
+            <FaCutlery style={cutleryStyle} />
             <Link to="/Meals/Breakfast" className="meals">
               <span>Spartan Custom Meals</span>
             </Link>

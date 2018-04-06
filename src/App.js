@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import router from './router';
 import { Link } from 'react-router-dom';
-import SearchBar from './components/SearchBar/SearchBar';
-import Login from './components/Login/Login';
+import FaHome from 'react-icons/lib/fa/home';
+// import SearchBar from './components/SearchBar/SearchBar';
+// import Login from './components/Login/Login';
 import Cart from './components/Cart/Cart';
 import icons from './icons.jpg';
 import Footer from './components/Footer/Footer';
@@ -31,6 +32,11 @@ class App extends Component {
     const header = {
       position: 'fixed'
     };
+    const homeIconStyle = {
+      marginTop: '-35%',
+      height: '37px',
+      width: '32px'
+    };
     const bannerStyle = {
       color: 'white',
       backgroundColor: 'red',
@@ -50,7 +56,9 @@ class App extends Component {
           <img alt="icon" src={icons} style={iconsLogo} />
           <div className="list">
             <Link to="/" className="span">
-              <span>Home</span>
+              <span>
+                <FaHome style={homeIconStyle} />
+              </span>
             </Link>
             <Link to="/HowItWorks" className="span">
               <span>How It Works</span>
