@@ -55,3 +55,15 @@
   background-color: white;
   color: black;
 }
+/* .padding p {
+  margin-bottom: 35%;
+} */
+.linkStyle {
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-left: 9px;
+  color: white;
+}
+.linkStyle:hover {
+  color: green;
+}

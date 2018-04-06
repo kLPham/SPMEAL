@@ -7,7 +7,15 @@ export default class Footer extends Component {
   constructor(props) {
     super(props);
 
+    //SET INITIAL STATE BELOW:
     this.state = {};
+    //BIND METHODS BELOW:
+    this.handleLinkClick = this.handleLinkClick.bind(this);
+  }
+  //HANDLE METHODS BELOW:
+  handleLinkClick(e) {
+    e.preventDefault();
+    console.log('click to my portfolio site.');
   }
 
   render() {
@@ -23,42 +31,70 @@ export default class Footer extends Component {
     const iconsStyle = {
       margin: '20px'
     };
+    const copyRightStyle = {
+      height: '30px',
+      width: '100%',
+      backgroundColor: 'black',
+      color: 'white',
+      textAlign: 'left',
+      paddingLeft: '1%',
+      paddingTop: '2%',
+      paddingBottom: '2%'
+    };
 
     return (
-      <div className="footer">
-        <span className="SpanLeft">
-          <h3>Join Our Email List</h3>
-          <p1 className="size">
-            Get VIP access to deals, discounts, and all things from Spartan.
-          </p1>
-          <br />
-          <br />
-          <div className="insideSpan">
-            <input
-              className="input"
-              type="text"
-              placeholder="email@example.com"
+      <div>
+        <div className="footer">
+          <span className="SpanLeft">
+            <h3>Join Our Email List</h3>
+            <p1 className="size">
+              Get VIP access to deals, discounts, and all things from Spartan.
+            </p1>
+            <br />
+            <br />
+            <div className="insideSpan">
+              <input
+                className="input"
+                type="text"
+                placeholder="email@example.com"
+              />
+              <button className="goButton" type="submit">
+                Go
+              </button>
+            </div>
+          </span>
+          {/* SECOND SPAN */}
+          <span className="SpanRight">
+            <h3>Contact Us</h3>
+            <p1 className="size">
+              <FaPhoneSquare style={phoneStyle} />1.972.984.0817
+            </p1>
+            <br />
+            <br />
+            <p1 className="size">921 Redbud blvd ste 200 Mckinney Tx, 75069</p1>
+            <SocialIcons
+              urls={urls}
+              style={iconsStyle}
+              color="black"
+              className="icons"
             />
-            <button className="goButton" type="submit">
-              Go
-            </button>
-          </div>
-        </span>
-        <span className="SpanRight">
-          <h3>Contact Us</h3>
-          <p1 className="size">
-            <FaPhoneSquare style={phoneStyle} />1.972.984.0817
-          </p1>
+          </span>
+        </div>
+        <section style={copyRightStyle}>
+          <p2>
+            Copyright © 2018 Spartan Performance Meals. All Rights Reserved.{' '}
+          </p2>
           <br />
-          <br />
-          <p1 className="size">921 Redbud blvd ste 200 Mckinney Tx, 75069</p1>
-          <SocialIcons
-            urls={urls}
-            style={iconsStyle}
-            color="black"
-            className="icons"
-          />
-        </span>
+          <p2>Website created by</p2>
+
+          <a
+            href="http://kellylinhpham.com/"
+            onClick={() => this.handleLinkClick}
+            className="linkStyle"
+          >
+            Kelly Linh Pham
+          </a>
+        </section>
       </div>
     );
   }
