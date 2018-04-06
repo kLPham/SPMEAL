@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './LandingPage.css';
 import { Link } from 'react-router-dom';
 import topLandingImage from './topLandingImage.jpg';
-import FaTablet from 'react-icons/lib/fa/tablet';
+import FaLaptop from 'react-icons/lib/fa/laptop';
 import FaTruck from 'react-icons/lib/fa/truck';
 import FaFire from 'react-icons/lib/fa/fire';
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up';
@@ -117,7 +117,7 @@ export default class LandingPage extends Component {
             How It Works<br />
           </h2>
           <div>
-            <FaTablet style={iconStyle} />
+            <FaLaptop style={iconStyle} />
             <FaTruck style={iconStyle} className="flip" />
             <FaFire style={iconStyle} />
             <FaThumbsOUp style={iconStyle} />

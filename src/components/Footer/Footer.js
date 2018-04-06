@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Footer.css';
 import { SocialIcons } from 'react-social-icons';
+import FaPhoneSquare from 'react-icons/lib/fa/phone-square';
 
 export default class Footer extends Component {
   constructor(props) {
@@ -15,6 +16,10 @@ export default class Footer extends Component {
       'https://www.instagram.com/spartanperformancemeals/',
       'mailto:spartan@Spartanperformancemeals'
     ];
+    const phoneStyle = {
+      height: '30px',
+      width: '30px'
+    };
     const iconsStyle = {
       margin: '20px'
     };
@@ -41,7 +46,9 @@ export default class Footer extends Component {
         </span>
         <span className="SpanRight">
           <h3>Contact Us</h3>
-          <p1 className="size">1.972.984.0817</p1>
+          <p1 className="size">
+            <FaPhoneSquare style={phoneStyle} />1.972.984.0817
+          </p1>
           <br />
           <br />
           <p1 className="size">921 Redbud blvd ste 200 Mckinney Tx, 75069</p1>

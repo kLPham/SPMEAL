@@ -3,6 +3,7 @@ import './Meals.css';
 import pageHeader from './pageHeader.jpg';
 import { Link } from 'react-router-dom';
 import FaCutlery from 'react-icons/lib/fa/cutlery';
+import FaPlusCircle from 'react-icons/lib/fa/plus-circle';
 
 export default class Meals extends Component {
   constructor(props) {
@@ -57,7 +58,10 @@ export default class Meals extends Component {
             <Link to="Meals/Dinner" className="meals">
               <span>Spartan By the LB</span>
             </Link>
-            <button className="customOrder">+Create Custom Order</button>
+            <button className="customOrder">
+              <FaPlusCircle />
+              Create Custom Order
+            </button>
           </div>
         </div>
       </div>

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import FaHome from 'react-icons/lib/fa/home';
 // import SearchBar from './components/SearchBar/SearchBar';
 // import Login from './components/Login/Login';
+import FaCutlery from 'react-icons/lib/fa/cutlery';
 import Cart from './components/Cart/Cart';
 import icons from './icons.jpg';
 import Footer from './components/Footer/Footer';
@@ -64,7 +65,9 @@ class App extends Component {
               <span>How It Works</span>
             </Link>
             <Link to="/Meals" className="span">
-              <span>Menus</span>
+              <span>
+                <FaCutlery />Menus
+              </span>
             </Link>
             <Link to="/About" className="span">
               <span>About Us</span>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './contact.css';
+import FaPhone from 'react-icons/lib/fa/phone';
 
 export default class Contact extends Component {
   constructor(props) {
@@ -23,7 +24,9 @@ export default class Contact extends Component {
     };
     return (
       <div className="text">
-        <h1 className="contact">Contact Us</h1>
+        <h1 className="contact">
+          <FaPhone /> Contact Us
+        </h1>
         <hr />
         <div className="contactSecondPart">
           <h2 className="help">"I need help with..."</h2>
