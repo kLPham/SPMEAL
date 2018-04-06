@@ -27,9 +27,9 @@ export default class Meals extends Component {
     };
     const sideBar = {
       marginLeft: '4.2%',
-      marginBottom: '5%',
+      marginBottom: '2%',
       paddingTop: '2%',
-      height: '460px',
+      height: '400px',
       width: '25%'
     };
     const menuTitle = {
