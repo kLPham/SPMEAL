@@ -20,14 +20,15 @@ export default class Cart extends Component {
       paddingRight: '7%',
       fontSize: '19px',
       textTransform: 'uppercase',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      borderRadius: '6px'
     };
     const basketStyle = {
       height: '30px',
       width: '25px',
       position: 'absolute',
       top: '30%',
-      right: '10.9%',
+      right: '12%',
       color: 'white'
     };
     return (

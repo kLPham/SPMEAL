@@ -32,14 +32,14 @@ export default class Footer extends Component {
       margin: '20px'
     };
     const copyRightStyle = {
-      height: '30px',
+      height: '20px',
       width: '100%',
       backgroundColor: 'black',
       color: 'white',
-      textAlign: 'left',
-      paddingLeft: '1%',
-      paddingTop: '2%',
-      paddingBottom: '2%'
+      textAlign: 'center',
+      fontSize: '10px',
+      paddingTop: '.8%',
+      paddingBottom: '1%'
     };
 
     return (
