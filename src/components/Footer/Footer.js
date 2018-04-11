@@ -36,21 +36,20 @@ export default class Footer extends Component {
       height: '20px',
       width: '10%',
       alignItems: 'left',
-      marginTop: '1%',
-      position: 'absolute',
-      bottom: '-70.9%',
-      left: '9%'
+      marginRight: '1%'
     };
     const copyRightStyle = {
       height: '20px',
-      width: '82%',
+      width: '90%',
       backgroundColor: 'black',
       color: 'white',
       textAlign: 'left',
-      fontSize: '13px',
-      paddingLeft: '15%',
+      fontSize: '11px',
+      fontFamily: 'Raleway, sans-serif;',
+      paddingLeft: '5%',
       paddingTop: '1%',
-      paddingBottom: '1.5%'
+      paddingBottom: '1.5%',
+      paddingRight: '5%'
     };
 
     return (
@@ -97,6 +96,8 @@ export default class Footer extends Component {
             <p>©2018 Spartan Performance Meals, Inc. All Rights Reserved.</p>
             <p>Privacy Policy</p>
             <p>Terms of Service</p>
+            <p>Site Map</p>
+            <p>Refund Policy</p>
 
             <p2 className="by">Website created by</p2>
             <a
