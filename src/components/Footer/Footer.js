@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Footer.css';
 import { SocialIcons } from 'react-social-icons';
 import FaPhoneSquare from 'react-icons/lib/fa/phone-square';
+import bottomIcon from './bottomIcon.jpg';
 
 export default class Footer extends Component {
   constructor(props) {
@@ -31,15 +32,25 @@ export default class Footer extends Component {
     const iconsStyle = {
       margin: '20px'
     };
+    const bottomFooter = {
+      height: '20px',
+      width: '10%',
+      alignItems: 'left',
+      marginTop: '1%',
+      position: 'absolute',
+      bottom: '-70.9%',
+      left: '9%'
+    };
     const copyRightStyle = {
       height: '20px',
-      width: '100%',
+      width: '82%',
       backgroundColor: 'black',
       color: 'white',
-      textAlign: 'center',
-      fontSize: '10px',
-      paddingTop: '.8%',
-      paddingBottom: '1%'
+      textAlign: 'left',
+      fontSize: '13px',
+      paddingLeft: '15%',
+      paddingTop: '1%',
+      paddingBottom: '1.5%'
     };
 
     return (
@@ -81,19 +92,21 @@ export default class Footer extends Component {
           </span>
         </div>
         <section style={copyRightStyle}>
-          <p2>
-            Copyright © 2018 Spartan Performance Meals. All Rights Reserved.{' '}
-          </p2>
-          <br />
-          <p2>Website created by</p2>
+          <div className="bottomFooter">
+            <img src={bottomIcon} style={bottomFooter} />
+            <p>©2018 Spartan Performance Meals, Inc. All Rights Reserved.</p>
+            <p>Privacy Policy</p>
+            <p>Terms of Service</p>
 
-          <a
-            href="http://kellylinhpham.com/"
-            onClick={() => this.handleLinkClick}
-            className="linkStyle"
-          >
-            Kelly Linh Pham
-          </a>
+            <p2 className="by">Website created by</p2>
+            <a
+              href="http://kellylinhpham.com/"
+              onClick={() => this.handleLinkClick}
+              className="linkStyle"
+            >
+              Kelly Linh Pham
+            </a>
+          </div>
         </section>
       </div>
     );

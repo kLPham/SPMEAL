@@ -55,12 +55,20 @@
   background-color: white;
   color: black;
 }
-/* .padding p {
-  margin-bottom: 35%;
-} */
+
+.bottomFooter p {
+  position: relative;
+  display: inline;
+  justify-content: space-around;
+  padding-right: 1.5%;
+}
+.by {
+  padding-left: 6%;
+  color: red;
+}
+
 .linkStyle {
   text-decoration: none;
-  text-transform: uppercase;
   margin-left: 9px;
   color: white;
 }
