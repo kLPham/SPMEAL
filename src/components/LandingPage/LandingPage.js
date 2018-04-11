@@ -31,12 +31,12 @@ export default class LandingPage extends Component {
       width: '100%'
     };
     const smallerMessage = {
-      fontSize: '22px',
+      fontSize: '20px',
       fontFamily: 'lato',
       color: 'green',
       fontWeight: 'bold',
       marginLeft: '11.5%',
-      marginRight: '9%'
+      marginRight: '5%'
     };
 
     const buttonStyle = {
@@ -63,8 +63,8 @@ export default class LandingPage extends Component {
     const iconStyle = {
       height: '170px',
       width: '150px',
-      marginLeft: '8.5%',
-      marginRight: '5.5%'
+      marginLeft: '8%',
+      marginRight: '5%'
     };
     const leftLetterStyle = {
       fontSize: '30px',
@@ -90,9 +90,7 @@ export default class LandingPage extends Component {
       textTransform: 'uppercase',
       cursor: 'pointer'
     };
-    const quoteBottomStyle = {
-      marginTop: '23%'
-    };
+
     return (
       <div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
@@ -102,7 +100,7 @@ export default class LandingPage extends Component {
           <div className="whiteBox">
             <h2 className="banner">Work Hard. Eat Right.</h2>
             <p2 style={smallerMessage}>
-              Heat & Eat Gourmet Meals. Delivered to Your Door
+              Heat & Eat Gourmet Meals. Delivered to Your Door.
             </p2>
             <button className="button" style={buttonStyle}>
               <Link className="getStartBtn" to="/Meals">
@@ -153,46 +151,48 @@ export default class LandingPage extends Component {
         </section>
         <section className="Testimonials">
           <h2 className="titleName">Testimonials</h2>
-
-          <div className="speechBubble">
-            <FaQuoteLeft />
-            <p2 className="odhe">
-              {' '}
-              The taste is much better than any other company i have ever used.
-              Hands down.
-            </p2>
-            <FaQuoteRight style={quoteBottomStyle} />
-          </div>
-
-          <br />
-          <br />
-
-          <p2 className="author">Coby Lewis</p2>
-          <br />
-          <div className="speechBubble">
-            <FaQuoteLeft />
-            <p2 className="odhe">
-              {' '}
-              They got the job done! Just started a 20 week program with my
-              bikini competition coach. But I work full time and in college full
-              time, with such a busy schedule they were the perfect fit to make
-              my meal plan easier to stick to!.
-            </p2>
+          <div className="allBubbles">
+            <div className="speechBubble">
+              <FaQuoteLeft />
+              <p2 className="odhe">
+                {' '}
+                The taste is much better than any other company i have ever
+                used. Hands down.
+              </p2>
+              <p2 className="authorNameO">Coby Lewis</p2>
+              <FaQuoteRight className="firstRQuote" />
+            </div>
             <br />
-            <FaQuoteRight style={quoteBottomStyle} />
-          </div>
-          <br />
-          <br />
-
-          <div className="speechBubble">
             <br />
-            <FaQuoteLeft />
-            <p2 className="odhe">
-              {' '}
-              Every meal I've had at this point has been great!!! Great taste
-              and texture. Not your plain Jane meals. Best I've had yet.
-            </p2>
-            <FaQuoteRight style={quoteBottomStyle} />
+            {/* <p2 className="author">Coby Lewis</p2> */}
+            <br />
+            <div className="speechBubble">
+              <FaQuoteLeft />
+              <p2 className="odhe">
+                {' '}
+                They got the job done! Just started a 20 week program with my
+                bikini competition coach. But I work full time and in college
+                full time, with such a busy schedule they were the perfect fit
+                to make my meal plan easier to stick to!.
+              </p2>
+              <p2 className="authorNameT">Josie Fothergill</p2>
+              <br />
+              <FaQuoteRight className="secondRQuote" />
+            </div>
+            <br />
+            <br />
+
+            <div className="speechBubble">
+              <br />
+              <FaQuoteLeft />
+              <p2 className="odhe">
+                {' '}
+                Every meal I've had at this point has been great!!! Great taste
+                and texture. Not your plain Jane meals. Best I've had yet.
+              </p2>
+              <p2 className="authorNameTh">Daniel Sullivan </p2>
+              <FaQuoteRight className="thirdRQuote" />
+            </div>
           </div>
         </section>
       </div>

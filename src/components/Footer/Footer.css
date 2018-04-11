@@ -55,3 +55,23 @@
   background-color: white;
   color: black;
 }
+
+.bottomFooter p {
+  position: relative;
+  display: inline;
+  justify-content: space-around;
+  padding-right: 1.5%;
+}
+.by {
+  padding-left: 6%;
+  color: red;
+}
+
+.linkStyle {
+  text-decoration: none;
+  margin-left: 9px;
+  color: white;
+}
+.linkStyle:hover {
+  color: red;
+}
