@@ -70,8 +70,9 @@
 .linkStyle {
   text-decoration: none;
   margin-left: 9px;
-  color: white;
+  color: black;
 }
 .linkStyle:hover {
   color: red;
+  text-decoration-line: underline;
 }

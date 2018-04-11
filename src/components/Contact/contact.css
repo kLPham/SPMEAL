@@ -73,3 +73,53 @@
   -o-border-radius: 5px;
   border-radius: 5px;
 }
+
+.contactV {
+  background-color: black;
+  color: white;
+  height: 900px;
+  width: 100%;
+}
+.contactVideo {
+  height: 100px;
+  width: 400px;
+}
+.teamSection {
+  height: 800px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-family: cursive;
+  font-size: 45px;
+  text-align: center;
+}
+.allBio {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.ceo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.nameStyle {
+  font-size: 25px;
+  text-align: left;
+  margin-left: 65%;
+}
+.bio {
+  height: 500px;
+  width: 200px;
+  background-color: darkred;
+  color: white;
+  border-color: white;
+  font-size: 10px;
+
+  padding-left: 12%;
+  padding-right: 3%;
+}
+.bioo {
+  text-align: center;
+}

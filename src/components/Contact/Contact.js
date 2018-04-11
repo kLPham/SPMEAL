@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './contact.css';
 import FaPhone from 'react-icons/lib/fa/phone';
+import ReactPlayer from 'react-player';
+
+import CEO from './CEO.jpg';
 
 export default class Contact extends Component {
   constructor(props) {
@@ -21,6 +24,12 @@ export default class Contact extends Component {
       boxShadow: '0 3px 10px -3px rgba(0, 0, 0, 0.25)',
       marginBottom: '50px',
       marginRight: '15px'
+    };
+    const imageStyle = {
+      height: '500px',
+      width: '400px',
+      paddingLeft: '47%',
+      paddingBottom: '5%'
     };
     return (
       <div className="text">
@@ -49,21 +58,30 @@ export default class Contact extends Component {
             Payments
           </button>
         </div>
-
-        {/* <div className="bothBoxes">
-          <div className="box1">
-            <span>
-              <h3>Address:</h3>
-              921 Redbud blvd ste 200 Mckinney Tx, 75069
-            </span>
+        <section className="teamSection">
+          <h3>Meet Our CEO</h3>
+          <div className="allBio">
+            <div className="ceo">
+              <img src={CEO} alt="our CEO photo" style={imageStyle} />
+              <p2 className="nameStyle">Christian Harrison</p2>
+            </div>
+            <div className="bio">
+              <p2 className="bioo">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+                pulvinar elementum iaculis. Quisque vel felis et ligula pharetra
+                facilisis in in ipsum. Sed at sapien eget urna bibendum
+                tincidunt vel eget nibh. Aenean nisi nibh, viverra eget iaculis
+                ac, dictum sit amet enim. In sed nunc sed quam volutpat aliquam.
+              </p2>
+            </div>
           </div>
-          <br /> <br />
-          <div className="box2">
-            <span>
-              <h3>Phone:</h3>
-              972-984-0817
-            </span>
-          </div>
+        </section>
+        {/* <div className="contactV">
+          <ReactPlayer
+            height="360px"
+            url="https://www.facebook.com/212degreescoach/videos/10156243298294878/"
+            playing={false}
+          />
         </div> */}
       </div>
     );

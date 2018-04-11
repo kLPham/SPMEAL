@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import mealsBgg from './mealsBgg.jpeg';
-import mealsBg from './mealsBg.jpeg';
+// import mealsBgg from './mealsBgg.jpeg';
+// import mealsBg from './mealsBg.jpeg';
+import HIW from './HIW.jpg';
 import './HowItWorks.css';
 
 import plan from './plan.jpg';
@@ -10,6 +11,8 @@ import cookingg from './cookingg.jpeg';
 import delivery from './delivery.jpeg';
 
 import ingredients from './ingredients.jpg';
+
+import ReactPlayer from 'react-player';
 
 export default class HowItWorks extends Component {
   constructor(props) {
@@ -31,13 +34,10 @@ export default class HowItWorks extends Component {
       fontSize: '22px'
     };
     const mealsBgStyle = {
-      height: '600px',
-      width: '700px'
+      height: '800px',
+      width: '100%'
     };
-    const mealsBggStyle = {
-      height: '600px',
-      width: '720px'
-    };
+
     const tagStyle = {
       backgroundColor: 'black',
       width: '45%',
@@ -83,15 +83,14 @@ export default class HowItWorks extends Component {
       marginTop: '7%'
     };
     const bottomImageStyle = {
-      marginTop: '6%',
       height: '40%',
       width: '100%',
       opacity: '1.5'
     };
     const bottomTextStyle = {
       position: 'absolute',
-      top: '237%',
-      left: '20%',
+      top: '368%',
+      left: '17%',
       textAlign: 'center',
       color: 'white',
       fontSize: '40px',
@@ -99,8 +98,8 @@ export default class HowItWorks extends Component {
     };
     const textStyle = {
       position: 'absolute',
-      top: '249%',
-      left: '13%',
+      top: '383%',
+      left: '10%',
       color: 'white',
       fontSize: '20px',
       fontWeight: 'bold',
@@ -111,12 +110,7 @@ export default class HowItWorks extends Component {
       <div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
         <div>
-          <img alt="meals background" src={mealsBgg} style={mealsBgStyle} />
-          <img
-            alt="second meals background"
-            src={mealsBg}
-            style={mealsBggStyle}
-          />
+          <img alt="HTW meals background" src={HIW} style={mealsBgStyle} />
           <h2 style={tagStyle}>
             Enjoy the convenience of great-tasting meals delivered to your door
           </h2>
@@ -146,21 +140,36 @@ export default class HowItWorks extends Component {
             <br />
             <br />
           </div>
-          <div>
-            <h3 className="shop">Shopping</h3>
-            <p3 className="shops">No more waiting in long lines at the</p3>
-            <p3 className="shopping">grocery store.</p3>
+          <div className="stylingSCDLetters">
+            <div>
+              <h3 className="shop">Shopping</h3>
+              <p3 className="shops">No more waiting in long lines at the</p3>
+              <p3 className="shopping">grocery store.</p3>
+            </div>
+            <div>
+              <h3 className="cook">Cooking</h3>
+              <p3 className="cooks">Why cook when you can have </p3>
+              <p3 className="cooking">world-class chefs do it for you?</p3>
+            </div>
+            <div>
+              <h3 className="delivery">Delivery</h3>
+              <p3 className="deliverys">
+                Spend your time doing things you want
+              </p3>
+              <p3 className="deliverying">
+                to do. We'll take care of delivery.
+              </p3>
+            </div>
           </div>
-          <div>
-            <h3 className="cook">Cooking</h3>
-            <p3 className="cooks">Why cook when you can have </p3>
-            <p3 className="cooking">world-class chefs do it for you?</p3>
-          </div>
-          <div>
-            <h3 className="delivery">Delivery</h3>
-            <p3 className="deliverys">Spend your time doing things you want</p3>
-            <p3 className="deliverying">to do. We'll take care of delivery.</p3>
-          </div>
+        </div>
+
+        <div className="videoBg">
+          <h3>Step Inside Our Kitchen</h3>
+          <ReactPlayer
+            className="video"
+            url="https://www.facebook.com/Spartanperformancemeals/videos/2545833955641018/"
+            playing={false}
+          />
         </div>
         <div>
           <img

@@ -41,8 +41,8 @@ export default class Footer extends Component {
     const copyRightStyle = {
       height: '20px',
       width: '90%',
-      backgroundColor: 'black',
-      color: 'white',
+      backgroundColor: 'gainsboro',
+      color: 'black',
       textAlign: 'left',
       fontSize: '11px',
       fontFamily: 'Raleway, sans-serif;',
@@ -90,6 +90,7 @@ export default class Footer extends Component {
             />
           </span>
         </div>
+        <hr />
         <section style={copyRightStyle}>
           <div className="bottomFooter">
             <img src={bottomIcon} style={bottomFooter} />

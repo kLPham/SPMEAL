@@ -10,6 +10,13 @@ import pageHeader from './../Meals/pageHeader.jpg';
 import FaQuoteLeft from 'react-icons/lib/fa/quote-left';
 import FaQuoteRight from 'react-icons/lib/fa/quote-right';
 
+import blog1 from './blog1.jpg';
+import blog2 from './blog2.jpg';
+import blog3 from './blog3.jpg';
+import blog4 from './blog4.jpg';
+
+import ReactPlayer from 'react-player';
+
 export default class LandingPage extends Component {
   constructor(props) {
     super(props);
@@ -78,7 +85,7 @@ export default class LandingPage extends Component {
     const buttonStyles = {
       fontSize: '25px',
       position: 'absolute',
-      top: '190%',
+      top: '205%',
       left: '37%',
       height: '12%',
       width: '23%',
@@ -90,7 +97,19 @@ export default class LandingPage extends Component {
       textTransform: 'uppercase',
       cursor: 'pointer'
     };
-
+    const blogImageStyle = {
+      height: '500px',
+      width: '400px'
+    };
+    const videoStyling = {
+      backgroundColor: 'black',
+      height: '900px',
+      width: '100%',
+      color: 'white',
+      fontSize: '40px',
+      textAlign: 'center',
+      paddingTop: '1%'
+    };
     return (
       <div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
@@ -164,7 +183,6 @@ export default class LandingPage extends Component {
             </div>
             <br />
             <br />
-            {/* <p2 className="author">Coby Lewis</p2> */}
             <br />
             <div className="speechBubble">
               <FaQuoteLeft />
@@ -194,6 +212,21 @@ export default class LandingPage extends Component {
               <FaQuoteRight className="thirdRQuote" />
             </div>
           </div>
+        </section>
+        <section className="blog">
+          <img src={blog1} alt="customerImage1" style={blogImageStyle} />
+          <img src={blog2} alt="customerImage2" style={blogImageStyle} />
+          <img src={blog3} alt="customerImage3" style={blogImageStyle} />
+          {/* <img asrc={blog4} alt="customerImage4" style={blogImageStyle} /> */}
+        </section>
+
+        <section style={videoStyling}>
+          <h3>Spartan Performance Meals Tour.</h3>
+          <ReactPlayer
+            className="video"
+            url="https://www.facebook.com/Spartanperformancemeals/videos/2230432647181152/"
+            playing={false}
+          />
         </section>
       </div>
     );

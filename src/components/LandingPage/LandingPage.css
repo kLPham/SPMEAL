@@ -61,7 +61,7 @@
 }
 .banners {
   position: absolute;
-  top: 178%;
+  top: 190%;
   left: 25%;
   font-size: 40px;
   font-family: lato;
@@ -141,4 +141,13 @@
   position: absolute;
   top: 118%;
   left: 30%;
+}
+.blog {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  padding-left: 3%;
+}
+.video {
+  margin-left: 25%;
 }
