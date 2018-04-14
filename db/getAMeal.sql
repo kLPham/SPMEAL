@@ -1,0 +1,1 @@
+SELECT * FROM Spartan Sig Meals WHERE meal_id= $1;
