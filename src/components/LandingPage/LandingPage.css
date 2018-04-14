@@ -145,8 +145,7 @@
 .blog {
   height: 100%;
   width: 100%;
-  background-color: black;
-  padding-left: 3%;
+  background-color: rgb(250, 248, 248);
 }
 .video {
   margin-left: 25%;

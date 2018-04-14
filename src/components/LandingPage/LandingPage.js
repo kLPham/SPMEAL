@@ -98,8 +98,11 @@ export default class LandingPage extends Component {
       cursor: 'pointer'
     };
     const blogImageStyle = {
-      height: '500px',
-      width: '400px'
+      height: '41%',
+      width: '31%',
+      paddingLeft: '1.75%',
+      paddingBottom: '3%',
+      paddingTop: '4%'
     };
     const videoStyling = {
       backgroundColor: 'black',
@@ -215,8 +218,9 @@ export default class LandingPage extends Component {
         </section>
         <section className="blog">
           <img src={blog1} alt="customerImage1" style={blogImageStyle} />
-          <img src={blog2} alt="customerImage2" style={blogImageStyle} />
           <img src={blog3} alt="customerImage3" style={blogImageStyle} />
+          <img src={blog2} alt="customerImage2" style={blogImageStyle} />
+
           {/* <img asrc={blog4} alt="customerImage4" style={blogImageStyle} /> */}
         </section>
 

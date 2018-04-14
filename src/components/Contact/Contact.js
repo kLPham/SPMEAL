@@ -66,6 +66,7 @@ export default class Contact extends Component {
               <p2 className="nameStyle">Christian Harrison</p2>
             </div>
             <div className="bio">
+              {/* <h5>Bio</h5> */}
               <p2 className="bioo">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
                 pulvinar elementum iaculis. Quisque vel felis et ligula pharetra
