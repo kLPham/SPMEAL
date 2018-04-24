@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './Meals.css';
+import RaisedButton from 'material-ui/RaisedButton';
+
 import { Link } from 'react-router-dom';
 import pageHeader from './pageHeader.jpg';
 import FaCutlery from 'react-icons/lib/fa/cutlery';
@@ -23,15 +25,17 @@ export default class Meals extends Component {
     const cutleryStyle = {
       height: '55px',
       width: '55px',
-      marginLeft: '40%',
+      alignItems: 'center',
       color: 'gray'
     };
     const sideBar = {
-      marginLeft: '4.2%',
-      marginBottom: '2%',
+      textAlign: 'center',
+      marginLeft: '4%',
+      marginBottom: '15%',
       paddingTop: '2%',
-      height: '400px',
-      width: '25%'
+      height: '100%',
+
+      width: '14%'
     };
     const menuTitle = {
       fontSize: '24px',
@@ -44,6 +48,7 @@ export default class Meals extends Component {
       <div>
         <img src={pageHeader} style={pageHeaderStyle} />
         <h2 style={menuTitle}>Our Menu</h2>
+        <RaisedButton label="Default" />
         <div className="mealsList">
           <div style={sideBar} className="sideBar">
             <FaCutlery style={cutleryStyle} />
