@@ -9,6 +9,7 @@ import Meals from './components/Meals/Meals';
 import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
 import SignatureMeals from './components/Meals/SignatureMeals/SignatureMeals';
 import ByLB from './components/Meals/ByLB/ByLB';
+// import MealsLandingPage from './components/Meals/MealsLandingPage/MealsLandingPage';
 
 import HowItWorks from './components/HowItWorks/HowItWorks';
 
@@ -27,6 +28,7 @@ export default (
             <Route path="/Meals/CustomMeals" component={CustomMeals} />
             <Route path="/Meals/SignatureMeals" component={SignatureMeals} />
             <Route path="/Meals/ByLB" component={ByLB} />
+            {/* <Route component={MealsLandingPage} /> */}
           </Switch>
         </Meals>
       )}

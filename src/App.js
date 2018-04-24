@@ -80,7 +80,7 @@ class App extends Component {
           <Cart />
         </div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
-        {/* </div> */}
+
         {router}
         <Footer />
       </div>
