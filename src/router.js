@@ -5,11 +5,10 @@ import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Cart from './components/Cart/Cart';
 
-import Meals from './components/Meals/Meals';
 import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
 import SignatureMeals from './components/Meals/SignatureMeals/SignatureMeals';
 import ByLB from './components/Meals/ByLB/ByLB';
-// import MealsLandingPage from './components/Meals/MealsLandingPage/MealsLandingPage';
+import Meals from './components/Meals/Meals';
 
 import HowItWorks from './components/HowItWorks/HowItWorks';
 
@@ -25,10 +24,9 @@ export default (
       render={() => (
         <Meals>
           <Switch>
-            <Route path="/Meals/CustomMeals" component={CustomMeals} />
             <Route path="/Meals/SignatureMeals" component={SignatureMeals} />
+            <Route path="/Meals/CustomMeals" component={CustomMeals} />
             <Route path="/Meals/ByLB" component={ByLB} />
-            {/* <Route component={MealsLandingPage} /> */}
           </Switch>
         </Meals>
       )}
