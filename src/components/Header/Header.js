@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Header.css';
 /// MATERIAL UI BELOW ///
 import RaisedButton from 'material-ui/RaisedButton'; // add
 import DropDownMenu from 'material-ui/DropDownMenu';
@@ -58,6 +59,7 @@ export default class Header extends Component {
       height: '25px',
       width: '20px'
     };
+
     return (
       // <MuiThemeProvider>
       <div>
@@ -82,36 +84,39 @@ export default class Header extends Component {
               <span>Contact</span>
             </Link>
             {/* MENU DROPDOWN BELOW */}
+
             <DropDownMenu
               value={this.state.value}
               onChange={this.handleDropdownMenuChange}
               primaryText="menu"
             >
-              <FaCutlery style={cuteryStyle} />
-              <MenuItem value={1} label="Menu" primaryText="Main Menu Page">
-                <HashLink to="/#Meals" className="span" />
-              </MenuItem>
-              <MenuItem
-                value={2}
-                label="Spartan Signature Meals"
-                primaryText="Spartan Signature Meals"
-              >
-                <HashLink to="/#Meals/SignatureMeals" className="span" />
-              </MenuItem>
-              <MenuItem
-                value={3}
-                label="By The Pounds"
-                primaryText="by the lbs"
-              >
-                <HashLink to="/#Meals/ByLB" className="span" />
-              </MenuItem>
-              <MenuItem
-                value={4}
-                label="Custom Meals"
-                primaryText="Custom Meals"
-              >
-                <HashLink to="/#Meals/ByLB" className="span" />
-              </MenuItem>
+              <FaCutlery style={cuteryStyle}> </FaCutlery>
+              <MenuItem value={1} label="Menu" />
+              <a href="/Meals" className="menuStyle">
+                <MenuItem value={2} primaryText="Full Menu" />
+              </a>
+              <a href="/Meals/SignatureMeals" className="menuStyle">
+                {/* <FaCutlery /> */}
+                <MenuItem
+                  value={3}
+                  label="Spartan Signature Meals"
+                  primaryText="Spartan Signature Meals"
+                />
+              </a>
+              <a href="/Meals/ByLB" className="menuStyle">
+                <MenuItem
+                  value={4}
+                  label="By The Pounds"
+                  primaryText="by the lbs"
+                />
+              </a>
+              <a href="/Meals/CustomMeals" className="menuStyle">
+                <MenuItem
+                  value={5}
+                  label="Custom Meals"
+                  primaryText="Custom Meals"
+                />
+              </a>
             </DropDownMenu>
           </div>
           <Cart />

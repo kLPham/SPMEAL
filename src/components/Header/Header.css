@@ -1,0 +1,11 @@
+.menuStyle {
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-left: 10px;
+  color: 'black';
+}
+
+.menuStyle:hover {
+  color: green;
+  text-decoration-line: underline;
+}
