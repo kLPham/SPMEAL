@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import router from './router';
-/// MATERIAL UI BELOW ///
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import RaisedButton from 'material-ui/RaisedButton'; // add
-// import DropDownMenu from 'material-ui/DropDownMenu';
-// import MenuItem from 'material-ui/MenuItem';
-
-//////////////////////////
-
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+/// MATERIAL UI BELOW ///
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton'; // add
+//////////////////////////
 
 class App extends Component {
   constructor(props) {
@@ -25,13 +21,14 @@ class App extends Component {
 
   render() {
     return (
-      // <MuiThemeProvider>
-      <div>
-        <Header />
-        {router}
-        <Footer />
-      </div>
-      // </MuiThemeProvider>
+      <MuiThemeProvider>
+        <div>
+          <Header />
+          {router}
+          <RaisedButton label="Material UI" />
+          <Footer />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
