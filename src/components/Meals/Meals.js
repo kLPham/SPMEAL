@@ -36,7 +36,9 @@ export default class Meals extends Component {
       height: '55px',
       width: '55px',
       alignItems: 'center',
-      color: 'gray'
+      color: 'gray',
+      paddingBottom: '6%',
+      paddingTop: '2.5%'
     };
 
     const menuTitle = {
@@ -52,38 +54,27 @@ export default class Meals extends Component {
         flexDirection: 'row wrap',
         padding: 20,
         width: '100%',
-        marginLeft: '3%'
+        marginLeft: '1%'
       },
       paperLeft: {
         flex: 1,
         height: 600,
-        width: '20%',
-        marginRight: '5%',
-        textAlign: 'center'
+        width: '100%',
+        paddingTop: '2%',
+        paddingLeft: '2.5%',
+        paddingRight: '2.5%',
+        marginRight: '2%',
+        textAlign: 'center',
+        fontStretch: 'expanded'
       },
       paperRight: {
         height: 600,
         flex: 4,
-        paddingLeft: 20,
-        width: '80%',
+        paddingLeft: 10,
+        width: '92%',
         textAlign: 'center'
       }
     };
-    // const rightStyles = {
-    //   div: {
-    //     display: 'flex',
-    //     flexDirection: 'row',
-    //     padding: 20,
-    //     width: '50%',
-    //     height: '100%'
-    //   },
-    //   paperRight: {
-    //     height: 600,
-    //     flex: 4,
-    //     margin: 10,
-    //     textAlign: 'center'
-    //   }
-    // };
     const style = {
       height: 350,
       width: 350,
@@ -130,8 +121,33 @@ export default class Meals extends Component {
           <div className="content-wrapper">
             <div className="overflow-container">
               <Paper zDepth={3} style={bothStyles.paperRight}>
-                <h4>Second Vertical component</h4>
+                <div className="fixedContainer">Meal Type Here</div>
+
                 <div className="overflow-content">
+                  <Paper zDepth={3} style={style}>
+                    <h4>Meals here</h4>
+                  </Paper>
+                  <Paper zDepth={3} style={style}>
+                    <h4>Meals here</h4>
+                  </Paper>
+                  <Paper zDepth={3} style={style}>
+                    <h4>Meals here</h4>
+                  </Paper>
+                  <Paper zDepth={3} style={style}>
+                    <h4>Meals here</h4>
+                  </Paper>
+                  <Paper zDepth={3} style={style}>
+                    <h4>Meals here</h4>
+                  </Paper>
+                  <Paper zDepth={3} style={style}>
+                    <h4>Meals here</h4>
+                  </Paper>
+                  <Paper zDepth={3} style={style}>
+                    <h4>Meals here</h4>
+                  </Paper>
+                  <Paper zDepth={3} style={style}>
+                    <h4>Meals here</h4>
+                  </Paper>
                   <Paper zDepth={3} style={style}>
                     <h4>Meals here</h4>
                   </Paper>

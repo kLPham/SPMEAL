@@ -54,10 +54,11 @@ export default class Header extends Component {
       fontSize: '22px'
     };
     const cuteryStyle = {
-      color: 'green',
-      paddingLeft: '40%',
-      height: '25px',
-      width: '20px'
+      color: 'gray',
+      paddingLeft: '43%',
+      paddingBottom: '2%',
+      height: '30px',
+      width: '25px'
     };
 
     return (
@@ -91,9 +92,13 @@ export default class Header extends Component {
               primaryText="menu"
             >
               <FaCutlery style={cuteryStyle}> </FaCutlery>
-              <MenuItem value={1} label="Menu" />
+
+              <MenuItem value={1} label="Menu">
+                <h2 className="centerMeal">Our Menu</h2>
+              </MenuItem>
+
               <a href="/Meals" className="menuStyle">
-                <MenuItem value={2} primaryText="Full Menu" />
+                <MenuItem value={2} primaryText="Full Menu" label="MENU" />
               </a>
               <a href="/Meals/SignatureMeals" className="menuStyle">
                 {/* <FaCutlery /> */}
