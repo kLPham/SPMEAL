@@ -1,15 +1,17 @@
 .meals {
   text-align: center;
-  color: red;
   font-size: 17px;
   margin-bottom: 15%;
   font-family: sans-serif;
   text-transform: uppercase;
   text-decoration: none;
 }
-.meals:hover span {
+.meals:hover h4 {
   color: red;
   text-decoration-line: underline;
+  background-color: lightgrey;
+  height: 30px;
+  padding-top: 2%;
 }
 .sideBar {
   background-color: #f5f5f5;
@@ -30,7 +32,7 @@
   border-color: red;
   color: red;
   background-color: #f5f5f5;
-  font-size: 20px;
+  font-size: 14px;
   margin-top: 3%;
   padding: 6%;
   text-transform: uppercase;
@@ -40,8 +42,28 @@
   background-color: red;
   color: white;
 }
-.mealsList {
+/* .mealsList {
   height: 100%;
   width: 100%;
   padding-bottom: 50%;
+} */
+
+/* this is the flex container that will take the rest of the height */
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  min-height: 0px; /* IMPORTANT: you need this for non-chrome browsers */
+  width: 75%;
+}
+/* the container for our overflowed content */
+.overflow-container {
+  flex: 1;
+  overflow: auto;
+}
+/* the overflow content itself */
+.overflow-content {
+  height: 2000px;
+  color: black;
+  background-color: #ddd;
+  padding: 10px;
 }
