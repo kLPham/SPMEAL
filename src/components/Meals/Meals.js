@@ -38,33 +38,13 @@ export default class Meals extends Component {
       alignItems: 'center',
       color: 'gray'
     };
-    // const sideBar = {
-    //   textAlign: 'center',
-    //   marginLeft: '4%',
-    //   marginBottom: '15%',
-    //   paddingTop: '2%',
-    //   height: '100%',
-    //   width: '14%'
-    // };
+
     const menuTitle = {
       fontSize: '24px',
       color: 'Green',
       textTransform: 'uppercase',
       fontFamily: 'cursive'
     };
-    // const styles = {
-    //   root: {
-    //     display: 'flex',
-    //     flexWrap: 'wrap',
-    //     justifyContent: 'space-around'
-    //   },
-    //   gridList: {
-    //     width: 900,
-    //     height: 650,
-    //     overflowY: 'auto'
-    //   }
-    // };
-    //TESTING
 
     const bothStyles = {
       div: {
