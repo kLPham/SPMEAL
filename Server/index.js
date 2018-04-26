@@ -59,11 +59,11 @@ app.get('/api/me', function(req, res) {
 
 ///// /////             ENDPOINTS:      ///////////////////////////////////////////////////////////////////////
 //// GET MEAL TYPE ENDPOINT   ////
-app.get('/api/meals/:meal_type', (req, res, next) => {
-  console.log('meal_type request:', req.params.meal_type);
+app.get('/api/meals/:meals_type', (req, res, next) => {
+  console.log('meals_type request:', req.params.meals_type);
   req.app
     .get('db')
-    .getAMeal(req.params.meal_type)
+    .get_Meals(req.params.meals_type)
     .then(response => {
       console.log(response);
       res.status(200).json(response);
