@@ -28,13 +28,13 @@ export default class Meals extends Component {
 
     //BIND METHODS BELOW:
   }
-  /// REQUEST FOR DATA OF ALL MEALS ///
-  componentDidMount() {
-    axios.get('/api/meals').then(response => {
-      this.setState({ displayMeals: response.data });
-      console.log('meals data just went through', response);
-    });
-  }
+  // /// REQUEST FOR DATA OF ALL MEALS ///
+  // componentDidMount() {
+  //   axios.get('/api/meals').then(response => {
+  //     this.setState({ displayMeals: response.data });
+  //     console.log('meals data just went through', response);
+  //   });
+  // }
 
   render() {
     // const allMeals = this.state.displayMeals.map(allMeals => {
@@ -104,6 +104,12 @@ export default class Meals extends Component {
         {/* <RaisedButton label="Default" />
         {/* LEFT BELOW: */}
         <div style={bothStyles.div}>
+          {/* <div>
+            {' '}
+            {this.state.displayMeals.map(displayMeals => (
+              <p>{displayMeals.name}</p>
+            ))}
+          </div> */}
           <Paper zDepth={3} style={bothStyles.paperLeft}>
             <FaCutlery style={cutleryStyle} />
             <Link to="/Meals/SignatureMeals" className="meals">
@@ -139,13 +145,12 @@ export default class Meals extends Component {
                 <div className="overflow-content">
                   <Paper zDepth={3} style={style}>
                     <h4>
-                      {this.state.displayMeals.map(displayMeals => (
+                      {/* {this.state.displayMeals.map(displayMeals => (
                         <p>
-                          {displayMeals.image_url}
                           {displayMeals.name}
                           {displayMeals.price}
                         </p>
-                      ))}
+                      ))} */}
                     </h4>
                   </Paper>
                   <Paper zDepth={3} style={style}>
@@ -199,6 +204,13 @@ export default class Meals extends Component {
           </div>
           {/* GET DATA HERE: */}
         </div>
+
+        {/* <div>
+          {' '}
+          {this.state.displayMeals.map(displayMeals => (
+            <p>{displayMeals.price}</p>
+          ))}
+        </div> */}
 
         {this.props.children}
       </div>

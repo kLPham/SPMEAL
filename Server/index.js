@@ -58,18 +58,19 @@ app.get('/api/me', function(req, res) {
 });
 
 ///// /////             ENDPOINTS:      ///////////////////////////////////////////////////////////////////////
-//// GET ONLY ONE ITEM FOR DETAIL PAGE ENDPOINT   ////
-app.get('/api/meals/:meal_id', (req, res, next) => {
-  console.log('meal_id request:', req.params.meal_id);
+//// GET MEAL TYPE ENDPOINT   ////
+app.get('/api/meals/:meal_type', (req, res, next) => {
+  console.log('meal_type request:', req.params.meal_type);
   req.app
     .get('db')
-    .getAMeal(req.params.meal_id)
+    .getAMeal(req.params.meal_type)
     .then(response => {
       console.log(response);
       res.status(200).json(response);
     })
     .catch(console.log);
 });
+
 //////////////////////////////////////////////////////
 //GET MEALS TYPE from database-meals table: :)
 // app.get('/api/meals', (req, res, next) => {
