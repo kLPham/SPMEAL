@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import './Meals.css';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+/// IMPORT MATERIAL-UI ///
 import RaisedButton from 'material-ui/RaisedButton';
-// import { GridList, GridTile } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton';
-// import Subheader from 'material-ui/Subheader';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-
 import Paper from 'material-ui/Paper';
 
-import { Link } from 'react-router-dom';
-import pageHeader from './pageHeader.jpg';
+/// IMPORT ICONS HERE ///
 import FaCutlery from 'react-icons/lib/fa/cutlery';
 import FaPlusCircle from 'react-icons/lib/fa/plus-circle';
 
+import pageHeader from './pageHeader.jpg';
 import breakfast from './images/breakfast.jpg';
 import spartanHawaiianChicken from './images/spartanHawaiianChicken.jpg';
 import steakbythelb from './images/steakbythelb.jpg';
@@ -22,12 +22,25 @@ export default class Meals extends Component {
     super(props);
 
     //SET INITIAL STATE BELOW:
-    this.state = {};
+    this.state = {
+      displayMeals: []
+    };
 
     //BIND METHODS BELOW:
   }
+  /// REQUEST FOR DATA OF ALL MEALS ///
+  componentDidMount() {
+    axios.get('/api/meals').then(response => {
+      this.setState({ displayMeals: response.data });
+      console.log('meals data just went through', response);
+    });
+  }
 
   render() {
+    // const allMeals = this.state.displayMeals.map(allMeals => {
+    //   console.log('meals rendering', allMeals);
+    // });
+
     const pageHeaderStyle = {
       height: '20%',
       width: '100%'
@@ -125,7 +138,15 @@ export default class Meals extends Component {
 
                 <div className="overflow-content">
                   <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
+                    <h4>
+                      {this.state.displayMeals.map(displayMeals => (
+                        <p>
+                          {displayMeals.image_url}
+                          {displayMeals.name}
+                          {displayMeals.price}
+                        </p>
+                      ))}
+                    </h4>
                   </Paper>
                   <Paper zDepth={3} style={style}>
                     <h4>Meals here</h4>
@@ -176,6 +197,7 @@ export default class Meals extends Component {
               </Paper>
             </div>
           </div>
+          {/* GET DATA HERE: */}
         </div>
 
         {this.props.children}

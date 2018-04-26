@@ -1,1 +1,1 @@
-SELECT * FROM meals WHERE meal_id = $1;
+SELECT * FROM meals WHERE id = $1;
