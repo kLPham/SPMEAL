@@ -24,18 +24,21 @@ export default class Cart extends Component {
       borderRadius: '6px'
     };
     const basketStyle = {
-      height: '30px',
-      width: '25px',
+      height: '35px',
+      width: '30px',
       position: 'absolute',
-      top: '30%',
-      right: '12%',
+      top: '23.5%',
+      right: '11%',
       color: 'white'
     };
     return (
       <div>
         {' '}
-        <FaShoppingCart style={basketStyle} />
-        <button style={cartButton}>Cart(0)</button>
+        {/* <FaShoppingCart style={basketStyle} /> */}
+        <button style={cartButton}>
+          <FaShoppingCart style={basketStyle} />
+          Cart(0)
+        </button>
       </div>
     );
   }

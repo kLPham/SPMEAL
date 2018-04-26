@@ -8,6 +8,7 @@ const massive = require('massive');
 const session = require('express-session');
 const axios = require('axios');
 
+require('dotenv').config(); //FIX THIS LATER
 ///////////////////// path is a node module that comes with node, meaning it doesn't need installed. //////////////////////
 /////// It's used below in sending data to the browser. more here --> https://nodejs.org/api/path.html ///////////////////
 // const path = require('path');
@@ -35,8 +36,12 @@ const connectionString = process.env.DB_CONNECTION_STRING;
 //   .then(db => app.set('db', db))
 //   .catch(console.log);
 
+///TESTING MASSSIVE
+// massive(process.env.DB_CONNECTION_STRING).then(db => {
+//   app.set(`db`, db);
+// });
 massive(process.env.DB_CONNECTION_STRING)
-  .then(dbInstance => app.set('db', dbInstance))
+  .then(dbInstance => app.set(`db`, dbInstance))
   .catch(console.log);
 
 const db = app.get('db'); ///use my get function go get the value of the function. ///
@@ -52,7 +57,8 @@ app.get('/api/me', function(req, res) {
   res.status(200).json(req.user);
 });
 
-///// ENDPOINT: GET ONLY ONE ITEM FOR DETAIL PAGE   ////
+///// /////             ENDPOINTS:      ///////////////////////////////////////////////////////////////////////
+//// GET ONLY ONE ITEM FOR DETAIL PAGE ENDPOINT   ////
 app.get('/api/meals/:meal_id', (req, res, next) => {
   console.log('meal_id request:', req.params.meal_id);
   req.app
@@ -66,15 +72,56 @@ app.get('/api/meals/:meal_id', (req, res, next) => {
 });
 //////////////////////////////////////////////////////
 //GET MEALS TYPE from database-meals table: :)
-app.get('/api/meals/:meal_type', (req, res, next) => {
-  console.log('meal_type request:', req.params.meal_type);
+// app.get('/api/meals', (req, res, next) => {
+//   console.log('meals request:', req.params.meals);
+//   req.app
+//     .get('db')
+//     .get_Meals(req.params.meals)
+//     .then(response => {
+//       res.status(200).json(response);
+//     })
+//     .catch(console.log);
+// });
+/// GET ALL MEALS FROM DATABASE ENDPOINT ////////////
+app.get('/api/meals', function(req, res, next) {
   req.app
     .get('db')
-    .getMeals(req.params.meal_type)
+    .get_Meals()
+    .then(meals => {
+      res.status(200).send(meals);
+    });
+});
+/// GET USERS ENDPOINT ///////////////////////////////
+app.get('/api/users', function(req, res, next) {
+  req.app
+    .get('db')
+    .get_All_Users()
+    .then(users => {
+      res.status(200).send(users);
+    });
+});
+///  POST REQUEST TO ADD USERS ENDPOINT //////////////
+app.post('/api/users', function(req, res, next) {
+  req.app
+    .get('db')
+    .add_Users([
+      req.body.id,
+      req.body.name,
+      req.body.email,
+      req.body.phone_numbers
+    ])
     .then(response => {
-      res.status(200).json(response);
-    })
-    .catch(console.log);
+      res.status(200).send(response);
+    });
+});
+/// DELETE USERS ENDPOINT ///////////////////////////
+app.delete('/api/users/:id', function(req, res, next) {
+  req.app
+    .get('db')
+    .delete_Users(req.params.id)
+    .then(response => {
+      res.status(200).send(response);
+    });
 });
 /////////// DATABASE END HERE //////////////////////////////////////////////////////////////////////////////////////////////////
 

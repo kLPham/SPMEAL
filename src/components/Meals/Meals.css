@@ -64,7 +64,8 @@
 }
 /* the overflow content itself */
 .overflow-content {
-  height: 2300px;
+  /* height: 2300px; */
+  height: 100%;
   color: black;
   background-color: #ddd;
   padding: 10px;
