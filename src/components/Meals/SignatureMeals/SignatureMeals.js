@@ -27,37 +27,49 @@ export default class SignatureMeals extends Component {
         height: '250px',
         widdth: '250px'
       };
-      const bothStyles = {
-        div: {
-          display: 'inline-block',
-          // flexDirection: 'row wrap',
-          // padding: 20,
-          width: '100%',
-          marginLeft: '1%'
-        },
-        paperRight: {
-          height: 600,
-          flex: 4,
-          paddingLeft: 10,
-          width: '92%',
-          textAlign: 'center'
-        }
+      const styles = {
+        height: '30%',
+        width: '30%',
+        float: 'right',
+        position: 'static',
+        textAlign: 'center'
+        // alignItems: 'right'
       };
-      const style = {
-        height: 350,
-        width: 350,
-        margin: 15,
-        textAlign: 'center',
-        display: 'inline-block',
-        overflowY: 'auto'
-      };
+
+      /// uncomment this after testing
+      // const bothStyles = {
+      //   div: {
+      //     display: 'inline-block',
+      //     // flexDirection: 'row wrap',
+      //     // padding: 20,
+      //     width: '100%',
+      //     marginLeft: '1%'
+      //   },
+      //   paperRight: {
+      //     height: 600,
+      //     flex: 4,
+      //     paddingLeft: 10,
+      //     width: '92%',
+      //     textAlign: 'center'
+      //   }
+      // };
+      // const style = {
+      //   height: 350,
+      //   width: 350,
+      //   margin: 15,
+      //   textAlign: 'center',
+      //   display: 'inline-block',
+      //   overflowY: 'auto'
+      // };
       return (
-        <div className="mealsPosition">
+        <div>
           {/* /// testing here */}
-          <div className="overflow-container">
-            <Paper zDepth={3} style={bothStyles.paperRight}>
+
+          <div>
+            <Paper zDepth={3} style={styles}>
               <div className="overflow-content">
-                <Paper zDepth={3} style={style}>
+                <Paper zDepth={3}>
+                  {/* style={style} */}
                   <div key={signatureMeals.id}>
                     {/* <Link to={`/meals/Details/${signatureMeals.id}`}> */}
                     <img
@@ -82,6 +94,7 @@ export default class SignatureMeals extends Component {
 
     return (
       <div>
+        <h2>SPARTAN SIGNATURE MEALS</h2>
         <div> {allMeals} </div>
       </div>
     );

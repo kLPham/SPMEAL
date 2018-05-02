@@ -175,7 +175,6 @@ export default class Meals extends Component {
         </div> */}
         {/* <div key={allMeals.id}>
             <img alt="image_url" src={allMeals.image_url} />
-
             <div>
               <p>{allMeals.meals_name}</p>
               <p>${allMeals.price}</p>
