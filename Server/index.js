@@ -30,40 +30,20 @@ const connectionString = process.env.DB_CONNECTION_STRING;
 ///////// USE MASSIVE TO CREATE CONNECTION TO DATABASE //////////////////////////////
 // massive(process.env.CONNECTION_STRING).then(dbInstance => {
 //   //SETTER & GETTER function in object oriented programing: setting a new property on my app object called db and the value is this dbinstance. & i can use my get function go get the value of the function.
-//   app.set('db', dbInstance);
-// });
-// massive(process.env.DB_CONNECTION_STRING)
-//   .then(db => app.set('db', db))
-//   .catch(console.log);
-
-///TESTING MASSSIVE
-// massive(process.env.DB_CONNECTION_STRING).then(db => {
-//   app.set(`db`, db);
-// });
 massive(process.env.DB_CONNECTION_STRING)
   .then(dbInstance => app.set(`db`, dbInstance))
   .catch(console.log);
 
 const db = app.get('db'); ///use my get function go get the value of the function. ///
 
-////  TEST TO SEE IF WE GET INFO FROM DB  /////////////////
-// app.get("/api/test", (req, res, next) => {
-//   res.status(200).send({
-//     message: 'it worked'
-// });
-
-app.get('/api/me', function(req, res) {
-  if (!req.user) return res.status(401).send();
-  res.status(200).json(req.user);
-});
-
 ///// /////             ENDPOINTS:      ///////////////////////////////////////////////////////////////////////
-//// GET MEAL TYPE ENDPOINT   ////
+///// ALL MEALS ENDPOINTS BELOW /////////////////////////
+/// GET MEAL-TYPE ENDPOINT   //// ~
 app.get('/api/meals/:meals_type', (req, res, next) => {
   console.log('meals_type request:', req.params.meals_type);
   req.app
     .get('db')
-    .get_Meals(req.params.meals_type)
+    .get_Meals_Type(req.params.meals_type)
     .then(response => {
       console.log(response);
       res.status(200).json(response);
@@ -78,20 +58,17 @@ app.get('/api/meals', (req, res, next) => {
   req.app
     .get('db')
     .get_All_Meals(req.params.meals)
-    .then(response => {
-      res.status(200).json(response);
+    .then(responseAllMeals => {
+      res.status(200).json(responseAllMeals);
     })
     .catch(console.log);
 });
-/// GET ALL MEALS FROM DATABASE ENDPOINT ////////////
-app.get('/api/meals', function(req, res, next) {
-  req.app
-    .get('db')
-    .get_Meals()
-    .then(meals => {
-      res.status(200).send(meals);
-    });
-});
+
+///// ALL USERS ENDPOINT BELOW ///////////////////////////////
+// app.get('/api/me', function(req, res) {
+//   if (!req.user) return res.status(401).send();
+//   res.status(200).json(req.user);
+// });
 /// GET USERS ENDPOINT ///////////////////////////////
 app.get('/api/users', function(req, res, next) {
   req.app
@@ -124,9 +101,9 @@ app.delete('/api/users/:id', function(req, res, next) {
       res.status(200).send(response);
     });
 });
-/////////// DATABASE END HERE //////////////////////////////////////////////////////////////////////////////////////////////////
+/////////// DATABASE END HERE ////////////////////////////////////////////////////////////////////////////
 
-/////////////////////////  UNCOMMENT THIS WHEN i am ready to have project IN PRODUCTION. Final step! ////////////////////////////
+////////////// UNCOMMENT THIS WHEN i am ready to have project IN PRODUCTION. Final step! ////////
 // app.use(express.static(`${__dirname}/../build`));
 
 app.listen(port, () => {

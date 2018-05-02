@@ -103,6 +103,9 @@ export default class Meals extends Component {
         <div style={bothStyles.div}>
           <Paper zDepth={3} style={bothStyles.paperLeft}>
             <FaCutlery style={cutleryStyle} />
+            <Link to="/Meals" className="meals">
+              <h4>Full Menu</h4>
+            </Link>
             <Link to="/Meals/SignatureMeals" className="meals">
               <h4>Spartan Signature Meals</h4>
             </Link>
@@ -114,12 +117,6 @@ export default class Meals extends Component {
             </Link>
             <Link to="/Meals/SignatureMeals" className="meals">
               <h4>Spartan Breakfast</h4>
-            </Link>
-            <Link to="/Meals/SignatureMeals" className="meals">
-              <h4>Spartan Lunch</h4>
-            </Link>
-            <Link to="/Meals/SignatureMeals" className="meals">
-              <h4>Spartan Dinner</h4>
             </Link>
             <button className="customOrder">
               <FaPlusCircle />
