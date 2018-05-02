@@ -72,17 +72,17 @@ app.get('/api/meals/:meals_type', (req, res, next) => {
 });
 
 //////////////////////////////////////////////////////
-//GET MEALS TYPE from database-meals table: :)
-// app.get('/api/meals', (req, res, next) => {
-//   console.log('meals request:', req.params.meals);
-//   req.app
-//     .get('db')
-//     .get_Meals(req.params.meals)
-//     .then(response => {
-//       res.status(200).json(response);
-//     })
-//     .catch(console.log);
-// });
+//GET ALL MEALS HERE from database-meals table: :)
+app.get('/api/meals', (req, res, next) => {
+  console.log('request for all meals:', req.params.meals);
+  req.app
+    .get('db')
+    .get_All_Meals(req.params.meals)
+    .then(response => {
+      res.status(200).json(response);
+    })
+    .catch(console.log);
+});
 /// GET ALL MEALS FROM DATABASE ENDPOINT ////////////
 app.get('/api/meals', function(req, res, next) {
   req.app

@@ -23,24 +23,20 @@ export default class Meals extends Component {
 
     //SET INITIAL STATE BELOW:
     this.state = {
-      displayMeals: []
+      displayAllMeals: []
     };
 
     //BIND METHODS BELOW:
   }
   // /// REQUEST FOR DATA OF ALL MEALS ///
-  // componentDidMount() {
-  //   axios.get('/api/meals').then(response => {
-  //     this.setState({ displayMeals: response.data });
-  //     console.log('meals data just went through', response);
-  //   });
-  // }
+  componentDidMount() {
+    axios.get('/api/meals').then(response => {
+      this.setState({ displayAllMeals: response.data });
+      console.log('all meals just went through', response);
+    });
+  }
 
   render() {
-    // const allMeals = this.state.displayMeals.map(allMeals => {
-    //   console.log('meals rendering', allMeals);
-    // });
-
     const pageHeaderStyle = {
       height: '20%',
       width: '100%'
@@ -97,19 +93,14 @@ export default class Meals extends Component {
       overflowY: 'auto'
     };
 
+    // const allMeals = this.state.displayMeals.map(allMeals => {
     return (
       <div>
         <img src={pageHeader} style={pageHeaderStyle} />
         <h2 style={menuTitle}>Our Menu</h2>
-        {/* <RaisedButton label="Default" />
+
         {/* LEFT BELOW: */}
         <div style={bothStyles.div}>
-          {/* <div>
-            {' '}
-            {this.state.displayMeals.map(displayMeals => (
-              <p>{displayMeals.name}</p>
-            ))}
-          </div> */}
           <Paper zDepth={3} style={bothStyles.paperLeft}>
             <FaCutlery style={cutleryStyle} />
             <Link to="/Meals/SignatureMeals" className="meals">
@@ -137,7 +128,7 @@ export default class Meals extends Component {
           </Paper>
 
           {/* RIGHT BELOW */}
-          <div className="content-wrapper">
+          <div>
             <div className="overflow-container">
               <Paper zDepth={3} style={bothStyles.paperRight}>
                 <div className="fixedContainer">Meal Type Here</div>
@@ -168,36 +159,7 @@ export default class Meals extends Component {
                   <Paper zDepth={3} style={style}>
                     <h4>Meals here</h4>
                   </Paper>
-                  <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
-                  </Paper>
-                  <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
-                  </Paper>
-                  <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
-                  </Paper>
-                  <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
-                  </Paper>
-                  <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
-                  </Paper>
-                  <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
-                  </Paper>
-                  <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
-                  </Paper>
-                  <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
-                  </Paper>
-                  <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
-                  </Paper>
-                  <Paper zDepth={3} style={style}>
-                    <h4>Meals here</h4>
-                  </Paper>
+                  }
                 </div>
               </Paper>
             </div>
@@ -211,9 +173,26 @@ export default class Meals extends Component {
             <p>{displayMeals.price}</p>
           ))}
         </div> */}
+        {/* <div key={allMeals.id}>
+            <img alt="image_url" src={allMeals.image_url} />
+
+            <div>
+              <p>{allMeals.meals_name}</p>
+              <p>${allMeals.price}</p>
+            </div>
+            <br />
+          </div> */}
+        <div />
 
         {this.props.children}
       </div>
     );
+    // });
+
+    // return (
+    //   <div>
+    //     <div> {allMeals} </div>
+    //   </div>
+    // );
   }
 }
