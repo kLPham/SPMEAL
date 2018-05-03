@@ -5,8 +5,9 @@ import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Cart from './components/Cart/Cart';
 
-import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
+import FullMenu from './components/Meals/FullMenu/FullMenu';
 import SignatureMeals from './components/Meals/SignatureMeals/SignatureMeals';
+import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
 import ByLB from './components/Meals/ByLB/ByLB';
 import Meals from './components/Meals/Meals';
 
@@ -24,6 +25,7 @@ export default (
       render={() => (
         <Meals>
           <Switch>
+            <Route path="/Meals/FullMenu" component={FullMenu} />
             <Route path="/Meals/SignatureMeals" component={SignatureMeals} />
             <Route path="/Meals/CustomMeals" component={CustomMeals} />
             <Route path="/Meals/ByLB" component={ByLB} />

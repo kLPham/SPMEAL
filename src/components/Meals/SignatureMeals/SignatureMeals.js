@@ -22,54 +22,28 @@ export default class SignatureMeals extends Component {
 
   render() {
     const allMeals = this.state.displayMeals.map(signatureMeals => {
+      const style = {
+        height: '15%',
+        maxHeight: 350,
+        width: '12%',
+        float: 'right',
+        position: 'static',
+        textAlign: 'center',
+        marginRight: '2%',
+        marginBottom: '2%'
+      };
       const imageStyle = {
         marginTop: '5%',
         height: '250px',
-        widdth: '250px'
-      };
-      const styles = {
-        height: '30%',
-        width: '30%',
-        float: 'right',
-        position: 'static',
-        textAlign: 'center'
-        // alignItems: 'right'
+        width: '100%'
       };
 
-      /// uncomment this after testing
-      // const bothStyles = {
-      //   div: {
-      //     display: 'inline-block',
-      //     // flexDirection: 'row wrap',
-      //     // padding: 20,
-      //     width: '100%',
-      //     marginLeft: '1%'
-      //   },
-      //   paperRight: {
-      //     height: 600,
-      //     flex: 4,
-      //     paddingLeft: 10,
-      //     width: '92%',
-      //     textAlign: 'center'
-      //   }
-      // };
-      // const style = {
-      //   height: 350,
-      //   width: 350,
-      //   margin: 15,
-      //   textAlign: 'center',
-      //   display: 'inline-block',
-      //   overflowY: 'auto'
-      // };
       return (
         <div>
-          {/* /// testing here */}
-
           <div>
-            <Paper zDepth={3} style={styles}>
-              <div className="overflow-content">
+            <Paper zDepth={3} style={style}>
+              <div>
                 <Paper zDepth={3}>
-                  {/* style={style} */}
                   <div key={signatureMeals.id}>
                     {/* <Link to={`/meals/Details/${signatureMeals.id}`}> */}
                     <img
@@ -94,8 +68,12 @@ export default class SignatureMeals extends Component {
 
     return (
       <div>
-        <h2>SPARTAN SIGNATURE MEALS</h2>
-        <div> {allMeals} </div>
+        <div className="Content">
+          {' '}
+          <h2>SPARTAN SIGNATURE MEALS</h2>
+          <hr /> <hr />
+          {allMeals}{' '}
+        </div>
       </div>
     );
   }

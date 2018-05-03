@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './CustomMeals.css';
 import axios from 'axios';
 import Paper from 'material-ui/Paper';
 
@@ -18,29 +19,29 @@ export default class CustomMeals extends Component {
     });
   }
   render() {
-    const imageStyle = {
-      marginTop: '5%',
-      height: '250px',
-      widdth: '250px'
-    };
     const styles = {
-      height: '30%',
-      width: '30%',
+      height: '15%',
+      maxHeight: 400,
+      overflow: 'auto',
+      width: '12%',
       float: 'right',
       position: 'static',
       textAlign: 'center',
-      alignItems: 'right'
+      marginRight: '2%',
+      marginBottom: '2%'
+    };
+    const imageStyle = {
+      marginTop: '5%',
+      height: '250px',
+      width: '100%'
     };
     const allMeals = this.state.displayMeals.map(customMeals => {
       return (
         <div>
-          {/* /// testing here */}
-
           <div>
             <Paper zDepth={3} style={styles}>
-              <div className="overflow-content">
+              <div>
                 <Paper zDepth={3}>
-                  {/* style={style} */}
                   <div key={customMeals.id}>
                     {/* <Link to={`/meals/Details/${signatureMeals.id}`}> */}
                     <img
@@ -65,8 +66,11 @@ export default class CustomMeals extends Component {
 
     return (
       <div>
-        <h2>CUSTOM MEALS</h2>
-        <div> {allMeals} </div>
+        <div className="Content">
+          <h2>CUSTOM MEALS</h2>
+          <hr />
+          {allMeals}{' '}
+        </div>
       </div>
     );
   }

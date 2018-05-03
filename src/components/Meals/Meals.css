@@ -13,9 +13,6 @@
   color: red;
   text-decoration-line: underline;
   background-color: lightgrey;
-  height: 40px;
-  padding-top: 5%;
-  width: 100%;
 }
 .sideBar {
   background-color: #f5f5f5;
@@ -47,26 +44,9 @@
   background-color: red;
   color: white;
 }
-/* an arbitrary container of fixed height */
-.fixedContainer {
-  font-size: 150%;
-  height: 5%;
-  width: 96.8%;
-  padding: 20px;
-  background-color: #a9a9a9;
-  color: white;
-}
 
-/* CONTROL overflowed content */
-.overflow-container {
-  flex: 1;
-  overflow: auto;
-}
-/* the overflow content itself */
-.overflow-content {
-  /* height: 2300px; */
+.container {
   height: 100%;
-  color: black;
+  width: 80%;
   background-color: #ddd;
-  padding: 10px;
 }

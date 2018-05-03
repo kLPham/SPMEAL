@@ -1,8 +1,11 @@
 .Content {
   padding-top: 5%;
   margin-left: 1%;
+  /* margin-right: 2%; */
   height: 500px;
   width: 1800px;
   overflow: auto;
   background-color: #ddd;
+  /* float: right; */
+  /* position: relative; */
 }

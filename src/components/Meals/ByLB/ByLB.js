@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './ByLB.css';
+
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Paper from 'material-ui/Paper';
@@ -22,27 +24,27 @@ export default class ByLB extends Component {
     });
   }
   render() {
-    const imageStyle = {
-      marginTop: '5%',
-      height: '250px',
-      widdth: '250px'
-    };
-    const styles = {
-      height: '30%',
-      width: '30%',
+    const style = {
+      height: '15%',
+      width: '12%',
       float: 'right',
       position: 'static',
       textAlign: 'center',
-      alignItems: 'right'
+      marginRight: '2%',
+      marginBottom: '2%'
+    };
+    const imageStyle = {
+      marginTop: '5%',
+      height: '250px',
+      width: '100%'
     };
     const allMeals = this.state.displayMeals.map(mealsByTheLbs => {
       return (
         <div>
           <div>
-            <Paper zDepth={3} style={styles}>
-              <div className="overflow-content">
+            <Paper zDepth={3} style={style}>
+              <div>
                 <Paper zDepth={3}>
-                  {/* style={style} */}
                   <div key={mealsByTheLbs.id}>
                     {/* <Link to={`/meals/Details/${signatureMeals.id}`}> */}
                     <img
@@ -67,8 +69,11 @@ export default class ByLB extends Component {
 
     return (
       <div>
-        <h2>MEALS BY THE LBS</h2>
-        <div> {allMeals} </div>
+        <div className="Content">
+          <h2>MEALS BY THE LBS</h2>
+          <hr />
+          {allMeals}{' '}
+        </div>
       </div>
     );
   }

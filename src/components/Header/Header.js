@@ -97,7 +97,7 @@ export default class Header extends Component {
                 <h2 className="centerMeal">Our Menu</h2>
               </MenuItem>
 
-              <a href="/Meals" className="menuStyle">
+              <a href="/Meals/FullMenu" className="menuStyle">
                 <MenuItem value={2} primaryText="Full Menu" label="MENU" />
               </a>
               <a href="/Meals/SignatureMeals" className="menuStyle">
