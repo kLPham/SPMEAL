@@ -39,11 +39,11 @@ const db = app.get('db'); ///use my get function go get the value of the functio
 ///// /////             ENDPOINTS:      ///////////////////////////////////////////////////////////////////////
 ///// ALL MEALS ENDPOINTS BELOW /////////////////////////
 //GET A MEAL DETAIL ENDPOINT:
-app.get('/api/meals/MealsDetails/:meals_id', (req, res, next) => {
+app.get('/api/Details/:meals_id', (req, res, next) => {
   console.log('meal id request:', req.params.meals_id);
   req.app
     .get('db')
-    .get_A_Meal_Details(req.params.meals_id)
+    .get_Meals_By_Id(req.params.meals_id)
     .then(response => {
       console.log(response);
       res.status(200).json(response);

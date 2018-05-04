@@ -7,7 +7,7 @@ export default class MealsDetails extends Component {
 
     //SET INITIAL STATE HERE
     this.state = {
-      displayMealsDetails: [],
+      meals: [],
       cart: []
     };
 
@@ -18,26 +18,24 @@ export default class MealsDetails extends Component {
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
     axios
-      .get(`/api/meals/${this.props.match.params.meals_id}`)
+      .get(`/api/Details/${this.props.match.params.meals_id}`)
       .then(response => {
-        this.setState({ displayMealsDetails: response.data });
-        console.log('meals details responded', response);
+        this.setState({ meals: response.data });
+        console.log(response.data);
       });
   }
   render() {
     const displayMealsWithMatchingId = this.state.displayMealsDetails.map(
       mealsId => {
         return (
-          <div>
-            <div key={mealsId.meals_id}>
-              <img alt="image_url" src={mealsId.image_url} />
-              <hr />
-              <div>
-                <p>{mealsId.meals_name}</p>
-                <p>{mealsId.quantity}</p>
-                <p>{mealsId.description}</p>
-                <p>${mealsId.price}</p>
-              </div>
+          <div key={mealsId.meals_id}>
+            <img alt="image_url" src={mealsId.image_url} />
+            <hr />
+            <div>
+              <p>{mealsId.meals_name}</p>
+              <p>QTY:{mealsId.quantity}</p>
+              <p>Description:{mealsId.description}</p>
+              <p>${mealsId.price}</p>
             </div>
           </div>
         );
