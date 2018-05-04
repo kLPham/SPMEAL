@@ -39,10 +39,11 @@ export default class MealsDetails extends Component {
     const buttonStyle = {
       backgroundColor: 'red',
       color: 'white',
-      height: '40px',
-      width: '160px',
+      height: '50px',
+      width: '100%',
       marginTop: '2%',
-      fontSize: '20px'
+      fontSize: '20px',
+      textTransform: 'uppercase'
     };
     const rightItemsStyle = {
       float: 'right',
