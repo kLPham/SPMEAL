@@ -25,16 +25,58 @@ export default class MealsDetails extends Component {
       });
   }
   render() {
-    const displayMeals = this.state.meals.map(mealsId => {
+    const style = {
+      position: 'relative',
+      display: 'row',
+      borderStyle: 'ridge',
+      borderColor: 'gray',
+      marginLeft: '10%',
+      marginRight: '10%',
+      marginTop: '2%',
+      paddingTop: '5%',
+      paddingBottom: '3%'
+    };
+    const buttonStyle = {
+      backgroundColor: 'red',
+      color: 'white',
+      height: '40px',
+      width: '160px',
+      marginTop: '2%',
+      fontSize: '20px'
+    };
+    const rightItemsStyle = {
+      float: 'right',
+      position: 'absolute',
+      top: '5%',
+      right: '5%',
+      fontSize: '30px'
+    };
+    const imageStyle = {
+      marginLeft: '5%',
+      height: '50%',
+      width: '50%'
+    };
+
+    const displayMealDetails = this.state.meals.map(mealsId => {
       return (
-        <div key={mealsId.meals_id}>
-          <img alt="image_url" src={mealsId.image_url} />
-          <hr />
-          <div>
-            <p>{mealsId.meals_name}</p>
-            <p>QTY:{mealsId.quantity}</p>
+        <div key={mealsId.meals_id} style={style}>
+          <div style={imageStyle}>
+            <img alt="image_url" src={mealsId.image_url} />
             <p>Description:{mealsId.description}</p>
+          </div>
+          <br />
+          <div style={rightItemsStyle}>
+            <p>{mealsId.meals_name}</p>
             <p>${mealsId.price}</p>
+            <select>
+              <option>
+                QTY:
+                {mealsId.quantity}
+              </option>
+            </select>
+            <br />
+            <hr />
+            <button style={buttonStyle}>Add To Cart</button>
           </div>
         </div>
       );
@@ -42,8 +84,7 @@ export default class MealsDetails extends Component {
 
     return (
       <div>
-        <h2>MEALS</h2>
-        <div> {displayMeals}</div>
+        <div> {displayMealDetails}</div>
       </div>
     );
   }
