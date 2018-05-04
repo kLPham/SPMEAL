@@ -43,39 +43,45 @@ export default class FullMenu extends Component {
       height: '250px',
       width: '100%'
     };
+    const hStyle = {
+      backgroundColor: 'white',
+      width: '100%',
+      height: '15%'
+    };
 
     const allMeals = this.state.displayAllMeals.map(allMeals => {
       return (
         <div>
           <Paper zDepth={4} style={styles}>
-            <div>
-              <Paper zDepth={4}>
-                <div key={allMeals.id}>
+            <Paper zDepth={4}>
+              <div key={allMeals.id}>
+                <Link to={`/Meals/Details/${allMeals.meals_id}`}>
                   <img
                     alt="image_url"
                     src={allMeals.image_url}
                     style={imageStyle}
                   />
-                  <div>
-                    <p>{allMeals.meals_name}</p>
-                    <p>${allMeals.price}</p>
-                  </div>
-                  <br />
+                </Link>
+                <div>
+                  <p>{allMeals.meals_name}</p>
+                  <p>${allMeals.price}</p>
                 </div>
-              </Paper>
-            </div>
+                <br />
+              </div>
+            </Paper>
           </Paper>
         </div>
       );
     });
 
     return (
-      <div>
-        <div class="Content">
-          {' '}
-          <h2>Full Menu</h2> <hr />
-          {allMeals}{' '}
-        </div>
+      <div class="Content">
+        {' '}
+        <hr />
+        <h2 style={hStyle}>
+          <hr />Full Menu
+        </h2>
+        {allMeals}
       </div>
     );
   }

@@ -118,6 +118,7 @@ export default class LandingPage extends Component {
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
         {/* //FIRST SECTION// */}
         <section>
+          {/* <div className="para" /> */}
           <img src={topLandingImage} style={topImageStyle} />
           <div className="whiteBox">
             <h2 className="banner">Work Hard. Eat Right.</h2>

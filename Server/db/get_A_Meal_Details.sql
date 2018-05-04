@@ -1,0 +1,1 @@
+SELECT * FROM meals WHERE meals_id = $1;

@@ -38,6 +38,11 @@ export default class ByLB extends Component {
       height: '250px',
       width: '100%'
     };
+    const hStyle = {
+      backgroundColor: 'white',
+      width: '100%',
+      height: '15%'
+    };
     const allMeals = this.state.displayMeals.map(mealsByTheLbs => {
       return (
         <div>
@@ -70,7 +75,10 @@ export default class ByLB extends Component {
     return (
       <div>
         <div className="Content">
-          <h2>MEALS BY THE LBS</h2>
+          <hr />
+          <h2 style={hStyle}>
+            <hr />MEALS BY THE LBS
+          </h2>
           <hr />
           {allMeals}{' '}
         </div>
