@@ -21,17 +21,18 @@ export default (
     <Route path="/About" component={About} />
     <Route path="/Contact" component={Contact} />
     <Route path="/Cart" component={Cart} />
-    <Route path="/Details/:meals_id" component={MealsDetails} />
+    <Route path="/Meals/Details/:meals_id" component={MealsDetails} />
     <Route
       path="/Meals"
       render={() => (
         <Meals>
           <Switch>
+            {/* <Route path="/Meals/Details/:meals_id" component={MealsDetails} /> */}
             <Route path="/Meals/FullMenu" component={FullMenu} />
+
             <Route path="/Meals/SignatureMeals" component={SignatureMeals} />
             <Route path="/Meals/CustomMeals" component={CustomMeals} />
             <Route path="/Meals/ByLB" component={ByLB} />
-            {/* <Route path="/Meals/Details/:meals_id" component={MealsDetails} /> */}
           </Switch>
         </Meals>
       )}
