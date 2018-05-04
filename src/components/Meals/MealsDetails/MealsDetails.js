@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class MealsDetails extends Component {
   constructor(props) {
@@ -30,8 +31,8 @@ export default class MealsDetails extends Component {
       display: 'row',
       borderStyle: 'ridge',
       borderColor: 'gray',
-      marginLeft: '10%',
-      marginRight: '10%',
+      marginLeft: '13%',
+      marginRight: '13%',
       marginTop: '2%',
       paddingTop: '5%',
       paddingBottom: '3%'
@@ -49,8 +50,8 @@ export default class MealsDetails extends Component {
       float: 'right',
       position: 'absolute',
       top: '5%',
-      right: '5%',
-      fontSize: '30px'
+      right: '7%',
+      fontSize: '25px'
     };
     const imageStyle = {
       marginLeft: '5%',
@@ -63,7 +64,7 @@ export default class MealsDetails extends Component {
         <div key={mealsId.meals_id} style={style}>
           <div style={imageStyle}>
             <img alt="image_url" src={mealsId.image_url} />
-            <p>Description:{mealsId.description}</p>
+            <p>{mealsId.description}</p>
           </div>
           <br />
           <div style={rightItemsStyle}>
@@ -85,6 +86,9 @@ export default class MealsDetails extends Component {
 
     return (
       <div>
+        <Link to="/Meals/FullMenu">
+          <h2>{'<<'} Back To Menu</h2>
+        </Link>
         <div> {displayMealDetails}</div>
       </div>
     );

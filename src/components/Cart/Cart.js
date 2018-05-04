@@ -46,27 +46,32 @@ export default class Cart extends Component {
       paddingTop: '2.5%',
       marginLeft: '5%'
     };
-    const cartButton = {
-      marginRight: '120px',
-      marginTop: '3%',
-      backgroundColor: 'red',
-      color: 'white',
-      borderColor: 'black',
-      padding: '10px',
-      paddingLeft: '25%',
-      paddingRight: '7%',
-      fontSize: '19px',
-      textTransform: 'uppercase',
-      cursor: 'pointer',
-      borderRadius: '6px'
-    };
+    // const cart = {
+    //   position: 'relative',
+    //   display: 'row'
+    // };
+    // const cartButton = {
+    //   marginRight: '120px',
+    //   marginTop: '3%',
+    //   backgroundColor: 'red',
+    //   color: 'white',
+    //   borderColor: 'black',
+    //   padding: '10px',
+    //   paddingLeft: '20%',
+    //   fontSize: '13px',
+    //   textTransform: 'uppercase',
+    //   cursor: 'pointer',
+    //   borderRadius: '4px',
+    //   width: '120px',
+    //   position: 'relative',
+    //   display: 'row'
+    // };
     const basketStyle = {
       height: '35px',
       width: '30px',
-      position: 'absolute',
-      top: '23.5%',
-      right: '11%',
-      color: 'white'
+      position: 'relative',
+      color: 'black',
+      paddingRight: '100px'
     };
     const style = {
       marginBottom: '100%'
@@ -81,10 +86,10 @@ export default class Cart extends Component {
     };
     return (
       <div>
-        <button style={cartButton} onClick={this.handleCartToggle}>
-          <FaShoppingCart style={basketStyle} />
-          Cart(0)
-        </button>
+        {/* <button style={cartButton} onClick={this.handleCartToggle}> */}
+        <FaShoppingCart style={basketStyle} onClick={this.handleCartToggle} />
+        {/* </button> */}
+
         <Drawer
           style={styleSize}
           docked={false}
@@ -95,9 +100,7 @@ export default class Cart extends Component {
           onRequestChange={open => this.setState({ open })}
         >
           <MuiThemeProvider muiTheme={muiTheme}>
-            <AppBar title="Cart" width={50}>
-              <FaShoppingCart style={basketStyle} />
-            </AppBar>
+            <AppBar title="Cart" width={50} />
           </MuiThemeProvider>
           <MenuItem>meals image Here</MenuItem>
           <MenuItem style={style} onClick={this.handleClose}>
