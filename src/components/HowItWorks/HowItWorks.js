@@ -115,7 +115,7 @@ export default class HowItWorks extends Component {
             Enjoy the convenience of great-tasting meals delivered to your door
           </h2>
           <button className="button" style={buttonStyle}>
-            <Link className="getStartBtn" to="/Meals">
+            <Link className="getStartBtn" to="/Meals/FullMenu">
               {' '}
               Get Started
             </Link>

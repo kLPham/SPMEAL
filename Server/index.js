@@ -39,7 +39,7 @@ const db = app.get('db'); ///use my get function go get the value of the functio
 ///// /////             ENDPOINTS:      ///////////////////////////////////////////////////////////////////////
 ///// ALL MEALS ENDPOINTS BELOW /////////////////////////
 //GET A MEAL DETAIL ENDPOINT:
-app.get('/api/meals/:meals_id', (req, res, next) => {
+app.get('/api/meal/:meals_id', (req, res, next) => {
   console.log('meal id request:', req.params.meals_id);
   req.app
     .get('db')
@@ -76,6 +76,19 @@ app.get('/api/meals', (req, res, next) => {
     .catch(console.log);
 });
 
+/// SHOPPING CART ENDPOINTS /////////////////////////////////////
+/// GET MEALS THAT HAS BEEN ADDED TO CART & DISPLAY IT TO CART COMP:
+app.get('/api/shopping_cart/:meal_id', (req, res) => {
+  return res.json(req.session.cart);
+});
+
+/// STORE/POST SHOPPING CART DATA TO DB USING SESSION:
+app.post('/api/shopping_cart', (req, res, next) => {
+  let eachItem = req.body.eachItem;
+  if (!req.session.cart) {
+    req.session.cart = [];
+  }
+});
 ///// ALL USERS ENDPOINT BELOW ///////////////////////////////
 // app.get('/api/me', function(req, res) {
 //   if (!req.user) return res.status(401).send();
@@ -90,7 +103,7 @@ app.get('/api/users', function(req, res, next) {
       res.status(200).send(users);
     });
 });
-///  POST REQUEST TO ADD USERS ENDPOINT //////////////
+///  POST REQUEST TO ADD USERS ENDPOINT ////////////// ///////////////////COME BACK TO THS>>
 app.post('/api/users', function(req, res, next) {
   req.app
     .get('db')

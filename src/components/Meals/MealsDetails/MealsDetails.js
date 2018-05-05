@@ -9,22 +9,33 @@ export default class MealsDetails extends Component {
     //SET INITIAL STATE HERE
     this.state = {
       meals: [],
-      cart: []
+      cart: [],
+      item: []
     };
 
     //BIND ACTIONS HERE
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
-  //CREATE ACTION TYPE HERE
+  //CREATE HANDLE ACTIONS TYPE HERE:
 
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
     axios
-      .get(`/api/meals/${this.props.match.params.meals_id}`)
+      .get(`/api/meal/${this.props.match.params.meals_id}`)
       .then(response => {
         this.setState({ meals: response.data });
         console.log(response.data);
       });
   }
+  //POST ITEMS TO CART:
+  handleAddToCart(eachItem) {
+    axios
+      .post('/api/shopping_cart', { eachItem: eachItem })
+      .then(response => this.setState({ cart: response.data }))
+      .catch(console.log);
+    alert('Your meal is being added to cart!');
+  }
+
   render() {
     const style = {
       position: 'relative',
@@ -44,7 +55,8 @@ export default class MealsDetails extends Component {
       width: '100%',
       marginTop: '2%',
       fontSize: '20px',
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      cursor: 'pointer'
     };
     const rightItemsStyle = {
       float: 'right',
@@ -78,7 +90,12 @@ export default class MealsDetails extends Component {
             </select>
             <br />
             <hr />
-            <button style={buttonStyle}>Add To Cart</button>
+            <button
+              style={buttonStyle}
+              onclick={() => this.handleAddToCart(mealsId)}
+            >
+              Add To Cart
+            </button>
           </div>
         </div>
       );

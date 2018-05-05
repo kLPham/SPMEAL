@@ -17,12 +17,22 @@ export default class Cart extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { open: false };
+    this.state = {
+      open: false,
+      cart: []
+    };
   }
 
   //HANDLE ACTION BELOW:
   handleCartToggle = () => this.setState({ open: !this.state.open });
   handleCartClose = () => this.setState({ open: false });
+  //GET ITEMS FROM DETAIL PAGE:
+  componentDidMount() {
+    axios.get('/api/shopping_cart').then(response => {
+      this.setState({ cart: response.data });
+    });
+  }
+
   render() {
     const muiTheme = getMuiTheme({
       palette: {
@@ -46,10 +56,6 @@ export default class Cart extends Component {
       paddingTop: '2.5%',
       marginLeft: '5%'
     };
-    // const cart = {
-    //   position: 'relative',
-    //   display: 'row'
-    // };
     // const cartButton = {
     //   marginRight: '120px',
     //   marginTop: '3%',
@@ -71,25 +77,51 @@ export default class Cart extends Component {
       width: '30px',
       position: 'relative',
       color: 'black',
-      paddingRight: '100px'
+      paddingRight: '100px',
+      cursor: 'pointer'
     };
     const style = {
       marginBottom: '100%'
     };
     const checkOutButtonStyle = {
-      width: '380px',
+      width: '280px',
       height: '5%',
       backgroundColor: 'green',
       color: 'white',
-      fontSize: '30px',
+      fontSize: '25px',
       marginRight: '8%'
     };
+    const displayMeals = this.state.cart.map(eachItem => {
+      return (
+        <div>
+          <div>
+            <div key={eachItem}>
+              {' '}
+              <img alt="image_url" src={eachItem.image_url} />{' '}
+              <p>{eachItem.meals_name}</p> <p>QTY: {eachItem.quantity}</p>
+              <p>PRICE: ${eachItem.price}</p>
+              <br />
+              <br />
+              <hr />
+              <button>
+                {/* <MenuItem
+                  style={checkOutButtonStyle}
+                  onClick={this.handleClose}
+                >
+                  CheckOut
+                </MenuItem> */}
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    });
+
     return (
       <div>
         {/* <button style={cartButton} onClick={this.handleCartToggle}> */}
         <FaShoppingCart style={basketStyle} onClick={this.handleCartToggle} />
         {/* </button> */}
-
         <Drawer
           style={styleSize}
           docked={false}
@@ -102,20 +134,22 @@ export default class Cart extends Component {
           <MuiThemeProvider muiTheme={muiTheme}>
             <AppBar title="Cart" width={50} />
           </MuiThemeProvider>
-          <MenuItem>meals image Here</MenuItem>
-          <MenuItem style={style} onClick={this.handleClose}>
-            name, quantity, price
-          </MenuItem>
-          <MenuItem>Subtotal: $9.00</MenuItem>
+          <MenuItem style={style} onClick={this.handleClose} />
+          {/* <MenuItem> */}{' '}
+          <img alt="image_url" src={displayMeals.image_url} />
+          <p>{displayMeals.meals_name}</p>
+          <p>QTY: {displayMeals.quantity}</p>
+          <p>PRICE: ${displayMeals.price}</p>
           <br />
           <br />
           <hr />
           <button>
             <MenuItem style={checkOutButtonStyle} onClick={this.handleClose}>
-              CheckOut
+              Proceed To CheckOut
             </MenuItem>
           </button>
         </Drawer>
+        <div> {displayMeals}</div>
       </div>
     );
   }
