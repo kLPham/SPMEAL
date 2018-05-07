@@ -13,13 +13,16 @@ require('dotenv').config(); //FIX THIS LATER
 /////// It's used below in sending data to the browser. more here --> https://nodejs.org/api/path.html ///////////////////
 // const path = require('path');
 ///////////////////////////////////////////////////////////////////////////////
-const port = 3001;
+
 ////////////////// CREATE MY APP ////////////////////////+
 const app = express();
 // app.use(session()); //
 /////  APPLY MY MIDDLEWARE   /////////////////////////////////////////////////+
 app.use(json());
 app.use(cors());
+
+//uncomment this when i am ready to have project in production. Final step
+// app.use(express.static(`${__dirname}/../build`));
 
 ///////////////  DOTENV for PRoduction ////////////////////////////////////////////////////////////
 // require('dotenv').config(); //for production
@@ -80,6 +83,7 @@ app.get('/api/meals', (req, res, next) => {
 /// SHOPPING CART ENDPOINTS /////////////////////////////////////
 /// GET MEALS THAT HAS BEEN ADDED TO CART & DISPLAY IT TO CART COMP:
 app.get('/api/cart', (req, res) => {
+  console.log(cart);
   return res.json(req.session.cart);
 });
 
@@ -94,6 +98,13 @@ app.post('/api/cart', (req, res) => {
   req.session.cart.push(eachItem); // add each meal to our cart
   return res.json(req.session.cart);
 });
+
+///saveCart() saves our cart into the current Express session:
+// saveCart(request) {
+//   if(request.session) {
+//       request.session.cart = this.data;
+//   }
+// }
 
 ///// ALL USERS ENDPOINT BELOW ///////////////////////////////
 // app.get('/api/me', function(req, res) {
@@ -136,7 +147,7 @@ app.delete('/api/users/:id', function(req, res, next) {
 
 ////////////// UNCOMMENT THIS WHEN i am ready to have project IN PRODUCTION. Final step! ////////
 // app.use(express.static(`${__dirname}/../build`));
-
+const port = 3001;
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });

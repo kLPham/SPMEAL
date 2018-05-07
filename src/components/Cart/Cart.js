@@ -19,16 +19,29 @@ export default class Cart extends Component {
 
     this.state = {
       open: false,
-      cart: []
+      cart: [],
+      currency: [], //work on this later
+      removeFromCart: [], //work on this later
+      total: 0, //work on this later..We have also to update the cart totals accordingly
+      item: [] //work on this later..we have to push products into the items array or remove them when users update the cart
     };
+
+    //BIND METHODS HERE:
+    this.handleCartToggle = this.handleCartToggle.bind(this);
+    this.handleCartClose = this.handleCartClose.bind(this);
+  }
+  //HANDLE ACTION BELOW:
+  handleCartToggle() {
+    this.setState({ open: !this.state.open });
   }
 
-  //HANDLE ACTION BELOW:
-  handleCartToggle = () => this.setState({ open: !this.state.open });
-  handleCartClose = () => this.setState({ open: false });
-  //GET ITEMS FROM DETAIL PAGE:
+  handleCartClose() {
+    this.setState({ open: false });
+  }
+
+  //GET ITEMS FROM DETAIL PAGE: //*get back to this
   componentDidMount() {
-    axios.get('/api/shopping_cart').then(response => {
+    axios.get('/api/cart').then(response => {
       this.setState({ cart: response.data });
     });
   }
