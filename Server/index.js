@@ -16,10 +16,11 @@ require('dotenv').config(); //FIX THIS LATER
 const port = 3001;
 ////////////////// CREATE MY APP ////////////////////////+
 const app = express();
-
+// app.use(session()); //
 /////  APPLY MY MIDDLEWARE   /////////////////////////////////////////////////+
 app.use(json());
 app.use(cors());
+
 ///////////////  DOTENV for PRoduction ////////////////////////////////////////////////////////////
 // require('dotenv').config(); //for production
 
@@ -28,8 +29,8 @@ app.use(cors());
 const connectionString = process.env.DB_CONNECTION_STRING;
 
 ///////// USE MASSIVE TO CREATE CONNECTION TO DATABASE //////////////////////////////
-// massive(process.env.CONNECTION_STRING).then(dbInstance => {
 //   //SETTER & GETTER function in object oriented programing: setting a new property on my app object called db and the value is this dbinstance. & i can use my get function go get the value of the function.
+
 massive(process.env.DB_CONNECTION_STRING)
   .then(dbInstance => app.set(`db`, dbInstance))
   .catch(console.log);
@@ -78,17 +79,22 @@ app.get('/api/meals', (req, res, next) => {
 
 /// SHOPPING CART ENDPOINTS /////////////////////////////////////
 /// GET MEALS THAT HAS BEEN ADDED TO CART & DISPLAY IT TO CART COMP:
-app.get('/api/shopping_cart/:meal_id', (req, res) => {
+app.get('/api/cart', (req, res) => {
   return res.json(req.session.cart);
 });
 
 /// STORE/POST SHOPPING CART DATA TO DB USING SESSION:
-app.post('/api/shopping_cart', (req, res, next) => {
+app.post('/api/cart', (req, res) => {
   let eachItem = req.body.eachItem;
+  // eachItem.push(eachItem); //add it to our list
+  // res.send(eachItem); ///then send it back
   if (!req.session.cart) {
     req.session.cart = [];
   }
+  req.session.cart.push(eachItem); // add each meal to our cart
+  return res.json(req.session.cart);
 });
+
 ///// ALL USERS ENDPOINT BELOW ///////////////////////////////
 // app.get('/api/me', function(req, res) {
 //   if (!req.user) return res.status(401).send();

@@ -91,31 +91,36 @@ export default class Cart extends Component {
       fontSize: '25px',
       marginRight: '8%'
     };
-    const displayMeals = this.state.cart.map(eachItem => {
-      return (
-        <div>
-          <div>
-            <div key={eachItem}>
-              {' '}
-              <img alt="image_url" src={eachItem.image_url} />{' '}
-              <p>{eachItem.meals_name}</p> <p>QTY: {eachItem.quantity}</p>
-              <p>PRICE: ${eachItem.price}</p>
-              <br />
-              <br />
-              <hr />
-              <button>
-                {/* <MenuItem
+    const displayOnCart =
+      this.state.cart && this.state.cart.length > 0 ? (
+        this.state.cart.map(eachMeal => {
+          return (
+            <div>
+              <div>
+                <div key={eachMeal}>
+                  {' '}
+                  <img alt="image_url" src={eachMeal.image_url} />{' '}
+                  <p>{eachMeal.meals_name}</p> <p>QTY: {eachMeal.quantity}</p>
+                  <p>PRICE: ${eachMeal.price}</p>
+                  <br />
+                  <br />
+                  <hr />
+                  <button>
+                    {/* <MenuItem
                   style={checkOutButtonStyle}
                   onClick={this.handleClose}
                 >
                   CheckOut
                 </MenuItem> */}
-              </button>
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          );
+        })
+      ) : (
+        <p> Cart</p>
       );
-    });
 
     return (
       <div>
@@ -135,11 +140,10 @@ export default class Cart extends Component {
             <AppBar title="Cart" width={50} />
           </MuiThemeProvider>
           <MenuItem style={style} onClick={this.handleClose} />
-          {/* <MenuItem> */}{' '}
-          <img alt="image_url" src={displayMeals.image_url} />
-          <p>{displayMeals.meals_name}</p>
-          <p>QTY: {displayMeals.quantity}</p>
-          <p>PRICE: ${displayMeals.price}</p>
+          {/* <MenuItem> <img alt="image_url" src={eachMeal.image_url} /> */}
+          {/* <p>{eachMeal.meals_name}</p>
+          <p>QTY: {eachMeal.quantity}</p>
+          <p>PRICE: ${eachMeal.price}</p> */}
           <br />
           <br />
           <hr />
@@ -149,7 +153,7 @@ export default class Cart extends Component {
             </MenuItem>
           </button>
         </Drawer>
-        <div> {displayMeals}</div>
+        <div> {displayOnCart}</div>
       </div>
     );
   }

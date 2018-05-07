@@ -30,7 +30,7 @@ export default class MealsDetails extends Component {
   //POST ITEMS TO CART:
   handleAddToCart(eachItem) {
     axios
-      .post('/api/shopping_cart', { eachItem: eachItem })
+      .post('/api/cart', { eachItem: eachItem })
       .then(response => this.setState({ cart: response.data }))
       .catch(console.log);
     alert('Your meal is being added to cart!');
