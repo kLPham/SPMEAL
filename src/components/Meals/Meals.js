@@ -50,13 +50,6 @@ class Meals extends Component {
       width: '25px',
       color: 'gray'
     };
-
-    // const menuTitle = {
-    //   fontSize: '24px',
-    //   color: 'Green',
-    //   textTransform: 'uppercase',
-    //   fontFamily: 'cursive'
-    // };
     const styles = {
       headline: {
         fontSize: 24,
@@ -69,8 +62,6 @@ class Meals extends Component {
     return (
       <div>
         <img src={pageHeader} style={pageHeaderStyle} />
-        {/* <h2 style={menuTitle}>Our Menu</h2> */}
-        {/* <FaCutlery style={cutleryStyle} /> */}
         <div>
           <Tabs
             value={this.props.history.location.pathname}
