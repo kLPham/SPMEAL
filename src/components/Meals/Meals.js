@@ -24,18 +24,11 @@ class Meals extends Component {
     super(props);
 
     //SET INITIAL STATE BELOW:
-    this.state = {
-      value: 'a'
-    };
+    this.state = {};
 
     //BIND METHODS BELOW:
   }
   ///CREATE HANDLING CHANGES HERE:
-  // handleChange = value => {
-  //   this.setState({
-  //     value: value
-  //   });
-  // };
   handleCallToRouter = value => {
     this.props.history.push(value);
   };
