@@ -78,9 +78,6 @@ export default class FullMenu extends Component {
       <div class="Content">
         {' '}
         <hr />
-        <h2 style={hStyle}>
-          <hr />Full Menu
-        </h2>
         {allMeals}
       </div>
     );

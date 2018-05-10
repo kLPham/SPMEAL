@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './Meals.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
+
 import mealsBg from './images/mealsBg.jpeg';
 import FullMenu from './FullMenu/FullMenu';
 /// IMPORT MATERIAL-UI ///
 import RaisedButton from 'material-ui/RaisedButton';
-import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import Paper from 'material-ui/Paper';
+import { Tabs, Tab } from 'material-ui/Tabs';
 
 /// IMPORT ICONS HERE ///
 import FaCutlery from 'react-icons/lib/fa/cutlery';
@@ -19,15 +19,26 @@ import breakfast from './images/breakfast.jpg';
 import spartanHawaiianChicken from './images/spartanHawaiianChicken.jpg';
 import steakbythelb from './images/steakbythelb.jpg';
 
-export default class Meals extends Component {
+class Meals extends Component {
   constructor(props) {
     super(props);
 
     //SET INITIAL STATE BELOW:
-    this.state = {};
+    this.state = {
+      value: 'a'
+    };
 
     //BIND METHODS BELOW:
   }
+  ///CREATE HANDLING CHANGES HERE:
+  // handleChange = value => {
+  //   this.setState({
+  //     value: value
+  //   });
+  // };
+  handleCallToRouter = value => {
+    this.props.history.push(value);
+  };
 
   render() {
     const pageHeaderStyle = {
@@ -35,67 +46,66 @@ export default class Meals extends Component {
       width: '100%'
     };
     const cutleryStyle = {
-      height: '55px',
-      width: '55px',
-      alignItems: 'center',
-      color: 'gray',
-      paddingBottom: '6%',
-      paddingTop: '2.5%',
-      marginLeft: '45%'
+      height: '25px',
+      width: '25px',
+      color: 'gray'
     };
 
-    const menuTitle = {
-      fontSize: '24px',
-      color: 'Green',
-      textTransform: 'uppercase',
-      fontFamily: 'cursive'
+    // const menuTitle = {
+    //   fontSize: '24px',
+    //   color: 'Green',
+    //   textTransform: 'uppercase',
+    //   fontFamily: 'cursive'
+    // };
+    const styles = {
+      headline: {
+        fontSize: 24,
+        paddingTop: 16,
+        marginBottom: 12,
+        fontWeight: 400
+      }
     };
 
-    const leftBarStyle = {
-      height: '50%',
-      width: '20%',
-      position: 'relative',
-      display: 'flex',
-      marginTop: '2.5%',
-      marginLeft: '5%',
-      float: 'left'
-    };
-    const insideLeftBarStyle = {
-      padding: '5%'
-    };
     return (
       <div>
         <img src={pageHeader} style={pageHeaderStyle} />
-        <h2 style={menuTitle}>Our Menu</h2>
-        {/* LEFT BELOW: */}
-        <div className="container">
-          <div style={leftBarStyle}>
-            <Paper zDepth={3} style={insideLeftBarStyle}>
-              <FaCutlery style={cutleryStyle} />
-              <Link to="/Meals/FullMenu" className="meals">
-                <h4>Full Menu</h4>
-              </Link>
-              <Link to="/Meals/SignatureMeals" className="meals">
-                <h4>Spartan Signature Meals</h4>
-              </Link>
-              <Link to="/Meals/ByLB" className="meals">
-                <h4>Spartan By the LB</h4>
-              </Link>
-              <Link to="/Meals/CustomMeals" className="meals">
-                <h4>Spartan Custom Meals</h4>
-              </Link>
-              <Link to="/Meals/SignatureMeals" className="meals">
-                <h4>Spartan Breakfast</h4>
-              </Link>
-              {/* <button className="customOrder">
-              <FaPlusCircle />
-              Create Custom Order
-            </button> */}
-            </Paper>
-          </div>
+        {/* <h2 style={menuTitle}>Our Menu</h2> */}
+        {/* <FaCutlery style={cutleryStyle} /> */}
+        <div>
+          <Tabs
+            value={this.props.history.location.pathname}
+            onChange={this.handleCallToRouter}
+          >
+            <Tab label="Full Menu" value="/Meals/FullMenu">
+              {' '}
+              <h2 style={styles.headline}>
+                Full Menu<FaCutlery style={cutleryStyle} />
+              </h2>
+            </Tab>
+
+            <Tab label="Spartan Signature Meals" value="/Meals/SignatureMeals">
+              <h2 style={styles.headline}>
+                {' '}
+                Signature Meals<FaCutlery style={cutleryStyle} />
+              </h2>
+            </Tab>
+            <Tab label="Spartan By the LB" value="/Meals/ByLB">
+              {' '}
+              <h2 style={styles.headline}>
+                By the LB<FaCutlery style={cutleryStyle} />
+              </h2>{' '}
+            </Tab>
+            <Tab label="Spartan Custom Meals" value="/Meals/CustomMeals">
+              <h2 style={styles.headline}>
+                Custom Meals<FaCutlery style={cutleryStyle} />
+              </h2>{' '}
+            </Tab>
+          </Tabs>
         </div>
         {this.props.children}
       </div>
     );
   }
 }
+
+export default withRouter(Meals);

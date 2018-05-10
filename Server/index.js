@@ -6,6 +6,7 @@ const { json } = require('body-parser');
 const massive = require('massive');
 
 const session = require('express-session');
+
 const axios = require('axios');
 
 require('dotenv').config(); //FIX THIS LATER
@@ -20,7 +21,21 @@ const app = express();
 /////  APPLY MY MIDDLEWARE   /////////////////////////////////////////////////+
 app.use(json());
 app.use(cors());
-
+// app.use(
+//   session({
+//     secret: process.env.SECRET,
+//     resave: false,
+//     saveUninitialized: true
+//   })
+// );
+//*T session is store on the server...session is memory storage
+app.use(
+  session({
+    secret: '@nyth!ng y0u w@nT',
+    resave: false,
+    saveUninitialized: false
+  })
+);
 //uncomment this when i am ready to have project in production. Final step
 // app.use(express.static(`${__dirname}/../build`));
 

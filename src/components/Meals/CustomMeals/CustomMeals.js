@@ -35,11 +35,6 @@ export default class CustomMeals extends Component {
       height: '250px',
       width: '100%'
     };
-    const hStyle = {
-      backgroundColor: 'white',
-      width: '100%',
-      height: '15%'
-    };
     const allMeals = this.state.displayMeals.map(customMeals => {
       return (
         <div>
@@ -73,9 +68,6 @@ export default class CustomMeals extends Component {
       <div>
         <div className="Content">
           <hr />
-          <h2 style={hStyle}>
-            <hr />CUSTOM MEALS
-          </h2>
           <hr />
           {allMeals}{' '}
         </div>

@@ -110,29 +110,19 @@ export default class Cart extends Component {
           return (
             <div>
               <div>
-                <div key={eachMeal}>
+                <div key={eachMeal.id}>
                   {' '}
                   <img alt="image_url" src={eachMeal.image_url} />{' '}
-                  <p>{eachMeal.meals_name}</p> <p>QTY: {eachMeal.quantity}</p>
+                  <p>{eachMeal.meals_name}</p>
+                  <p>QTY:{eachMeal.quantity}</p>
                   <p>PRICE: ${eachMeal.price}</p>
-                  <br />
-                  <br />
-                  <hr />
-                  <button>
-                    {/* <MenuItem
-                  style={checkOutButtonStyle}
-                  onClick={this.handleClose}
-                >
-                  CheckOut
-                </MenuItem> */}
-                  </button>
                 </div>
               </div>
             </div>
           );
         })
       ) : (
-        <p> Cart</p>
+        <p>*</p>
       );
 
     return (
@@ -153,10 +143,6 @@ export default class Cart extends Component {
             <AppBar title="Cart" width={50} />
           </MuiThemeProvider>
           <MenuItem style={style} onClick={this.handleClose} />
-          {/* <MenuItem> <img alt="image_url" src={eachMeal.image_url} /> */}
-          {/* <p>{eachMeal.meals_name}</p>
-          <p>QTY: {eachMeal.quantity}</p>
-          <p>PRICE: ${eachMeal.price}</p> */}
           <br />
           <br />
           <hr />

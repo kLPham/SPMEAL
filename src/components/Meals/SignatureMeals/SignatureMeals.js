@@ -21,11 +21,6 @@ export default class SignatureMeals extends Component {
   }
 
   render() {
-    const hStyle = {
-      backgroundColor: 'white',
-      width: '100%',
-      height: '15%'
-    };
     const allMeals = this.state.displayMeals.map(signatureMeals => {
       const style = {
         height: '15%',
@@ -76,9 +71,6 @@ export default class SignatureMeals extends Component {
         <div className="Content">
           {' '}
           <hr />
-          <h2 style={hStyle}>
-            <hr />SPARTAN SIGNATURE MEALS
-          </h2>
           <hr />
           {allMeals}{' '}
         </div>
