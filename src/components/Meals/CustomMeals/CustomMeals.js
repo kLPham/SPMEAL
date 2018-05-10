@@ -21,15 +21,18 @@ export default class CustomMeals extends Component {
   }
   render() {
     const styles = {
-      height: '15%',
+      height: '20%',
       maxHeight: 400,
       overflow: 'auto',
-      width: '12%',
-      float: 'right',
-      position: 'static',
+      width: '14%',
+      // flexDirection: 'row',
+      position: 'relative',
+      display: 'flex',
+      // alignSelf: 'stretch',
       textAlign: 'center',
-      marginRight: '2%',
-      marginBottom: '2%'
+      flexWrap: 'wrap',
+      height: '400px',
+      alignContent: 'spaceBetween'
     };
     const addCustomeMealStyles = {
       height: '70%',
@@ -39,7 +42,8 @@ export default class CustomMeals extends Component {
       position: 'static',
       textAlign: 'center',
       marginTop: '2%',
-      marginLeft: '2%'
+      marginLeft: '2%',
+      marginRight: '10%'
     };
     const imageStyle = {
       marginTop: '5%',
@@ -59,28 +63,22 @@ export default class CustomMeals extends Component {
     const allMeals = this.state.displayMeals.map(customMeals => {
       return (
         <div>
-          <div>
-            <Paper zDepth={3} style={styles}>
+          <Paper zDepth={3} style={styles}>
+            <div key={customMeals.id}>
+              {/* <Link to={`/meals/Details/${signatureMeals.id}`}> */}
+              <img
+                style={imageStyle}
+                alt="image_url"
+                src={customMeals.image_url}
+              />
+              {/* </Link> */}
               <div>
-                <Paper zDepth={3}>
-                  <div key={customMeals.id}>
-                    {/* <Link to={`/meals/Details/${signatureMeals.id}`}> */}
-                    <img
-                      style={imageStyle}
-                      alt="image_url"
-                      src={customMeals.image_url}
-                    />
-                    {/* </Link> */}
-                    <div>
-                      <p>{customMeals.meals_name}</p>
-                      <p>${customMeals.price}</p>
-                    </div>
-                    <br />
-                  </div>
-                </Paper>
+                <p>{customMeals.meals_name}</p>
+                <p>${customMeals.price}</p>
               </div>
-            </Paper>
-          </div>
+              <br />
+            </div>
+          </Paper>
         </div>
       );
     });

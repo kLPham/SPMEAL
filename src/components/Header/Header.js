@@ -69,13 +69,21 @@ export default class Header extends Component {
       fontSize: '22px'
     };
     const cuteryStyle = {
-      color: 'gray',
-      paddingLeft: '43%',
-      paddingBottom: '2%',
-      height: '30px',
-      width: '25px'
+      color: '#9ACD32',
+      height: '40px',
+      width: '35px'
     };
-
+    const menuLabelStyle = {
+      color: '#9ACD32',
+      textTransform: 'uppercase',
+      cursor: 'default',
+      textAlign: 'center',
+      marginTop: '1%',
+      marginBottom: '-6%',
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
+      opacity: 10
+    };
     return (
       // <MuiThemeProvider>
       <div>
@@ -130,14 +138,12 @@ export default class Header extends Component {
                 value={this.state.value}
                 onChange={this.handleDropdownMenuChange}
                 primaryText="menu"
-                style={{ color: this.handleColorChange(4) }}
-                onClick={() => {
-                  this.handleToggleChange(4);
-                }}
               >
-                <FaCutlery style={cuteryStyle} />
+                {/* <FaCutlery style={cuteryStyle} /> */}
                 <MenuItem value={1} label="Menu">
-                  <h2>Our Menu</h2>
+                  <h1 style={menuLabelStyle} className="centerMeal">
+                    <FaCutlery style={cuteryStyle} />Our Menu
+                  </h1>
                 </MenuItem>
                 <a href="/Meals/FullMenu" className="menuStyle">
                   <MenuItem value={2} primaryText="Full Menu" label="MENU" />

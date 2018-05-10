@@ -1,13 +1,11 @@
 .Content {
   padding-top: 5%;
-  margin-left: 1%;
-  /* margin-right: 2%; */
-  height: 500px;
-  width: 1800px;
+  height: 100%;
+  width: 10%;
   overflow: auto;
   background-color: #ddd;
   /* float: right; */
-  /* position: relative; */
+  position: relative;
 }
 .bg {
   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlDjiAYPUcHjKBvQUKUmOvBdM4QBglJLhf47w2etDdDOIKUvCTFA');
