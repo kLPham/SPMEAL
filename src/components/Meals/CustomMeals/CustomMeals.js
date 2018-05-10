@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './CustomMeals.css';
 import axios from 'axios';
 import Paper from 'material-ui/Paper';
+import FaPlusCircle from 'react-icons/lib/fa/plus-circle';
 
 export default class CustomMeals extends Component {
   constructor(props) {
@@ -30,10 +31,30 @@ export default class CustomMeals extends Component {
       marginRight: '2%',
       marginBottom: '2%'
     };
+    const addCustomeMealStyles = {
+      height: '70%',
+      maxHeight: 400,
+      width: '13%',
+      float: 'left',
+      position: 'static',
+      textAlign: 'center',
+      marginTop: '2%',
+      marginLeft: '2%'
+    };
     const imageStyle = {
       marginTop: '5%',
       height: '250px',
       width: '100%'
+    };
+    const buttonStyle = {
+      backgroundColor: '#9ACD32',
+      color: 'white',
+      marginTop: '105%',
+      height: '50px',
+      width: '200px',
+      fontSize: '20px',
+      borderRadius: '25px',
+      textTransform: 'uppercase'
     };
     const allMeals = this.state.displayMeals.map(customMeals => {
       return (
@@ -67,6 +88,14 @@ export default class CustomMeals extends Component {
     return (
       <div>
         <div className="Content">
+          <Paper zDepth={3} style={addCustomeMealStyles}>
+            <div className="bg">
+              {' '}
+              <button style={buttonStyle}>
+                <FaPlusCircle />Custom order
+              </button>
+            </div>{' '}
+          </Paper>
           <hr />
           <hr />
           {allMeals}{' '}

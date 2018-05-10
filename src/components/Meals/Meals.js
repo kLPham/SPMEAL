@@ -47,7 +47,6 @@ class Meals extends Component {
       headline: {
         fontSize: 25,
         textTransform: 'uppercase',
-
         marginBottom: 12,
         fontWeight: 'bold'
       }

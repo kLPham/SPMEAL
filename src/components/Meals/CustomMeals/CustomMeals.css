@@ -9,3 +9,10 @@
   /* float: right; */
   /* position: relative; */
 }
+.bg {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlDjiAYPUcHjKBvQUKUmOvBdM4QBglJLhf47w2etDdDOIKUvCTFA');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  margin-top: 10%;
+}
