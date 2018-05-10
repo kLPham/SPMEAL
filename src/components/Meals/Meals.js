@@ -41,15 +41,20 @@ class Meals extends Component {
     const cutleryStyle = {
       height: '25px',
       width: '25px',
-      color: 'gray'
+      color: 'red'
     };
     const styles = {
       headline: {
-        fontSize: 24,
-        paddingTop: 16,
+        fontSize: 25,
+        textTransform: 'uppercase',
+
         marginBottom: 12,
-        fontWeight: 400
+        fontWeight: 'bold'
       }
+    };
+    const tabStyle = {
+      backgroundColor: 'black',
+      color: 'red'
     };
 
     return (
@@ -60,26 +65,34 @@ class Meals extends Component {
             value={this.props.history.location.pathname}
             onChange={this.handleCallToRouter}
           >
-            <Tab label="Full Menu" value="/Meals/FullMenu">
+            <Tab label="Full Menu" value="/Meals/FullMenu" style={tabStyle}>
               {' '}
               <h2 style={styles.headline}>
                 Full Menu<FaCutlery style={cutleryStyle} />
               </h2>
             </Tab>
 
-            <Tab label="Spartan Signature Meals" value="/Meals/SignatureMeals">
+            <Tab
+              label="Spartan Signature Meals"
+              value="/Meals/SignatureMeals"
+              style={tabStyle}
+            >
               <h2 style={styles.headline}>
                 {' '}
                 Signature Meals<FaCutlery style={cutleryStyle} />
               </h2>
             </Tab>
-            <Tab label="Spartan By the LB" value="/Meals/ByLB">
+            <Tab label="Spartan By the LB" value="/Meals/ByLB" style={tabStyle}>
               {' '}
               <h2 style={styles.headline}>
                 By the LB<FaCutlery style={cutleryStyle} />
               </h2>{' '}
             </Tab>
-            <Tab label="Spartan Custom Meals" value="/Meals/CustomMeals">
+            <Tab
+              label="Spartan Custom Meals"
+              value="/Meals/CustomMeals"
+              style={tabStyle}
+            >
               <h2 style={styles.headline}>
                 Custom Meals<FaCutlery style={cutleryStyle} />
               </h2>{' '}
