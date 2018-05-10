@@ -39,7 +39,7 @@ export default class Header extends Component {
   }
   handleColorChange(position) {
     if (this.state.active === position) {
-      return 'green';
+      return 'red';
     }
     return '';
   }
