@@ -1,0 +1,39 @@
+.carouselImage {
+  height: 150vh;
+  object-fit: cover;
+  object-position: center;
+}
+/* .makeImageSmaller {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+} */
+
+.left {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 50vw;
+  height: 80vh;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .left {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.6em;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 80vh;
+    margin-left: 20px;
+    padding: 10px;
+  }
+}

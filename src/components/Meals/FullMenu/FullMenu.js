@@ -7,6 +7,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import Paper from 'material-ui/Paper';
 
+//TESTING FAV ICON TOGGLE
+
 export default class FullMenu extends Component {
   constructor(props) {
     super(props);

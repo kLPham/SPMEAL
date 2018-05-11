@@ -101,7 +101,16 @@
   padding-top: 1%;
   text-align: center;
 }
-.video {
+/* .video {
   margin-left: 25%;
   padding-top: 1%;
+} */
+/* .video {
+  height: 300px;
+  width: 300px;
+} */
+.carousel-image {
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
 }

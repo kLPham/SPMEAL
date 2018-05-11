@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+import ZoomableImage from 'react-zoomable-image';
+
 export default class MealsDetails extends Component {
   constructor(props) {
     super(props);
@@ -75,7 +77,28 @@ export default class MealsDetails extends Component {
       return (
         <div key={mealsId.meals_id} style={style}>
           <div style={imageStyle}>
-            <img alt="image_url" src={mealsId.image_url} />
+            {/* TESTING */}
+            <ZoomableImage
+              baseImage={{
+                alt: 'image_url',
+                src: 'http://via.placeholder.com/350x550',
+                width: 350,
+                height: 550
+              }}
+              largeImage={{
+                alt: 'A large image',
+                src: 'http://via.placeholder.com/450x707',
+                width: 450,
+                height: 707
+              }}
+              thumbnailImage={{
+                alt: 'A small image',
+                src: 'http://via.placeholder.com/70x110'
+              }}
+            />{' '}
+            {/* <img alt="image_url" src={mealsId.image_url} /> */}
+            {/* TESTING ENDS */}
+            {/* <img alt="image_url" src={mealsId.image_url} /> */}
             <p>{mealsId.description}</p>
           </div>
           <br />

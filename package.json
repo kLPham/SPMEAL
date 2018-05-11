@@ -12,7 +12,6 @@
     "express": "^4.16.2",
     "express-session": "^1.15.6",
     "global": "^4.3.2",
-    "html-react-parser": "^0.4.2",
     "massive": "^4.7.1",
     "material-ui": "^0.20.0",
     "passport": "^0.4.0",
@@ -20,15 +19,17 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-icons": "^2.2.7",
-    "react-md": "^1.2.11",
     "react-player": "^1.4.0",
     "react-redux": "^5.0.7",
+    "react-responsive-carousel": "^3.1.37",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-hash-link": "^1.2.0",
     "react-scripts": "^1.1.1",
     "react-stripe-checkout": "^2.6.3",
     "react-tooltip": "^3.5.1",
+    "react-zoomable-image": "^1.0.5",
+    "rmwc": "^1.6.2",
     "session": "^0.1.0",
     "stripe": "^5.8.0",
     "sweetalert": "^2.1.0"
@@ -41,6 +42,7 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
+    "@team-griffin/install-self-peers": "^1.1.1",
     "install-peers": "^1.0.2",
     "react-social-icons": "^2.8.1"
   }

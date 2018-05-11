@@ -13,6 +13,7 @@ import delivery from './delivery.jpeg';
 import ingredients from './ingredients.jpg';
 
 import ReactPlayer from 'react-player';
+import { Carousel } from 'react-responsive-carousel';
 
 export default class HowItWorks extends Component {
   constructor(props) {
@@ -165,6 +166,7 @@ export default class HowItWorks extends Component {
 
         <div className="videoBg">
           <h3>Step Inside Our Kitchen</h3>
+
           <ReactPlayer
             className="video"
             url="https://www.facebook.com/Spartanperformancemeals/videos/2545833955641018/"

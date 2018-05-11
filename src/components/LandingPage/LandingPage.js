@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './LandingPage.css';
 import { Link } from 'react-router-dom';
-import topLandingImage from './topLandingImage.jpg';
+// import topLandingImage from './topLandingImage.jpg';
 import FaLaptop from 'react-icons/lib/fa/laptop';
 import FaTruck from 'react-icons/lib/fa/truck';
 import FaFire from 'react-icons/lib/fa/fire';
@@ -16,6 +16,8 @@ import blog3 from './blog3.jpg';
 import blog4 from './blog4.jpg';
 
 import ReactPlayer from 'react-player';
+
+import MyCarousel from './../MyCarousel/MyCarousel';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -82,21 +84,21 @@ export default class LandingPage extends Component {
       width: '100%',
       opacity: '0.5'
     };
-    const buttonStyles = {
-      fontSize: '25px',
-      position: 'absolute',
-      top: '205%',
-      left: '37%',
-      height: '12%',
-      width: '23%',
-      fontFamily: 'osward',
-      backgroundColor: 'green',
-      color: 'white',
-      borderRadius: '10px',
-      textAlign: 'center',
-      textTransform: 'uppercase',
-      cursor: 'pointer'
-    };
+    // const buttonStyles = {
+    //   fontSize: '25px',
+    //   position: 'absolute',
+    //   top: '205%',
+    //   left: '37%',
+    //   height: '12%',
+    //   width: '23%',
+    //   fontFamily: 'osward',
+    //   backgroundColor: 'green',
+    //   color: 'white',
+    //   borderRadius: '10px',
+    //   textAlign: 'center',
+    //   textTransform: 'uppercase',
+    //   cursor: 'pointer'
+    // };
     const blogImageStyle = {
       height: '41%',
       width: '31%',
@@ -119,8 +121,9 @@ export default class LandingPage extends Component {
         {/* //FIRST SECTION// */}
         <section>
           {/* <div className="para" /> */}
-          <img src={topLandingImage} style={topImageStyle} />
-          <div className="whiteBox">
+          {/* ///IMPORT CAROUSEL BELOW: */}
+          {/* <img src={topLandingImage} style={topImageStyle} /> */}
+          {/* <div className="whiteBox">
             <h2 className="banner">Work Hard. Eat Right.</h2>
             <p2 style={smallerMessage}>
               Heat & Eat Gourmet Meals. Delivered to Your Door.
@@ -130,7 +133,8 @@ export default class LandingPage extends Component {
                 Shop Meals
               </Link>
             </button>
-          </div>
+          </div> */}
+          <MyCarousel />
         </section>
         {/* //SECOND SECTION// */}
         <section className="secondSection">
@@ -163,7 +167,7 @@ export default class LandingPage extends Component {
             </span>
           </div>
         </section>
-        <section>
+        {/* <section>
           <img src={pageHeader} style={pageHeaderStyle} />
           <h2 className="banners">CHECK OUT THIS WEEK’S MEALS</h2>
           <button className="button" style={buttonStyles}>
@@ -171,7 +175,7 @@ export default class LandingPage extends Component {
               CREATE YOUR MENU
             </Link>
           </button>
-        </section>
+        </section> */}
         <section className="Testimonials">
           <h2 className="titleName">Testimonials</h2>
           <div className="allBubbles">
