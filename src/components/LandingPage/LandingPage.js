@@ -34,6 +34,7 @@ export default class LandingPage extends Component {
       padding: '1.5%',
       fontWeight: 'bold',
       fontSize: '22px'
+      // zIndex: 3
     };
     const topImageStyle = {
       height: '20%',
@@ -124,10 +125,6 @@ export default class LandingPage extends Component {
           {/* ///IMPORT CAROUSEL BELOW: */}
           {/* <img src={topLandingImage} style={topImageStyle} /> */}
           {/* <div className="whiteBox">
-            <h2 className="banner">Work Hard. Eat Right.</h2>
-            <p2 style={smallerMessage}>
-              Heat & Eat Gourmet Meals. Delivered to Your Door.
-            </p2>
             <button className="button" style={buttonStyle}>
               <Link className="getStartBtn" to="/Meals">
                 Shop Meals

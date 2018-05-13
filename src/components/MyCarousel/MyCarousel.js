@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Carousel } from 'react-responsive-carousel';
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 import topLandingImage from './topLandingImage.jpg';
-import { Link } from 'react-router-dom';
 
 import './MyCarousel.css';
+
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default class MyCarousel extends Component {
   constructor(props) {
     super(props);
 
     //SET INITIAL STATE BELOW:
-    this.state = {};
+    this.state = { open: false };
     //BIND METHODS BELOW:
     this.handleLinkClick = this.handleLinkClick.bind(this);
   }
@@ -21,21 +23,17 @@ export default class MyCarousel extends Component {
     e.preventDefault();
     console.log('click to see supplement page.');
   }
+  handleButtonClick = () => {
+    this.setState({ open: true });
+    window.location.href = 'http://localhost:3000/Meals/CustomMeals';
+  };
   render() {
     const buttonStyles = {
-      fontSize: '25px',
-      position: 'absolute',
-      top: '205%',
-      left: '37%',
-      height: '12%',
-      width: '23%',
-      fontFamily: 'osward',
-      backgroundColor: 'green',
-      color: 'white',
-      borderRadius: '10px',
-      textAlign: 'center',
-      textTransform: 'uppercase',
-      cursor: 'pointer'
+      margin: 12,
+      background: 'linear-gradient(#00FF00 30%, #FF8E53 90%)',
+      height: 58,
+      padding: '0 20px',
+      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)'
     };
     return (
       <Carousel
@@ -67,7 +65,9 @@ export default class MyCarousel extends Component {
                   fontSize: '45px',
                   fontWeight: 'bold',
                   backgroundColor: 'white',
-                  padding: '1.3%'
+                  padding: '1.3%',
+                  fontStyle: 'oblique',
+                  fontFamily: 'SansSerif'
                 }}
               >
                 WORK HARD.EAT RIGHT.
@@ -82,7 +82,9 @@ export default class MyCarousel extends Component {
                   fontWeight: 'bold',
                   padding: '1.3%',
                   marginBottom: '4%',
-                  marginTop: '3%'
+                  marginTop: '3%',
+                  fontStyle: 'oblique',
+                  fontFamily: 'SansSerif'
                 }}
               >
                 Heat & Eat Gourmet Meals.
@@ -94,7 +96,9 @@ export default class MyCarousel extends Component {
                   textTransform: 'uppercase',
                   backgroundColor: 'white',
                   fontWeight: 'bold',
-                  padding: '1.5%'
+                  padding: '1.5%',
+                  fontStyle: 'oblique',
+                  fontFamily: 'SansSerif'
                 }}
               >
                 Delivered to Your Door.
@@ -102,12 +106,87 @@ export default class MyCarousel extends Component {
             </div>
           </div>
         </div>
+
+        {/* ///SECOND PART  */}
         <div>
           <img
-            src="https://scontent-dfw5-1.xx.fbcdn.net/v/t1.0-9/30652380_2547355045488909_9167217955094659072_o.jpg?_nc_cat=0&oh=ab6c16d3ab23e33e7d5b3918bcde3def&oe=5B8AFFE2"
+            src="https://static1.squarespace.com/static/59de7a244c0dbfb7c50e812a/t/5a2f230b53450aa1428fcfa9/1513038700106/"
             className="carouselImage"
           />
+          <div
+            style={{
+              color: 'red',
+              marginTop: '-90vh',
+              fontSize: '4em',
+              display: 'flex',
+              marginLeft: '5%'
+            }}
+          >
+            <div className="left">
+              <span
+                style={{
+                  backgroundColor: 'red',
+                  color: 'white',
+                  padding: '1.3%',
+                  textTransform: 'uppercase',
+                  fontSize: '45px',
+                  fontWeight: 'bold',
+                  fontStyle: 'oblique',
+                  fontFamily: 'SansSerif'
+                }}
+              >
+                You're In Control.
+              </span>
+
+              <p2
+                style={{
+                  backgroundColor: 'red',
+                  color: 'white',
+                  marginTop: '5%',
+                  padding: '1.3%',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  fontStyle: 'oblique',
+                  fontFamily: 'SansSerif'
+                }}
+              >
+                Custom meals to fit any taste or diet.{' '}
+              </p2>
+              <p2
+                style={{
+                  backgroundColor: 'red',
+                  color: 'white',
+                  marginTop: '5%',
+                  padding: '1.3%',
+                  fontSize: '16px',
+                  fontWeight: 'bold',
+                  fontStyle: 'oblique',
+                  fontFamily: 'SansSerif'
+                }}
+              >
+                Let our chef do the hard part.
+              </p2>
+            </div>
+          </div>
+          <div
+            style={{
+              color: 'red',
+              marginTop: '-90vh',
+              fontSize: '4em',
+              display: 'flex',
+              marginLeft: '25%',
+              marginTop: '-10%'
+            }}
+          >
+            <RaisedButton
+              overlayStyle={buttonStyles}
+              label="Get Started"
+              onClick={this.handleButtonClick}
+            />
+          </div>
         </div>
+
+        {/* ///THIRD PART */}
         <div>
           <img
             className="carouselImage"

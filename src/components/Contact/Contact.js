@@ -77,6 +77,7 @@ export default class Contact extends Component {
             </div>
           </div>
         </section>
+
         {/* <div className="contactV">
           <ReactPlayer
             height="360px"
