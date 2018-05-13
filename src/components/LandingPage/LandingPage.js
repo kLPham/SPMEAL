@@ -85,21 +85,6 @@ export default class LandingPage extends Component {
       width: '100%',
       opacity: '0.5'
     };
-    // const buttonStyles = {
-    //   fontSize: '25px',
-    //   position: 'absolute',
-    //   top: '205%',
-    //   left: '37%',
-    //   height: '12%',
-    //   width: '23%',
-    //   fontFamily: 'osward',
-    //   backgroundColor: 'green',
-    //   color: 'white',
-    //   borderRadius: '10px',
-    //   textAlign: 'center',
-    //   textTransform: 'uppercase',
-    //   cursor: 'pointer'
-    // };
     const blogImageStyle = {
       height: '41%',
       width: '31%',
@@ -121,16 +106,6 @@ export default class LandingPage extends Component {
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
         {/* //FIRST SECTION// */}
         <section>
-          {/* <div className="para" /> */}
-          {/* ///IMPORT CAROUSEL BELOW: */}
-          {/* <img src={topLandingImage} style={topImageStyle} /> */}
-          {/* <div className="whiteBox">
-            <button className="button" style={buttonStyle}>
-              <Link className="getStartBtn" to="/Meals">
-                Shop Meals
-              </Link>
-            </button>
-          </div> */}
           <MyCarousel />
         </section>
         {/* //SECOND SECTION// */}

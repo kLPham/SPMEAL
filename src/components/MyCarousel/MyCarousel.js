@@ -33,7 +33,9 @@ export default class MyCarousel extends Component {
       background: 'linear-gradient(#00FF00 30%, #FF8E53 90%)',
       height: 58,
       padding: '0 20px',
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)'
+      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)',
+      fontFamily: 'osward',
+      textTransform: 'uppercase'
     };
     return (
       <Carousel
