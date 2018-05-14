@@ -5,13 +5,10 @@
   color: 'black';
 }
 .menuStyle:hover {
-  color: green;
+  color: red;
   text-decoration-line: underline;
 }
 
 .centerMeal:not(.nohover) {
   border: 2px solid gray;
 }
-/* .centerMeal.nohover:hover {
-  border: 0;
-} */

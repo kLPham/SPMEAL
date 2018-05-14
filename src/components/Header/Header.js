@@ -74,14 +74,17 @@ export default class Header extends Component {
     };
     const labelStyle = {
       color: '#9ACD32',
-      textTransform: 'uppercase',
       cursor: 'default',
       textAlign: 'center',
-      // marginTop: '25%',
+      marginTop: '5%',
+      mariginLeft: '-5%',
       marginBottom: '-6%',
       fontWeight: 'bold',
       textTransform: 'uppercase',
       opacity: 10
+    };
+    const cartStyle = {
+      paddingTop: '5%'
     };
     return (
       // <MuiThemeProvider>
@@ -123,13 +126,18 @@ export default class Header extends Component {
             </Link>
 
             {/* SUPPORT DROPDOWN BELOW */}
+
             <DropDownMenu
               value={this.state.value}
               onChange={this.handleDropdownMenuChange}
               primaryText="support"
+              style={{ color: this.handleColorChange(3) }}
+              onClick={() => {
+                this.handleToggleChange(3);
+              }}
             >
-              <MenuItem value={1} label="SUPPORT">
-                <h1 style={labelStyle} className="centerMeal" />
+              <MenuItem value={1} label="SUPPORT" className="sHeader">
+                {/* <h1/> */}
               </MenuItem>
               <a href="/Meals/SignatureMeals" className="menuStyle">
                 <MenuItem
@@ -148,9 +156,14 @@ export default class Header extends Component {
             {/* MENU DROPDOWN BELOW */}
             <a data-tip="Click here to see our full menu!">
               <DropDownMenu
+                className="secondList"
                 value={this.state.value}
                 onChange={this.handleDropdownMenuChange}
                 primaryText="menu"
+                style={{ color: this.handleColorChange(4) }}
+                onClick={() => {
+                  this.handleToggleChange(4);
+                }}
               >
                 {/* <FaCutlery style={cuteryStyle} /> */}
                 <MenuItem value={1} label="SHOP">
@@ -189,8 +202,7 @@ export default class Header extends Component {
             </a>
             {/* <ReactTooltip place="bottom" type="success" effect="float" /> */}
           </div>
-          <Cart />
-          <RaisedButton label="Default" />
+          <Cart style={cartStyle} />
         </div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
       </div>

@@ -46,13 +46,13 @@ export default class ByLB extends Component {
               <div>
                 <Paper zDepth={3}>
                   <div key={mealsByTheLbs.id}>
-                    {/* <Link to={`/meals/Details/${signatureMeals.id}`}> */}
-                    <img
-                      style={imageStyle}
-                      alt="image_url"
-                      src={mealsByTheLbs.image_url}
-                    />
-                    {/* </Link> */}
+                    <Link to={`/Meals/Details/${mealsByTheLbs.meals_id}`}>
+                      <img
+                        style={imageStyle}
+                        alt="image_url"
+                        src={mealsByTheLbs.image_url}
+                      />
+                    </Link>
                     <div>
                       <p>{mealsByTheLbs.meals_name}</p>
                       <p>${mealsByTheLbs.price}</p>

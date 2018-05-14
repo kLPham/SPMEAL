@@ -45,13 +45,13 @@ export default class SignatureMeals extends Component {
               <div>
                 <Paper zDepth={3}>
                   <div key={signatureMeals.id}>
-                    {/* <Link to={`/meals/Details/${signatureMeals.id}`}> */}
-                    <img
-                      style={imageStyle}
-                      alt="image_url"
-                      src={signatureMeals.image_url}
-                    />
-                    {/* </Link> */}
+                    <Link to={`/Meals/Details/${signatureMeals.meals_id}`}>
+                      <img
+                        style={imageStyle}
+                        alt="image_url"
+                        src={signatureMeals.image_url}
+                      />
+                    </Link>
                     <div>
                       <p>{signatureMeals.meals_name}</p>
                       <p>${signatureMeals.price}</p>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './CustomMeals.css';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Paper from 'material-ui/Paper';
 import FaPlusCircle from 'react-icons/lib/fa/plus-circle';
@@ -65,13 +66,13 @@ export default class CustomMeals extends Component {
         <div>
           <Paper zDepth={3} style={styles}>
             <div key={customMeals.id}>
-              {/* <Link to={`/meals/Details/${signatureMeals.id}`}> */}
-              <img
-                style={imageStyle}
-                alt="image_url"
-                src={customMeals.image_url}
-              />
-              {/* </Link> */}
+              <Link to={`/Meals/Details/${customMeals.meals_id}`}>
+                <img
+                  style={imageStyle}
+                  alt="image_url"
+                  src={customMeals.image_url}
+                />
+              </Link>
               <div>
                 <p>{customMeals.meals_name}</p>
                 <p>${customMeals.price}</p>
