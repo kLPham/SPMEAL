@@ -7,7 +7,7 @@ import topLandingImage from './topLandingImage.jpg';
 
 import './MyCarousel.css';
 
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'muicss/lib/react/button';
 
 export default class MyCarousel extends Component {
   constructor(props) {
@@ -27,26 +27,33 @@ export default class MyCarousel extends Component {
     this.setState({ open: true });
     window.location.href = 'http://localhost:3000/Meals/CustomMeals';
   };
+  handleShopNowButton = () => {
+    this.setState({ open: true });
+    window.location.href = 'http://localhost:3000/Meals/FullMenu';
+  };
+
   render() {
-    const buttonStyles = {
-      margin: 12,
-      background: 'linear-gradient(#00FF00 30%, #FF8E53 90%)',
-      height: 58,
-      padding: '0 20px',
-      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)',
-      fontFamily: 'osward',
-      textTransform: 'uppercase'
+    const style = {
+      backgroundColor: 'white',
+      color: 'red',
+      padding: '1.3%',
+      textTransform: 'uppercase',
+      fontSize: '45px',
+      fontWeight: 'bold',
+      fontStyle: 'oblique',
+      fontFamily: 'SansSerif'
     };
     return (
       <Carousel
         showThumbs={false}
         width="100%"
-        transitionTime={900}
-        interval={7000}
+        transitionTime={800}
+        interval={4000}
         infiniteLoop={true}
         autoPlay={true}
         showStatus={false}
       >
+        {/* /// 1ST SECTION */}
         <div>
           <img
             className="carouselImage"
@@ -61,19 +68,7 @@ export default class MyCarousel extends Component {
             }}
           >
             <div className="left">
-              <span
-                style={{
-                  color: 'red',
-                  fontSize: '45px',
-                  fontWeight: 'bold',
-                  backgroundColor: 'white',
-                  padding: '1.3%',
-                  fontStyle: 'oblique',
-                  fontFamily: 'SansSerif'
-                }}
-              >
-                WORK HARD.EAT RIGHT.
-              </span>
+              <span style={style}>WORK HARD.EAT RIGHT.</span>
               <div>_____</div>
               <p2
                 style={{
@@ -109,7 +104,7 @@ export default class MyCarousel extends Component {
           </div>
         </div>
 
-        {/* ///SECOND PART  */}
+        {/* ///2ND SECTION  */}
         <div>
           <img
             src="https://static1.squarespace.com/static/59de7a244c0dbfb7c50e812a/t/5a2f230b53450aa1428fcfa9/1513038700106/"
@@ -180,21 +175,70 @@ export default class MyCarousel extends Component {
               marginTop: '-10%'
             }}
           >
-            <RaisedButton
-              overlayStyle={buttonStyles}
-              label="Get Started"
+            <Button
+              style={{
+                color: 'white',
+                background: 'linear-gradient(#00FF00 30%, #FF8E53 90%)',
+                marginRight: '25%',
+                fontFamily: 'osward'
+              }}
+              size="large"
+              variant="raised"
               onClick={this.handleButtonClick}
-            />
+            >
+              Get Started
+            </Button>
           </div>
         </div>
 
-        {/* ///THIRD PART */}
+        {/* ///3RD SECTION*/}
         <div>
           <img
             className="carouselImage"
-            src="https://images.ctfassets.net/lufu0clouua1/2x2pPjpGA0iagck6OiGWIe/f754edac7d4a2aab2855d4566c0565ed/Beef_Picadillo.jpg"
+            src="https://images-na.ssl-images-amazon.com/images/I/615LzDrqbJL._SL1051_.jpg"
           />
+          <div
+            style={{
+              marginTop: '-90vh',
+              fontSize: '4em',
+              display: 'flex',
+              flexDirection: 'column',
+              marginLeft: '27%',
+              paddingTop: '25%'
+            }}
+          >
+            <span
+              style={{
+                backgroundColor: 'white',
+                width: '70%',
+                color: 'green',
+                paddingLeft: '1%',
+                paddingRight: '1%',
+                fontSize: '75px',
+                fontWeight: 'bold',
+                fontStyle: 'oblique',
+                fontFamily: 'SansSerif'
+              }}
+            >
+              Fresh NEW Menu
+            </span>
+            <div>
+              <Button
+                style={{
+                  color: 'white',
+                  backgroundColor: 'green',
+                  marginRight: '25%'
+                }}
+                size="large"
+                variant="raised"
+                onClick={this.handleShopNowButton}
+              >
+                Shop Now
+              </Button>
+            </div>
+          </div>
         </div>
+        {/* /// 4TH SECTION */}
         <div>
           <img
             className="carouselImage"

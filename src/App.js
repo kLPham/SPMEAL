@@ -25,7 +25,7 @@ class App extends Component {
         <div>
           <Header />
           {router}
-          <RaisedButton label="Material UI" />
+          {/* <RaisedButton label="Material UI" /> */}
           <Footer />
         </div>
       </MuiThemeProvider>
