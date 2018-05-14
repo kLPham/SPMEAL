@@ -11,9 +11,8 @@ import FaHome from 'react-icons/lib/fa/home';
 import FaCutlery from 'react-icons/lib/fa/cutlery';
 import storeIcon from './storeIcon.jpg';
 import Cart from '../Cart/Cart';
-// import SearchBar from './components/SearchBar/SearchBar';
-// import Login from './components/Login/Login';
-import ReactTooltip from 'react-tooltip';
+
+// import ReactTooltip from 'react-tooltip';
 
 export default class Header extends Component {
   constructor(props) {
@@ -73,12 +72,12 @@ export default class Header extends Component {
       height: '40px',
       width: '35px'
     };
-    const menuLabelStyle = {
+    const labelStyle = {
       color: '#9ACD32',
       textTransform: 'uppercase',
       cursor: 'default',
       textAlign: 'center',
-      marginTop: '1%',
+      // marginTop: '25%',
       marginBottom: '-6%',
       fontWeight: 'bold',
       textTransform: 'uppercase',
@@ -122,16 +121,30 @@ export default class Header extends Component {
                 About Us
               </span>
             </Link>
-            <Link to="/Contact" className="span">
-              <span
-                style={{ color: this.handleColorChange(3) }}
-                onClick={() => {
-                  this.handleToggleChange(3);
-                }}
-              >
-                Contact
-              </span>
-            </Link>
+
+            {/* SUPPORT DROPDOWN BELOW */}
+            <DropDownMenu
+              value={this.state.value}
+              onChange={this.handleDropdownMenuChange}
+              primaryText="support"
+            >
+              <MenuItem value={1} label="SUPPORT">
+                <h1 style={labelStyle} className="centerMeal" />
+              </MenuItem>
+              <a href="/Meals/SignatureMeals" className="menuStyle">
+                <MenuItem
+                  value={2}
+                  label="Store Locator"
+                  primaryText="STORE LOCATOR"
+                />
+              </a>
+              <a href="#" className="menuStyle">
+                <MenuItem value={3} primaryText="FAQ" label="FAQ" />
+              </a>
+              <a href="/Contact" className="menuStyle">
+                <MenuItem value={4} primaryText="contact" label="CONTACT" />
+              </a>
+            </DropDownMenu>
             {/* MENU DROPDOWN BELOW */}
             <a data-tip="Click here to see our full menu!">
               <DropDownMenu
@@ -140,8 +153,8 @@ export default class Header extends Component {
                 primaryText="menu"
               >
                 {/* <FaCutlery style={cuteryStyle} /> */}
-                <MenuItem value={1} label="Menu">
-                  <h1 style={menuLabelStyle} className="centerMeal">
+                <MenuItem value={1} label="SHOP">
+                  <h1 style={labelStyle} className="centerMeal">
                     <FaCutlery style={cuteryStyle} />Our Menu
                   </h1>
                 </MenuItem>
@@ -169,9 +182,12 @@ export default class Header extends Component {
                     primaryText="Custom Meals"
                   />
                 </a>
+                <a href="#" className="menuStyle">
+                  <MenuItem value={6} label="APPAREL" primaryText="APPAREL" />
+                </a>
               </DropDownMenu>
             </a>
-            <ReactTooltip place="bottom" type="success" effect="float" />
+            {/* <ReactTooltip place="bottom" type="success" effect="float" /> */}
           </div>
           <Cart />
           <RaisedButton label="Default" />
