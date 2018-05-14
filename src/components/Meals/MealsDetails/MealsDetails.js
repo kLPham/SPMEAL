@@ -4,8 +4,7 @@ import Option from 'muicss/lib/react/option';
 import Select from 'muicss/lib/react/select';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
-import ZoomableImage from 'react-zoomable-image';
+import { SocialIcons } from 'react-social-icons';
 
 export default class MealsDetails extends Component {
   constructor(props) {
@@ -82,6 +81,15 @@ export default class MealsDetails extends Component {
       width: '100%',
       textAlign: 'center'
     };
+    const iconsStyle = {
+      margin: '20px'
+    };
+    const urls = [
+      'https://www.facebook.com/',
+      'https://www.instagram.com/',
+      'https://twitter.com/',
+      'https://www.pinterest.com/'
+    ];
 
     const displayMealDetails = this.state.meals.map(mealsId => {
       return (
@@ -104,7 +112,6 @@ export default class MealsDetails extends Component {
               </Select>
             </form>
             {/* {mealsId.quantity} */}
-
             <button
               style={buttonStyle}
               onclick={() => this.handleAddToCart(mealsId)}
@@ -112,6 +119,12 @@ export default class MealsDetails extends Component {
               Add To Cart
             </button>
             <hr />
+            <SocialIcons
+              urls={urls}
+              style={iconsStyle}
+              color="black"
+              className="icons"
+            />
           </div>
         </div>
       );
