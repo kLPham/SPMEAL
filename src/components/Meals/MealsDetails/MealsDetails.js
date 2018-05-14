@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Option from 'muicss/lib/react/option';
+import Select from 'muicss/lib/react/select';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -63,7 +66,7 @@ export default class MealsDetails extends Component {
     const rightItemsStyle = {
       float: 'right',
       position: 'absolute',
-      top: '5%',
+      top: '10%',
       right: '7%',
       fontSize: '25px'
     };
@@ -72,53 +75,43 @@ export default class MealsDetails extends Component {
       height: '50%',
       width: '50%'
     };
+    const descripStyle = {
+      borderStyle: 'double',
+      padding: '2.5%',
+      fontSize: '15px',
+      width: '100%',
+      textAlign: 'center'
+    };
 
     const displayMealDetails = this.state.meals.map(mealsId => {
       return (
         <div key={mealsId.meals_id} style={style}>
           <div style={imageStyle}>
-            {/* TESTING */}
-            <ZoomableImage
-              baseImage={{
-                alt: 'image_url',
-                src: 'http://via.placeholder.com/350x550',
-                width: 350,
-                height: 550
-              }}
-              largeImage={{
-                alt: 'A large image',
-                src: 'http://via.placeholder.com/450x707',
-                width: 450,
-                height: 707
-              }}
-              thumbnailImage={{
-                alt: 'A small image',
-                src: 'http://via.placeholder.com/70x110'
-              }}
-            />{' '}
-            {/* <img alt="image_url" src={mealsId.image_url} /> */}
-            {/* TESTING ENDS */}
-            {/* <img alt="image_url" src={mealsId.image_url} /> */}
-            <p>{mealsId.description}</p>
+            <img alt="image_url" src={mealsId.image_url} />
+            <p style={descripStyle}>{mealsId.description}</p>
           </div>
           <br />
           <div style={rightItemsStyle}>
             <p>{mealsId.meals_name}</p>
             <p>${mealsId.price}</p>
-            <select>
-              <option>
-                QTY:
-                {mealsId.quantity}
-              </option>
-            </select>
-            <br />
-            <hr />
+            <form>
+              <Select name="Quantity" label="QTY" defaultValue="1">
+                <Option value="1" label="1" />
+                <Option value="2" label="2" />
+                <Option value="3" label="3" />
+                <Option value="4" label="4" />
+                <Option value="5" label="5" />
+              </Select>
+            </form>
+            {/* {mealsId.quantity} */}
+
             <button
               style={buttonStyle}
               onclick={() => this.handleAddToCart(mealsId)}
             >
               Add To Cart
             </button>
+            <hr />
           </div>
         </div>
       );
