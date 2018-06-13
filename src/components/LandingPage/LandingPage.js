@@ -215,10 +215,10 @@ export default class LandingPage extends Component {
             style={{
               backgroundColor: 'orange',
               color: 'white',
-              borderRadius: '10px',
-              paddingBottom: '3%',
+              paddingBottom: '6%',
+              paddingTop: '2%',
               textAlign: 'center',
-              fontSize: '20px',
+              fontSize: '40px',
               textTransform: 'uppercase',
               cursor: 'pointer'
             }}
@@ -226,7 +226,7 @@ export default class LandingPage extends Component {
             variant="raised"
             onClick={this.handleShopNowButton}
           >
-            Get Started Now
+            Get Started!
           </Button>
         </section>
         {/* <section className="blog">
@@ -239,8 +239,8 @@ export default class LandingPage extends Component {
 
         <section className="container2">
           <ReactPlayer
-            // className="video"
-            url="https://www.facebook.com/Spartanperformancemeals/videos/2230432647181152/"
+            className="video"
+            url="https://www.facebook.com/Spartanperformancemeals/videos/2545833955641018/"
             playing={false}
           />
           <h3 className="right">Let's </h3>
