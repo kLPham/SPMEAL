@@ -219,7 +219,7 @@ export default class LandingPage extends Component {
               paddingBottom: '6%',
               paddingTop: '2%',
               textAlign: 'center',
-              fontSize: '40px',
+              fontSize: '35px',
               textTransform: 'uppercase',
               cursor: 'pointer'
             }}

@@ -195,7 +195,7 @@ export default class MyCarousel extends Component {
         <div>
           <img
             className="carouselImage"
-            src="https://images-na.ssl-images-amazon.com/images/I/615LzDrqbJL._SL1051_.jpg"
+            src="http://www.wheninmanila.com/wp-content/uploads/2015/11/53-1024x768.jpg"
           />
           <div
             style={{

@@ -35,8 +35,9 @@ export default class HowItWorks extends Component {
       fontSize: '22px'
     };
     const mealsBgStyle = {
-      height: '800px',
-      width: '100%'
+      height: '90vh',
+      width: '90%',
+      marginLeft: '5%'
     };
 
     const tagStyle = {
@@ -52,6 +53,8 @@ export default class HowItWorks extends Component {
       textAlign: 'center',
       padding: '1%'
     };
+    //Section 2
+
     const buttonStyle = {
       fontSize: '20px',
       position: 'absolute',
@@ -84,9 +87,10 @@ export default class HowItWorks extends Component {
       marginTop: '7%'
     };
     const bottomImageStyle = {
-      height: '40%',
-      width: '100%',
-      opacity: '1.5'
+      height: '90vh',
+      width: '90%',
+      opacity: '1.5',
+      marginLeft: '5%'
     };
     const bottomTextStyle = {
       position: 'absolute',
@@ -109,62 +113,89 @@ export default class HowItWorks extends Component {
 
     return (
       <div>
-        <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
-        <div>
-          <img alt="HTW meals background" src={HIW} style={mealsBgStyle} />
-          <h2 style={tagStyle}>
+        {/* <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div> */}
+        {/* SECTION 1 */}
+        <section>
+          <img
+            alt="HTW meals background"
+            src="https://fortunedotcom.files.wordpress.com/2015/08/fortune-15082612.jpg"
+            style={mealsBgStyle}
+          />
+          <h1 style={tagStyle}>
             Enjoy the convenience of great-tasting meals delivered to your door
-          </h2>
+          </h1>
           <button className="button" style={buttonStyle}>
             <Link className="getStartBtn" to="/Meals/FullMenu">
               {' '}
               Get Started
             </Link>
           </button>
-        </div>
-        <div>
-          <h2 className="secondPartBanner">From Our Kitchens To Your Table</h2>
-          <p2 className="subTitle">What goes into a balance meal</p2>
-          <br />
+        </section>
+        <br />
 
-          <img src={plan} style={imageStyle} />
-          <img src={shoppingg} style={shopImageStyle} />
-          <img src={cookingg} style={cookImageStyle} />
-          <img src={delivery} style={imageStyle} />
-          <div>
-            <h3 className="plan">Planning</h3>
-            <p3 className="plans">
-              We take care of the recipes and nutrition.
-            </p3>{' '}
-            <br />
-            <p3 className="secondText">Relax, you deserve it!</p3>
-            <br />
-            <br />
-          </div>
-          <div className="stylingSCDLetters">
-            <div>
-              <h3 className="shop">Shopping</h3>
-              <p3 className="shops">No more waiting in long lines at the</p3>
-              <p3 className="shopping">grocery store.</p3>
+        {/* TESTING CODES */}
+        {/* PART 1 */}
+        <section>
+          {/* <hr /> */}
+          <h2 className="howitwork">How It Works</h2>
+          <h2 style={{ color: 'black', fontWeight: 'bold' }}>
+            ______________________________________________
+          </h2>
+          <h3 className="howitworks">
+            It's simple. Order, deliver, and enjoy!
+          </h3>
+          <div class="htwContainer">
+            <div class="img">
+              <img
+                className="image"
+                src="https://media.istockphoto.com/vectors/ordering-food-online-or-food-blogging-vector-id525430799?k=6&m=525430799&s=612x612&w=0&h=iJrMKVmciIO9MOPW2qsE7W1yocKKNjz8TxfGMy5JZjo="
+              />
             </div>
-            <div>
-              <h3 className="cook">Cooking</h3>
-              <p3 className="cooks">Why cook when you can have </p3>
-              <p3 className="cooking">world-class chefs do it for you?</p3>
+            <div class="text">Order Your Meals</div>
+            <div class="smallText">
+              Easily order delicious meals and snacks or create custom meals
+              from our fresh selection of proteins and sides.
             </div>
-            <div>
-              <h3 className="delivery">Delivery</h3>
-              <p3 className="deliverys">
-                Spend your time doing things you want
-              </p3>
-              <p3 className="deliverying">
-                to do. We'll take care of delivery.
-              </p3>
+            <div className="allThreeButtons">
+              <button className="htwButton">See Our Weekly Menu</button>
             </div>
           </div>
-        </div>
-
-        <div className="videoBg">
+          {/* PART 2 */}
+          <div class="htwContainer">
+            <div class="img">
+              <img
+                className="image"
+                src="https://png.pngtree.com/element_origin_min_pic/17/09/19/0f4bfa6a68c22fc6a5b846d9a812133b.jpg"
+              />
+            </div>
+            <div class="text">We're On Our way!</div>
+            <div class="smallText">
+              Orders shipped quickly and efficiently. Delivered right to your
+              door or a drop-off location of your choice.
+            </div>
+            <div className="allThreeButtons">
+              <button className="htwButton">See Our Snacks</button>
+            </div>
+          </div>
+          {/* PART 3 */}
+          <div class="htwContainer">
+            <div class="img">
+              <img
+                className="image"
+                src="https://img.freepik.com/free-vector/man-eating-pasta_1087-14.jpg?size=338&ext=jpg"
+              />
+            </div>
+            <div class="text">Enjoy Your Meal!</div>
+            <div class="smallText">
+              Just heat up your meals (microwave or oven) for a quick and
+              healthy meal without the fuss. Sounds great right? So why wait?
+            </div>
+            <div className="allThreeButtons">
+              <button className="htwButton">Build A Custom Meal</button>
+            </div>
+          </div>
+        </section>
+        {/* <div className="videoBg">
           <h3>Step Inside Our Kitchen</h3>
 
           <ReactPlayer
@@ -172,18 +203,21 @@ export default class HowItWorks extends Component {
             url="https://www.facebook.com/Spartanperformancemeals/videos/2545833955641018/"
             playing={false}
           />
-        </div>
-        <div>
+        </div> */}
+        {/* SECTION 3 */}
+        <div className="module">
           <img
             alt="list of ingredients"
             src={ingredients}
             style={bottomImageStyle}
           />
-          <h3 style={bottomTextStyle}>We Use Fresh and Healthy Ingredients</h3>
-          <p3 style={textStyle}>
-            We source ingredients directly from independent producers and
-            deliver our top quality products nationwide.
-          </p3>
+          <div>
+            <h1>We Use Fresh and Healthy Ingredients</h1>
+            <p3>
+              We source ingredients directly from independent producers and
+              deliver our top quality products nationwide.
+            </p3>
+          </div>
         </div>
       </div>
     );
