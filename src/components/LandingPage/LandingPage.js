@@ -157,6 +157,7 @@ export default class LandingPage extends Component {
         </section>
         <section className="Testimonials">
           <h2 className="titleName">Testimonials</h2>
+          <br />
           <div className="allBubbles">
             <div className="speechBubble">
               <FaQuoteLeft />
