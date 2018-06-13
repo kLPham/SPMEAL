@@ -2,13 +2,13 @@
   text-transform: uppercase;
   text-decoration: none;
   margin-left: 10px;
-  color: 'black';
+  color: black;
 }
 .menuStyle:hover {
-  color: red;
+  color: rgb(94, 255, 0);
   text-decoration-line: underline;
 }
 
 .centerMeal:not(.nohover) {
-  border: 2px solid gray;
+  border: 2px solid gainsboro;
 }

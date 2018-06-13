@@ -10,6 +10,8 @@ import pageHeader from './../Meals/pageHeader.jpg';
 import FaQuoteLeft from 'react-icons/lib/fa/quote-left';
 import FaQuoteRight from 'react-icons/lib/fa/quote-right';
 
+import Button from 'muicss/lib/react/button';
+
 import blog1 from './blog1.jpg';
 import blog2 from './blog2.jpg';
 import blog3 from './blog3.jpg';
@@ -25,13 +27,16 @@ export default class LandingPage extends Component {
 
     this.state = {};
   }
-
+  handleShopNowButton = () => {
+    this.setState({ open: true });
+    window.location.href = 'http://localhost:3000/Meals/FullMenu';
+  };
   render() {
     const bannerStyle = {
       color: 'white',
       backgroundColor: 'red',
       textAlign: 'center',
-      padding: '1.5%',
+      padding: '.8%',
       fontWeight: 'bold',
       fontSize: '22px'
       // zIndex: 3
@@ -82,8 +87,9 @@ export default class LandingPage extends Component {
     };
     const pageHeaderStyle = {
       height: '20%',
-      width: '100%',
-      opacity: '0.5'
+      width: '125%',
+      opacity: '.7',
+      alignItems: 'center'
     };
     const blogImageStyle = {
       height: '41%',
@@ -91,15 +97,6 @@ export default class LandingPage extends Component {
       paddingLeft: '1.75%',
       paddingBottom: '3%',
       paddingTop: '4%'
-    };
-    const videoStyling = {
-      backgroundColor: 'black',
-      height: '900px',
-      width: '100%',
-      color: 'white',
-      fontSize: '40px',
-      textAlign: 'center',
-      paddingTop: '1%'
     };
     return (
       <div>
@@ -139,15 +136,25 @@ export default class LandingPage extends Component {
             </span>
           </div>
         </section>
-        {/* <section>
+        <section className="container">
           <img src={pageHeader} style={pageHeaderStyle} />
-          <h2 className="banners">CHECK OUT THIS WEEK’S MEALS</h2>
-          <button className="button" style={buttonStyles}>
-            <Link className="getStartBtn" to="/Meals">
-              CREATE YOUR MENU
-            </Link>
-          </button>
-        </section> */}
+          <div className="textBlock">
+            <h2>CHECK OUT THIS WEEK’S MEALS</h2>
+            <Button
+              style={{
+                color: 'white',
+                backgroundColor: 'green',
+                marginLeft: '25%',
+                borderRadius: '10px'
+              }}
+              size="large"
+              variant="raised"
+              onClick={this.handleShopNowButton}
+            >
+              Shop Now
+            </Button>
+          </div>
+        </section>
         <section className="Testimonials">
           <h2 className="titleName">Testimonials</h2>
           <div className="allBubbles">
@@ -193,21 +200,54 @@ export default class LandingPage extends Component {
             </div>
           </div>
         </section>
-        <section className="blog">
+        <section className="container1">
+          <img
+            src="https://theulsterfry.com/wp-content/uploads/2015/11/food.jpg"
+            style={{
+              backgroundPosition: 'center',
+              height: '100%',
+              width: '100%',
+              backgroundColor: 'gray'
+            }}
+          />
+          <Button
+            className="centered"
+            style={{
+              backgroundColor: 'orange',
+              color: 'white',
+              borderRadius: '10px',
+              paddingBottom: '3%',
+              textAlign: 'center',
+              fontSize: '20px',
+              textTransform: 'uppercase',
+              cursor: 'pointer'
+            }}
+            size="large"
+            variant="raised"
+            onClick={this.handleShopNowButton}
+          >
+            Get Started Now
+          </Button>
+        </section>
+        {/* <section className="blog">
           <img src={blog1} alt="customerImage1" style={blogImageStyle} />
           <img src={blog3} alt="customerImage3" style={blogImageStyle} />
           <img src={blog2} alt="customerImage2" style={blogImageStyle} />
 
-          {/* <img asrc={blog4} alt="customerImage4" style={blogImageStyle} /> */}
-        </section>
+          <img asrc={blog4} alt="customerImage4" style={blogImageStyle} />
+        </section> */}
 
-        <section style={videoStyling}>
-          <h3>Spartan Performance Meals Tour.</h3>
+        <section className="container2">
           <ReactPlayer
-            className="video"
+            // className="video"
             url="https://www.facebook.com/Spartanperformancemeals/videos/2230432647181152/"
             playing={false}
           />
+          <h3 className="right">Let's </h3>
+          <br />
+          <h3 className="right1">Take a Walk </h3>
+          <br />
+          <h3 className="right2">To Our Kitchen</h3>
         </section>
       </div>
     );

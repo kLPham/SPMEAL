@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+// import { connect } from 'react-redux';
+// import { addToCart } from '../../ducks/reducer';
 import FaShoppingCart from 'react-icons/lib/fa/shopping-cart';
 
 //IMPORT MATERIALui BELOW:
@@ -13,22 +15,32 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
 
+import Trash from 'react-icons/lib/fa/trash';
+
 export default class Cart extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       open: false,
-      cart: [],
-      currency: [], //work on this later
-      removeFromCart: [], //work on this later
-      total: 0, //work on this later..We have also to update the cart totals accordingly
-      item: [] //work on this later..we have to push products into the items array or remove them when users update the cart
+      cart: []
     };
 
     //BIND METHODS HERE:
     this.handleCartToggle = this.handleCartToggle.bind(this);
     this.handleCartClose = this.handleCartClose.bind(this);
+    this.handleCartRemove = this.handleCartRemove.bind(this);
+  }
+
+  //GET ITEMS FROM DETAIL PAGE: //*get back to this
+  componentWillMount() {
+    axios.get('/api/cart').then(response => {
+      this.setState({ cart: response.data });
+    });
+    //GET TOTAL PRICE FROM SERVER:
+    axios.get(`/cart/total/${this.props.meals_id}`).then(response => {
+      this.setState({ total: response.data[0].sum });
+    });
   }
   //HANDLE ACTION BELOW:
   handleCartToggle() {
@@ -38,53 +50,25 @@ export default class Cart extends Component {
   handleCartClose() {
     this.setState({ open: false });
   }
-
-  //GET ITEMS FROM DETAIL PAGE: //*get back to this
-  componentDidMount() {
-    axios.get('/api/cart').then(response => {
-      this.setState({ cart: response.data });
-    });
+  //REMOVE FROM CART FRONT_END: :)
+  handleCartRemove(meals) {
+    axios
+      .delete(`/api/cart/${meals.meals_id}`)
+      .then(response => this.setState({ cart: response.data }))
+      .catch(console.log);
+    alert('This meal has been remove from your shopping cart!');
   }
 
   render() {
     const muiTheme = getMuiTheme({
-      palette: {
-        textColor: fullWhite,
-        accent1Color: deepOrangeA400
-      },
       appBar: {
-        height: 50
+        height: 70
       }
     });
     const styleSize = {
       fontSize: '20px',
       fontWeight: 'bold'
     };
-    const cutleryStyle = {
-      height: '55px',
-      width: '55px',
-      alignItems: 'center',
-      color: 'gray',
-      paddingBottom: '6%',
-      paddingTop: '2.5%',
-      marginLeft: '5%'
-    };
-    // const cartButton = {
-    //   marginRight: '120px',
-    //   marginTop: '3%',
-    //   backgroundColor: 'red',
-    //   color: 'white',
-    //   borderColor: 'black',
-    //   padding: '10px',
-    //   paddingLeft: '20%',
-    //   fontSize: '13px',
-    //   textTransform: 'uppercase',
-    //   cursor: 'pointer',
-    //   borderRadius: '4px',
-    //   width: '120px',
-    //   position: 'relative',
-    //   display: 'row'
-    // };
     const basketStyle = {
       height: '35px',
       width: '30px',
@@ -93,43 +77,78 @@ export default class Cart extends Component {
       paddingRight: '100px',
       cursor: 'pointer'
     };
-    const style = {
-      marginBottom: '100%'
-    };
+    // const style = {
+    //   marginBottom: '5%'
+    // };
     const checkOutButtonStyle = {
       width: '280px',
       height: '5%',
       backgroundColor: 'green',
       color: 'white',
       fontSize: '25px',
-      marginRight: '8%'
+      marginRight: '8%',
+      cursor: 'pointer'
     };
-    const displayOnCart =
-      this.state.cart && this.state.cart.length > 0 ? (
+    const wholeMealStyle = {
+      marginLeft: '17%',
+      textAlign: 'left',
+      fontSize: '80%'
+    };
+
+    const mealImageStyle = {
+      height: '200px',
+      width: '200px'
+    };
+    const removeButton = {
+      height: '15%',
+      width: '35%',
+      backgroundColor: 'red',
+      color: 'white',
+      cursor: 'pointer'
+    };
+    const subTotalStyle = {
+      marginLeft: '15%',
+      fontSize: '25px',
+      backgroundColor: 'gainsboro',
+      paddingTop: '8%',
+      marginBottom: '10%',
+      color: 'black',
+      height: '5%',
+      width: '70%'
+    };
+
+    let displayInCart =
+      this.state.cart.length > 0 ? (
         this.state.cart.map(eachMeal => {
           return (
-            <div>
-              <div>
-                <div key={eachMeal.id}>
-                  {' '}
-                  <img alt="image_url" src={eachMeal.image_url} />{' '}
-                  <p>{eachMeal.meals_name}</p>
-                  <p>QTY:{eachMeal.quantity}</p>
-                  <p>PRICE: ${eachMeal.price}</p>
-                </div>
+            <div style={wholeMealStyle}>
+              <div key={eachMeal.id}>
+                <img
+                  style={mealImageStyle}
+                  alt="image_url"
+                  src={eachMeal.image_url}
+                />
+                <p>{eachMeal.meals_name}</p>
+                <p>QTY:{eachMeal.quantity}</p>
+                <p>PRICE: ${eachMeal.price}</p>
               </div>
+              <button
+                style={removeButton}
+                onClick={() => this.handleCartRemove(eachMeal)}
+              >
+                Remove
+              </button>
+              <hr />
             </div>
           );
         })
       ) : (
-        <p>*</p>
+        <p style={{ color: 'red', textAlign: 'center' }}>Your Cart is empty</p>
       );
 
     return (
       <div>
-        {/* <button style={cartButton} onClick={this.handleCartToggle}> */}
         <FaShoppingCart style={basketStyle} onClick={this.handleCartToggle} />
-        {/* </button> */}
         <Drawer
           style={styleSize}
           docked={false}
@@ -140,19 +159,31 @@ export default class Cart extends Component {
           onRequestChange={open => this.setState({ open })}
         >
           <MuiThemeProvider muiTheme={muiTheme}>
-            <AppBar title="Cart" width={50} />
+            <AppBar
+              title="Shopping Cart"
+              width={70}
+              style={{ backgroundColor: 'black' }}
+            />
           </MuiThemeProvider>
-          <MenuItem style={style} onClick={this.handleClose} />
-          <br />
-          <br />
-          <hr />
+          <MenuItem onClick={this.handleClose} />
+          <div> {displayInCart}</div>
+
+          <div style={subTotalStyle}>
+            <p style={wholeMealStyle}>
+              Subtotal: ${this.state.cart.length &&
+                this.state.cart.reduce((total, eachMeal) => {
+                  var priceTotal = eachMeal.price * eachMeal.quantity;
+                  total += priceTotal;
+                  return total;
+                }, 0)}
+            </p>
+          </div>
           <button>
             <MenuItem style={checkOutButtonStyle} onClick={this.handleClose}>
               Proceed To CheckOut
             </MenuItem>
           </button>
         </Drawer>
-        <div> {displayOnCart}</div>
       </div>
     );
   }

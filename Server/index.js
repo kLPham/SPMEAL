@@ -4,36 +4,28 @@ const express = require('express');
 const cors = require('cors');
 const { json } = require('body-parser');
 const massive = require('massive');
+require('dotenv').config();
 
 const session = require('express-session');
 
 const axios = require('axios');
 
-require('dotenv').config(); //FIX THIS LATER
-///////////////////// path is a node module that comes with node, meaning it doesn't need installed. //////////////////////
-/////// It's used below in sending data to the browser. more here --> https://nodejs.org/api/path.html ///////////////////
+require('dotenv').config(); // //for production
+///////////////////// path is a node module that comes with node, meaning it doesn't need installed. /////
+/////// It's used below in sending data to the browser. more here --> https://nodejs.org/api/path.html /////////
 // const path = require('path');
-///////////////////////////////////////////////////////////////////////////////
 
-////////////////// CREATE MY APP ////////////////////////+
+////////////////// CREATE EXPRESS APP ////////////////////////+
 const app = express();
 // app.use(session()); //
-/////  APPLY MY MIDDLEWARE   /////////////////////////////////////////////////+
+///////  CREATE MIDDLEWARE THAT USE BODYPARSER, CORS, & SESSION: ///////////////////////
 app.use(json());
 app.use(cors());
-// app.use(
-//   session({
-//     secret: process.env.SECRET,
-//     resave: false,
-//     saveUninitialized: true
-//   })
-// );
-//*T session is store on the server...session is memory storage
 app.use(
   session({
-    secret: '@nyth!ng y0u w@nT',
-    resave: false,
-    saveUninitialized: false
+    secret: process.env.SESSION_SECRET,
+    resave: process.env.RESAVE,
+    saveUninitialized: process.env.SAVEUNINITIALIZED
   })
 );
 //uncomment this when i am ready to have project in production. Final step
@@ -56,6 +48,7 @@ massive(process.env.DB_CONNECTION_STRING)
 const db = app.get('db'); ///use my get function go get the value of the function. ///
 
 ///// /////             ENDPOINTS:      ///////////////////////////////////////////////////////////////////////
+
 ///// ALL MEALS ENDPOINTS BELOW /////////////////////////
 //GET A MEAL DETAIL ENDPOINT:
 app.get('/api/meal/:meals_id', (req, res, next) => {
@@ -96,68 +89,73 @@ app.get('/api/meals', (req, res, next) => {
 });
 
 /// SHOPPING CART ENDPOINTS /////////////////////////////////////
-/// GET MEALS THAT HAS BEEN ADDED TO CART & DISPLAY IT TO CART COMP:
-app.get('/api/cart', (req, res) => {
-  console.log(cart);
-  return res.json(req.session.cart);
-});
-
-/// STORE/POST SHOPPING CART DATA TO DB USING SESSION:
 app.post('/api/cart', (req, res) => {
-  let eachItem = req.body.eachItem;
-  // eachItem.push(eachItem); //add it to our list
-  // res.send(eachItem); ///then send it back
+  let item = req.body.item;
   if (!req.session.cart) {
     req.session.cart = [];
   }
-  req.session.cart.push(eachItem); // add each meal to our cart
+  req.session.cart.push(item); //add item to cart
   return res.json(req.session.cart);
 });
 
+//get info of products using session to display to cart component
+app.get('/api/cart', (req, res) => {
+  return res.json(req.session.cart);
+});
+
+//update cart when REMOVE ITEMS FROM CART BACK-END :)
+app.delete('/api/cart/:meals_id', (req, res) => {
+  // console.log('Cart: ', req.session.cart);
+  req.session.cart = req.session.cart.filter(meals => {
+    if (meals.meals_id == req.params.meals_id) {
+      return false;
+    } else {
+      return true;
+    }
+  });
+  // req.session.cart.splice(index, 1);
+  res.json(req.session.cart); //send back cart from session
+});
+
 ///saveCart() saves our cart into the current Express session:
-// saveCart(request) {
-//   if(request.session) {
-//       request.session.cart = this.data;
-//   }
-// }
+
+//SHOPPING CART END.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ///// ALL USERS ENDPOINT BELOW ///////////////////////////////
-// app.get('/api/me', function(req, res) {
-//   if (!req.user) return res.status(401).send();
-//   res.status(200).json(req.user);
+
+// app.get('/api/users', function(req, res, next) {
+//   req.app
+//     .get('db')
+//     .get_All_Users()
+//     .then(users => {
+//       res.status(200).send(users);
+//     });
 // });
-/// GET USERS ENDPOINT ///////////////////////////////
-app.get('/api/users', function(req, res, next) {
-  req.app
-    .get('db')
-    .get_All_Users()
-    .then(users => {
-      res.status(200).send(users);
-    });
-});
 ///  POST REQUEST TO ADD USERS ENDPOINT ////////////// ///////////////////COME BACK TO THS>>
-app.post('/api/users', function(req, res, next) {
-  req.app
-    .get('db')
-    .add_Users([
-      req.body.id,
-      req.body.name,
-      req.body.email,
-      req.body.phone_numbers
-    ])
-    .then(response => {
-      res.status(200).send(response);
-    });
-});
+// app.post('/api/users', function(req, res, next) {
+//   req.app
+//     .get('db')
+//     .add_Users([
+//       req.body.id,
+//       req.body.name,
+//       req.body.email,
+//       req.body.phone_numbers
+//     ])
+//     .then(response => {
+//       res.status(200).send(response);
+//     });
+// });
 /// DELETE USERS ENDPOINT ///////////////////////////
-app.delete('/api/users/:id', function(req, res, next) {
-  req.app
-    .get('db')
-    .delete_Users(req.params.id)
-    .then(response => {
-      res.status(200).send(response);
-    });
-});
+// app.delete('/api/users/:id', function(req, res, next) {
+//   req.app
+//     .get('db')
+//     .delete_Users(req.params.id)
+//     .then(response => {
+//       res.status(200).send(response);
+//     });
+// });
+
 /////////// DATABASE END HERE ////////////////////////////////////////////////////////////////////////////
 
 ////////////// UNCOMMENT THIS WHEN i am ready to have project IN PRODUCTION. Final step! ////////

@@ -30,6 +30,7 @@
     "react-stripe-checkout": "^2.6.3",
     "react-tooltip": "^3.5.1",
     "react-zoomable-image": "^1.0.5",
+    "redux-promise-middleware": "^5.1.1",
     "rmwc": "^1.6.2",
     "session": "^0.1.0",
     "stripe": "^5.8.0",
