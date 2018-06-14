@@ -20,6 +20,7 @@ import blog4 from './blog4.jpg';
 import ReactPlayer from 'react-player';
 
 import MyCarousel from './../MyCarousel/MyCarousel';
+import FeaturedBreakfast from '../Meals/FeaturedBreakfast/FeaturedBreakfast';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -76,10 +77,8 @@ export default class LandingPage extends Component {
     };
 
     const iconStyle = {
-      height: '170px',
-      width: '150px',
-      marginLeft: '8%',
-      marginRight: '5%'
+      height: '200px',
+      width: '180px'
     };
     const leftLetterStyle = {
       fontSize: '30px',
@@ -98,55 +97,78 @@ export default class LandingPage extends Component {
       paddingBottom: '3%',
       paddingTop: '4%'
     };
+    const bottomImageStyle = {
+      height: '30%',
+      width: '100%',
+      opacity: '1'
+    };
     return (
       <div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
-        {/* //FIRST SECTION// */}
+        {/* SECTION 1 */}
         <section>
           <MyCarousel />
         </section>
-        {/* //SECOND SECTION// */}
-        <section className="secondSection">
-          <h2 className="titleName">
-            How It Works<br />
+        {/* SECTION 2*/}
+        <section>
+          <h2 className="landingHiw">How It Works</h2>
+          <h2 style={{ color: 'black', fontWeight: 'bold' }}>
+            ______________________________________________
           </h2>
-          <div>
-            <FaLaptop style={iconStyle} />
-            <FaTruck style={iconStyle} className="flip" />
-            <FaFire style={iconStyle} />
-            <FaThumbsOUp style={iconStyle} />
+          <div className="landingContainer">
+            <div className="landingImage">
+              <FaLaptop style={iconStyle} />
+            </div>
+            <div className="landingText">Order</div>
+            <div class="smallTextt">Order meals weekly from our website.</div>
           </div>
-          <div className="ODHE">
-            <span>Order</span>
-            <span>Deliver</span>
-            <span>Heat</span>
-            <span>Enjoy</span>
-          </div>
-          <div className="odhes">
-            <span className="odhe">Order meals weekly from our website </span>
-            <span className="odhe">
+          <div className="landingContainer">
+            <div className="landingImage">
+              <FaTruck style={iconStyle} className="flip" />
+            </div>
+            <div className="landingText">Deliver</div>
+            <div class="smallTextt">
               Prepped ships nationwide. Your order of freshly prepared meals are
-              delivered weekly to your door.
-            </span>
-            <span className="odhe">
+              delivered weekly to your door..
+            </div>
+          </div>
+          <div className="landingContainer">
+            <div className="landingImage">
+              <FaFire style={iconStyle} />
+            </div>
+            <div className="landingText">Heat</div>
+            <div class="smallTextt">
               Open up your meal and heat for the allotted time.
-            </span>
-            <span className="odhe">
+            </div>
+          </div>
+          <div className="landingContainer">
+            <div className="landingImage">
+              <FaThumbsOUp style={iconStyle} />
+            </div>
+            <div className="landingText">Enjoy</div>
+            <div class="smallTextt">
               Enjoy your delicious meal at your home, office, or on the go.
-            </span>
+            </div>
           </div>
         </section>
-        <section className="container">
-          <img src={pageHeader} style={pageHeaderStyle} />
-          <div className="textBlock">
-            <h2>CHECK OUT THIS WEEK’S MEALS</h2>
+
+        {/* SECTION 3 */}
+        <section>
+          <div className="secondContainerL">
+            <img
+              alt="list of ingredients"
+              src={pageHeader}
+              style={bottomImageStyle}
+              className="darkerImg2"
+            />
+            <h2 className="textOverImage">CHECK OUT THIS WEEK’S MEALS</h2>
             <Button
               style={{
                 color: 'white',
                 backgroundColor: 'green',
-                marginLeft: '25%',
                 borderRadius: '10px'
               }}
+              className="btnn"
               size="large"
               variant="raised"
               onClick={this.handleShopNowButton}
@@ -155,7 +177,33 @@ export default class LandingPage extends Component {
             </Button>
           </div>
         </section>
-        <section className="Testimonials">
+        {/* SECTION 3 */}
+        <section className="section3Container">
+          <div className="landingFeature">Explore Our Menu</div>
+          <hr />
+          <div className="fb">
+            <h2 className="landingFeatures">Featured Breakfast </h2>
+            {/* <button className="viewAllBtn">VIEW ALL</button> */}
+            <Button
+              style={{
+                color: 'white',
+                backgroundColor: '#7CFC00',
+                borderRadius: '6px',
+                position: 'absolute',
+                right: '8%',
+                marginTop: '3%',
+                fontSize: '25px'
+              }}
+              size="large"
+              variant="raised"
+              onClick={this.handleShopNowButton}
+            >
+              VIEW NOW
+            </Button>
+          </div>
+          <FeaturedBreakfast />
+        </section>
+        {/* <section className="Testimonials">
           <h2 className="titleName">Testimonials</h2>
           <br />
           <div className="allBubbles">
@@ -200,8 +248,8 @@ export default class LandingPage extends Component {
               <FaQuoteRight className="thirdRQuote" />
             </div>
           </div>
-        </section>
-        <section className="container1">
+        </section> */}
+        {/* <section className="container1">
           <img
             src="https://theulsterfry.com/wp-content/uploads/2015/11/food.jpg"
             style={{
@@ -229,7 +277,7 @@ export default class LandingPage extends Component {
           >
             Get Started!
           </Button>
-        </section>
+        </section> */}
         {/* <section className="blog">
           <img src={blog1} alt="customerImage1" style={blogImageStyle} />
           <img src={blog3} alt="customerImage3" style={blogImageStyle} />
@@ -237,8 +285,7 @@ export default class LandingPage extends Component {
 
           <img asrc={blog4} alt="customerImage4" style={blogImageStyle} />
         </section> */}
-
-        <section className="container2">
+        {/* <section className="container2">
           <ReactPlayer
             className="video"
             url="https://www.facebook.com/Spartanperformancemeals/videos/2545833955641018/"
@@ -249,7 +296,7 @@ export default class LandingPage extends Component {
           <h3 className="right1">Take a Walk </h3>
           <br />
           <h3 className="right2">To Our Kitchen</h3>
-        </section>
+        </section> */}
       </div>
     );
   }

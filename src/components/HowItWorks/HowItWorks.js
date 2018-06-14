@@ -1,19 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import mealsBgg from './mealsBgg.jpeg';
-// import mealsBg from './mealsBg.jpeg';
-import HIW from './HIW.jpg';
 import './HowItWorks.css';
-
-import plan from './plan.jpg';
-import shoppingg from './shoppingg.jpeg';
-import cookingg from './cookingg.jpeg';
-import delivery from './delivery.jpeg';
-
 import ingredients from './ingredients.jpg';
-
-import ReactPlayer from 'react-player';
-import { Carousel } from 'react-responsive-carousel';
 
 export default class HowItWorks extends Component {
   constructor(props) {
@@ -21,25 +9,15 @@ export default class HowItWorks extends Component {
 
     //SET INITIAL STATE BELOW:
     this.state = {};
-
     //BIND METHODS BELOW:
   }
 
   render() {
-    const bannerStyle = {
-      color: 'white',
-      backgroundColor: 'red',
-      textAlign: 'center',
-      padding: '1.5%',
-      fontWeight: 'bold',
-      fontSize: '22px'
-    };
     const mealsBgStyle = {
       height: '90vh',
       width: '90%',
       marginLeft: '5%'
     };
-
     const tagStyle = {
       backgroundColor: 'black',
       width: '45%',
@@ -53,8 +31,6 @@ export default class HowItWorks extends Component {
       textAlign: 'center',
       padding: '1%'
     };
-    //Section 2
-
     const buttonStyle = {
       fontSize: '20px',
       position: 'absolute',
@@ -69,25 +45,9 @@ export default class HowItWorks extends Component {
       textTransform: 'uppercase',
       cursor: 'pointer'
     };
-
-    const imageStyle = {
-      height: '15%',
-      width: '15%',
-      marginLeft: '7%'
-    };
-    const shopImageStyle = {
-      height: '250px',
-      width: '15%',
-      marginLeft: '7%'
-    };
-    const cookImageStyle = {
-      height: '200px',
-      width: '20%',
-      marginLeft: '7%',
-      marginTop: '7%'
-    };
+    //Section 2
     const bottomImageStyle = {
-      height: '90vh',
+      height: '65vh',
       width: '90%',
       opacity: '1.5',
       marginLeft: '5%'
@@ -101,19 +61,8 @@ export default class HowItWorks extends Component {
       fontSize: '40px',
       zIndex: '1'
     };
-    const textStyle = {
-      position: 'absolute',
-      top: '383%',
-      left: '10%',
-      color: 'white',
-      fontSize: '20px',
-      fontWeight: 'bold',
-      fontStyle: 'oblique'
-    };
-
     return (
       <div>
-        {/* <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div> */}
         {/* SECTION 1 */}
         <section>
           <img
@@ -132,8 +81,7 @@ export default class HowItWorks extends Component {
           </button>
         </section>
         <br />
-
-        {/* TESTING CODES */}
+        {/* SECTION 2 */}
         {/* PART 1 */}
         <section>
           {/* <hr /> */}
@@ -195,29 +143,21 @@ export default class HowItWorks extends Component {
             </div>
           </div>
         </section>
-        {/* <div className="videoBg">
-          <h3>Step Inside Our Kitchen</h3>
-
-          <ReactPlayer
-            className="video"
-            url="https://www.facebook.com/Spartanperformancemeals/videos/2545833955641018/"
-            playing={false}
-          />
-        </div> */}
         {/* SECTION 3 */}
-        <div className="module">
+        <div className="imageWrapper">
           <img
             alt="list of ingredients"
             src={ingredients}
             style={bottomImageStyle}
+            className="darkerImg"
           />
-          <div>
-            <h1>We Use Fresh and Healthy Ingredients</h1>
-            <p3>
-              We source ingredients directly from independent producers and
-              deliver our top quality products nationwide.
-            </p3>
-          </div>
+          <h2 className="textOverImage">
+            We Use Fresh and Healthy Ingredients
+          </h2>
+          <p className="smallTextImage">
+            We source ingredients directly from independent producers and
+            deliver our top quality products nationwide.
+          </p>
         </div>
       </div>
     );

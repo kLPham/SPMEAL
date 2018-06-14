@@ -9,6 +9,7 @@ import FullMenu from './components/Meals/FullMenu/FullMenu';
 import SignatureMeals from './components/Meals/SignatureMeals/SignatureMeals';
 import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
 import ByLB from './components/Meals/ByLB/ByLB';
+import FeaturedBreakfast from './components/Meals/FeaturedBreakfast/FeaturedBreakfast';
 import Meals from './components/Meals/Meals';
 import MealsDetails from './components/Meals/MealsDetails/MealsDetails';
 
@@ -29,10 +30,13 @@ export default (
           <Switch>
             {/* <Route path="/Meals/Details/:meals_id" component={MealsDetails} /> */}
             <Route path="/Meals/FullMenu" component={FullMenu} />
-
             <Route path="/Meals/SignatureMeals" component={SignatureMeals} />
             <Route path="/Meals/CustomMeals" component={CustomMeals} />
             <Route path="/Meals/ByLB" component={ByLB} />
+            <Route
+              path="/Meals/FeaturedBreakfast"
+              component={FeaturedBreakfast}
+            />
           </Switch>
         </Meals>
       )}

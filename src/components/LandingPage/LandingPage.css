@@ -207,3 +207,97 @@
   margin-top: 5%;
   padding-top: 2.5%;
 }
+
+/* TESTING CODES */
+.landingHiw {
+  font-family: Times, Georgia, serif;
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 50px;
+  margin-top: 4%;
+}
+.landingContainer {
+  /* margin-top: 5%; */
+  margin-bottom: 5%;
+  width: 150px;
+  margin-left: 8%;
+  margin-right: 5%;
+  float: left;
+}
+.landingImage {
+  margin-top: -10%;
+  width: 150px;
+  height: 200px;
+  float: left;
+}
+.darkerImg2 {
+  filter: brightness(75%);
+}
+.landingText {
+  text-align: center;
+  font-weight: 900;
+  font-size: 30px;
+  font-family: Times, Georgia, serif;
+}
+.smallTextt {
+  padding-top: 10%;
+  text-align: center;
+  font-family: Times, Georgia, serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: rgb(78, 76, 76);
+}
+
+.secondContainerL .btnn {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.secondContainerL {
+  position: relative;
+  width: 100%;
+}
+
+/* SECTION 3 */
+.section3Container {
+  /* background-color: gainsboro; */
+  background-color: white;
+  height: 90vh;
+  width: 100%;
+}
+.landingFeature {
+  font-family: Times, Georgia, serif;
+  font-size: 65px;
+  line-height: 50px;
+  margin-top: 4%;
+  text-align: center;
+}
+.fb {
+  display: flex;
+  justify-content: space-around;
+}
+.landingFeatures {
+  font-family: Times, Georgia, serif;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 50px;
+  margin-top: 3%;
+  text-align: center;
+}
+.viewAllBtn {
+  background-color: green;
+  color: white;
+  font-size: 20px;
+  padding-top: -4%;
+  padding-bottom: -4%;
+
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 10px;
+}

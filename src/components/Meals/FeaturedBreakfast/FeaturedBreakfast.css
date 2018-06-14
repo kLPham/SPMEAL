@@ -1,0 +1,18 @@
+.fbContent {
+  padding-top: 5%;
+  height: 150vh;
+  width: 95%;
+  overflow: auto;
+}
+.price {
+  padding-top: 2%;
+  padding-right: 3%;
+  padding-left: 3%;
+  height: 30px;
+  width: 50px;
+  background-color: #7cfc00;
+  color: black;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
