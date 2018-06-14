@@ -23,12 +23,10 @@ export default class FeaturedBreakfast extends Component {
   render() {
     const allMeals = this.state.displayMeals.map(featuredBreakfast => {
       const style = {
-        // height: '15%',
         width: '20%',
         float: 'left',
         position: 'relative',
         textAlign: 'center',
-        // marginRight: '1%',
         marginBottom: '2%',
         marginLeft: '5%'
       };
@@ -40,37 +38,27 @@ export default class FeaturedBreakfast extends Component {
       return (
         <div>
           <Paper zDepth={3} style={style}>
-            <div>
-              <Paper>
-                <div key={featuredBreakfast.id}>
-                  <div>
-                    <Link to={`/Meals/Details/${featuredBreakfast.meals_id}`}>
-                      <img
-                        style={imageStyle}
-                        alt="image_url"
-                        src={featuredBreakfast.image_url}
-                        // className="fbimg"
-                      />
-                      <p className="price">${featuredBreakfast.price}</p>
-                    </Link>
-                  </div>
-                  <div>
-                    <p>{featuredBreakfast.description}</p>
-                  </div>
-                </div>
-              </Paper>
+            <div key={featuredBreakfast.id}>
+              <div>
+                <Link to={`/Meals/Details/${featuredBreakfast.meals_id}`}>
+                  <img
+                    style={imageStyle}
+                    alt="image_url"
+                    src={featuredBreakfast.image_url}
+                    // className="fbimg"
+                  />
+                  <p className="price">${featuredBreakfast.price}</p>
+                </Link>
+              </div>
+              <div>
+                <p>{featuredBreakfast.description}</p>
+              </div>
             </div>
           </Paper>
         </div>
       );
     });
 
-    return (
-      <div>
-        <div>
-          <div className="fbContent">{allMeals} </div>
-        </div>
-      </div>
-    );
+    return <div className="fbContent">{allMeals} </div>;
   }
 }

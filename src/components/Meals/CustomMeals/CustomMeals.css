@@ -14,3 +14,11 @@
   height: 100%;
   margin-top: 10%;
 }
+.fbContent {
+  padding-top: 5%;
+  height: 500px;
+  width: 100%;
+  overflow: auto;
+  margin-bottom: -1vh;
+  background-color: #faf7f7;
+}

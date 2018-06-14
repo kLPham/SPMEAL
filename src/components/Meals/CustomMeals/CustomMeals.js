@@ -22,39 +22,55 @@ export default class CustomMeals extends Component {
   }
   render() {
     const styles = {
-      height: '20%',
-      maxHeight: 400,
-      overflow: 'auto',
-      width: '14%',
-      // flexDirection: 'row',
+      width: '20%',
+      float: 'left',
       position: 'relative',
-      display: 'flex',
-      // alignSelf: 'stretch',
       textAlign: 'center',
-      flexWrap: 'wrap',
-      height: '400px',
-      alignContent: 'spaceBetween'
+      marginBottom: '5%',
+      marginLeft: '10%',
+      marginRight: '1%'
     };
+    const imageStyle = {
+      marginTop: '5%',
+      height: '100%',
+      width: '100%'
+    };
+    // const styles = {
+    //   height: '20%',
+    //   maxHeight: 400,
+    //   overflow: 'auto',
+    //   width: '14%',
+    //   // flexDirection: 'row',
+    //   position: 'relative',
+    //   display: 'flex',
+    //   // alignSelf: 'stretch',
+    //   textAlign: 'center',
+    //   flexWrap: 'wrap',
+    //   height: '400px',
+    //   alignContent: 'spaceBetween'
+    // };
     const addCustomeMealStyles = {
       height: '70%',
-      maxHeight: 400,
-      width: '13%',
+      // maxHeight: 400,
+      width: '20%',
       float: 'left',
       position: 'static',
       textAlign: 'center',
       marginTop: '2%',
-      marginLeft: '2%',
-      marginRight: '10%'
+      marginLeft: '10%',
+      marginRight: '10%',
+      paddingLeft: '2%'
     };
-    const imageStyle = {
-      marginTop: '5%',
-      height: '250px',
-      width: '100%'
-    };
+    // const imageStyle = {
+    //   marginTop: '5%',
+    //   height: '250px',
+    //   width: '100%'
+    // };
     const buttonStyle = {
       backgroundColor: '#9ACD32',
       color: 'white',
-      marginTop: '105%',
+      marginRight: '9.5%',
+      marginTop: '87%',
       height: '50px',
       width: '200px',
       fontSize: '20px',
@@ -86,18 +102,16 @@ export default class CustomMeals extends Component {
 
     return (
       <div>
-        <div className="Content">
+        <div className="fbContent">
+          {allMeals}
           <Paper zDepth={3} style={addCustomeMealStyles}>
             <div className="bg">
-              {' '}
+              <br />
               <button style={buttonStyle}>
                 <FaPlusCircle />Custom order
               </button>
             </div>{' '}
           </Paper>
-          <hr />
-          <hr />
-          {allMeals}{' '}
         </div>
       </div>
     );

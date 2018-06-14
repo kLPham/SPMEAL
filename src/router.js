@@ -10,6 +10,7 @@ import SignatureMeals from './components/Meals/SignatureMeals/SignatureMeals';
 import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
 import ByLB from './components/Meals/ByLB/ByLB';
 import FeaturedBreakfast from './components/Meals/FeaturedBreakfast/FeaturedBreakfast';
+import FeaturedLnD from './components/Meals/FeaturedLnD/FeaturedLnD';
 import Meals from './components/Meals/Meals';
 import MealsDetails from './components/Meals/MealsDetails/MealsDetails';
 
@@ -37,6 +38,7 @@ export default (
               path="/Meals/FeaturedBreakfast"
               component={FeaturedBreakfast}
             />
+            <Route path="/Meals/FeaturedLnD" component={FeaturedLnD} />
           </Switch>
         </Meals>
       )}

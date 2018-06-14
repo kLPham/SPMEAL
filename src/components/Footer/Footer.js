@@ -90,7 +90,8 @@ export default class Footer extends Component {
             />
           </span>
         </div>
-        <br color="red" />
+        {/* <br color="red" /> */}
+        {/* <hr /> */}
         <section style={copyRightStyle}>
           <div className="bottomFooter">
             <img src={bottomIcon} style={bottomFooter} />

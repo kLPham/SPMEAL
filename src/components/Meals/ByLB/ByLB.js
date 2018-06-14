@@ -25,17 +25,17 @@ export default class ByLB extends Component {
   }
   render() {
     const style = {
-      height: '15%',
-      width: '12%',
-      float: 'right',
-      position: 'static',
+      width: '20%',
+      float: 'left',
+      position: 'relative',
       textAlign: 'center',
-      marginRight: '2%',
-      marginBottom: '2%'
+      marginBottom: '5%',
+      marginLeft: '10%',
+      marginRight: '1%'
     };
     const imageStyle = {
       marginTop: '5%',
-      height: '250px',
+      height: '100%',
       width: '100%'
     };
     const allMeals = this.state.displayMeals.map(mealsByTheLbs => {
@@ -69,7 +69,7 @@ export default class ByLB extends Component {
 
     return (
       <div>
-        <div className="Content">
+        <div className="fbContent">
           <hr />
           <hr />
           {allMeals}{' '}

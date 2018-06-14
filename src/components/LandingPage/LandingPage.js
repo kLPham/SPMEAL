@@ -21,6 +21,7 @@ import ReactPlayer from 'react-player';
 
 import MyCarousel from './../MyCarousel/MyCarousel';
 import FeaturedBreakfast from '../Meals/FeaturedBreakfast/FeaturedBreakfast';
+import FeaturedLnD from '../Meals/FeaturedLnD/FeaturedLnD';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -202,6 +203,34 @@ export default class LandingPage extends Component {
             </Button>
           </div>
           <FeaturedBreakfast />
+          {/* //FEATURED LUNCHES & DIBNERS */}
+        </section>
+        {/* SECTION 4 */}
+        <h2 style={{ color: 'black', fontWeight: 'bold' }}>
+          ______________________________________________
+        </h2>
+        <section>
+          <div className="fb">
+            <h2 className="landingFeatures">Featured Lunches & Dinners</h2>
+
+            <Button
+              style={{
+                color: 'white',
+                backgroundColor: '#7CFC00',
+                borderRadius: '6px',
+                position: 'absolute',
+                right: '8%',
+                marginTop: '3%',
+                fontSize: '25px'
+              }}
+              size="large"
+              variant="raised"
+              onClick={this.handleShopNowButton}
+            >
+              VIEW NOW
+            </Button>
+          </div>
+          <FeaturedLnD />
         </section>
         {/* <section className="Testimonials">
           <h2 className="titleName">Testimonials</h2>

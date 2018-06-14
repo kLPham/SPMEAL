@@ -6,3 +6,11 @@
   overflow: auto;
   background-color: #ddd;
 }
+.fbContent {
+  padding-top: 5%;
+  height: 500px;
+  width: 100%;
+  overflow: auto;
+  margin-bottom: -1vh;
+  background-color: #faf7f7;
+}

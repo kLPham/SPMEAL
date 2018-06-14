@@ -1,9 +1,9 @@
 .fbContent {
   padding-top: 5%;
-  /* height: 100vh; */
+  /* height: 150vh; */
   width: 95%;
   /* overflow: auto; */
-  margin-bottom: -100vh;
+  margin-bottom: 5%;
 }
 .price {
   padding-top: 2%;
