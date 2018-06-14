@@ -53,7 +53,8 @@ class Meals extends Component {
     };
     const tabStyle = {
       backgroundColor: 'black',
-      color: 'red'
+      color: 'white',
+      fontWeight: 900
     };
 
     return (

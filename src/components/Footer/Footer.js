@@ -81,7 +81,9 @@ export default class Footer extends Component {
             </p1>
             <br />
             <br />
-            <p1 className="size">921 Redbud blvd ste 200 Mckinney Tx, 75069</p1>
+            <p1 className="size">
+              400 N Central Expressway Ste 102 McKinney, Texas
+            </p1>
             <SocialIcons
               urls={urls}
               style={iconsStyle}

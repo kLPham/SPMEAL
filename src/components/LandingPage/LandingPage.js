@@ -241,9 +241,30 @@ export default class LandingPage extends Component {
           <img
             alt="image of a plate"
             src="https://balance.bistromd.com/Skins/Balance/Images/Balance/bg2.jpg"
+            style={{ height: '90%', width: '100%' }}
           />
+          <Button
+            className="centered"
+            style={{
+              backgroundColor: 'orange',
+              color: 'white',
+              paddingBottom: '6%',
+              paddingTop: '2%',
+              textAlign: 'center',
+              fontSize: '35px',
+              textTransform: 'uppercase',
+              cursor: 'pointer'
+            }}
+            size="large"
+            variant="raised"
+            onClick={this.handleShopNowButton}
+          >
+            Get Started!
+          </Button>
         </section>
-        {/* <section className="Testimonials">
+
+        {/* SECTION 6 */}
+        <section className="Testimonials">
           <h2 className="titleName">Testimonials</h2>
           <br />
           <div className="allBubbles">
@@ -288,36 +309,8 @@ export default class LandingPage extends Component {
               <FaQuoteRight className="thirdRQuote" />
             </div>
           </div>
-        </section> */}
-        {/* <section className="container1">
-          <img
-            src="https://theulsterfry.com/wp-content/uploads/2015/11/food.jpg"
-            style={{
-              backgroundPosition: 'center',
-              height: '100%',
-              width: '100%',
-              backgroundColor: 'gray'
-            }}
-          />
-          <Button
-            className="centered"
-            style={{
-              backgroundColor: 'orange',
-              color: 'white',
-              paddingBottom: '6%',
-              paddingTop: '2%',
-              textAlign: 'center',
-              fontSize: '35px',
-              textTransform: 'uppercase',
-              cursor: 'pointer'
-            }}
-            size="large"
-            variant="raised"
-            onClick={this.handleShopNowButton}
-          >
-            Get Started!
-          </Button>
-        </section> */}
+        </section>
+
         {/* <section className="blog">
           <img src={blog1} alt="customerImage1" style={blogImageStyle} />
           <img src={blog3} alt="customerImage3" style={blogImageStyle} />
@@ -325,7 +318,11 @@ export default class LandingPage extends Component {
 
           <img asrc={blog4} alt="customerImage4" style={blogImageStyle} />
         </section> */}
-        {/* <section className="container2">
+
+        <h2 style={{ color: 'black', fontWeight: 'bold' }}>
+          ______________________________________________________________________________________________________
+        </h2>
+        <section className="container2">
           <ReactPlayer
             className="video"
             url="https://www.facebook.com/Spartanperformancemeals/videos/2545833955641018/"
@@ -336,7 +333,7 @@ export default class LandingPage extends Component {
           <h3 className="right1">Take a Walk </h3>
           <br />
           <h3 className="right2">To Our Kitchen</h3>
-        </section> */}
+        </section>
       </div>
     );
   }

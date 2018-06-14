@@ -150,7 +150,11 @@ export default class Header extends Component {
                 <MenuItem value={3} primaryText="FAQ" label="FAQ" />
               </a>
               <a href="/Contact" className="menuStyle">
-                <MenuItem value={4} primaryText="contact" label="CONTACT" />
+                <MenuItem
+                  value={4}
+                  primaryText="contact"
+                  label="CUSTOMER SERVICE"
+                />
               </a>
             </DropDownMenu>
             {/* MENU DROPDOWN BELOW */}

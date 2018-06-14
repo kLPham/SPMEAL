@@ -1,11 +1,3 @@
-.Content {
-  margin-left: 6%;
-  margin-right: 6%;
-  height: 300px;
-  width: 70%;
-  overflow: auto;
-  background-color: #ddd;
-}
 .fbContent {
   padding-top: 5%;
   height: 500px;

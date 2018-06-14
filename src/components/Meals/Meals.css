@@ -10,9 +10,16 @@
   /* this makes the text stay in one line  */
 }
 .meals:hover h4 {
-  color: red;
+  /* color: red;
   text-decoration-line: underline;
-  background-color: lightgrey;
+  background-color: lightgrey; */
+  background: #f2f2f2;
+  color: #111;
+  border-style: solid;
+  border-color: #111;
+  border-width: 2px;
+  border-radius: 5px;
+  transition: all 0.5s ease;
 }
 .sideBar {
   background-color: #f5f5f5;
@@ -41,8 +48,15 @@
   cursor: pointer;
 }
 .customOrder:hover {
-  background-color: red;
-  color: white;
+  /* background-color: red;
+  color: white; */
+  background: #f2f2f2;
+  color: #111;
+  border-style: solid;
+  border-color: #111;
+  border-width: 2px;
+  border-radius: 5px;
+  transition: all 0.5s ease;
 }
 
 .container {
