@@ -105,7 +105,7 @@ export default class HowItWorks extends Component {
               from our fresh selection of proteins and sides.
             </div>
             <div className="allThreeButtons">
-              <button className="htwButton">See Our Weekly Menu</button>
+              <button className="htwButtons">See Our Weekly Menu</button>
             </div>
           </div>
           {/* PART 2 */}
@@ -122,7 +122,7 @@ export default class HowItWorks extends Component {
               door or a drop-off location of your choice.
             </div>
             <div className="allThreeButtons">
-              <button className="htwButton">See Our Snacks</button>
+              <button className="htwButtons">See Our Snacks</button>
             </div>
           </div>
           {/* PART 3 */}
@@ -139,7 +139,7 @@ export default class HowItWorks extends Component {
               healthy meal without the fuss. Sounds great right? So why wait?
             </div>
             <div className="allThreeButtons">
-              <button className="htwButton">Build A Custom Meal</button>
+              <button className="htwButtons">Build A Custom Meal</button>
             </div>
           </div>
         </section>

@@ -192,7 +192,7 @@ export default class LandingPage extends Component {
                 borderRadius: '6px',
                 position: 'absolute',
                 right: '8%',
-                marginTop: '3%',
+                marginTop: '2%',
                 fontSize: '25px'
               }}
               size="large"
@@ -220,7 +220,7 @@ export default class LandingPage extends Component {
                 borderRadius: '6px',
                 position: 'absolute',
                 right: '8%',
-                marginTop: '3%',
+                marginTop: '2%',
                 fontSize: '25px'
               }}
               size="large"
@@ -231,6 +231,17 @@ export default class LandingPage extends Component {
             </Button>
           </div>
           <FeaturedLnD />
+        </section>
+
+        {/* SECTION 5 */}
+        <section>
+          <div className="landingFeature">
+            Balanced Nutrition for Healthy Living
+          </div>
+          <img
+            alt="image of a plate"
+            src="https://balance.bistromd.com/Skins/Balance/Images/Balance/bg2.jpg"
+          />
         </section>
         {/* <section className="Testimonials">
           <h2 className="titleName">Testimonials</h2>

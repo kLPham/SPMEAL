@@ -33,7 +33,7 @@ export default class FeaturedLnD extends Component {
         textAlign: 'center',
         // marginRight: '1%',
         marginBottom: '2%',
-        marginLeft: '5%'
+        marginLeft: '4%'
       };
       const imageStyle = {
         height: '100%',
