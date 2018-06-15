@@ -4,5 +4,7 @@
   width: 100%;
   overflow: auto;
   margin-bottom: -1vh;
+  margin-left: 2.5%;
+  /* margin-bottom: 2%; */
   background-color: #faf7f7;
 }

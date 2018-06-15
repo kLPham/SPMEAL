@@ -35,7 +35,7 @@ export default class FullMenu extends Component {
       position: 'relative',
       textAlign: 'center',
       marginBottom: '5%',
-      marginLeft: '10%',
+      marginLeft: '3.5%',
       marginRight: '1%'
     };
     const imageStyle = {

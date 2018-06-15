@@ -46,19 +46,18 @@ export default class FeaturedLnD extends Component {
             <div>
               <Paper>
                 <div key={featuredLnD.id}>
+                  <Link to={`/Meals/Details/${featuredLnD.meals_id}`}>
+                    <img
+                      style={imageStyle}
+                      alt="image_url"
+                      src={featuredLnD.image_url}
+                      // className="fbimg"
+                    />
+                  </Link>
+
                   <div>
-                    <Link to={`/Meals/Details/${featuredLnD.meals_id}`}>
-                      <img
-                        style={imageStyle}
-                        alt="image_url"
-                        src={featuredLnD.image_url}
-                        // className="fbimg"
-                      />
-                      <p className="price">${featuredLnD.price}</p>
-                    </Link>
-                  </div>
-                  <div>
-                    <p>{featuredLnD.description}</p>
+                    <p>{featuredLnD.meals_name}</p>
+                    <p>{featuredLnD.price}</p>
                   </div>
                 </div>
               </Paper>

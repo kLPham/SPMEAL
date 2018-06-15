@@ -11,6 +11,7 @@ import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
 import ByLB from './components/Meals/ByLB/ByLB';
 import FeaturedBreakfast from './components/Meals/FeaturedBreakfast/FeaturedBreakfast';
 import FeaturedLnD from './components/Meals/FeaturedLnD/FeaturedLnD';
+import Dessert from './components/Meals/Dessert/Dessert';
 import Meals from './components/Meals/Meals';
 import MealsDetails from './components/Meals/MealsDetails/MealsDetails';
 
@@ -39,6 +40,7 @@ export default (
               component={FeaturedBreakfast}
             />
             <Route path="/Meals/FeaturedLnD" component={FeaturedLnD} />
+            <Route path="/Meals/Dessert" component={Dessert} />
           </Switch>
         </Meals>
       )}

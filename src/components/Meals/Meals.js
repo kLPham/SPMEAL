@@ -72,8 +72,37 @@ class Meals extends Component {
               </h2>
             </Tab>
 
+            {/* TESTING ITEMS */}
             <Tab
-              label="Spartan Signature Meals"
+              label="Breakfast"
+              value="/Meals/FeaturedBreakfast"
+              style={tabStyle}
+            >
+              <h2 style={styles.headline}>
+                {' '}
+                Breakfast<FaCutlery style={cutleryStyle} />
+              </h2>
+            </Tab>
+
+            <Tab
+              label="Lunch & Dinner"
+              value="/Meals/FeaturedLnD"
+              style={tabStyle}
+            >
+              <h2 style={styles.headline}>
+                {' '}
+                Lunch & Dinner<FaCutlery style={cutleryStyle} />
+              </h2>
+            </Tab>
+            {/* TESTING ITEMS ENDS */}
+            <Tab label="By the LB" value="/Meals/ByLB" style={tabStyle}>
+              {' '}
+              <h2 style={styles.headline}>
+                By the LB<FaCutlery style={cutleryStyle} />
+              </h2>{' '}
+            </Tab>
+            <Tab
+              label="Signature Meals"
               value="/Meals/SignatureMeals"
               style={tabStyle}
             >
@@ -82,20 +111,26 @@ class Meals extends Component {
                 Signature Meals<FaCutlery style={cutleryStyle} />
               </h2>
             </Tab>
-            <Tab label="Spartan By the LB" value="/Meals/ByLB" style={tabStyle}>
+            {/* <Tab label="Spartan By the LB" value="/Meals/ByLB" style={tabStyle}>
               {' '}
               <h2 style={styles.headline}>
                 By the LB<FaCutlery style={cutleryStyle} />
               </h2>{' '}
-            </Tab>
+            </Tab> */}
             <Tab
-              label="Spartan Custom Meals"
+              label="Custom Meals"
               value="/Meals/CustomMeals"
               style={tabStyle}
             >
               <h2 style={styles.headline}>
                 Custom Meals<FaCutlery style={cutleryStyle} />
               </h2>{' '}
+            </Tab>
+            {/* TESTING DESSERTS */}
+            <Tab label="Dessert" value="/Meals/Dessert" style={tabStyle}>
+              <h2 style={styles.headline}>
+                Dessert<FaCutlery style={cutleryStyle} />
+              </h2>
             </Tab>
           </Tabs>
         </div>

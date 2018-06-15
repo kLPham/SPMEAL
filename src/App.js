@@ -25,7 +25,7 @@ class App extends Component {
         <div>
           <Header />
           {router}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </MuiThemeProvider>
     );

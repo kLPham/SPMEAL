@@ -39,19 +39,17 @@ export default class FeaturedBreakfast extends Component {
         <div>
           <Paper zDepth={3} style={style}>
             <div key={featuredBreakfast.id}>
+              <Link to={`/Meals/Details/${featuredBreakfast.meals_id}`}>
+                <img
+                  style={imageStyle}
+                  alt="image_url"
+                  src={featuredBreakfast.image_url}
+                  // className="fbimg"
+                />
+              </Link>
               <div>
-                <Link to={`/Meals/Details/${featuredBreakfast.meals_id}`}>
-                  <img
-                    style={imageStyle}
-                    alt="image_url"
-                    src={featuredBreakfast.image_url}
-                    // className="fbimg"
-                  />
-                  <p className="price">${featuredBreakfast.price}</p>
-                </Link>
-              </div>
-              <div>
-                <p>{featuredBreakfast.description}</p>
+                <p>{featuredBreakfast.meals_name}</p>
+                <p>{featuredBreakfast.price}</p>
               </div>
             </div>
           </Paper>
@@ -59,6 +57,12 @@ export default class FeaturedBreakfast extends Component {
       );
     });
 
-    return <div className="fbContent">{allMeals} </div>;
+    return (
+      <div className="fbContent">
+        {' '}
+        <hr />
+        {allMeals}
+      </div>
+    );
   }
 }
