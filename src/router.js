@@ -17,6 +17,7 @@ import MealsDetails from './components/Meals/MealsDetails/MealsDetails';
 
 import HowItWorks from './components/HowItWorks/HowItWorks';
 import FAQ from './components/Contact/FAQ/FAQ';
+import StoreLocator from './components/Contact/StoreLocator/StoreLocator';
 //SETTING UP ROUTES:
 export default (
   <Switch>
@@ -47,5 +48,6 @@ export default (
     />
     <Route path="/HowItWorks" component={HowItWorks} />
     <Route path="/Support/FAQ" component={FAQ} />
+    <Route path="/Support/StoreLocator" component={StoreLocator} />
   </Switch>
 );

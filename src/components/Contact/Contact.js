@@ -73,14 +73,6 @@ export default class Contact extends Component {
           </button>
         </div>
 
-        {/* SECTION 3 */}
-        {/* <section>
-          <h2 style={{ fontWeight: 900, fontSize: '45px' }}>
-            Meet Our Team Members
-          </h2>
-          <MeetUs />
-        </section> */}
-        {/* SECTION 4 */}
         <div className="contactInfo">
           <div className="contactLeft">
             <h1 style={{ fontSize: '45px', fontWeight: 900 }}>
@@ -104,27 +96,6 @@ export default class Contact extends Component {
             />
           </div>
         </div>
-
-        {/* SECTION 4 */}
-        {/* <section className="teamSection">
-          <h3>Meet Our CEO</h3>
-          <div className="allBio">
-            <div className="ceo">
-              <img src={CEO} alt="our CEO photo" style={imageStyle} />
-              <p2 className="nameStyle">Christian Harrison</p2>
-            </div>
-            <div className="bio">
-              
-              <p2 className="bioo">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                pulvinar elementum iaculis. Quisque vel felis et ligula pharetra
-                facilisis in in ipsum. Sed at sapien eget urna bibendum
-                tincidunt vel eget nibh. Aenean nisi nibh, viverra eget iaculis
-                ac, dictum sit amet enim. In sed nunc sed quam volutpat aliquam.
-              </p2>
-            </div>
-          </div>
-        </section> */}
       </div>
     );
   }

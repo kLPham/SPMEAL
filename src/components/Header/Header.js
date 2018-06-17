@@ -149,7 +149,7 @@ export default class Header extends Component {
               <a href="/Support/FAQ" className="menuStyle">
                 <MenuItem value={3} primaryText="FAQ" label="FAQ" />
               </a>
-              <a href="#" className="menuStyle">
+              <a href="/Support/StoreLocator" className="menuStyle">
                 <MenuItem
                   value={2}
                   label="Store Locator"
