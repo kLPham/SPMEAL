@@ -7,7 +7,11 @@ import Cart from './components/Cart/Cart';
 
 import FullMenu from './components/Meals/FullMenu/FullMenu';
 import SignatureMeals from './components/Meals/SignatureMeals/SignatureMeals';
+
 import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
+import CustomYourMeal from './components/Meals/CustomMeals/CustomYourMeal';
+import CDetails from './components/Meals/CustomMeals/CDetails';
+
 import ByLB from './components/Meals/ByLB/ByLB';
 import FeaturedBreakfast from './components/Meals/FeaturedBreakfast/FeaturedBreakfast';
 import FeaturedLnD from './components/Meals/FeaturedLnD/FeaturedLnD';
@@ -31,10 +35,12 @@ export default (
       render={() => (
         <Meals>
           <Switch>
-            {/* <Route path="/Meals/Details/:meals_id" component={MealsDetails} /> */}
             <Route path="/Meals/FullMenu" component={FullMenu} />
             <Route path="/Meals/SignatureMeals" component={SignatureMeals} />
             <Route path="/Meals/CustomMeals" component={CustomMeals} />
+            <Route path="/Meals/CustomYourMeal" component={CustomYourMeal} />
+            <Route path="/Meals/CDetails/:id" component={CDetails} />
+            {/* <Route path="/Meals/CDetails" component={CDetails} /> */}
             <Route path="/Meals/ByLB" component={ByLB} />
             <Route
               path="/Meals/FeaturedBreakfast"

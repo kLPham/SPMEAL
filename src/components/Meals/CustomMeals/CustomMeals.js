@@ -20,13 +20,18 @@ export default class CustomMeals extends Component {
       console.log('meals data just went through', response);
     });
   }
+  //HANDLE ACTION HERE:
+  handleCustomMealButton = () => {
+    this.setState({ open: true });
+    window.location.href = 'http://localhost:3000/Meals/CustomYourMeal';
+  };
   render() {
     const styles = {
       width: '20%',
       float: 'left',
       position: 'relative',
       textAlign: 'center',
-      marginBottom: '5%',
+
       marginLeft: '3.5%',
       marginRight: '1%'
     };
@@ -35,22 +40,9 @@ export default class CustomMeals extends Component {
       height: '100%',
       width: '100%'
     };
-    // const styles = {
-    //   height: '20%',
-    //   maxHeight: 400,
-    //   overflow: 'auto',
-    //   width: '14%',
-    //   // flexDirection: 'row',
-    //   position: 'relative',
-    //   display: 'flex',
-    //   // alignSelf: 'stretch',
-    //   textAlign: 'center',
-    //   flexWrap: 'wrap',
-    //   height: '400px',
-    //   alignContent: 'spaceBetween'
-    // };
+
     const addCustomeMealStyles = {
-      height: '70%',
+      height: '80%',
       // maxHeight: 400,
       width: '20%',
       float: 'left',
@@ -61,16 +53,13 @@ export default class CustomMeals extends Component {
       marginRight: '10%',
       paddingLeft: '2%'
     };
-    // const imageStyle = {
-    //   marginTop: '5%',
-    //   height: '250px',
-    //   width: '100%'
-    // };
+
     const buttonStyle = {
       backgroundColor: '#9ACD32',
       color: 'white',
       marginRight: '9.5%',
       marginTop: '87%',
+      marginBottom: '10%',
       height: '50px',
       width: '200px',
       fontSize: '20px',
@@ -108,7 +97,7 @@ export default class CustomMeals extends Component {
         <Paper zDepth={3} style={addCustomeMealStyles}>
           <div className="bg">
             <br />
-            <button style={buttonStyle}>
+            <button onClick={this.handleCustomMealButton} style={buttonStyle}>
               <FaPlusCircle />Custom order
             </button>
           </div>{' '}

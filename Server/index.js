@@ -62,6 +62,18 @@ app.get('/api/meal/:meals_id', (req, res, next) => {
     })
     .catch(console.log);
 });
+//TEST CDETAILS
+app.get('/api/Dmeal/:id', (req, res, next) => {
+  console.log('meal id request:', req.params.id);
+  req.app
+    .get('db')
+    .get_CDetails_By_id(req.params.id)
+    .then(response => {
+      console.log(response);
+      res.status(200).json(response);
+    })
+    .catch(console.log);
+});
 /// GET MEAL-TYPE ENDPOINT   //// ~
 app.get('/api/meals/:meals_type', (req, res, next) => {
   console.log('meals_type request:', req.params.meals_type);
