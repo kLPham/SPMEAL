@@ -101,18 +101,18 @@ export default class CustomMeals extends Component {
     });
 
     return (
-      <div>
-        <div className="fbContent">
-          {allMeals}
-          <Paper zDepth={3} style={addCustomeMealStyles}>
-            <div className="bg">
-              <br />
-              <button style={buttonStyle}>
-                <FaPlusCircle />Custom order
-              </button>
-            </div>{' '}
-          </Paper>
-        </div>
+      <div className="fbContent">
+        {' '}
+        <hr />
+        {allMeals}
+        <Paper zDepth={3} style={addCustomeMealStyles}>
+          <div className="bg">
+            <br />
+            <button style={buttonStyle}>
+              <FaPlusCircle />Custom order
+            </button>
+          </div>{' '}
+        </Paper>
       </div>
     );
   }

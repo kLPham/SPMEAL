@@ -27,7 +27,7 @@ export default class FeaturedBreakfast extends Component {
         float: 'left',
         position: 'relative',
         textAlign: 'center',
-        marginBottom: '2%',
+        marginBottom: '5%',
         marginLeft: '4%'
       };
       const imageStyle = {

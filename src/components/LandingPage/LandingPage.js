@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './LandingPage.css';
 import { Link } from 'react-router-dom';
+import Footer from '../Footer/Footer';
 // import topLandingImage from './topLandingImage.jpg';
 import FaLaptop from 'react-icons/lib/fa/laptop';
 import FaTruck from 'react-icons/lib/fa/truck';
@@ -111,6 +112,11 @@ export default class LandingPage extends Component {
           <MyCarousel />
         </section>
         {/* SECTION 2*/}
+
+        <br />
+        <br />
+        <br />
+        <br />
         <section>
           <h2 className="landingHiw">How It Works</h2>
           <h2 style={{ color: 'black', fontWeight: 'bold' }}>
@@ -184,7 +190,7 @@ export default class LandingPage extends Component {
           <hr />
           <div className="fb">
             <h2 className="landingFeatures">Featured Breakfast </h2>
-            {/* <button className="viewAllBtn">VIEW ALL</button> */}
+
             <Button
               style={{
                 color: 'white',
@@ -203,13 +209,15 @@ export default class LandingPage extends Component {
             </Button>
           </div>
           <FeaturedBreakfast />
-          {/* //FEATURED LUNCHES & DIBNERS */}
         </section>
+        <br />
+        <br />
+
         {/* SECTION 4 */}
         <h2 style={{ color: 'black', fontWeight: 'bold' }}>
           ______________________________________________
         </h2>
-        <section>
+        <section className="section3Container">
           <div className="fb">
             <h2 className="landingFeatures">Featured Lunches & Dinners</h2>
 
@@ -232,7 +240,7 @@ export default class LandingPage extends Component {
           </div>
           <FeaturedLnD />
         </section>
-
+        <hr />
         {/* SECTION 5 */}
         <section>
           <div className="landingFeature">
@@ -334,6 +342,7 @@ export default class LandingPage extends Component {
           <br />
           <h3 className="right2">To Our Kitchen</h3>
         </section>
+        <Footer />
       </div>
     );
   }

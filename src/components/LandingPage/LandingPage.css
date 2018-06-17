@@ -271,7 +271,7 @@
 /* SECTION 3 */
 .section3Container {
   background-color: white;
-  /* height: 90vh; */
+  height: 90vh;
   width: 100%;
   /* height: 10%; */
 }

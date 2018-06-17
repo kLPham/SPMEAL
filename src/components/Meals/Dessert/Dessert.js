@@ -59,6 +59,12 @@ export default class Dessert extends Component {
       );
     });
 
-    return <div className="fbContent">{allMeals} </div>;
+    return (
+      <div className="fbContent">
+        {' '}
+        <hr />
+        {allMeals}
+      </div>
+    );
   }
 }

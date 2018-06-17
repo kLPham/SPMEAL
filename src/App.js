@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import router from './router';
-import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 /// MATERIAL UI BELOW ///
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -25,7 +24,6 @@ class App extends Component {
         <div>
           <Header />
           {router}
-          {/* <Footer /> */}
         </div>
       </MuiThemeProvider>
     );

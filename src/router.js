@@ -16,7 +16,7 @@ import Meals from './components/Meals/Meals';
 import MealsDetails from './components/Meals/MealsDetails/MealsDetails';
 
 import HowItWorks from './components/HowItWorks/HowItWorks';
-
+import FAQ from './components/Contact/FAQ/FAQ';
 //SETTING UP ROUTES:
 export default (
   <Switch>
@@ -46,5 +46,6 @@ export default (
       )}
     />
     <Route path="/HowItWorks" component={HowItWorks} />
+    <Route path="/Support/FAQ" component={FAQ} />
   </Switch>
 );

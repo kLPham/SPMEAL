@@ -66,13 +66,10 @@ export default class SignatureMeals extends Component {
     });
 
     return (
-      <div>
-        <div className="fbContent">
-          {' '}
-          <hr />
-          <hr />
-          {allMeals}{' '}
-        </div>
+      <div className="fbContent">
+        {' '}
+        <hr />
+        {allMeals}
       </div>
     );
   }

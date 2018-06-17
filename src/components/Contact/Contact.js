@@ -3,6 +3,7 @@ import './contact.css';
 import FaPhone from 'react-icons/lib/fa/phone';
 import ReactPlayer from 'react-player';
 
+import MeetUs from './MeetUs/MeetUs';
 import CEO from './CEO.jpg';
 
 export default class Contact extends Component {
@@ -73,6 +74,13 @@ export default class Contact extends Component {
         </div>
 
         {/* SECTION 3 */}
+        {/* <section>
+          <h2 style={{ fontWeight: 900, fontSize: '45px' }}>
+            Meet Our Team Members
+          </h2>
+          <MeetUs />
+        </section> */}
+        {/* SECTION 4 */}
         <div className="contactInfo">
           <div className="contactLeft">
             <h1 style={{ fontSize: '45px', fontWeight: 900 }}>

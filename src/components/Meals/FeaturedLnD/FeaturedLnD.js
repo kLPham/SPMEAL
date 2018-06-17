@@ -32,7 +32,7 @@ export default class FeaturedLnD extends Component {
         position: 'relative',
         textAlign: 'center',
         // marginRight: '1%',
-        marginBottom: '2%',
+        marginBottom: '5%',
         marginLeft: '4%'
       };
       const imageStyle = {
@@ -68,8 +68,10 @@ export default class FeaturedLnD extends Component {
     });
 
     return (
-      <div>
-        <div className="fbContent">{allMeals} </div>
+      <div className="fbContent">
+        {' '}
+        <hr />
+        {allMeals}
       </div>
     );
   }

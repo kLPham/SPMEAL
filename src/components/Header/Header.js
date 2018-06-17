@@ -139,21 +139,21 @@ export default class Header extends Component {
               <MenuItem value={1} label="SUPPORT" className="sHeader">
                 {/* <h1/> */}
               </MenuItem>
-              <a href="/Meals/SignatureMeals" className="menuStyle">
-                <MenuItem
-                  value={2}
-                  label="Store Locator"
-                  primaryText="STORE LOCATOR"
-                />
-              </a>
-              <a href="#" className="menuStyle">
-                <MenuItem value={3} primaryText="FAQ" label="FAQ" />
-              </a>
               <a href="/Contact" className="menuStyle">
                 <MenuItem
                   value={4}
                   primaryText="contact"
                   label="CUSTOMER SERVICE"
+                />
+              </a>
+              <a href="/Support/FAQ" className="menuStyle">
+                <MenuItem value={3} primaryText="FAQ" label="FAQ" />
+              </a>
+              <a href="#" className="menuStyle">
+                <MenuItem
+                  value={2}
+                  label="Store Locator"
+                  primaryText="STORE LOCATOR"
                 />
               </a>
             </DropDownMenu>
@@ -176,7 +176,11 @@ export default class Header extends Component {
                   </h1>
                 </MenuItem>
                 <a href="/Meals/FullMenu" className="menuStyle">
-                  <MenuItem value={2} primaryText="Full Menu" label="MENU" />
+                  <MenuItem
+                    value={2}
+                    primaryText="Our Full Menu"
+                    label="MENU"
+                  />
                 </a>
                 <a href="/Meals/SignatureMeals" className="menuStyle">
                   <MenuItem
@@ -189,7 +193,7 @@ export default class Header extends Component {
                   <MenuItem
                     value={4}
                     label="By The Pounds"
-                    primaryText="by the lbs"
+                    primaryText="Items By The Pounds"
                   />
                 </a>
                 <a href="/Meals/CustomMeals" className="menuStyle">
@@ -200,7 +204,10 @@ export default class Header extends Component {
                   />
                 </a>
                 <a href="#" className="menuStyle">
-                  <MenuItem value={6} label="APPAREL" primaryText="APPAREL" />
+                  <MenuItem value={7} label="catering" primaryText="Catering" />
+                </a>
+                <a href="#" className="menuStyle">
+                  <MenuItem value={6} label="APPAREL" primaryText="APPARELS" />
                 </a>
               </DropDownMenu>
             </a>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './HowItWorks.css';
+import Footer from '../Footer/Footer';
 import ingredients from './ingredients.jpg';
 
 export default class HowItWorks extends Component {
@@ -159,6 +160,7 @@ export default class HowItWorks extends Component {
             deliver our top quality products nationwide.
           </p>
         </div>
+        <Footer />
       </div>
     );
   }

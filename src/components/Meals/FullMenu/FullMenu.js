@@ -62,7 +62,7 @@ export default class FullMenu extends Component {
                     style={imageStyle}
                   />
                 </Link>
-                <div>
+                <div style={{ fontWeight: 900 }}>
                   <p>{allMeals.meals_name}</p>
                   <p>${allMeals.price}</p>
                 </div>
