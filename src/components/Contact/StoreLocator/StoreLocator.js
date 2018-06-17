@@ -23,7 +23,7 @@ export default class StoreLocator extends Component {
         </h2>
         <hr />
         <div className="contactInfo" style={{ marginLeft: '3%' }}>
-          <div className="contactLeft">
+          <div className="contactLeft" style={{ fontWeight: 900 }}>
             <p> SPM Headquarters || McKinney, TX </p>
             <p> 1.972.984.0817 </p>
             <p>400 N Central Expressway Ste 102 McKinney, Texas</p>
