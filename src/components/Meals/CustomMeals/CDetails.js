@@ -4,9 +4,14 @@ import axios from 'axios';
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './CustomMeals.css';
+// import ProteinOption from './ProteinOption';
+import ProteinOp from './ProteinsOptions/ProteinOp';
+import Quantity from '../../Quantity/Quantity';
+
 import Option from 'muicss/lib/react/option';
 import Select from 'muicss/lib/react/select';
-import { SocialIcons } from 'react-social-icons';
+// import { SocialIcons } from 'react-social-icons';
+import { Button } from 'semantic-ui-react';
 
 export default class CDetails extends Component {
   constructor(props) {
@@ -14,7 +19,8 @@ export default class CDetails extends Component {
 
     //SET INITIAL STATE HERE
     this.state = {
-      mealsToDisplay: []
+      mealsToDisplay: [],
+      values: []
       //   cart: [],
       //   item: []
     };
@@ -22,6 +28,7 @@ export default class CDetails extends Component {
     //BIND ACTIONS HERE
     // this.handleAddToCart = this.handleAddToCart.bind(this);
   }
+
   //CREATE HANDLE ACTIONS TYPE HERE:
 
   //GET EACH MEAL WITH A MATCHING ID:
@@ -46,50 +53,49 @@ export default class CDetails extends Component {
     //   'https://twitter.com/',
     //   'https://www.pinterest.com/'
     // ];
+    //TESTING DROP DOWN
 
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
       return (
         <div>
-          <p>placeholder here</p>
           <hr />
-          <div key={mealsId.meals_id} className="DContainer">
-            <div>
+          <div key={mealsId.meals_id} className="CDContainer">
+            <div style={{ width: '55%' }}>
               <img
                 alt="image_url"
                 src={mealsId.image_url}
-                style={{ height: '500px', width: '500px' }}
+                style={{ height: '100%', width: '80%' }}
               />
-              <p>{mealsId.description}</p>
+              {/* <p>{mealsId.description}</p> */}
             </div>
-            <br />
-            <div>
-              <p style={{ fontWeight: 900, fontSize: '40px' }}>
-                {mealsId.meals_name}
-              </p>
-              <p style={{ fontWeight: 900, fontSize: '20px', color: 'gray' }}>
-                ${mealsId.price}
-              </p>
-              <br />
-              <p style={{ fontWeight: 900, fontSize: '15px', color: 'gray' }}>
-                Full size meals include: 8oz of protein and 1 cup of each side.{' '}
-              </p>
-              <br />
-              <p style={{ fontWeight: 900, fontSize: '15px', color: 'gray' }}>
-                Half size meals include: 4oz protein and .5 cups of each side.
-              </p>
-              {/* <button
-              style={buttonStyle}
-              onClick={() => this.handleAddToCart(mealsId)}
-            >
-              Add to Cart
-            </button> */}
+            <div style={{ width: '45%' }}>
+              <h2 style={{ fontWeight: 900, fontSize: '45px' }}>Custom Meal</h2>
               <hr />
-              {/* <SocialIcons
-              urls={urls}
-              style={iconsStyle}
-              color="black"
-              className="icons"
-            /> */}
+              <ProteinOp />
+            </div>
+
+            <hr />
+
+            <div
+              style={{
+                marginLeft: '60%',
+                marginTop: '5%'
+                // display: 'flex',
+                // flexDirection: 'row'
+              }}
+            >
+              <Quantity />{' '}
+            </div>
+            <div style={{ marginTop: '8%', marginRight: '9%' }}>
+              {' '}
+              <Button
+                color="youtube"
+                style={{
+                  fontSize: '20px'
+                }}
+              >
+                Add To Cart
+              </Button>
             </div>
           </div>
         </div>
@@ -103,14 +109,33 @@ export default class CDetails extends Component {
 
         <br />
         <br />
-        <Link to="/Meals/CustomYourMeal">
-          <button
+        <Link to="/Meals/CustomizeYourMeal">
+          <Button
+            basic
+            color="grey"
             style={{ marginBottom: '5%', marginLeft: '30%', fontSize: '20px' }}
           >
             {'<<'} BACK TO STEP 1: CHOOSE YOUR PROTEIN
-          </button>
+          </Button>
         </Link>
       </div>
     );
   }
+}
+{
+  /* <button
+              style={buttonStyle}
+              onClick={() => this.handleAddToCart(mealsId)}
+            >
+              Add to Cart
+            </button> */
+}
+// <hr />
+{
+  /* <SocialIcons
+            urls={urls}
+            style={iconsStyle}
+            color="black"
+            className="icons"
+          /> */
 }

@@ -23,7 +23,7 @@ export default class CustomMeals extends Component {
   //HANDLE ACTION HERE:
   handleCustomMealButton = () => {
     this.setState({ open: true });
-    window.location.href = 'http://localhost:3000/Meals/CustomYourMeal';
+    window.location.href = 'http://localhost:3000/Meals/CustomizeYourMeal';
   };
   render() {
     const styles = {

@@ -4,7 +4,7 @@ import axios from 'axios';
 import Paper from 'material-ui/Paper';
 import { Button } from 'semantic-ui-react';
 
-export default class CustomYourMeal extends Component {
+export default class CustomizeYourMeal extends Component {
   constructor(props) {
     super(props);
 
@@ -46,21 +46,22 @@ export default class CustomYourMeal extends Component {
         <div>
           <Paper zDepth={1} style={styles}>
             <div key={proteins.id}>
-              <Link to={`/Meals/CDetails/${proteins.id}`}>
-                <img
-                  style={imageStyle}
-                  alt="image_url"
-                  src={proteins.image_url}
-                />
-              </Link>
+              <img
+                style={imageStyle}
+                alt="image_url"
+                src={proteins.image_url}
+              />
+
               <div>
                 {/* <p>{proteins.meals_name}</p> */}
                 <p style={{ fontWeight: 900, color: 'gray', fontSize: '15px' }}>
                   ${proteins.price}
                 </p>
-                <Button basic color="red" onClick={this.handleShopNowButton}>
-                  Select
-                </Button>
+                <Link to={`/Meals/CDetails/${proteins.id}`}>
+                  <Button basic color="red">
+                    Select
+                  </Button>
+                </Link>
               </div>
               <br />
             </div>

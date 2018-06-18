@@ -3,7 +3,6 @@ import './contact.css';
 import FaPhone from 'react-icons/lib/fa/phone';
 import ReactPlayer from 'react-player';
 
-import MeetUs from './MeetUs/MeetUs';
 import CEO from './CEO.jpg';
 
 export default class Contact extends Component {

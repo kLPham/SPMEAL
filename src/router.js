@@ -9,7 +9,7 @@ import FullMenu from './components/Meals/FullMenu/FullMenu';
 import SignatureMeals from './components/Meals/SignatureMeals/SignatureMeals';
 
 import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
-import CustomYourMeal from './components/Meals/CustomMeals/CustomYourMeal';
+import CustomizeYourMeal from './components/Meals/CustomMeals/CustomizeYourMeal';
 import CDetails from './components/Meals/CustomMeals/CDetails';
 
 import ByLB from './components/Meals/ByLB/ByLB';
@@ -38,7 +38,10 @@ export default (
             <Route path="/Meals/FullMenu" component={FullMenu} />
             <Route path="/Meals/SignatureMeals" component={SignatureMeals} />
             <Route path="/Meals/CustomMeals" component={CustomMeals} />
-            <Route path="/Meals/CustomYourMeal" component={CustomYourMeal} />
+            <Route
+              path="/Meals/CustomizeYourMeal"
+              component={CustomizeYourMeal}
+            />
             <Route path="/Meals/CDetails/:id" component={CDetails} />
             {/* <Route path="/Meals/CDetails" component={CDetails} /> */}
             <Route path="/Meals/ByLB" component={ByLB} />

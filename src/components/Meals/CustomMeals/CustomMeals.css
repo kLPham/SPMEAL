@@ -22,13 +22,29 @@
   margin-bottom: -1vh;
   background-color: #faf7f7;
 }
-.DContainer {
+/* STYLING CDetails Component */
+.CDContainer {
   display: flex;
   flex-direction: row;
-  margin-top: 2%;
+  margin-top: 3.5%;
   margin-bottom: 5%;
-  margin-left: 13%;
-  margin-right: 13%;
+  margin-left: 9%;
+  margin-right: 9%;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.proteinStyle {
+  height: 40%;
+  width: 100%;
+  font-size: 10px;
+}
+.insideProtein {
+  width: 700px;
+  height: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  padding-bottom: 20%;
+  font-size: 1px;
 }
