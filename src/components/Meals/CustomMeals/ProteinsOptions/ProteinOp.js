@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './ProteinOp.css';
 
+// import { Segment } from 'semantic-ui-react';
+
 import 'react-select/dist/react-select.css';
 import 'react-virtualized/styles.css';
 import 'react-virtualized-select/styles.css';
 import VirtualizedSelect from 'react-virtualized-select';
+
+// import List from './List';
 
 export default class ProteinOp extends Component {
   constructor(props) {
@@ -13,18 +17,23 @@ export default class ProteinOp extends Component {
 
     //INITIAL STATE BELOW:
     this.state = {
-      selectValue1: [],
-      selectValue2: [],
-      selectValue3: [],
-      selectValue4: [],
-      selectValue5: []
+      selectedValue: []
+      // selectValue1: [],
+      // selectValue2: [],
+      // selectValue3: [],
+      // selectValue4: [],
+      // selectValue5: []
     };
+    //BIND METHODS BELOW:
+    // this.handleValueChange = this.handleValueChange.bind(this);
   }
   //HANDLE ACTION BELOW:
-  //   handleValueChange = (event, index, values) => this.setState({ values });
+  handleValueChange(e) {
+    this.setState({ selectedValue: e.target.value });
+  }
 
   render() {
-    // const { values } = this.state;
+    // const { selectValue1 } = this.state;
     const proteinSize = [
       {
         value: '3oz',
@@ -147,6 +156,7 @@ export default class ProteinOp extends Component {
         label: '8oz [+$2.00 USD]'
       }
     ];
+
     return (
       <div>
         <div>
@@ -164,7 +174,6 @@ export default class ProteinOp extends Component {
           />
         </div>
         <br />
-
         <div>
           <h2
             className="proteinsContainer"

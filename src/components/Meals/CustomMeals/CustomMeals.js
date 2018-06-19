@@ -31,7 +31,6 @@ export default class CustomMeals extends Component {
       float: 'left',
       position: 'relative',
       textAlign: 'center',
-
       marginLeft: '3.5%',
       marginRight: '1%'
     };
@@ -42,15 +41,14 @@ export default class CustomMeals extends Component {
     };
 
     const addCustomeMealStyles = {
-      height: '80%',
+      height: '82%',
       // maxHeight: 400,
       width: '20%',
-      float: 'left',
+      float: 'right',
       position: 'static',
       textAlign: 'center',
-      marginTop: '2%',
-      marginLeft: '10%',
-      marginRight: '10%',
+      marginTop: '.2%',
+      marginRight: '3%',
       paddingLeft: '2%'
     };
 
@@ -58,13 +56,14 @@ export default class CustomMeals extends Component {
       backgroundColor: '#9ACD32',
       color: 'white',
       marginRight: '9.5%',
-      marginTop: '87%',
+      marginTop: '98%',
       marginBottom: '10%',
-      height: '50px',
-      width: '200px',
+      height: '55px',
+      width: '211px',
       fontSize: '20px',
       borderRadius: '25px',
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      cursor: 'pointer'
     };
     const allMeals = this.state.displayMeals.map(customMeals => {
       return (

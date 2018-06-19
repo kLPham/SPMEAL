@@ -15,6 +15,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
 
+import { Icon } from 'semantic-ui-react';
 import Trash from 'react-icons/lib/fa/trash';
 
 export default class Cart extends Component {
@@ -104,12 +105,14 @@ export default class Cart extends Component {
       width: '35%',
       backgroundColor: 'red',
       color: 'white',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      display: 'flex',
+      padding: '2%'
     };
     const subTotalStyle = {
       marginLeft: '15%',
       fontSize: '25px',
-      backgroundColor: 'gainsboro',
+
       paddingTop: '8%',
       marginBottom: '10%',
       color: 'black',
@@ -136,8 +139,11 @@ export default class Cart extends Component {
                 style={removeButton}
                 onClick={() => this.handleCartRemove(eachMeal)}
               >
+                {' '}
+                <Icon name="trash alternate" />
                 Remove
               </button>
+
               <hr />
             </div>
           );

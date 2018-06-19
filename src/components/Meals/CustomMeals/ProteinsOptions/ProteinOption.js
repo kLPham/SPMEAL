@@ -2,16 +2,6 @@ import React, { Component } from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-const proteins = [
-  'Chicken Breast',
-  'Ground Turkey',
-  'Wild Caught Atlantic Salmon',
-  'Angus Steak',
-  'Ground Beef',
-  'Wild Atlantic Caught Cod',
-  'Tilapia'
-];
-
 export default class ProteinOption extends Component {
   state = {
     values: []

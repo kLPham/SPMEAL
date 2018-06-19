@@ -95,7 +95,6 @@ export default class Header extends Component {
             <Link to="/" className="span">
               <span
                 style={{ color: this.handleColorChange(0) }}
-                // { background: this.handleBackgroundColorChange(0) },
                 onClick={() => {
                   this.handleToggleChange(0);
                 }}
@@ -169,7 +168,6 @@ export default class Header extends Component {
                   this.handleToggleChange(4);
                 }}
               >
-                {/* <FaCutlery style={cuteryStyle} /> */}
                 <MenuItem value={1} label="SHOP">
                   <h1 style={labelStyle} className="centerMeal">
                     <FaCutlery style={cuteryStyle} />Our Menu
@@ -203,15 +201,17 @@ export default class Header extends Component {
                     primaryText="Custom Meals"
                   />
                 </a>
+                <a href="/Meals/Dessert" className="menuStyle">
+                  <MenuItem value={6} label="Dessert" primaryText="Dessert" />
+                </a>
                 <a href="#" className="menuStyle">
                   <MenuItem value={7} label="catering" primaryText="Catering" />
                 </a>
                 <a href="#" className="menuStyle">
-                  <MenuItem value={6} label="APPAREL" primaryText="APPARELS" />
+                  <MenuItem value={8} label="APPAREL" primaryText="APPARELS" />
                 </a>
               </DropDownMenu>
             </a>
-            {/* <ReactTooltip place="bottom" type="success" effect="float" /> */}
           </div>
           <Cart style={cartStyle} />
         </div>

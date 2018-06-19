@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Option from 'muicss/lib/react/option';
 import Select from 'muicss/lib/react/select';
 import { SocialIcons } from 'react-social-icons';
+import { Icon, Button } from 'semantic-ui-react';
 
 export default class MealsDetails extends Component {
   constructor(props) {
@@ -135,7 +136,23 @@ export default class MealsDetails extends Component {
     return (
       <div>
         <Link to="/Meals/FullMenu">
-          <h2>{'<<'} Back To Menu</h2>
+          <Button
+            basic
+            color="black"
+            style={{
+              marginTop: '5%',
+              marginLeft: '5%',
+              fontSize: '20px',
+              fontWeight: 900
+            }}
+          >
+            <Icon
+              name="long arrow alternate left"
+              size="large"
+              style={{ display: 'flex' }}
+            />
+            BACK TO MENU
+          </Button>
         </Link>
         <div> {displayMealDetails}</div>
         <br />

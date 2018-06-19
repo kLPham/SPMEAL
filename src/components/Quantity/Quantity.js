@@ -48,8 +48,8 @@ class Quantity extends Component {
               fontSize: '20px',
               fontWeight: 900,
               color: 'grey',
-              paddingTop: '10px',
-              paddingBottom: '10px'
+              paddingTop: '14px',
+              paddingBottom: '14px'
             }}
             onClick={this.DecreaseItem}
           >
@@ -58,7 +58,7 @@ class Quantity extends Component {
 
           <button
             style={{
-              paddingLeft: '30px',
+              paddingLeft: '40px',
               paddingRight: '30px',
               fontSize: '20px',
               fontWeight: 900,
