@@ -224,16 +224,17 @@
   /* margin-top: 5%; */
   margin-bottom: 5%;
   width: 150px;
-  margin-left: 8%;
-  margin-right: 5%;
+  margin-left: 7.1%;
+  margin-right: 4.5%;
   float: left;
 }
-.landingImage {
+/* .landingImage {
   margin-top: -10%;
   width: 150px;
   height: 200px;
   float: left;
-}
+  margin-right: 5%;
+} */
 .darkerImg2 {
   filter: brightness(75%);
 }
@@ -242,14 +243,17 @@
   font-weight: 900;
   font-size: 30px;
   font-family: Times, Georgia, serif;
+  margin-left: 66%;
 }
 .smallTextt {
   padding-top: 10%;
   text-align: center;
   font-family: Times, Georgia, serif;
   font-size: 19px;
+  width: 100%;
   font-weight: 500;
   color: rgb(78, 76, 76);
+  margin-left: 42%;
 }
 
 .secondContainerL .btnn {

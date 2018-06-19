@@ -80,7 +80,7 @@ export default class LandingPage extends Component {
 
     const iconStyle = {
       height: '200px',
-      width: '180px'
+      width: '280px'
     };
     const leftLetterStyle = {
       fontSize: '30px',
@@ -119,19 +119,29 @@ export default class LandingPage extends Component {
         <br />
         <section>
           <h2 className="landingHiw">How It Works</h2>
-          <h2 style={{ color: 'black', fontWeight: 'bold' }}>
+          <h2
+            style={{ color: 'black', fontWeight: 'bold', marginBottom: '5%' }}
+          >
             ______________________________________________
           </h2>
           <div className="landingContainer">
-            <div className="landingImage">
-              <FaLaptop style={iconStyle} />
+            <div>
+              {/* <FaLaptop style={iconStyle} /> */}
+              <img
+                src="https://qph.fs.quoracdn.net/main-qimg-6fb0eea9322cd6441369e464be971976-c"
+                style={{ height: '200px', width: '280px', marginRight: '5%' }}
+              />
             </div>
             <div className="landingText">Order</div>
             <div class="smallTextt">Order meals weekly from our website.</div>
           </div>
           <div className="landingContainer">
-            <div className="landingImage">
-              <FaTruck style={iconStyle} className="flip" />
+            <div>
+              {/* <FaTruck style={iconStyle} className="flip" /> */}
+              <img
+                src="https://www.freshnlean.com/wp-content/uploads/2018/06/Healthy-Food-Delivery-Service-is-on-the-Rise.jpg"
+                style={iconStyle}
+              />
             </div>
             <div className="landingText">Deliver</div>
             <div class="smallTextt">
@@ -140,8 +150,12 @@ export default class LandingPage extends Component {
             </div>
           </div>
           <div className="landingContainer">
-            <div className="landingImage">
-              <FaFire style={iconStyle} />
+            <div>
+              <img
+                src="http://i.dailymail.co.uk/i/pix/2014/06/15/article-2658580-0646BB7E000005DC-530_634x426.jpg"
+                style={iconStyle}
+              />
+              {/* <FaFire style={iconStyle} /> */}
             </div>
             <div className="landingText">Heat</div>
             <div class="smallTextt">
@@ -149,8 +163,12 @@ export default class LandingPage extends Component {
             </div>
           </div>
           <div className="landingContainer">
-            <div className="landingImage">
-              <FaThumbsOUp style={iconStyle} />
+            <div>
+              {/* <FaThumbsOUp style={iconStyle} /> */}
+              <img
+                src="https://stpetersburgfoodies.com/wp-content/uploads/2017/01/romantic-dinner.jpg"
+                style={iconStyle}
+              />
             </div>
             <div className="landingText">Enjoy</div>
             <div class="smallTextt">
