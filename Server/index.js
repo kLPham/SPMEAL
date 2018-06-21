@@ -62,18 +62,19 @@ app.get('/api/meal/:meals_id', (req, res, next) => {
     })
     .catch(console.log);
 });
-//TEST CDETAILS
-app.get('/api/Dmeal/:id', (req, res, next) => {
-  console.log('meal id request:', req.params.id);
+// Customize DETAILS
+app.get('/api/customizeMeal/:meals_id', (req, res, next) => {
+  console.log('meal id request:', req.params.meals_id);
   req.app
     .get('db')
-    .get_CDetails_By_id(req.params.id)
+    .get_Customize_Meals_By_id(req.params.meals_id)
     .then(response => {
       console.log(response);
       res.status(200).json(response);
     })
     .catch(console.log);
 });
+
 /// GET MEAL-TYPE ENDPOINT   //// ~
 app.get('/api/meals/:meals_type', (req, res, next) => {
   console.log('meals_type request:', req.params.meals_type);
@@ -88,6 +89,19 @@ app.get('/api/meals/:meals_type', (req, res, next) => {
 });
 
 //////////////////////////////////////////////////////
+//// GET CUSTOMIZE MEALS ENDPOINTS ///
+app.get('/api/customize_meals/:meals_type', (req, res, next) => {
+  console.log('customize meals_type request:', req.params.meals_type);
+  req.app
+    .get('db')
+    .get_Customize_Meals_Type(req.params.meals_type)
+    .then(response => {
+      console.log(response);
+      res.status(200).json(response);
+    })
+    .catch(console.log);
+});
+
 //GET ALL MEALS HERE from database-meals table: :)
 app.get('/api/meals', (req, res, next) => {
   console.log('request for all meals:', req.params.meals);

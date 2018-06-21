@@ -40,15 +40,15 @@ export default class Footer extends Component {
     };
     const copyRightStyle = {
       height: '20px',
-      width: '90%',
+      width: '100%',
       backgroundColor: 'gainsboro',
       color: 'black',
       textAlign: 'left',
       fontSize: '11px',
       fontFamily: 'Raleway, sans-serif;',
       paddingLeft: '5%',
-      paddingTop: '1%',
-      paddingBottom: '1.5%',
+      paddingTop: '4%',
+      paddingBottom: '2%',
       paddingRight: '5%'
     };
 

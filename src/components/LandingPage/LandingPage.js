@@ -34,6 +34,14 @@ export default class LandingPage extends Component {
     this.setState({ open: true });
     window.location.href = 'http://localhost:3000/Meals/FullMenu';
   };
+  handleViewBreakfastButton = () => {
+    this.setState({ open: true });
+    window.location.href = 'http://localhost:3000/Meals/FeaturedBreakfast';
+  };
+  handleViewLnDButton = () => {
+    this.setState({ open: true });
+    window.location.href = 'http://localhost:3000/Meals/FeaturedLnD';
+  };
   render() {
     const bannerStyle = {
       color: 'white',
@@ -216,12 +224,12 @@ export default class LandingPage extends Component {
                 borderRadius: '6px',
                 position: 'absolute',
                 right: '8%',
-                marginTop: '2%',
+                marginTop: '5%',
                 fontSize: '25px'
               }}
               size="large"
               variant="raised"
-              onClick={this.handleShopNowButton}
+              onClick={this.handleViewBreakfastButton}
             >
               VIEW NOW
             </Button>
@@ -246,12 +254,12 @@ export default class LandingPage extends Component {
                 borderRadius: '6px',
                 position: 'absolute',
                 right: '8%',
-                marginTop: '2%',
+                marginTop: '5%',
                 fontSize: '25px'
               }}
               size="large"
               variant="raised"
-              onClick={this.handleShopNowButton}
+              onClick={this.handleViewLnDButton}
             >
               VIEW NOW
             </Button>

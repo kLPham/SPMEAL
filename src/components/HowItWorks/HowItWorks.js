@@ -4,6 +4,8 @@ import './HowItWorks.css';
 import Footer from '../Footer/Footer';
 import ingredients from './ingredients.jpg';
 
+import { Button } from 'semantic-ui-react';
+
 export default class HowItWorks extends Component {
   constructor(props) {
     super(props);
@@ -123,7 +125,10 @@ export default class HowItWorks extends Component {
               door or a drop-off location of your choice.
             </div>
             <div className="allThreeButtons">
-              <button className="htwButtons">See Our Snacks</button>
+              <button className="htwButtons" color="black">
+                See Our Dessert
+                {/* <Link to="/Meals/Dessert">See Our Dessert</Link> */}
+              </button>
             </div>
           </div>
           {/* PART 3 */}
@@ -140,7 +145,10 @@ export default class HowItWorks extends Component {
               healthy meal without the fuss. Sounds great right? So why wait?
             </div>
             <div className="allThreeButtons">
-              <button className="htwButtons">Build A Custom Meal</button>
+              <button className="htwButtons">
+                Build A Custom Meal
+                {/* <Link to="/Meals/CustomizeYourMeal">Build A Custom Meal</Link> */}
+              </button>
             </div>
           </div>
         </section>

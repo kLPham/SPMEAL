@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './ProteinOp.css';
+import axios from 'axios';
 
 // import { Segment } from 'semantic-ui-react';
 
@@ -9,7 +10,7 @@ import 'react-virtualized/styles.css';
 import 'react-virtualized-select/styles.css';
 import VirtualizedSelect from 'react-virtualized-select';
 
-// import List from './List';
+import List from './List';
 
 export default class ProteinOp extends Component {
   constructor(props) {
@@ -17,19 +18,20 @@ export default class ProteinOp extends Component {
 
     //INITIAL STATE BELOW:
     this.state = {
-      selectedValue: []
-      // selectValue1: [],
+      selectedValue: [],
+      selectValue1: []
       // selectValue2: [],
       // selectValue3: [],
       // selectValue4: [],
       // selectValue5: []
     };
     //BIND METHODS BELOW:
-    // this.handleValueChange = this.handleValueChange.bind(this);
+    this.handleValueChange = this.handleValueChange.bind(this);
   }
   //HANDLE ACTION BELOW:
   handleValueChange(e) {
-    this.setState({ selectedValue: e.target.value });
+    this.setState({ selectValue1: e.target.value });
+    console.log('button is being clicked');
   }
 
   render() {
@@ -168,7 +170,11 @@ export default class ProteinOp extends Component {
           </h2>
           <VirtualizedSelect
             options={proteinSize}
-            onChange={selectValue1 => this.setState({ selectValue1 })}
+            // onChange={selectValue1 => this.setState({ selectValue1 })}
+            onChange={selectValue1 => {
+              console.log(selectValue1);
+              this.setState({ selectValue1 });
+            }}
             value={this.state.selectValue1}
             placeholder="-- Choose Protein Size --"
           />
@@ -183,8 +189,15 @@ export default class ProteinOp extends Component {
           </h2>
           <VirtualizedSelect
             options={carb}
-            onChange={selectValue2 => this.setState({ selectValue2 })}
+            ignoreAccents
+            noResultsText="Sorry, we do not carry this item."
+            onChange={selectValue2 => {
+              console.log(selectValue2);
+              this.setState({ selectValue2 });
+            }}
             value={this.state.selectValue2}
+            searchable
+            multi
             placeholder="-- Choose Carb --"
           />
         </div>
@@ -198,7 +211,10 @@ export default class ProteinOp extends Component {
           </h2>
           <VirtualizedSelect
             options={carbSize}
-            onChange={selectValue3 => this.setState({ selectValue3 })}
+            onChange={selectValue3 => {
+              console.log(selectValue3);
+              this.setState({ selectValue3 });
+            }}
             value={this.state.selectValue3}
             placeholder="-- Choose Carb Size --"
           />
@@ -213,8 +229,15 @@ export default class ProteinOp extends Component {
           </h2>
           <VirtualizedSelect
             options={Veggies}
-            onChange={selectValue4 => this.setState({ selectValue4 })}
+            ignoreAccents
+            noResultsText="Sorry, we do not carry this item."
+            onChange={selectValue4 => {
+              console.log(selectValue4);
+              this.setState({ selectValue4 });
+            }}
             value={this.state.selectValue4}
+            searchable
+            multi
             placeholder="-- Choose Veggies --"
           />
         </div>
@@ -228,7 +251,10 @@ export default class ProteinOp extends Component {
           </h2>
           <VirtualizedSelect
             options={VeggieSize}
-            onChange={selectValue5 => this.setState({ selectValue5 })}
+            onChange={selectValue5 => {
+              console.log(selectValue5);
+              this.setState({ selectValue5 });
+            }}
             value={this.state.selectValue5}
             placeholder="-- Choose Veggie Size --"
           />

@@ -10,7 +10,7 @@ import SignatureMeals from './components/Meals/SignatureMeals/SignatureMeals';
 
 import CustomMeals from './components/Meals/CustomMeals/CustomMeals';
 import CustomizeYourMeal from './components/Meals/CustomMeals/CustomizeYourMeal';
-import CDetails from './components/Meals/CustomMeals/CDetails';
+import Details from './components/Meals/CustomMeals/Details';
 
 import ByLB from './components/Meals/ByLB/ByLB';
 import FeaturedBreakfast from './components/Meals/FeaturedBreakfast/FeaturedBreakfast';
@@ -30,6 +30,7 @@ export default (
     <Route path="/Contact" component={Contact} />
     <Route path="/Cart" component={Cart} />
     <Route path="/Meals/Details/:meals_id" component={MealsDetails} />
+    <Route path="/Customize_meals/Details/:meals_id" component={Details} />
     <Route
       path="/Meals"
       render={() => (
@@ -42,7 +43,7 @@ export default (
               path="/Meals/CustomizeYourMeal"
               component={CustomizeYourMeal}
             />
-            <Route path="/Meals/CDetails/:id" component={CDetails} />
+            {/* <Route path="/customize_meals/Details/:id" component={Details} /> */}
             {/* <Route path="/Meals/CDetails" component={CDetails} /> */}
             <Route path="/Meals/ByLB" component={ByLB} />
             <Route

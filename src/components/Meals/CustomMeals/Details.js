@@ -17,7 +17,7 @@ import { Button, Icon } from 'semantic-ui-react';
 import Test from './ProteinsOptions/Test.';
 // import List from './ProteinsOptions/List';
 
-export default class CDetails extends Component {
+export default class Details extends Component {
   constructor(props) {
     super(props);
 
@@ -36,18 +36,17 @@ export default class CDetails extends Component {
     // this.handleValueChange = this.handleValueChange.bind(this);
   }
   //HANDLE ACTION BELOW:
-  // handleValueChange(event) {
-  //   this.setState({ selectedValue: event.target.value });
-  // }
 
   //CREATE HANDLE ACTIONS TYPE HERE:
 
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
-    axios.get(`/api/Dmeal/${this.props.match.params.id}`).then(response => {
-      this.setState({ mealsToDisplay: response.data });
-      console.log(response.data);
-    });
+    axios
+      .get(`/api/customizeMeal/${this.props.match.params.meals_id}`)
+      .then(response => {
+        this.setState({ mealsToDisplay: response.data });
+        console.log(response.data);
+      });
   }
   //POST ITEMS TO CART WHEN ADDED :)
   handleAddToCart(item) {
@@ -72,7 +71,7 @@ export default class CDetails extends Component {
             </div>
             <div style={{ width: '45%' }}>
               <h2 style={{ fontWeight: 900, fontSize: '40px' }}>
-                {mealsId.meals_name}
+                {mealsId.name}
               </h2>
               <p2
                 style={{

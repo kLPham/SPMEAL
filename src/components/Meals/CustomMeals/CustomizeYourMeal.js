@@ -14,16 +14,11 @@ export default class CustomizeYourMeal extends Component {
 
   /// REQUEST FOR DATA OF TYPE OF MEALS HERE ///
   componentDidMount() {
-    axios.get('/api/meals/proteins').then(response => {
+    axios.get('/api/customize_meals/proteins').then(response => {
       this.setState({ displayMeals: response.data });
       console.log('proteins data just went through', response);
     });
   }
-  //Handle
-  //   handleShopNowButton = () => {
-  //     this.setState({ open: true });
-  //     window.location.href = 'http://localhost:3000/Meals/CDetails';
-  //   };
 
   render() {
     const styles = {
@@ -57,7 +52,8 @@ export default class CustomizeYourMeal extends Component {
                 <p style={{ fontWeight: 900, color: 'gray', fontSize: '15px' }}>
                   ${proteins.price}
                 </p>
-                <Link to={`/Meals/CDetails/${proteins.id}`}>
+
+                <Link to={`/Customize_meals/Details/${proteins.meals_id}`}>
                   <Button basic color="red">
                     Select
                   </Button>
