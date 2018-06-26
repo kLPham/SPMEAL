@@ -10,8 +10,6 @@ import 'react-virtualized/styles.css';
 import 'react-virtualized-select/styles.css';
 import VirtualizedSelect from 'react-virtualized-select';
 
-import List from './List';
-
 export default class ProteinOp extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +17,7 @@ export default class ProteinOp extends Component {
     //INITIAL STATE BELOW:
     this.state = {
       selectedValue: [],
-      selectValue1: []
+      selected: []
       // selectValue2: [],
       // selectValue3: [],
       // selectValue4: [],
@@ -32,6 +30,14 @@ export default class ProteinOp extends Component {
   handleValueChange(e) {
     this.setState({ selectValue1: e.target.value });
     console.log('button is being clicked');
+  }
+  handleChange(e) {
+    // assuming you initialized the default state to hold selected values
+    this.setState({
+      selected: [].slice.call(e.target.selectedOptions).map(o => {
+        return o.value;
+      })
+    });
   }
 
   render() {
@@ -171,11 +177,11 @@ export default class ProteinOp extends Component {
           <VirtualizedSelect
             options={proteinSize}
             // onChange={selectValue1 => this.setState({ selectValue1 })}
-            onChange={selectValue1 => {
-              console.log(selectValue1);
-              this.setState({ selectValue1 });
+            onChange={selected => {
+              console.log(selected);
+              this.setState({ selected });
             }}
-            value={this.state.selectValue1}
+            value={this.state.selected}
             placeholder="-- Choose Protein Size --"
           />
         </div>

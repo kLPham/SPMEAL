@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
@@ -43,8 +43,6 @@ export default (
               path="/Meals/CustomizeYourMeal"
               component={CustomizeYourMeal}
             />
-            {/* <Route path="/customize_meals/Details/:id" component={Details} /> */}
-            {/* <Route path="/Meals/CDetails" component={CDetails} /> */}
             <Route path="/Meals/ByLB" component={ByLB} />
             <Route
               path="/Meals/FeaturedBreakfast"

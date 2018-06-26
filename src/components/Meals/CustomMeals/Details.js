@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+
+//test
+// import NumList from './NumList';
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './CustomMeals.css';
@@ -13,9 +16,9 @@ import Select from 'muicss/lib/react/select';
 // import { SocialIcons } from 'react-social-icons';
 import { Button, Icon } from 'semantic-ui-react';
 
-//TEST IMPORT HERE:
-import Test from './ProteinsOptions/Test.';
-// import List from './ProteinsOptions/List';
+//TESTING MAINSELECT HERE:
+import MainSelect from './Select/MainSelect';
+import SelectTwo from './Select/SelectTwo';
 
 export default class Details extends Component {
   constructor(props) {
@@ -24,16 +27,15 @@ export default class Details extends Component {
     //SET INITIAL STATE HERE
     this.state = {
       mealsToDisplay: [],
-      values: [],
-      selectedValue: '',
-      selectedValues: []
+      values: []
+      // selectedValue: '',
+      // selectedValues: []
       //   cart: [],
       // items: []
     };
 
     //BIND ACTIONS HERE
     // this.handleAddToCart = this.handleAddToCart.bind(this);
-    // this.handleValueChange = this.handleValueChange.bind(this);
   }
   //HANDLE ACTION BELOW:
 
@@ -68,6 +70,7 @@ export default class Details extends Component {
                 src={mealsId.image_url}
                 style={{ height: '100%', width: '80%' }}
               />
+              {/* <Numlist /> */}
             </div>
             <div style={{ width: '45%' }}>
               <h2 style={{ fontWeight: 900, fontSize: '40px' }}>
@@ -84,20 +87,23 @@ export default class Details extends Component {
                 ${mealsId.price}
               </p2>
               <hr />
-              <ProteinOp />
+              {/* <ProteinOp /> */}
+              <MainSelect />
             </div>
-            {/* TESTING BELOW: */}
+
             <div
               style={{
                 marginTop: '2%',
                 marginLeft: '55%',
-                height: '20vh',
-                width: '30%',
+                height: '16vh',
+                width: '50%',
                 border: 'solid 2px grey'
               }}
             >
-              {/* <List items={this.state.items} /> */}
-              <Test />
+              <SelectTwo />
+              <Button color="green" style={{ marginLeft: '45%' }}>
+                Save
+              </Button>
             </div>
             <div
               style={{

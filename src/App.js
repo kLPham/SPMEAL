@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import router from './router';
+// import { connect } from 'react-redux';
+
 import Header from './components/Header/Header';
+
 // import './semantic/dist/semantic.min.css';
 /// MATERIAL UI BELOW ///
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
