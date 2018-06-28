@@ -20,6 +20,9 @@ import { Button, Icon } from 'semantic-ui-react';
 import MainSelect from './Select/MainSelect';
 import SelectTwo from './Select/SelectTwo';
 
+//WORKING IN PROGRESS TEST:
+import EstimatedCTotal from './EstimatedCTotal';
+
 export default class Details extends Component {
   constructor(props) {
     super(props);
@@ -27,19 +30,31 @@ export default class Details extends Component {
     //SET INITIAL STATE HERE
     this.state = {
       mealsToDisplay: [],
-      values: []
-      // selectedValue: '',
-      // selectedValues: []
+      values: [],
+      valueList: {
+        proteinSize: 'Potein Size',
+        Carb: 'Carb',
+        CarbSize: 'Carb Size',
+        Veggies: 'Veggies',
+        VeggieSize: 'Veggie Size'
+      },
+      estimatedTotal: 0
       //   cart: [],
       // items: []
     };
 
     //BIND ACTIONS HERE
     // this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   //HANDLE ACTION BELOW:
 
   //CREATE HANDLE ACTIONS TYPE HERE:
+  handleSubmit(event) {
+    alert('Custom meals has been submitted to: ' + this.state.valueList);
+    this.setState({ valueList: this.state.valueList });
+    event.preventDefault();
+  }
 
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
@@ -87,7 +102,7 @@ export default class Details extends Component {
                 ${mealsId.price}
               </p2>
               <hr />
-              {/* <ProteinOp /> */}
+
               <MainSelect />
             </div>
 
@@ -95,14 +110,28 @@ export default class Details extends Component {
               style={{
                 marginTop: '2%',
                 marginLeft: '55%',
-                height: '16vh',
+                height: '23vh',
                 width: '50%',
                 border: 'solid 2px grey'
               }}
             >
               <SelectTwo />
-              <Button color="green" style={{ marginLeft: '45%' }}>
-                Save
+              <hr />
+
+              <EstimatedCTotal
+                price={`${this.state.estimatedTotal.toFixed(2)} + ${
+                  mealsId.price
+                }`}
+              />
+              {/* NEED TO WORK ON THIS: */}
+              <br />
+              <Button
+                onClick={this.handleSubmit}
+                value={this.state.valueList}
+                color="green"
+                style={{ marginLeft: '45%' }}
+              >
+                Submit
               </Button>
             </div>
             <div

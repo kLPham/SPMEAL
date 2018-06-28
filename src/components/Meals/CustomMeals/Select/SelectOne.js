@@ -11,6 +11,26 @@ import {
 } from '../../../../ducks/reducer';
 
 class SelectOne extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      price: 0
+      // addExtra: {
+      //   'price-1': 1,
+      //   'price-2': 2,
+      //   'price-3': 3,
+      //   'price-4': 4,
+      //   'price-5': 5
+      // }
+    };
+  }
+  //handle event here:
+  // addExtraPrice(price) {
+  //   this.state.addExtra['price-' + price] = price;
+  //   this.setState({ addExtra: this.state.addExtra });
+  // }
+
   render() {
     const {
       updateProteinSize,
@@ -19,7 +39,7 @@ class SelectOne extends Component {
       updateVeggies,
       updateVeggieSize
     } = this.props;
-
+    // var total = this.state.addExtra[0] + this.state.addExtra[1];
     return (
       <div>
         <div style={{ fontWeight: 900 }}>
@@ -39,13 +59,14 @@ class SelectOne extends Component {
             <option type="text" value="4oz">
               4oz
             </option>
-            <option type="text" value="5oz [+$1.00 USD]">
+            <option type="text" value={`$${1}`}>
               5oz [+$1.00 USD]
+              {/* {this.state.addExtra[0]} */}
             </option>
-            <option type="text" value="6oz [+$2.00 USD]">
+            <option type="text" value="6oz [+$2.00 USD]" price={2.0}>
               6oz [+$2.00 USD]
             </option>
-            <option type="text" value="7oz [+$3.00 USD]">
+            <option type="text" value="7oz [+$3.00 USD]" price="$3.00 USD">
               7oz [+$3.00 USD]
             </option>
             <option type="text" value="8oz  [+$4.00 USD]">
@@ -126,7 +147,11 @@ class SelectOne extends Component {
             <option value="5oz [+$0.75 USD]">5oz [+$0.75 USD]</option>
             <option value="6oz [+$1.00 USD]">6oz [+$1.00 USD]</option>
             <option value="7oz [+$1.50 USD]">7oz [+$1.50 USD]</option>
-            <option value="8oz [+$2.00 USD]">8oz [+$2.00 USD]</option>
+            <option value="8oz [+$2.00 USD]">
+              8oz [+$2.00 USD]
+              {/* {this.state.addExtra[1]} */}
+            </option>
+            {/* <h2>{total}</h2> */}
           </select>
         </div>
       </div>

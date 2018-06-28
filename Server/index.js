@@ -74,6 +74,17 @@ app.get('/api/customizeMeal/:meals_id', (req, res, next) => {
     })
     .catch(console.log);
 });
+// app.get('/api/customizeMeal/Details/:meals_id', (req, res, next) => {
+//   console.log('meal id request:', req.params.meals_id);
+//   req.app
+//     .get('db')
+//     .get_Customize_Meals_By_id(req.params.meals_id)
+//     .then(response => {
+//       console.log(response);
+//       res.status(200).json(response);
+//     })
+//     .catch(console.log);
+// });
 
 /// GET MEAL-TYPE ENDPOINT   //// ~
 app.get('/api/meals/:meals_type', (req, res, next) => {

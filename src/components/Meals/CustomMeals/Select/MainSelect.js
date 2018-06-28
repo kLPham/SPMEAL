@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import './App.css';
 // import router from './router';
 import SelectOne from './SelectOne';
 import { connect } from 'react-redux';
