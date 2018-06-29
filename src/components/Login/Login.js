@@ -7,6 +7,7 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
+      // userid: []
       userid: null
       // loggedIn: false
     };
@@ -14,10 +15,13 @@ export default class Login extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
   }
-  //event handler here:
+  // event handler here:
   handleLogin(val) {
     window.location.href = 'http://localhost:3001/login';
   }
+  // handleLogin() {
+  //   window.location.href = '/login';
+  // }
 
   handleLogout() {
     window.location.href = 'http://localhost:3001/logout';
@@ -29,6 +33,12 @@ export default class Login extends Component {
       else this.setState({ userid: null });
     });
   }
+  // componentDidMount() {
+  //   axios.get('/api/me').then(response => {
+  //     if (!response.data) this.setState({ userid: null });
+  //     else this.setState({ userid: response.data.id });
+  //   });
+  // }
 
   render() {
     return (
@@ -40,6 +50,13 @@ export default class Login extends Component {
         >
           {this.state.userid ? 'Logout' : 'Login'}
         </Button>
+        {/* <a onClick={this.handleLogin}>
+          {this.state.userid.length !== 0 ? (
+            <a href="/api/logout"> Logout </a>
+          ) : (
+            'Login'
+          )}
+        </a> */}
       </div>
     );
   }

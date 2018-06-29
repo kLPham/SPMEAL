@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import LandingPage from './components/LandingPage/LandingPage';
+
+import Login from './components/Login/Login';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Cart from './components/Cart/Cart';
@@ -26,6 +28,7 @@ import StoreLocator from './components/Contact/StoreLocator/StoreLocator';
 export default (
   <Switch>
     <Route exact path="/" component={LandingPage} />
+    <Route path="/login" component={Login} />
     <Route path="/About" component={About} />
     <Route path="/Contact" component={Contact} />
     <Route path="/Cart" component={Cart} />
