@@ -12,6 +12,8 @@ import FaCutlery from 'react-icons/lib/fa/cutlery';
 import storeIcon from './storeIcon.jpg';
 import Cart from '../Cart/Cart';
 
+import Login from '../Login/Login';
+
 // import ReactTooltip from 'react-tooltip';
 
 export default class Header extends Component {
@@ -213,6 +215,8 @@ export default class Header extends Component {
               </DropDownMenu>
             </a>
           </div>
+          <Login />
+          <br />
           <Cart style={cartStyle} />
         </div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>

@@ -1,0 +1,1 @@
+SELECT username, id, display_name, email FROM users WHERE id = $1
