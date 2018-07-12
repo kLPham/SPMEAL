@@ -13,7 +13,8 @@ class Quantity extends Component {
     this.state = {
       clicks: 0,
       show: true,
-      selectItem: []
+      quantity: 0
+      // selectItem: []
     };
   }
   //LIFE CYCLE METHOD HERE:
@@ -51,12 +52,14 @@ class Quantity extends Component {
   // }
   IncrementItem = () => {
     this.setState({
-      clicks: this.state.clicks + 1
+      clicks: this.state.clicks + 1,
+      quantity: this.state.quantity + 1
     });
   };
   DecreaseItem = () => {
     this.setState({
-      clicks: this.state.clicks - 1
+      clicks: this.state.clicks - 1,
+      quantity: this.state.quantity - 1
     });
   };
   ToggleClick = () => {
@@ -71,6 +74,8 @@ class Quantity extends Component {
     //   this.props.Veggies +
     //   this.props.VeggieSize;
     // console.log(this.SelectedItems);
+
+    console.log(this.props.qty);
     return (
       <div>
         <h3
@@ -82,6 +87,7 @@ class Quantity extends Component {
           }}
         >
           Quantity
+          <p>{this.props.qty}</p>
         </h3>
         <div className="QContainer">
           {/* <button onClick={this.DecreaseItem}>-</button> */}
@@ -111,6 +117,7 @@ class Quantity extends Component {
             }}
           >
             {this.state.show ? <h2>{this.state.clicks}</h2> : ''}
+            {/* {this.props.qty} */}
           </button>
           <button
             style={{
@@ -121,32 +128,29 @@ class Quantity extends Component {
               color: 'grey'
             }}
             onClick={this.IncrementItem}
+
             // onSelect={{ selectedItem }}
           >
             +
           </button>
         </div>
-        {/* <button onClick={this.ToggleClick}>   
-        </button> */}
-        {/* {this.state.show ? 'Hide number' : 'Show number'} */}
-        {/* {this.state.show ? <h2>{this.state.clicks}</h2> : ''} */}
       </div>
     );
   }
 }
 
-// export default Quantity;
+export default Quantity;
 
-function mapStateToProps(state) {
-  const { ProteinSize, Carb, CarbSize, Veggies, VeggieSize } = state;
+// function mapStateToProps(state) {
+//   const { ProteinSize, Carb, CarbSize, Veggies, VeggieSize } = state;
 
-  return {
-    ProteinSize,
-    Carb,
-    CarbSize,
-    Veggies,
-    VeggieSize
-  };
-}
+//   return {
+//     ProteinSize,
+//     Carb,
+//     CarbSize,
+//     Veggies,
+//     VeggieSize
+//   };
+// }
 
-export default connect(mapStateToProps)(Quantity);
+// export default connect(mapStateToProps)(Quantity);

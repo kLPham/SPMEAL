@@ -34,23 +34,17 @@ export default class Details extends Component {
       estimatedTotal: 2,
       cart: [],
       clicks: 0
-      // quantity: {},
+      // quantity: 0,
       // item: []
     };
 
     //BIND ACTIONS HERE
     this.handleAddToCart = this.handleAddToCart.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     // this.handleAddedQuantity = this.handleAddedQuantity.bind(this);
   }
   //HANDLE ACTION BELOW:
 
   //CREATE HANDLE ACTIONS TYPE HERE:
-  handleSubmit(event) {
-    alert('Custom meals has been submitted to: ' + this.state.valueList);
-    // this.setState({ valueList: this.state.valueList });
-    event.preventDefault();
-  }
 
   //POST ITEMS TO CART WHEN ADDED :)
   handleAddToCart(item) {
@@ -62,6 +56,15 @@ export default class Details extends Component {
       .catch(console.log);
     alert('Your Custom meal is being added to shopping cart!');
   }
+
+  handleAddedQuantity(quantity) {
+    axios.post('/api/cart', { quantity: quantity }).then(response =>
+      this.setState({
+        click: this.state.click + 1 ? quantity : this.state.quantity + 1,
+        quantity: this.state.quantity - 1
+      })
+    );
+  }
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
     axios
@@ -72,13 +75,9 @@ export default class Details extends Component {
       });
   }
 
-  // handleAddedQuantity(item) {
-  //   item.push(item => item || 0 + 1, item => item || 0 - 1);
-  // }
-
   render() {
-    console.log(this.state.cart);
-    // console.log(this.state.quantity.length);
+    // console.log(this.state.cart);
+    console.log(this.handleAddedQuantity);
 
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
       return (
@@ -124,7 +123,8 @@ export default class Details extends Component {
                 marginTop: '2%'
               }}
             >
-              <Quantity qty={this.state.clicks} />
+              <Quantity qty={this.handleAddedQuantity} />
+              {/* qty={this.handleAddedQuantity(mealsId)} */}
               {/* TESTING HERE: */}
             </div>
             {/* {this.state.quantity.push(this.handleAddedQuantity(mealsId))}*/}

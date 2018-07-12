@@ -20,13 +20,15 @@ export default class SearchBar extends Component {
     return (
       <div style={{ display: 'flex', marginRight: '6%', marginTop: '.5%' }}>
         <input
-          placeholder="search meals"
+          placeholder="search..."
           value={this.state.typing}
           onChange={event => this.setState({ typing: event.target.value })}
 
           // console.log(event.target.value)
-        />
-
+        >
+          {/* The Value is: {this.state.typing} */}
+        </input>
+        Value:{this.state.typing}
         {/* <button onClick={() => this.handleButtonChange}>Search</button> */}
       </div>
     );

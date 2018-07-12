@@ -19,7 +19,7 @@ import { Icon } from 'semantic-ui-react';
 import Trash from 'react-icons/lib/fa/trash';
 
 import TaxesFees from './TaxesFees/TaxesFees';
-// import EstimatedTotal from './EstimatedTotal/EstimatedTotal';
+import EstimatedTotal from './EstimatedTotal/EstimatedTotal';
 
 export default class Cart extends Component {
   constructor(props) {
@@ -28,9 +28,7 @@ export default class Cart extends Component {
     this.state = {
       open: false,
       cart: [],
-      taxes: 0.087,
-      // estimatedTotal: 0,
-      totalPrice: 9
+      taxes: 0.087
     };
 
     //BIND METHODS HERE:
@@ -49,21 +47,6 @@ export default class Cart extends Component {
       this.setState({ total: response.data[0].sum });
     });
   }
-
-  //CALCULATING TAXES, SUBTOTAL.
-  // componentDidMount = () => {
-  //   this.setState(
-  //     {
-  //       taxes: (this.state.totalPrice + this.state.PickupSavings) * 0.0875
-  //     },
-  //     function() {
-  //       this.setState({
-  //         estimatedTotal:
-  //           this.state.totalPrice + this.state.PickupSavings + this.state.taxes
-  //       });
-  //     }
-  //   );
-  // };
   //HANDLE ACTION BELOW:
   handleCartToggle() {
     this.setState({ open: !this.state.open });
@@ -128,6 +111,13 @@ export default class Cart extends Component {
       display: 'flex',
       padding: '2%'
     };
+    const calculating =
+      this.state.cart.length &&
+      this.state.cart.reduce((total, eachMeal) => {
+        var priceTotal = eachMeal.price * eachMeal.quantity;
+        total += priceTotal;
+        return total;
+      }, 0);
 
     let displayInCart =
       this.state.cart.length > 0 ? (
@@ -142,6 +132,7 @@ export default class Cart extends Component {
                 />
                 <p>{eachMeal.meals_name}</p>
                 <p>QTY:{eachMeal.quantity}</p>
+
                 <p>PRICE: ${eachMeal.price}</p>
                 {/* <p>taxes: ${eachMeal.taxes}</p> */}
               </div>
@@ -178,7 +169,7 @@ export default class Cart extends Component {
           <MuiThemeProvider muiTheme={muiTheme}>
             <AppBar
               title="Shopping Cart"
-              width={70}
+              width={90}
               style={{ backgroundColor: 'black' }}
             />
           </MuiThemeProvider>
@@ -186,32 +177,14 @@ export default class Cart extends Component {
           <div> {displayInCart}</div>
 
           <div>
+            <p>Subtotal: ${calculating.toFixed(2)}</p>
             <p>
-              {' '}
-              <TaxesFees taxes={this.state.taxes.toFixed(2)} />
+              <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
             </p>
-            {/* Taxes & Fees: .087% */}
-            <p>
-              {/* Subtotal: ${this.state.cart.length &&
-                this.state.cart.reduce((total, eachMeal) => {
-                  var priceTotal = eachMeal.price * eachMeal.quantity;
-                  total += priceTotal;
-                  return total;
-                }, 0)}.00 */}
-              Subtotal: ${this.state.cart.length &&
-                this.state.cart.reduce((total, eachMeal) => {
-                  // var prices = eachMeal.price * eachMeal.taxes;
-                  var priceTotal = eachMeal.price * eachMeal.quantity;
-                  var prices = eachMeal.price * eachMeal.taxes;
-                  // var subTotal = priceTotal + eachMeal.taxes;
-                  total += priceTotal + prices;
-                  return total;
-                }, 0)}
-            </p>
-            {/* <TaxesFees taxes={this.state.taxes.toFixed(2)} /> */}
-
             <hr />
-            {/* <EstimatedTotal price={this.state.estimatedTotal.toFixed(2)} /> */}
+            <EstimatedTotal
+              price={this.state.taxes.toFixed(2) * calculating + calculating}
+            />
           </div>
           <button>
             <MenuItem style={checkOutButtonStyle} onClick={this.handleClose}>

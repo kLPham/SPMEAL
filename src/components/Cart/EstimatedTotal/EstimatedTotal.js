@@ -10,21 +10,9 @@ export default class EstimatedTotal extends Component {
   render() {
     return (
       <div>
-        <h2
-          style={{
-            textAlign: 'left',
-            fontWeight: 900,
-            fontSize: '25px'
-          }}
-        >
-          Est. Total:{' '}
+        <h2 style={{ fontWeight: 900, color: 'green' }}>
+          Total: {`$${this.props.price}`}
         </h2>
-        <p2
-          style={{
-            marginLeft: '53%',
-            marginTop: '-3%'
-          }}
-        >{`$${this.props.price}`}</p2>
       </div>
     );
   }
