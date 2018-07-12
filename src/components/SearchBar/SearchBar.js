@@ -6,33 +6,28 @@ export default class SearchBar extends Component {
     super(props);
 
     this.state = {
-      searchInput: '',
-      searchButtonItem: ''
+      typing: ''
     };
 
     //BIND ALL ACTION CHANGE:
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handButtonChange = this.handleButtonChange.bind(this);
   }
-  handleInputChange(searchInput) {
-    this.setState({ searchInput });
-  }
-  handleButtonChange(searchButtonItem) {
-    window.location.href = 'http://localhost:3000/Shop';
-  }
+  //EVENT HANDLER BELOW:
 
+  // handleButtonChange() {
+  //   this.setState({ typing: this.state.typing });
+  // }
   render() {
     return (
-      <div className="search">
+      <div style={{ display: 'flex', marginRight: '6%', marginTop: '.5%' }}>
         <input
-          className="topInput"
-          onChange={this.handleInputChange}
-          placeholder="Search meals"
-          type="text"
+          placeholder="search meals"
+          value={this.state.typing}
+          onChange={event => this.setState({ typing: event.target.value })}
+
+          // console.log(event.target.value)
         />
-        <button className="submitButton" onClick={this.handleButtonChange}>
-          Submit
-        </button>
+
+        {/* <button onClick={() => this.handleButtonChange}>Search</button> */}
       </div>
     );
   }

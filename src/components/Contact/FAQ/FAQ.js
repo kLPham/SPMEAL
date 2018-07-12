@@ -15,6 +15,7 @@ export default class FAQ extends Component {
 
   render() {
     const { activeIndex } = this.state;
+    const FAQ = 'Frequently Asked Questions';
 
     return (
       <div>
@@ -30,9 +31,7 @@ export default class FAQ extends Component {
               marginTop: '5%'
             }}
           />
-          <h2 style={{ fontWeight: 900, fontSize: '50px' }}>
-            Frequently Asked Questions
-          </h2>
+          <h2 style={{ fontWeight: 900, fontSize: '50px' }}>{FAQ}</h2>
           <br />
         </section>
         {/* SECTION 2 */}

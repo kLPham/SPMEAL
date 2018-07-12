@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
 import './Quantity.css';
 
 import { Button } from 'semantic-ui-react';
@@ -11,22 +12,65 @@ class Quantity extends Component {
     //INITIAL STATE HERE:
     this.state = {
       clicks: 0,
-      show: true
+      show: true,
+      selectItem: []
     };
   }
   //LIFE CYCLE METHOD HERE:
   //HANDLE ACTION EVENT HERE:
+  // SelectedItems(event) {
+  //   this.setState({
+  //     selectItem:
+  //       this.props.ProteinSize +
+  //       this.props.Carb +
+  //       this.props.CarbSize +
+  //       this.props.Veggies +
+  //       this.props.VeggieSize,
+  //     selectItem: event.target.value
+  //   });
+  // }
+  // RemoveSelectedItems(event) {
+  //   this.setState({
+  //     selectItem:
+  //       this.props.ProteinSize +
+  //       this.state.clicks -
+  //       1 +
+  //       this.props.Carb +
+  //       this.state.clicks -
+  //       1 +
+  //       this.props.CarbSize +
+  //       this.state.clicks -
+  //       1 +
+  //       this.props.Veggies +
+  //       this.state.clicks -
+  //       1 +
+  //       this.props.VeggieSize +
+  //       this.state.clicks -
+  //       1
+  //   });
+  // }
   IncrementItem = () => {
-    this.setState({ clicks: this.state.clicks + 1 });
+    this.setState({
+      clicks: this.state.clicks + 1
+    });
   };
   DecreaseItem = () => {
-    this.setState({ clicks: this.state.clicks - 1 });
+    this.setState({
+      clicks: this.state.clicks - 1
+    });
   };
   ToggleClick = () => {
     this.setState({ show: !this.state.show });
   };
 
   render() {
+    // const selectedItem =
+    //   this.props.ProteinSize +
+    //   this.props.Carb +
+    //   this.props.CarbSize +
+    //   this.props.Veggies +
+    //   this.props.VeggieSize;
+    // console.log(this.SelectedItems);
     return (
       <div>
         <h3
@@ -41,6 +85,7 @@ class Quantity extends Component {
         </h3>
         <div className="QContainer">
           {/* <button onClick={this.DecreaseItem}>-</button> */}
+
           <button
             style={{
               paddingLeft: '20px',
@@ -52,10 +97,10 @@ class Quantity extends Component {
               paddingBottom: '14px'
             }}
             onClick={this.DecreaseItem}
+            // onChange={this.RemoveSelectedItems}
           >
             -
           </button>
-
           <button
             style={{
               paddingLeft: '40px',
@@ -76,6 +121,7 @@ class Quantity extends Component {
               color: 'grey'
             }}
             onClick={this.IncrementItem}
+            // onSelect={{ selectedItem }}
           >
             +
           </button>
@@ -88,4 +134,19 @@ class Quantity extends Component {
     );
   }
 }
-export default Quantity;
+
+// export default Quantity;
+
+function mapStateToProps(state) {
+  const { ProteinSize, Carb, CarbSize, Veggies, VeggieSize } = state;
+
+  return {
+    ProteinSize,
+    Carb,
+    CarbSize,
+    Veggies,
+    VeggieSize
+  };
+}
+
+export default connect(mapStateToProps)(Quantity);

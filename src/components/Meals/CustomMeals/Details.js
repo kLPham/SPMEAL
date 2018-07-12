@@ -18,10 +18,10 @@ import { Button, Icon } from 'semantic-ui-react';
 
 //TESTING MAINSELECT HERE:
 import MainSelect from './Select/MainSelect';
-import SelectTwo from './Select/SelectTwo';
 
 //WORKING IN PROGRESS TEST:
-import EstimatedCTotal from './EstimatedCTotal';
+// import EstimatedCTotal from './EstimatedCTotal';
+// import SelectTest from './Select/selectTest';
 
 export default class Details extends Component {
   constructor(props) {
@@ -31,31 +31,37 @@ export default class Details extends Component {
     this.state = {
       mealsToDisplay: [],
       values: [],
-      valueList: {
-        proteinSize: 'Potein Size',
-        Carb: 'Carb',
-        CarbSize: 'Carb Size',
-        Veggies: 'Veggies',
-        VeggieSize: 'Veggie Size'
-      },
-      estimatedTotal: 0
-      //   cart: [],
-      // items: []
+      estimatedTotal: 2,
+      cart: [],
+      clicks: 0
+      // quantity: {},
+      // item: []
     };
 
     //BIND ACTIONS HERE
-    // this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleAddedQuantity = this.handleAddedQuantity.bind(this);
   }
   //HANDLE ACTION BELOW:
 
   //CREATE HANDLE ACTIONS TYPE HERE:
   handleSubmit(event) {
     alert('Custom meals has been submitted to: ' + this.state.valueList);
-    this.setState({ valueList: this.state.valueList });
+    // this.setState({ valueList: this.state.valueList });
     event.preventDefault();
   }
 
+  //POST ITEMS TO CART WHEN ADDED :)
+  handleAddToCart(item) {
+    axios
+      .post('/api/cart', { item: item })
+      .then(response =>
+        this.setState({ cart: response.data, clicks: this.state.clicks + 1 })
+      )
+      .catch(console.log);
+    alert('Your Custom meal is being added to shopping cart!');
+  }
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
     axios
@@ -65,15 +71,15 @@ export default class Details extends Component {
         console.log(response.data);
       });
   }
-  //POST ITEMS TO CART WHEN ADDED :)
-  handleAddToCart(item) {
-    axios
-      .post('/api/cart', { item: item })
-      .then(response => this.setState({ cart: response.data }))
-      .catch(console.log);
-    alert('This meal is being added to your shopping cart!');
-  }
+
+  // handleAddedQuantity(item) {
+  //   item.push(item => item || 0 + 1, item => item || 0 - 1);
+  // }
+
   render() {
+    console.log(this.state.cart);
+    // console.log(this.state.quantity.length);
+
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
       return (
         <div>
@@ -85,7 +91,6 @@ export default class Details extends Component {
                 src={mealsId.image_url}
                 style={{ height: '100%', width: '80%' }}
               />
-              {/* <Numlist /> */}
             </div>
             <div style={{ width: '45%' }}>
               <h2 style={{ fontWeight: 900, fontSize: '40px' }}>
@@ -102,77 +107,58 @@ export default class Details extends Component {
                 ${mealsId.price}
               </p2>
               <hr />
-
               <MainSelect />
             </div>
-
-            <div
-              style={{
-                marginTop: '2%',
-                marginLeft: '55%',
-                height: '23vh',
-                width: '50%',
-                border: 'solid 2px grey'
-              }}
-            >
-              <SelectTwo />
-              <hr />
-
-              <EstimatedCTotal
-                price={`${this.state.estimatedTotal.toFixed(2)} + ${
-                  mealsId.price
-                }`}
+            <hr />
+            {/* <EstimatedCTotal
+                price={
+                  Number(this.state.estimatedTotal) + Number(mealsId.price)
+                }
               />
-              {/* NEED TO WORK ON THIS: */}
-              <br />
-              <Button
-                onClick={this.handleSubmit}
-                value={this.state.valueList}
-                color="green"
-                style={{ marginLeft: '45%' }}
-              >
-                Submit
-              </Button>
-            </div>
+              NEED TO WORK ON THIS: */}
+            <br />
+
             <div
               style={{
                 marginLeft: '60%',
                 marginTop: '2%'
               }}
             >
-              <Quantity />{' '}
+              <Quantity qty={this.state.clicks} />
+              {/* TESTING HERE: */}
             </div>
-            <div style={{ marginTop: '5.3%', marginRight: '6%' }}>
-              {' '}
-              <Button
-                onClick={() => this.handleAddToCart(mealsId)}
-                color="youtube"
-                style={{
-                  fontSize: '20px'
-                }}
-              >
-                Add To Cart
-              </Button>
-            </div>
-            {/* ICONS BELOW: */}
-            <div
+            {/* {this.state.quantity.push(this.handleAddedQuantity(mealsId))}*/}
+          </div>
+          <div style={{ marginTop: '5.3%', marginRight: '6%' }}>
+            {' '}
+            <Button
+              onClick={() => this.handleAddToCart(mealsId)}
+              color="youtube"
               style={{
-                marginLeft: '50%',
-                marginTop: '3%'
+                fontSize: '20px'
               }}
             >
-              <a href="https://www.facebook.com/Spartanperformancemeals/">
-                <Icon name="facebook" size="big" bordered color="black">
-                  {' '}
-                </Icon>
-              </a>
-              <a href="https://www.instagram.com/spartanperformancemeals/">
-                <Icon name="instagram" size="big" bordered color="black" />
-              </a>
-              <a href="mailto:spartan@Spartanperformancemeals">
-                <Icon name="mail" size="big" bordered color="black" />
-              </a>
-            </div>
+              Add To Cart
+            </Button>
+          </div>
+          {/* ICONS BELOW: */}
+          <div
+            style={{
+              marginLeft: '50%',
+              marginTop: '3%'
+            }}
+          >
+            <a href="https://www.facebook.com/Spartanperformancemeals/">
+              <Icon name="facebook" size="big" bordered color="black">
+                {' '}
+              </Icon>
+            </a>
+            <a href="https://www.instagram.com/spartanperformancemeals/">
+              <Icon name="instagram" size="big" bordered color="black" />
+            </a>
+            <a href="mailto:spartan@Spartanperformancemeals">
+              <Icon name="mail" size="big" bordered color="black" />
+            </a>
           </div>
         </div>
       );

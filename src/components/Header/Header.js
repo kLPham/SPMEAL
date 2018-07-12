@@ -11,6 +11,7 @@ import FaHome from 'react-icons/lib/fa/home';
 import FaCutlery from 'react-icons/lib/fa/cutlery';
 import storeIcon from './storeIcon.jpg';
 import Cart from '../Cart/Cart';
+import SearchBar from '../SearchBar/SearchBar';
 
 import Login from '../Login/Login';
 
@@ -215,6 +216,8 @@ export default class Header extends Component {
               </DropDownMenu>
             </a>
           </div>
+          <SearchBar />
+
           <Login />
           <br />
           <Cart style={cartStyle} />

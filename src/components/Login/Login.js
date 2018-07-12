@@ -48,7 +48,7 @@ export default class Login extends Component {
           color="red"
           onClick={this.state.userid ? this.handleLogout : this.handleLogin}
         >
-          {this.state.userid ? 'Logout' : 'Login'}
+          {this.state.userid ? 'Logout' : 'Login/Register'}
         </Button>
         {/* <a onClick={this.handleLogin}>
           {this.state.userid.length !== 0 ? (

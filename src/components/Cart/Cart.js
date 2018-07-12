@@ -19,8 +19,7 @@ import { Icon } from 'semantic-ui-react';
 import Trash from 'react-icons/lib/fa/trash';
 
 import TaxesFees from './TaxesFees/TaxesFees';
-import PickupSavings from './PickupSavings/PickupSavings';
-import EstimatedTotal from './EstimatedTotal/EstimatedTotal';
+// import EstimatedTotal from './EstimatedTotal/EstimatedTotal';
 
 export default class Cart extends Component {
   constructor(props) {
@@ -30,9 +29,8 @@ export default class Cart extends Component {
       open: false,
       cart: [],
       taxes: 0.087,
-      estimatedTotal: 0,
-      totalPrice: 9,
-      PickupSavings: -0.25
+      // estimatedTotal: 0,
+      totalPrice: 9
     };
 
     //BIND METHODS HERE:
@@ -53,19 +51,19 @@ export default class Cart extends Component {
   }
 
   //CALCULATING TAXES, SUBTOTAL.
-  componentDidMount = () => {
-    this.setState(
-      {
-        taxes: (this.state.totalPrice + this.state.PickupSavings) * 0.0875
-      },
-      function() {
-        this.setState({
-          estimatedTotal:
-            this.state.totalPrice + this.state.PickupSavings + this.state.taxes
-        });
-      }
-    );
-  };
+  // componentDidMount = () => {
+  //   this.setState(
+  //     {
+  //       taxes: (this.state.totalPrice + this.state.PickupSavings) * 0.0875
+  //     },
+  //     function() {
+  //       this.setState({
+  //         estimatedTotal:
+  //           this.state.totalPrice + this.state.PickupSavings + this.state.taxes
+  //       });
+  //     }
+  //   );
+  // };
   //HANDLE ACTION BELOW:
   handleCartToggle() {
     this.setState({ open: !this.state.open });
@@ -212,9 +210,8 @@ export default class Cart extends Component {
             </p>
             {/* <TaxesFees taxes={this.state.taxes.toFixed(2)} /> */}
 
-            <PickupSavings price={this.state.PickupSavings} />
             <hr />
-            <EstimatedTotal price={this.state.estimatedTotal.toFixed(2)} />
+            {/* <EstimatedTotal price={this.state.estimatedTotal.toFixed(2)} /> */}
           </div>
           <button>
             <MenuItem style={checkOutButtonStyle} onClick={this.handleClose}>

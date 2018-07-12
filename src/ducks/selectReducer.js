@@ -5,6 +5,7 @@ const initialState = {
   CarbSize: '1/2 Cup',
   Veggies: 'No Veggies',
   VeggieSize: '20z',
+  // quantity: {},
   SaveSelectedValue: []
 };
 
@@ -14,9 +15,10 @@ const UPDATE_CARB = 'UPDATE_CARB';
 const UPDATE_CARB_SIZE = 'UPDATE_CARB_SIZE';
 const UPDATE_VEGGIES = 'UPDATE_VEGGIES';
 const UPDATE_VEGGIE_SIZE = 'UPDATE_VEGGIE_SIZE';
+// const UPDATE_QUANTITY = 'UPDATE_QUANTITY';
 const UPDATE_SAVE_SELECTED_VALUE = 'UPDATE_SAVE_SELECTED_VALUE';
 
-function reducer(state = initialState, action) {
+function selectReducer(state = initialState, action) {
   console.log('REDUCER: Action ->', action);
   switch (action.type) {
     case UPDATE_PROTEIN_SIZE:
@@ -33,9 +35,10 @@ function reducer(state = initialState, action) {
 
     case UPDATE_VEGGIE_SIZE:
       return Object.assign({}, state, { VeggieSize: action.payload });
-
+    // case UPDATE_QUANTITY:
+    //   return Object.assign({}, state, { QuantityById: action.payload });
     case UPDATE_SAVE_SELECTED_VALUE:
-      return Object.assign({}, state, {SaveValue: action.payload})
+      return Object.assign({}, state, { SaveValue: action.payload });
     default:
       return state;
   }
@@ -76,12 +79,18 @@ export function updateVeggieSize(VeggieSize) {
     payload: VeggieSize
   };
 }
+// export function updateQuantity(QuantityById) {
+//   return {
+//     type: UPDATE_QUANTITY,
+//     payload: QuantityByid
+//   };
+// }
 
-export function updateSaveSelectedValue(SaveValue){
+export function updateSaveSelectedValue(SaveValue) {
   return {
     type: UPDATE_SAVE_SELECTED_VALUE,
     payload: SaveValue
-  }
+  };
 }
 
-export default reducer;
+export default selectReducer;
