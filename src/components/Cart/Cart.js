@@ -132,21 +132,16 @@ export default class Cart extends Component {
                 />
                 <p>{eachMeal.meals_name}</p>
                 <p>QTY:{eachMeal.quantity}</p>
-
                 <p>PRICE: ${eachMeal.price}</p>
-                {/* <p>taxes: ${eachMeal.taxes}</p> */}
               </div>
               <button
                 style={removeButton}
                 onClick={() => this.handleCartRemove(eachMeal)}
               >
-                {' '}
                 <Icon name="trash alternate" />
                 Remove
               </button>
-
               <hr />
-              {/* <p>Taxes & Fees: {eachMeal.taxes} %</p> */}
             </div>
           );
         })
@@ -177,10 +172,10 @@ export default class Cart extends Component {
           <div> {displayInCart}</div>
 
           <div>
-            <p>Subtotal: ${calculating.toFixed(2)}</p>
-            <p>
-              <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
+            <p style={{ marginLeft: '2%' }}>
+              Subtotal: ${calculating.toFixed(2)}
             </p>
+            <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
             <hr />
             <EstimatedTotal
               price={this.state.taxes.toFixed(2) * calculating + calculating}

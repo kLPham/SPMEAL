@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { connect } from 'react-redux';
 import './Quantity.css';
 
 import { Button } from 'semantic-ui-react';
@@ -13,53 +12,24 @@ class Quantity extends Component {
     this.state = {
       clicks: 0,
       show: true,
-      quantity: 0
-      // selectItem: []
+      value: 0
     };
   }
   //LIFE CYCLE METHOD HERE:
   //HANDLE ACTION EVENT HERE:
-  // SelectedItems(event) {
-  //   this.setState({
-  //     selectItem:
-  //       this.props.ProteinSize +
-  //       this.props.Carb +
-  //       this.props.CarbSize +
-  //       this.props.Veggies +
-  //       this.props.VeggieSize,
-  //     selectItem: event.target.value
-  //   });
-  // }
-  // RemoveSelectedItems(event) {
-  //   this.setState({
-  //     selectItem:
-  //       this.props.ProteinSize +
-  //       this.state.clicks -
-  //       1 +
-  //       this.props.Carb +
-  //       this.state.clicks -
-  //       1 +
-  //       this.props.CarbSize +
-  //       this.state.clicks -
-  //       1 +
-  //       this.props.Veggies +
-  //       this.state.clicks -
-  //       1 +
-  //       this.props.VeggieSize +
-  //       this.state.clicks -
-  //       1
-  //   });
-  // }
-  IncrementItem = () => {
+  IncrementItem = e => {
+    e.preventDefault();
     this.setState({
       clicks: this.state.clicks + 1,
-      quantity: this.state.quantity + 1
+      value: this.state.value + 1
     });
   };
-  DecreaseItem = () => {
+
+  DecreaseItem = e => {
+    e.preventDefault();
     this.setState({
       clicks: this.state.clicks - 1,
-      quantity: this.state.quantity - 1
+      value: this.state.value - 1
     });
   };
   ToggleClick = () => {
@@ -67,15 +37,7 @@ class Quantity extends Component {
   };
 
   render() {
-    // const selectedItem =
-    //   this.props.ProteinSize +
-    //   this.props.Carb +
-    //   this.props.CarbSize +
-    //   this.props.Veggies +
-    //   this.props.VeggieSize;
-    // console.log(this.SelectedItems);
-
-    console.log(this.props.qty);
+    console.log(this.state.value);
     return (
       <div>
         <h3
@@ -83,15 +45,13 @@ class Quantity extends Component {
             fontSize: '16px',
             fontWeight: 900,
             color: 'grey',
-            textTransform: 'uppercase'
+            textTransform: 'uppercase',
+            marginLeft: '27%'
           }}
         >
           Quantity
-          <p>{this.props.qty}</p>
         </h3>
         <div className="QContainer">
-          {/* <button onClick={this.DecreaseItem}>-</button> */}
-
           <button
             style={{
               paddingLeft: '20px',
@@ -103,7 +63,6 @@ class Quantity extends Component {
               paddingBottom: '14px'
             }}
             onClick={this.DecreaseItem}
-            // onChange={this.RemoveSelectedItems}
           >
             -
           </button>
@@ -117,7 +76,6 @@ class Quantity extends Component {
             }}
           >
             {this.state.show ? <h2>{this.state.clicks}</h2> : ''}
-            {/* {this.props.qty} */}
           </button>
           <button
             style={{
@@ -128,8 +86,6 @@ class Quantity extends Component {
               color: 'grey'
             }}
             onClick={this.IncrementItem}
-
-            // onSelect={{ selectedItem }}
           >
             +
           </button>
@@ -140,17 +96,3 @@ class Quantity extends Component {
 }
 
 export default Quantity;
-
-// function mapStateToProps(state) {
-//   const { ProteinSize, Carb, CarbSize, Veggies, VeggieSize } = state;
-
-//   return {
-//     ProteinSize,
-//     Carb,
-//     CarbSize,
-//     Veggies,
-//     VeggieSize
-//   };
-// }
-
-// export default connect(mapStateToProps)(Quantity);

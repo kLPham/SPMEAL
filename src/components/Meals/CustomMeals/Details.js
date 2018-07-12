@@ -57,14 +57,14 @@ export default class Details extends Component {
     alert('Your Custom meal is being added to shopping cart!');
   }
 
-  handleAddedQuantity(quantity) {
-    axios.post('/api/cart', { quantity: quantity }).then(response =>
-      this.setState({
-        click: this.state.click + 1 ? quantity : this.state.quantity + 1,
-        quantity: this.state.quantity - 1
-      })
-    );
-  }
+  // handleAddedQuantity(quantity) {
+  //   axios.post('/api/cart', { quantity: quantity }).then(response =>
+  //     this.setState({
+  //       click: this.state.click + 1 ? quantity : this.state.quantity + 1,
+  //       quantity: this.state.quantity - 1
+  //     })
+  //   );
+  // }
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
     axios
@@ -78,7 +78,6 @@ export default class Details extends Component {
   render() {
     // console.log(this.state.cart);
     console.log(this.handleAddedQuantity);
-
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
       return (
         <div>
@@ -109,56 +108,48 @@ export default class Details extends Component {
               <MainSelect />
             </div>
             <hr />
-            {/* <EstimatedCTotal
-                price={
-                  Number(this.state.estimatedTotal) + Number(mealsId.price)
-                }
-              />
-              NEED TO WORK ON THIS: */}
-            <br />
+            {/* NEED TO WORK ON THIS:  */}
 
             <div
               style={{
-                marginLeft: '60%',
-                marginTop: '2%'
+                display: 'flex',
+                marginLeft: '57%'
               }}
             >
-              <Quantity qty={this.handleAddedQuantity} />
-              {/* qty={this.handleAddedQuantity(mealsId)} */}
-              {/* TESTING HERE: */}
+              <div>
+                <Quantity />
+              </div>
+              <div>
+                <Button
+                  onClick={() => this.handleAddToCart(mealsId)}
+                  color="youtube"
+                  style={{ fontSize: '20px', marginTop: '22%' }}
+                >
+                  Add To Cart
+                </Button>
+              </div>
             </div>
-            {/* {this.state.quantity.push(this.handleAddedQuantity(mealsId))}*/}
-          </div>
-          <div style={{ marginTop: '5.3%', marginRight: '6%' }}>
-            {' '}
-            <Button
-              onClick={() => this.handleAddToCart(mealsId)}
-              color="youtube"
+
+            {/* ICONS BELOW: */}
+
+            <div
               style={{
-                fontSize: '20px'
+                marginLeft: '58%',
+                marginTop: '3%'
               }}
             >
-              Add To Cart
-            </Button>
-          </div>
-          {/* ICONS BELOW: */}
-          <div
-            style={{
-              marginLeft: '50%',
-              marginTop: '3%'
-            }}
-          >
-            <a href="https://www.facebook.com/Spartanperformancemeals/">
-              <Icon name="facebook" size="big" bordered color="black">
-                {' '}
-              </Icon>
-            </a>
-            <a href="https://www.instagram.com/spartanperformancemeals/">
-              <Icon name="instagram" size="big" bordered color="black" />
-            </a>
-            <a href="mailto:spartan@Spartanperformancemeals">
-              <Icon name="mail" size="big" bordered color="black" />
-            </a>
+              <a href="https://www.facebook.com/Spartanperformancemeals/">
+                <Icon name="facebook" size="big" bordered color="black">
+                  {' '}
+                </Icon>
+              </a>
+              <a href="https://www.instagram.com/spartanperformancemeals/">
+                <Icon name="instagram" size="big" bordered color="black" />
+              </a>
+              <a href="mailto:spartan@Spartanperformancemeals">
+                <Icon name="mail" size="big" bordered color="black" />
+              </a>
+            </div>
           </div>
         </div>
       );
