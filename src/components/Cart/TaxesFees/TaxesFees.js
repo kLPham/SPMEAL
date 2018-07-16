@@ -5,13 +5,13 @@ export default class TaxesFees extends Component {
     return (
       <div
         style={{
-          fontSize: '16px',
+          fontSize: '14px',
           marginBottom: '5%',
           color: 'red',
           marginLeft: '2%'
         }}
       >
-        <p2>Taxes:{`$${this.props.taxes.toFixed(2)}`} </p2>
+        <p2>Tax:{`$${this.props.taxes.toFixed(2)}`} </p2>
       </div>
     );
   }

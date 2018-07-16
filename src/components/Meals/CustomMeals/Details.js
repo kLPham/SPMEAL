@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-
-//test
-// import NumList from './NumList';
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './CustomMeals.css';
-// import ProteinOption from './ProteinOption';
 import ProteinOp from './ProteinsOptions/ProteinOp';
-import Quantity from '../../Quantity/Quantity';
+// import Quantity from '../../Quantity/Quantity';
 
 import Option from 'muicss/lib/react/option';
 import Select from 'muicss/lib/react/select';
-// import { SocialIcons } from 'react-social-icons';
 import { Button, Icon } from 'semantic-ui-react';
-
-//TESTING MAINSELECT HERE:
 import MainSelect from './Select/MainSelect';
 
-//WORKING IN PROGRESS TEST:
-// import EstimatedCTotal from './EstimatedCTotal';
-// import SelectTest from './Select/selectTest';
+import { connect } from 'react-redux';
+import {
+  updateProteinSize,
+  updateCarb,
+  updateCarbSize,
+  updateVeggies,
+  updateVeggieSize
+} from '../../../ducks/selectReducer';
 
-export default class Details extends Component {
+class Details extends Component {
   constructor(props) {
     super(props);
 
@@ -33,38 +31,51 @@ export default class Details extends Component {
       values: [],
       estimatedTotal: 2,
       cart: [],
-      clicks: 0
-      // quantity: 0,
-      // item: []
+      clicks: 0,
+      value: 0,
+      show: true,
+      addOnValue: 5
     };
 
     //BIND ACTIONS HERE
     this.handleAddToCart = this.handleAddToCart.bind(this);
-    // this.handleAddedQuantity = this.handleAddedQuantity.bind(this);
   }
   //HANDLE ACTION BELOW:
-
-  //CREATE HANDLE ACTIONS TYPE HERE:
 
   //POST ITEMS TO CART WHEN ADDED :)
   handleAddToCart(item) {
     axios
       .post('/api/cart', { item: item })
       .then(response =>
-        this.setState({ cart: response.data, clicks: this.state.clicks + 1 })
+        this.setState({
+          cart: response.data,
+          clicks: this.state.clicks + 1,
+          value: this.state.value + 1
+        })
       )
       .catch(console.log);
-    alert('Your Custom meal is being added to shopping cart!');
+    alert('This item is added to shopping cart!');
   }
+  // QUANTITY BELOW:
+  IncrementItem = e => {
+    e.preventDefault();
+    this.setState({
+      clicks: this.state.clicks + 1,
+      value: this.state.value + 1
+    });
+  };
 
-  // handleAddedQuantity(quantity) {
-  //   axios.post('/api/cart', { quantity: quantity }).then(response =>
-  //     this.setState({
-  //       click: this.state.click + 1 ? quantity : this.state.quantity + 1,
-  //       quantity: this.state.quantity - 1
-  //     })
-  //   );
-  // }
+  DecreaseItem = e => {
+    e.preventDefault();
+    this.setState({
+      clicks: this.state.clicks - 1,
+      value: this.state.value - 1
+    });
+  };
+  ToggleClick = () => {
+    this.setState({ show: !this.state.show });
+  };
+  /////QUANTITY ENDS:
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
     axios
@@ -76,9 +87,57 @@ export default class Details extends Component {
   }
 
   render() {
-    // console.log(this.state.cart);
-    console.log(this.handleAddedQuantity);
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
+      // const addOns = () => {
+      //   var proteinPrice = this.props.ProteinSize;
+      //   proteinPrice === '5oz [+$1.00 USD]'
+      //     ? this.state.addOnValue + 1
+      //     : proteinPrice + 0;
+      // };
+      const addedValue = this.state.value * mealsId.price;
+
+      //TESTING CODES:
+      // const ProteinSize = this.props.ProteinSize;
+      // const eachMealPrice = mealsId.price;
+      const addOnValues =
+        Number(this.state.addOnValue) +
+        Number(mealsId.price) * Number(this.state.value) +
+        ',' +
+        ' ' +
+        this.props.ProteinSize;
+      ////CODES ABOVE WORKS!!
+
+      // const addOnValues = () =>
+      //   this.props.ProteinSize === '5oz [+$1.00 USD]'
+      //     ? Number(mealsId.price) + 1
+      //     : Number(this.state.addOnValue + Number(mealsId.price));
+
+      // const addOnValues = () => {
+      //   const ProteinSize = Number(this.props.ProteinSize);
+      //   const eachMealPrice = Number(mealsId.price);
+      //   const addOnValue = Number(this.state.addOnValue);
+      //   ProteinSize[2] === '5oz [+$1.00 USD]'
+      //     ? console.log(addOnValue + 1 + eachMealPrice)
+      //     : eachMealPrice + addOnValue,
+      //     ProteinSize[3] === '6oz [+2.00 USD]'
+      //       ? console.log(addOnValue + 2 + eachMealPrice)
+      //       : eachMealPrice + addOnValue,
+      //     ProteinSize[4] === '7oz [+$3.00 USD]'
+      //       ? console.log(addOnValue + 3 + eachMealPrice)
+      //       : eachMealPrice + addOnValue,
+      //     ProteinSize[5] === '8oz [+$4.00 USD]'
+      //       ? console.log(addOnValue + 4 + eachMealPrice)
+      //       : eachMealPrice + addOnValue,
+      //     ProteinSize[6] === '9oz [+$5.00 USD]'
+      //       ? console.log(addOnValue + 5 + eachMealPrice)
+      //       : eachMealPrice + addOnValue;
+      // };
+      // addOnValues;
+
+      //TESTING CODE BELOW:
+
+      /////////////////END TESTINH//
+
       return (
         <div>
           <hr />
@@ -109,27 +168,72 @@ export default class Details extends Component {
             </div>
             <hr />
             {/* NEED TO WORK ON THIS:  */}
-
-            <div
-              style={{
-                display: 'flex',
-                marginLeft: '57%'
-              }}
-            >
-              <div>
-                <Quantity />
+            {/* ///QUANTITY TEST// */}
+            <div>
+              <h3
+                style={{
+                  fontSize: '16px',
+                  fontWeight: 900,
+                  color: 'grey',
+                  textTransform: 'uppercase',
+                  marginLeft: '27%'
+                }}
+              >
+                Quantity
+              </h3>
+              <div className="QContainer">
+                <button
+                  style={{
+                    height: '40px',
+                    width: '80px',
+                    fontSize: '20px',
+                    fontWeight: 900,
+                    color: 'grey'
+                  }}
+                  onClick={this.DecreaseItem}
+                >
+                  -
+                </button>
+                <button
+                  style={{
+                    fontSize: '20px',
+                    fontWeight: 900,
+                    color: 'grey',
+                    height: '40px'
+                  }}
+                >
+                  {this.state.show ? <h2>{this.state.clicks}</h2> : ''}
+                </button>
+                <button
+                  style={{
+                    height: '40px',
+                    width: '80px',
+                    fontSize: '20px',
+                    fontWeight: 900,
+                    color: 'grey'
+                  }}
+                  onClick={this.IncrementItem}
+                >
+                  +
+                </button>
               </div>
               <div>
+                <h2>Total Price: {addedValue}</h2>
+                <h2>Select Test: {addOnValues}</h2>
+                {/* <h2>Selet:{eachMealPrice}</h2> */}
+                {/* ///QUANTITY END TEST/// */}
                 <Button
                   onClick={() => this.handleAddToCart(mealsId)}
                   color="youtube"
                   style={{ fontSize: '20px', marginTop: '22%' }}
+                  // value={addAllOfThisToCart}
                 >
                   Add To Cart
                 </Button>
               </div>
             </div>
-
+          </div>
+          <div>
             {/* ICONS BELOW: */}
 
             <div
@@ -151,6 +255,7 @@ export default class Details extends Component {
               </a>
             </div>
           </div>
+          {/* <h3>Test:{calculate}</h3> */}
         </div>
       );
     });
@@ -180,3 +285,25 @@ export default class Details extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  const { ProteinSize, Carb, CarbSize, Veggies, VeggieSize } = state;
+
+  return {
+    ProteinSize,
+    Carb,
+    CarbSize,
+    Veggies,
+    VeggieSize
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  {
+    updateProteinSize,
+    updateCarb,
+    updateCarbSize,
+    updateVeggies,
+    updateVeggieSize
+  }
+)(Details);

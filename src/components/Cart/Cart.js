@@ -4,6 +4,7 @@ import axios from 'axios';
 // import { connect } from 'react-redux';
 // import { addToCart } from '../../ducks/reducer';
 import FaShoppingCart from 'react-icons/lib/fa/shopping-cart';
+import { Button, Icon } from 'semantic-ui-react';
 
 //IMPORT MATERIALui BELOW:
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -15,7 +16,6 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import AppBar from 'material-ui/AppBar';
 
-import { Icon } from 'semantic-ui-react';
 import Trash from 'react-icons/lib/fa/trash';
 
 import TaxesFees from './TaxesFees/TaxesFees';
@@ -28,6 +28,9 @@ export default class Cart extends Component {
     this.state = {
       open: false,
       cart: [],
+      // clicks: 1,
+      // value: 1,
+      // show: true,
       taxes: 0.087
     };
 
@@ -55,6 +58,26 @@ export default class Cart extends Component {
   handleCartClose() {
     this.setState({ open: false });
   }
+  // QUANTITY BELOW:
+  IncrementItem = e => {
+    e.preventDefault();
+    this.setState({
+      clicks: this.state.clicks + 1,
+      value: this.state.value + 1
+    });
+  };
+
+  DecreaseItem = e => {
+    e.preventDefault();
+    this.setState({
+      clicks: this.state.clicks - 1,
+      value: this.state.value - 1
+    });
+  };
+  ToggleClick = () => {
+    this.setState({ show: !this.state.show });
+  };
+  /////QUANTITY ENDS:
   //REMOVE FROM CART FRONT_END: :)
   handleCartRemove(meals) {
     axios
@@ -131,8 +154,42 @@ export default class Cart extends Component {
                   src={eachMeal.image_url}
                 />
                 <p>{eachMeal.meals_name}</p>
-                <p>QTY:{eachMeal.quantity}</p>
-                <p>PRICE: ${eachMeal.price}</p>
+                {/* <p>QTY:{eachMeal.quantity}</p> */}
+                {/* <div>
+                  <div className="QContainer">
+                    QTY:
+                    <button
+                      style={{
+                        color: 'grey',
+                        height: '90%',
+                        width: '10%'
+                      }}
+                      onClick={this.DecreaseItem}
+                    >
+                      -
+                    </button>
+                    <button
+                      style={{
+                        color: 'grey',
+                        height: '5%',
+                        width: '20%'
+                      }}
+                    >
+                      {this.state.show ? <h2>{this.state.clicks}</h2> : ''}
+                    </button>
+                    <button
+                      style={{
+                        color: 'grey',
+                        height: '90%',
+                        width: '10%'
+                      }}
+                      onClick={this.IncrementItem}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div> */}
+                <p>Price: ${eachMeal.price}</p>
               </div>
               <button
                 style={removeButton}
@@ -146,7 +203,9 @@ export default class Cart extends Component {
           );
         })
       ) : (
-        <p style={{ color: 'red', textAlign: 'center' }}>Your Cart is empty</p>
+        <p style={{ color: 'red', textAlign: 'center' }}>
+          Your Cart is empty <hr />
+        </p>
       );
 
     return (
@@ -172,8 +231,23 @@ export default class Cart extends Component {
           <div> {displayInCart}</div>
 
           <div>
-            <p style={{ marginLeft: '2%' }}>
-              Subtotal: ${calculating.toFixed(2)}
+            <h2
+              style={{
+                fontWeight: 900,
+                textAlign: 'center',
+                fontSize: '22px',
+                color: 'white',
+                textShadow:
+                  '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
+              }}
+            >
+              Summary of Charges
+            </h2>
+            <p style={{ marginLeft: '2%', fontSize: '14px' }}>
+              Order Subtotal: ${calculating.toFixed(2)}
+            </p>
+            <p style={{ marginLeft: '2%', fontSize: '14px' }}>
+              Shipping & Handling: Free
             </p>
             <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
             <hr />
@@ -181,6 +255,7 @@ export default class Cart extends Component {
               price={this.state.taxes.toFixed(2) * calculating + calculating}
             />
           </div>
+          <br />
           <button>
             <MenuItem style={checkOutButtonStyle} onClick={this.handleClose}>
               Proceed To CheckOut

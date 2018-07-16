@@ -55,6 +55,9 @@ class SelectOne extends Component {
       updateVeggieSize
     } = this.props;
     console.log(this.handleSubmit);
+    const add1 = 1;
+    const add2 = 2;
+
     return (
       <div>
         <div style={{ fontWeight: 900 }}>
@@ -78,10 +81,10 @@ class SelectOne extends Component {
                 </option>
 
                 <option type="text" value="5oz [+$1.00 USD]">
-                  5oz [+$1.00 USD]
+                  5oz [+$1.00 USD] {Number(add1)}
                 </option>
                 <option type="text" value="6oz [+$2.00 USD]">
-                  6oz [+$2.00 USD]
+                  6oz [+$2.00 USD] {Number(add2)}
                 </option>
                 <option type="text" value="7oz [+$3.00 USD]">
                   7oz [+$3.00 USD]

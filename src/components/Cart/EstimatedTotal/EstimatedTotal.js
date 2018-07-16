@@ -11,7 +11,7 @@ export default class EstimatedTotal extends Component {
     return (
       <div>
         <h2 style={{ fontWeight: 900, color: 'green' }}>
-          Total: {`$${this.props.price}`}
+          Order Total: {`$${this.props.price}`}
         </h2>
       </div>
     );
