@@ -15,36 +15,38 @@ class SelectOne extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { value: [] };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      // value: []
+    };
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit(event) {
-    alert(
-      'You have Submitted:' +
-        ' ' +
-        'Protein Size:' +
-        ' ' +
-        this.props.ProteinSize +
-        ', ' +
-        'Carb:' +
-        ' ' +
-        this.props.Carb +
-        ', ' +
-        'Carb Size:' +
-        ' ' +
-        this.props.CarbSize +
-        ', ' +
-        'Veggies:' +
-        ' ' +
-        this.props.Veggies +
-        ', ' +
-        'Veggie Size:' +
-        ' ' +
-        this.props.VeggieSize
-    );
-    this.setState({ value: this.props });
-    event.preventDefault();
-  }
+  // handleSubmit(event) {
+  //   alert(
+  //     'You have Submitted:' +
+  //       ' ' +
+  //       'Protein Size:' +
+  //       ' ' +
+  //       this.props.ProteinSize +
+  //       ', ' +
+  //       'Carb:' +
+  //       ' ' +
+  //       this.props.Carb +
+  //       ', ' +
+  //       'Carb Size:' +
+  //       ' ' +
+  //       this.props.CarbSize +
+  //       ', ' +
+  //       'Veggies:' +
+  //       ' ' +
+  //       this.props.Veggies +
+  //       ', ' +
+  //       'Veggie Size:' +
+  //       ' ' +
+  //       this.props.VeggieSize
+  //   );
+  //   this.setState({ value: this.props });
+  //   event.preventDefault();
+  // }
 
   render() {
     const {
@@ -54,9 +56,7 @@ class SelectOne extends Component {
       updateVeggies,
       updateVeggieSize
     } = this.props;
-    console.log(this.handleSubmit);
-    const add1 = 1;
-    const add2 = 2;
+    // console.log(this.handleSubmit);
 
     return (
       <div>
@@ -81,10 +81,10 @@ class SelectOne extends Component {
                 </option>
 
                 <option type="text" value="5oz [+$1.00 USD]">
-                  5oz [+$1.00 USD] {Number(add1)}
+                  5oz [+$1.00 USD]
                 </option>
                 <option type="text" value="6oz [+$2.00 USD]">
-                  6oz [+$2.00 USD] {Number(add2)}
+                  6oz [+$2.00 USD]
                 </option>
                 <option type="text" value="7oz [+$3.00 USD]">
                   7oz [+$3.00 USD]
@@ -249,7 +249,7 @@ class SelectOne extends Component {
                 </p>
               </div>
               {/* <input type="submit" value="Submit" /> */}
-              <Button
+              {/* <Button
                 type="submit"
                 value="Submit"
                 onClick={this.handleSubmit}
@@ -257,7 +257,7 @@ class SelectOne extends Component {
                 style={{ marginLeft: '45%' }}
               >
                 Submit
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>

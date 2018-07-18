@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './CustomMeals.css';
 import ProteinOp from './ProteinsOptions/ProteinOp';
+import Cart from '../../Cart/Cart';
 // import Quantity from '../../Quantity/Quantity';
 
 import Option from 'muicss/lib/react/option';
@@ -28,54 +29,24 @@ class Details extends Component {
     //SET INITIAL STATE HERE
     this.state = {
       mealsToDisplay: [],
-      values: [],
-      estimatedTotal: 2,
-      cart: [],
       clicks: 0,
-      value: 0,
       show: true,
-      addOnValue: 5
+      value: 0,
+      values: [],
+      // cart: [],
+      cart: JSON.parse(localStorage.getItem('cart')) || [],
+      qty: [],
+      item: 'Protein'
     };
 
     //BIND ACTIONS HERE
+    this.IncrementItem = this.IncrementItem.bind(this);
+    this.DecreaseItem = this.DecreaseItem.bind(this);
+    this.ToggleClick = this.ToggleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
   //HANDLE ACTION BELOW:
-
-  //POST ITEMS TO CART WHEN ADDED :)
-  handleAddToCart(item) {
-    axios
-      .post('/api/cart', { item: item })
-      .then(response =>
-        this.setState({
-          cart: response.data,
-          clicks: this.state.clicks + 1,
-          value: this.state.value + 1
-        })
-      )
-      .catch(console.log);
-    alert('This item is added to shopping cart!');
-  }
-  // QUANTITY BELOW:
-  IncrementItem = e => {
-    e.preventDefault();
-    this.setState({
-      clicks: this.state.clicks + 1,
-      value: this.state.value + 1
-    });
-  };
-
-  DecreaseItem = e => {
-    e.preventDefault();
-    this.setState({
-      clicks: this.state.clicks - 1,
-      value: this.state.value - 1
-    });
-  };
-  ToggleClick = () => {
-    this.setState({ show: !this.state.show });
-  };
-  /////QUANTITY ENDS:
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
     axios
@@ -86,31 +57,105 @@ class Details extends Component {
       });
   }
 
+  // QUANTITY BELOW:
+  IncrementItem = e => {
+    e.preventDefault();
+    this.setState({
+      clicks: this.state.clicks + 1,
+      value: this.state.value + 1,
+      qty: this.state.qty
+    });
+  };
+
+  DecreaseItem = e => {
+    e.preventDefault();
+    this.setState({
+      clicks: this.state.clicks - 1,
+      value: this.state.value - 1,
+      qty: this.state.qty
+    });
+  };
+  ToggleClick = () => {
+    this.setState({ show: !this.state.show });
+  };
+  /////QUANTITY ENDS:
+  ///TESTING SUBMIT BUTTON HERE ///
+  handleSubmit(event) {
+    alert(
+      'You have Submitted:' +
+        ' ' +
+        'Protein Size:' +
+        ' ' +
+        this.props.ProteinSize +
+        ', ' +
+        'Carb:' +
+        ' ' +
+        this.props.Carb +
+        ', ' +
+        'Carb Size:' +
+        ' ' +
+        this.props.CarbSize +
+        ', ' +
+        'Veggies:' +
+        ' ' +
+        this.props.Veggies +
+        ', ' +
+        'Veggie Size:' +
+        ' ' +
+        this.props.VeggieSize
+    );
+    this.setState({ values: this.props });
+    event.preventDefault();
+  }
+
+  //POST ITEMS TO CART WHEN ADDED :)
+  handleAddToCart(item, value) {
+    axios.post('/api/cart', { item: item, value: value }).then(response =>
+      this.setState(
+        {
+          cart: response.data,
+          clicks: this.state.clicks + 1,
+          value: this.state.value + 1
+        },
+        () => {
+          localStorage.setItem('cart', JSON.stringify(this.state.cart));
+          // .catch(console.log);
+          alert('This item is added to shopping cart!');
+        }
+      )
+    );
+  }
+
   render() {
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
-      // const addOns = () => {
-      //   var proteinPrice = this.props.ProteinSize;
-      //   proteinPrice === '5oz [+$1.00 USD]'
-      //     ? this.state.addOnValue + 1
-      //     : proteinPrice + 0;
-      // };
-      const addedValue = this.state.value * mealsId.price;
-
       //TESTING CODES:
       // const ProteinSize = this.props.ProteinSize;
-      // const eachMealPrice = mealsId.price;
-      const addOnValues =
-        Number(this.state.addOnValue) +
-        Number(mealsId.price) * Number(this.state.value) +
-        ',' +
+      const selectedItems =
+        'Protein Size: ' +
+        this.props.ProteinSize +
+        ', ' +
         ' ' +
-        this.props.ProteinSize;
-      ////CODES ABOVE WORKS!!
+        'Carb:' +
+        this.props.Carb +
+        ', ' +
+        ' ' +
+        'Carb Size: ' +
+        ' ' +
+        this.props.CarbSize +
+        ', ' +
+        ' ' +
+        'Vegetable Type:' +
+        this.props.Veggies +
+        ', ' +
+        ' ' +
+        'Vegetable Size:' +
+        this.props.VeggieSize +
+        '.';
 
-      // const addOnValues = () =>
-      //   this.props.ProteinSize === '5oz [+$1.00 USD]'
-      //     ? Number(mealsId.price) + 1
-      //     : Number(this.state.addOnValue + Number(mealsId.price));
+      const totalPrice = Number(this.state.value) * Number(mealsId.price);
+      const meatPrice = mealsId.price;
+
+      ////CODES ABOVE WORKS!!
 
       // const addOnValues = () => {
       //   const ProteinSize = Number(this.props.ProteinSize);
@@ -133,8 +178,6 @@ class Details extends Component {
       //       : eachMealPrice + addOnValue;
       // };
       // addOnValues;
-
-      //TESTING CODE BELOW:
 
       /////////////////END TESTINH//
 
@@ -165,10 +208,19 @@ class Details extends Component {
               </p2>
               <hr />
               <MainSelect />
+              {/* TESTING SUBMIT BUTTON: */}
+              <Button
+                type="submit"
+                value="Submit"
+                onClick={this.handleSubmit}
+                color="green"
+                style={{ marginLeft: '45%' }}
+              >
+                Submit
+              </Button>
             </div>
             <hr />
-            {/* NEED TO WORK ON THIS:  */}
-            {/* ///QUANTITY TEST// */}
+            {/* ///QUANTITY // */}
             <div>
               <h3
                 style={{
@@ -218,18 +270,36 @@ class Details extends Component {
                 </button>
               </div>
               <div>
-                <h2>Total Price: {addedValue}</h2>
-                <h2>Select Test: {addOnValues}</h2>
-                {/* <h2>Selet:{eachMealPrice}</h2> */}
-                {/* ///QUANTITY END TEST/// */}
+                <h2>Selected Items: {selectedItems}</h2>
+                <h2>Total Price: {totalPrice}</h2>
+
+                {/* ///QUANTITY END/// */}
                 <Button
                   onClick={() => this.handleAddToCart(mealsId)}
                   color="youtube"
                   style={{ fontSize: '20px', marginTop: '22%' }}
-                  // value={addAllOfThisToCart}
                 >
                   Add To Cart
                 </Button>
+
+                <Cart
+                  style={{ fontWeight: 100 }}
+                  selectedItems={
+                    this.state.item +
+                    ':' +
+                    mealsId.name +
+                    '.' +
+                    '  ' +
+                    selectedItems
+                  }
+                  qty={'Qty:' + this.state.value + this.state.qty}
+                  totalPrice={
+                    'Total:' +
+                    '$' +
+                    Number(this.state.value + this.state.qty) *
+                      Number(mealsId.price)
+                  }
+                />
               </div>
             </div>
           </div>

@@ -28,9 +28,6 @@ export default class Cart extends Component {
     this.state = {
       open: false,
       cart: [],
-      // clicks: 1,
-      // value: 1,
-      // show: true,
       taxes: 0.087
     };
 
@@ -43,7 +40,7 @@ export default class Cart extends Component {
   //GET ITEMS FROM DETAIL PAGE: //*get back to this
   componentWillMount() {
     axios.get('/api/cart').then(response => {
-      this.setState({ cart: response.data });
+      this.setState({ rehydrated: true, cart: response.data });
     });
     //GET TOTAL PRICE FROM SERVER:
     axios.get(`/cart/total/${this.props.meals_id}`).then(response => {
@@ -58,27 +55,7 @@ export default class Cart extends Component {
   handleCartClose() {
     this.setState({ open: false });
   }
-  // QUANTITY BELOW:
-  IncrementItem = e => {
-    e.preventDefault();
-    this.setState({
-      clicks: this.state.clicks + 1,
-      value: this.state.value + 1
-    });
-  };
 
-  DecreaseItem = e => {
-    e.preventDefault();
-    this.setState({
-      clicks: this.state.clicks - 1,
-      value: this.state.value - 1
-    });
-  };
-  ToggleClick = () => {
-    this.setState({ show: !this.state.show });
-  };
-  /////QUANTITY ENDS:
-  //REMOVE FROM CART FRONT_END: :)
   handleCartRemove(meals) {
     axios
       .delete(`/api/cart/${meals.meals_id}`)
@@ -141,10 +118,14 @@ export default class Cart extends Component {
         total += priceTotal;
         return total;
       }, 0);
+    console.log(this.props.totalPrice);
+    // console.log(this.props.qty);
+    // console.log(this.props.selectedItems);
 
     let displayInCart =
       this.state.cart.length > 0 ? (
         this.state.cart.map(eachMeal => {
+          console.log(eachMeal.price * this.props.qty);
           return (
             <div style={wholeMealStyle}>
               <div key={eachMeal.id}>
@@ -154,42 +135,14 @@ export default class Cart extends Component {
                   src={eachMeal.image_url}
                 />
                 <p>{eachMeal.meals_name}</p>
-                {/* <p>QTY:{eachMeal.quantity}</p> */}
-                {/* <div>
-                  <div className="QContainer">
-                    QTY:
-                    <button
-                      style={{
-                        color: 'grey',
-                        height: '90%',
-                        width: '10%'
-                      }}
-                      onClick={this.DecreaseItem}
-                    >
-                      -
-                    </button>
-                    <button
-                      style={{
-                        color: 'grey',
-                        height: '5%',
-                        width: '20%'
-                      }}
-                    >
-                      {this.state.show ? <h2>{this.state.clicks}</h2> : ''}
-                    </button>
-                    <button
-                      style={{
-                        color: 'grey',
-                        height: '90%',
-                        width: '10%'
-                      }}
-                      onClick={this.IncrementItem}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div> */}
+                {/* //TSTING // */}
+                <div style={{ fontSize: '10px', fontWeight: 100 }}>
+                  {this.props.selectedItems}
+                </div>
+                <p>{this.props.qty}</p>
                 <p>Price: ${eachMeal.price}</p>
+                <p>{this.props.totalPrice}</p>
+                {/* ///TSTINGNGN/// */}
               </div>
               <button
                 style={removeButton}

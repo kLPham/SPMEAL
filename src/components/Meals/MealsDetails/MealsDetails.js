@@ -16,8 +16,11 @@ export default class MealsDetails extends Component {
     //SET INITIAL STATE HERE
     this.state = {
       mealsToDisplay: [],
-      cart: [],
-      item: []
+      cart: []
+      // qty: [],
+      // clicks: 0,
+      // value: 0
+      // item: []
     };
 
     //BIND ACTIONS HERE
@@ -42,6 +45,23 @@ export default class MealsDetails extends Component {
       .catch(console.log);
     alert('This meal is being added to your shopping cart!');
   }
+  // IncrementItem = e => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     clicks: this.state.clicks + 1,
+  //     value: this.state.value + 1,
+  //     qty: this.state.qty + 1
+  //   });
+  // };
+
+  // DecreaseItem = e => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     clicks: this.state.clicks - 1,
+  //     value: this.state.value - 1,
+  //     qty: this.state.qty - 1
+  //   });
+  // };
   render() {
     const style = {
       position: 'relative',
@@ -105,7 +125,12 @@ export default class MealsDetails extends Component {
             <p>{mealsId.meals_name}</p>
             <p>${mealsId.price}</p>
             <form>
-              <Select name="Quantity" label="QTY" defaultValue="1">
+              <Select
+                name="Quantity"
+                label="QTY"
+                defaultValue="1"
+                // onClick={this.IncrementItem}
+              >
                 <Option value="1" label="1" />
                 <Option value="2" label="2" />
                 <Option value="3" label="3" />
