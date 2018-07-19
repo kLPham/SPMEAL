@@ -28,7 +28,8 @@ export default class Cart extends Component {
     this.state = {
       open: false,
       cart: [],
-      taxes: 0.087
+      taxes: 0.087,
+      value: 0
     };
 
     //BIND METHODS HERE:
@@ -40,7 +41,10 @@ export default class Cart extends Component {
   //GET ITEMS FROM DETAIL PAGE: //*get back to this
   componentWillMount() {
     axios.get('/api/cart').then(response => {
-      this.setState({ rehydrated: true, cart: response.data });
+      this.setState({
+        rehydrated: true,
+        cart: response.data
+      });
     });
     //GET TOTAL PRICE FROM SERVER:
     axios.get(`/cart/total/${this.props.meals_id}`).then(response => {
@@ -118,9 +122,10 @@ export default class Cart extends Component {
         total += priceTotal;
         return total;
       }, 0);
-    console.log(this.props.totalPrice);
+    // console.log(this.props.totalPrice);
     // console.log(this.props.qty);
     // console.log(this.props.selectedItems);
+    console.log(this.props.qtyy);
 
     let displayInCart =
       this.state.cart.length > 0 ? (
@@ -140,6 +145,7 @@ export default class Cart extends Component {
                   {this.props.selectedItems}
                 </div>
                 <p>{this.props.qty}</p>
+                {/* <p>{this.props.qtyy}</p> */}
                 <p>Price: ${eachMeal.price}</p>
                 <p>{this.props.totalPrice}</p>
                 {/* ///TSTINGNGN/// */}
@@ -198,6 +204,7 @@ export default class Cart extends Component {
             </h2>
             <p style={{ marginLeft: '2%', fontSize: '14px' }}>
               Order Subtotal: ${calculating.toFixed(2)}
+              {/* Order Subtotal: ${Number(calculating) + Number(this.state.qtyy)} */}
             </p>
             <p style={{ marginLeft: '2%', fontSize: '14px' }}>
               Shipping & Handling: Free

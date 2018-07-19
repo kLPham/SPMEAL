@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import './CustomMeals.css';
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './CustomMeals.css';
@@ -11,6 +12,7 @@ import Cart from '../../Cart/Cart';
 import Option from 'muicss/lib/react/option';
 import Select from 'muicss/lib/react/select';
 import { Button, Icon } from 'semantic-ui-react';
+// import Badge from 'material-ui/Badge';
 import MainSelect from './Select/MainSelect';
 
 import { connect } from 'react-redux';
@@ -33,7 +35,6 @@ class Details extends Component {
       show: true,
       value: 0,
       values: [],
-      // cart: [],
       cart: JSON.parse(localStorage.getItem('cart')) || [],
       qty: [],
       item: 'Protein'
@@ -119,7 +120,6 @@ class Details extends Component {
         },
         () => {
           localStorage.setItem('cart', JSON.stringify(this.state.cart));
-          // .catch(console.log);
           alert('This item is added to shopping cart!');
         }
       )
@@ -180,7 +180,8 @@ class Details extends Component {
       // addOnValues;
 
       /////////////////END TESTINH//
-
+      // const cartNumber = this.state.value.length ? this.state.value.length : '';
+      // const cartNumber = this.state.value + this.state.qty;
       return (
         <div>
           <hr />
@@ -231,7 +232,7 @@ class Details extends Component {
                   marginLeft: '27%'
                 }}
               >
-                Quantity
+                Quantity:
               </h3>
               <div className="QContainer">
                 <button
@@ -300,6 +301,21 @@ class Details extends Component {
                       Number(mealsId.price)
                   }
                 />
+                {/* //BADGE TEST// */}
+                {/* {cartNumber ? (
+                  <a>
+                    <Badge
+                      id="cart-badge"
+                      badgeContent={cartNumber}
+                      // primary={true}
+                      badgeContent={4}
+                      color="primary"
+                    />
+                  </a>
+                ) : (
+                  <Cart />
+                )} */}
+                {/* //BADGE TEST ENDs// */}
               </div>
             </div>
           </div>
@@ -325,7 +341,6 @@ class Details extends Component {
               </a>
             </div>
           </div>
-          {/* <h3>Test:{calculate}</h3> */}
         </div>
       );
     });

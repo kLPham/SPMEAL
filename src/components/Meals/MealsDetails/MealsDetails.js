@@ -8,6 +8,7 @@ import Option from 'muicss/lib/react/option';
 import Select from 'muicss/lib/react/select';
 import { SocialIcons } from 'react-social-icons';
 import { Icon, Button } from 'semantic-ui-react';
+import Cart from '../../Cart/Cart';
 
 export default class MealsDetails extends Component {
   constructor(props) {
@@ -16,14 +17,19 @@ export default class MealsDetails extends Component {
     //SET INITIAL STATE HERE
     this.state = {
       mealsToDisplay: [],
-      cart: []
-      // qty: [],
-      // clicks: 0,
-      // value: 0
-      // item: []
+      clicks: 1,
+      show: true,
+      value: 1,
+      qty: [],
+      item: 'Protein',
+      cart: JSON.parse(localStorage.getItem('cart')) || []
+      // cart: []
     };
 
     //BIND ACTIONS HERE
+    this.IncrementItem = this.IncrementItem.bind(this);
+    this.DecreaseItem = this.DecreaseItem.bind(this);
+    this.ToggleClick = this.ToggleClick.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
   //CREATE HANDLE ACTIONS TYPE HERE:
@@ -38,30 +44,49 @@ export default class MealsDetails extends Component {
       });
   }
   //POST ITEMS TO CART WHEN ADDED :)
-  handleAddToCart(item) {
-    axios
-      .post('/api/cart', { item: item })
-      .then(response => this.setState({ cart: response.data }))
-      .catch(console.log);
-    alert('This meal is being added to your shopping cart!');
+  // handleAddToCart(item) {
+  //   axios
+  //     .post('/api/cart', { item: item })
+  //     .then(response => this.setState({ cart: response.data }))
+  //     .catch(console.log);
+  //   alert('This meal is being added to your shopping cart!');
+  // }
+  handleAddToCart(item, value) {
+    axios.post('/api/cart', { item: item, value: value }).then(response =>
+      this.setState(
+        {
+          cart: response.data,
+          clicks: this.state.clicks + 1,
+          value: this.state.value + 1
+          // qty: this.state.qty
+        },
+        () => {
+          localStorage.setItem('cart', JSON.stringify(this.state.cart));
+          // alert('This item is added to shopping cart!');
+        }
+      )
+    );
   }
-  // IncrementItem = e => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     clicks: this.state.clicks + 1,
-  //     value: this.state.value + 1,
-  //     qty: this.state.qty + 1
-  //   });
-  // };
+  IncrementItem = e => {
+    e.preventDefault();
+    this.setState({
+      clicks: this.state.clicks + 1,
+      value: this.state.value + 1
+      // qty: this.state.qty + 1
+    });
+  };
 
-  // DecreaseItem = e => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     clicks: this.state.clicks - 1,
-  //     value: this.state.value - 1,
-  //     qty: this.state.qty - 1
-  //   });
-  // };
+  DecreaseItem = e => {
+    e.preventDefault();
+    this.setState({
+      clicks: this.state.clicks - 1,
+      value: this.state.value - 1
+      // qty: this.state.qty - 1
+    });
+  };
+  ToggleClick = () => {
+    this.setState({ show: !this.state.show });
+  };
   render() {
     const style = {
       position: 'relative',
@@ -114,6 +139,7 @@ export default class MealsDetails extends Component {
     ];
 
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
+      const qtyTest = Number(this.state.value);
       return (
         <div key={mealsId.meals_id} style={style}>
           <div style={imageStyle}>
@@ -124,21 +150,47 @@ export default class MealsDetails extends Component {
           <div style={rightItemsStyle}>
             <p>{mealsId.meals_name}</p>
             <p>${mealsId.price}</p>
-            <form>
-              <Select
-                name="Quantity"
-                label="QTY"
-                defaultValue="1"
-                // onClick={this.IncrementItem}
+            {/* ///QUANTITY // */}
+            {/* <div>
+              <div
+                style={{
+                  color: 'grey'
+                }}
+                className="QContainer"
               >
-                <Option value="1" label="1" />
-                <Option value="2" label="2" />
-                <Option value="3" label="3" />
-                <Option value="4" label="4" />
-                <Option value="5" label="5" />
-              </Select>
-            </form>
-            {/* {mealsId.quantity} */}
+                Qty:
+                <button
+                  style={{
+                    fontWeight: 900,
+                    color: 'grey',
+                    height: '40px'
+                  }}
+                  onClick={this.DecreaseItem}
+                >
+                  -
+                </button>
+                <button
+                  style={{
+                    fontSize: '20px',
+                    fontWeight: 900,
+                    color: 'grey',
+                    height: '40px'
+                  }}
+                >
+                  {this.state.show ? <h2>{this.state.clicks}</h2> : ''}
+                </button>
+                <button
+                  style={{
+                    fontWeight: 900,
+                    color: 'grey',
+                    height: '40px'
+                  }}
+                  onClick={this.IncrementItem}
+                >
+                  +
+                </button>
+              </div>
+            </div> */}
 
             <button
               style={buttonStyle}
@@ -146,6 +198,9 @@ export default class MealsDetails extends Component {
             >
               Add to Cart
             </button>
+            <hr />
+            {/* <Cart qtyy={'Qty:' + Number(this.state.value)} /> */}
+            <p>Quantity Test: {qtyTest}</p>
             <hr />
             <SocialIcons
               urls={urls}

@@ -12,3 +12,8 @@
 .centerMeal:not(.nohover) {
   border: 2px solid gainsboro;
 }
+#cart-badge {
+  right: 5.5%;
+  bottom: 30%;
+  position: relative;
+}

@@ -4,6 +4,7 @@ import './Header.css';
 import RaisedButton from 'material-ui/RaisedButton'; // add
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+import Badge from 'material-ui/Badge';
 //////////////////////////
 import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom';
@@ -220,7 +221,13 @@ export default class Header extends Component {
 
           <Login />
           <br />
-          <Cart style={cartStyle} />
+          <Cart style={cartStyle}> </Cart>
+          <Badge
+            id="cart-badge"
+            // badgeContent={this.props.cartNumber}
+            primary={true}
+            badgeContent={2}
+          />
         </div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
       </div>
