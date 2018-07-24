@@ -11,7 +11,7 @@ export default class TaxesFees extends Component {
           marginLeft: '2%'
         }}
       >
-        <p2>Tax:{`$${this.props.taxes.toFixed(2)}`} </p2>
+        <p2>${this.props.taxes.toFixed(2)} </p2>
       </div>
     );
   }

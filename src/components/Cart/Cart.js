@@ -20,6 +20,8 @@ import Trash from 'react-icons/lib/fa/trash';
 
 import TaxesFees from './TaxesFees/TaxesFees';
 import EstimatedTotal from './EstimatedTotal/EstimatedTotal';
+import CheckoutWStripe from '../CheckoutWStripe';
+import Swal from 'sweetalert2';
 
 export default class Cart extends Component {
   constructor(props) {
@@ -36,6 +38,7 @@ export default class Cart extends Component {
     this.handleCartToggle = this.handleCartToggle.bind(this);
     this.handleCartClose = this.handleCartClose.bind(this);
     this.handleCartRemove = this.handleCartRemove.bind(this);
+    this.handleAddToCheckout = this.handleAddToCheckout.bind(this);
   }
 
   //GET ITEMS FROM DETAIL PAGE: //*get back to this
@@ -43,7 +46,8 @@ export default class Cart extends Component {
     axios.get('/api/cart').then(response => {
       this.setState({
         rehydrated: true,
-        cart: response.data
+        cart: response.data,
+        value: this.state.value
       });
     });
     //GET TOTAL PRICE FROM SERVER:
@@ -65,7 +69,23 @@ export default class Cart extends Component {
       .delete(`/api/cart/${meals.meals_id}`)
       .then(response => this.setState({ cart: response.data }))
       .catch(console.log);
-    alert('This meal has been remove from your shopping cart!');
+  }
+
+  //POST ON checkout PAGE
+  handleAddToCheckout(item) {
+    //:)
+    axios
+      .post('/api/CheckoutWStripe', { item: item })
+      .then(response => this.setState({ checkout: response.data }))
+      .catch(console.log);
+    window.location.href = 'http://localhost:3000/CheckoutWStripe';
+    // alert("let's go pay!");
+    Swal({
+      title: 'Go To Checkout!',
+      // text: '',
+      type: 'success',
+      confirmButtonText: 'Confirm'
+    });
   }
 
   render() {
@@ -118,6 +138,7 @@ export default class Cart extends Component {
     const calculating =
       this.state.cart.length &&
       this.state.cart.reduce((total, eachMeal) => {
+        // var priceTotal = eachMeal.price * this.props.quantityValue; NEED TO FIX QUANTITY*
         var priceTotal = eachMeal.price * eachMeal.quantity;
         total += priceTotal;
         return total;
@@ -125,12 +146,11 @@ export default class Cart extends Component {
     // console.log(this.props.totalPrice);
     // console.log(this.props.qty);
     // console.log(this.props.selectedItems);
-    console.log(this.props.qtyy);
 
     let displayInCart =
       this.state.cart.length > 0 ? (
         this.state.cart.map(eachMeal => {
-          console.log(eachMeal.price * this.props.qty);
+          console.log(eachMeal.price * this.props.quantityValue);
           return (
             <div style={wholeMealStyle}>
               <div key={eachMeal.id}>
@@ -140,22 +160,32 @@ export default class Cart extends Component {
                   src={eachMeal.image_url}
                 />
                 <p>{eachMeal.meals_name}</p>
-                {/* //TSTING // */}
                 <div style={{ fontSize: '10px', fontWeight: 100 }}>
                   {this.props.selectedItems}
                 </div>
                 <p>{this.props.qty}</p>
-                {/* <p>{this.props.qtyy}</p> */}
                 <p>Price: ${eachMeal.price}</p>
+                {/* ///TESTING QUANTITY // */}
+                {/* <p>QTY: {this.props.quantityValue}</p> */}
                 <p>{this.props.totalPrice}</p>
-                {/* ///TSTINGNGN/// */}
               </div>
               <button
-                style={removeButton}
-                onClick={() => this.handleCartRemove(eachMeal)}
+                onClick={() => {
+                  this.handleCartRemove(eachMeal);
+
+                  Swal({
+                    title: 'Confirm',
+                    text: 'Are you sure you want to delete this item?',
+                    showCancelButton: true,
+                    cancelButtonColor: 'default',
+                    cancelButtonText: 'No, Keep this item.',
+                    type: 'warning',
+                    confirmButtonColor: '#FF0000',
+                    confirmButtonText: 'Yes, please remove this item!'
+                  });
+                }}
               >
-                <Icon name="trash alternate" />
-                Remove
+                <Icon name="trash alternate" color="red" />
               </button>
               <hr />
             </div>
@@ -209,18 +239,43 @@ export default class Cart extends Component {
             <p style={{ marginLeft: '2%', fontSize: '14px' }}>
               Shipping & Handling: Free
             </p>
-            <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
+            <p style={{ marginLeft: '2%', fontSize: '14px', color: 'red' }}>
+              Tax:{' '}
+              <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
+            </p>
             <hr />
             <EstimatedTotal
               price={this.state.taxes.toFixed(2) * calculating + calculating}
             />
           </div>
           <br />
-          <button>
+          {/* <button>
             <MenuItem style={checkOutButtonStyle} onClick={this.handleClose}>
               Proceed To CheckOut
             </MenuItem>
-          </button>
+          </button> */}
+          <div style={{ display: 'flex' }}>
+            <Button color="green" size="large" style={{ display: 'flex' }}>
+              <Icon
+                style={{ marginBottom: '7%' }}
+                name="chevron circle left"
+                color="white"
+                size="big"
+              />Continue Shopping
+            </Button>
+            <Link to="/FullSizeCartView">
+              <Button>View Cart</Button>
+            </Link>
+          </div>
+          <div>
+            <CheckoutWStripe
+              amount={this.state.taxes.toFixed(2) * calculating + calculating}
+              name="Spartan Performance Meals"
+              description={'Make a Payment'}
+              receipt_email="kellylpham@gmail.com"
+              data-allow-remember-me="true"
+            />
+          </div>
         </Drawer>
       </div>
     );

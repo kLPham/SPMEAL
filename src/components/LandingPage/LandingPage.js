@@ -299,7 +299,7 @@ export default class LandingPage extends Component {
 
         {/* SECTION 6 */}
         <section className="Testimonials">
-          <h2 className="titleName">Testimonials</h2>
+          <h2 className="titleName">WHAT OTHERS ARE SAYING</h2>
           <br />
           <div className="allBubbles">
             <div className="speechBubble">
@@ -345,13 +345,6 @@ export default class LandingPage extends Component {
           </div>
         </section>
 
-        {/* <section className="blog">
-          <img src={blog1} alt="customerImage1" style={blogImageStyle} />
-          <img src={blog3} alt="customerImage3" style={blogImageStyle} />
-          <img src={blog2} alt="customerImage2" style={blogImageStyle} />
-
-          <img asrc={blog4} alt="customerImage4" style={blogImageStyle} />
-        </section> */}
 
         <h2 style={{ color: 'black', fontWeight: 'bold' }}>
           ______________________________________________________________________________________________________

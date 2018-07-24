@@ -9,6 +9,9 @@ import Select from 'muicss/lib/react/select';
 import { SocialIcons } from 'react-social-icons';
 import { Icon, Button } from 'semantic-ui-react';
 import Cart from '../../Cart/Cart';
+// import FullSizeCartView from '../../Cart/FullSizeCartView';
+import Swal from 'sweetalert2';
+import Qty from '../../Cart/Qty/Qty';
 
 export default class MealsDetails extends Component {
   constructor(props) {
@@ -44,25 +47,23 @@ export default class MealsDetails extends Component {
       });
   }
   //POST ITEMS TO CART WHEN ADDED :)
-  // handleAddToCart(item) {
-  //   axios
-  //     .post('/api/cart', { item: item })
-  //     .then(response => this.setState({ cart: response.data }))
-  //     .catch(console.log);
-  //   alert('This meal is being added to your shopping cart!');
-  // }
+
   handleAddToCart(item, value) {
     axios.post('/api/cart', { item: item, value: value }).then(response =>
       this.setState(
         {
           cart: response.data,
-          clicks: this.state.clicks + 1,
-          value: this.state.value + 1
-          // qty: this.state.qty
+          clicks: this.state.clicks,
+          value: this.state.value
         },
         () => {
           localStorage.setItem('cart', JSON.stringify(this.state.cart));
-          // alert('This item is added to shopping cart!');
+          Swal({
+            title: 'Successfully Added To Your Cart!',
+            text: 'Check Out Our Other Meals',
+            type: 'success',
+            confirmButtonText: 'Confirm'
+          });
         }
       )
     );
@@ -151,7 +152,8 @@ export default class MealsDetails extends Component {
             <p>{mealsId.meals_name}</p>
             <p>${mealsId.price}</p>
             {/* ///QUANTITY // */}
-            {/* <div>
+            {/* <Qty  /> */}
+            <div>
               <div
                 style={{
                   color: 'grey'
@@ -190,18 +192,27 @@ export default class MealsDetails extends Component {
                   +
                 </button>
               </div>
-            </div> */}
-
-            <button
-              style={buttonStyle}
-              onClick={() => this.handleAddToCart(mealsId)}
+            </div>
+            <div
+              style={{
+                position: 'relative',
+                display: 'flex'
+              }}
             >
-              Add to Cart
-            </button>
+              <div style={{ display: 'flex' }}>
+                <button
+                  style={buttonStyle}
+                  onClick={() => this.handleAddToCart(mealsId)}
+                >
+                  Add to Cart ({`${this.state.value}`})
+                </button>
+              </div>
+              <div style={{ display: 'flex', marginLeft: '5%' }}>
+                {/* <Cart quantityValue={this.state.value} /> */}
+              </div>
+            </div>
             <hr />
-            {/* <Cart qtyy={'Qty:' + Number(this.state.value)} /> */}
-            <p>Quantity Test: {qtyTest}</p>
-            <hr />
+
             <SocialIcons
               urls={urls}
               style={iconsStyle}

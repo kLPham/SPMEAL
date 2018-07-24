@@ -29,15 +29,16 @@ const clientSecret = process.env.CLIENTSECRET;
 
 ////////////////STRIPE:entry point and bootstraps your Express application ////////////////
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+// const stripe = process.env.STRIPE_SECRET_KEY;
 const configureStripe = require('stripe');
-// const SERVER_CONFIGS = require('../src/react-express-stripe/backend/constants/server');
-
-// const configureServer = require('../src/react-express-stripe/backend/server');
-// const configureRoutes = require('../src/react-express-stripe/backend/routes/index');
+const SERVER_CONFIGS = require('../src/react-express-stripe/backend/constants/server');
+const configureServer = require('../src/react-express-stripe/backend/server');
+const configureRoutes = require('../src/react-express-stripe/backend/routes/index');
 
 configureServer(app);
 configureRoutes(app);
-//STRIPE END HERE.
+
+//STRIPE END HERE. //////////////////////////////////////////////////////////////////////
 ///////  CREATE MIDDLEWARE THAT USE BODYPARSER, CORS, & SESSION: ///////////////////////
 app.use(json());
 app.use(cors());

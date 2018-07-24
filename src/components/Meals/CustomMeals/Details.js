@@ -24,6 +24,8 @@ import {
   updateVeggieSize
 } from '../../../ducks/selectReducer';
 
+import Swal from 'sweetalert2';
+
 class Details extends Component {
   constructor(props) {
     super(props);
@@ -36,8 +38,9 @@ class Details extends Component {
       value: 0,
       values: [],
       cart: JSON.parse(localStorage.getItem('cart')) || [],
-      qty: [],
+      qty: 0,
       item: 'Protein'
+      // show: false
     };
 
     //BIND ACTIONS HERE
@@ -63,8 +66,8 @@ class Details extends Component {
     e.preventDefault();
     this.setState({
       clicks: this.state.clicks + 1,
-      value: this.state.value + 1,
-      qty: this.state.qty
+      // value: this.state.value + 1,
+      qty: this.state.qty + 1
     });
   };
 
@@ -72,8 +75,8 @@ class Details extends Component {
     e.preventDefault();
     this.setState({
       clicks: this.state.clicks - 1,
-      value: this.state.value - 1,
-      qty: this.state.qty
+      // value: this.state.value - 1,
+      qty: this.state.qty - 1
     });
   };
   ToggleClick = () => {
@@ -115,12 +118,11 @@ class Details extends Component {
       this.setState(
         {
           cart: response.data,
-          clicks: this.state.clicks + 1,
-          value: this.state.value + 1
+          clicks: this.state.clicks,
+          value: this.state.value
         },
         () => {
           localStorage.setItem('cart', JSON.stringify(this.state.cart));
-          alert('This item is added to shopping cart!');
         }
       )
     );
@@ -129,7 +131,7 @@ class Details extends Component {
   render() {
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
       //TESTING CODES:
-      // const ProteinSize = this.props.ProteinSize;
+      const { imageUrl } = mealsId.image_url;
       const selectedItems =
         'Protein Size: ' +
         this.props.ProteinSize +
@@ -182,6 +184,7 @@ class Details extends Component {
       /////////////////END TESTINH//
       // const cartNumber = this.state.value.length ? this.state.value.length : '';
       // const cartNumber = this.state.value + this.state.qty;
+
       return (
         <div>
           <hr />
@@ -273,12 +276,28 @@ class Details extends Component {
               <div>
                 <h2>Selected Items: {selectedItems}</h2>
                 <h2>Total Price: {totalPrice}</h2>
+                <h2>Qty: {this.state.qty}</h2>
 
                 {/* ///QUANTITY END/// */}
+
                 <Button
-                  onClick={() => this.handleAddToCart(mealsId)}
-                  color="youtube"
-                  style={{ fontSize: '20px', marginTop: '22%' }}
+                  color="black"
+                  onClick={() => {
+                    this.handleAddToCart(mealsId);
+                    Swal({
+                      title: 'Successfully Added To Your Cart!',
+                      text: 'love',
+                      imageUrl:
+                        'https://t3.ftcdn.net/jpg/00/65/24/84/240_F_65248490_FA0iTB22m1K5CFmt9vgB78pGYCaUhf3n.jpg',
+                      imageWidth: 200,
+                      imageHeight: 200,
+                      imageAlt: 'meals image',
+                      animation: false,
+                      type: 'success',
+                      confirmButtonColor: 'green',
+                      confirmButtonText: 'Continue Shopping'
+                    });
+                  }}
                 >
                   Add To Cart
                 </Button>
@@ -293,12 +312,11 @@ class Details extends Component {
                     '  ' +
                     selectedItems
                   }
-                  qty={'Qty:' + this.state.value + this.state.qty}
+                  qty={'Qty:' + this.state.qty}
                   totalPrice={
                     'Total:' +
                     '$' +
-                    Number(this.state.value + this.state.qty) *
-                      Number(mealsId.price)
+                    Number(this.state.qty) * Number(mealsId.price)
                   }
                 />
                 {/* //BADGE TEST// */}
