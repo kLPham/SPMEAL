@@ -377,7 +377,7 @@ class Details extends Component {
             style={{ marginBottom: '5%', marginLeft: '30%', fontSize: '20px' }}
           >
             <Icon
-              name="long arrow alternate left"
+              name="chevron circle left"
               size="large"
               style={{ display: 'flex' }}
             />

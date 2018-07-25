@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 // import { connect } from 'react-redux';
 // import { addToCart } from '../../ducks/reducer';
-import FaShoppingCart from 'react-icons/lib/fa/shopping-cart';
+// import FaShoppingCart from 'react-icons/lib/fa/shopping-cart';
+
 import { Button, Icon } from 'semantic-ui-react';
+// import Badge from 'material-ui/Badge';
 
 //IMPORT MATERIALui BELOW:
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -94,10 +96,7 @@ export default class Cart extends Component {
         height: 70
       }
     });
-    const styleSize = {
-      fontSize: '20px',
-      fontWeight: 'bold'
-    };
+
     const basketStyle = {
       height: '35px',
       width: '30px',
@@ -165,8 +164,7 @@ export default class Cart extends Component {
                 </div>
                 <p>{this.props.qty}</p>
                 <p>Price: ${eachMeal.price}</p>
-                {/* ///TESTING QUANTITY // */}
-                {/* <p>QTY: {this.props.quantityValue}</p> */}
+
                 <p>{this.props.totalPrice}</p>
               </div>
               <button
@@ -199,11 +197,37 @@ export default class Cart extends Component {
 
     return (
       <div>
-        <FaShoppingCart style={basketStyle} onClick={this.handleCartToggle} />
+        {/* <FaShoppingCart style={basketStyle} onClick={this.handleCartToggle} /> */}
+        <Button
+          color="black"
+          size="big"
+          style={{
+            display: 'flex',
+            textTransform: 'uppercase',
+            width: '100%',
+            height: '100%',
+            paddingBottom: '15%',
+            marginRight: '5%'
+          }}
+        >
+          <Icon
+            name="shopping basket"
+            size="large"
+            onClick={this.handleCartToggle}
+          />
+          Checkout
+          <div>({`${this.state.cart.length}`})</div>
+          {/* <Badge
+          id="cart-badge"
+          badgeContent={this.props.cartNumber}
+          primary={true}
+          badgeContent={this.state.cart.length}
+        /> */}
+        </Button>
         <Drawer
-          style={styleSize}
+          style={{ fontSize: '18px' }}
           docked={false}
-          width={300}
+          width={320}
           zDepth={2}
           openSecondary={true}
           open={this.state.open}
@@ -211,9 +235,9 @@ export default class Cart extends Component {
         >
           <MuiThemeProvider muiTheme={muiTheme}>
             <AppBar
-              title="Shopping Cart"
+              title="Recently Added Item(s)"
               width={90}
-              style={{ backgroundColor: 'black' }}
+              style={{ backgroundColor: 'black', fontSize: '15px' }}
             />
           </MuiThemeProvider>
           <MenuItem onClick={this.handleClose} />
@@ -233,48 +257,74 @@ export default class Cart extends Component {
               Summary of Charges
             </h2>
             <p style={{ marginLeft: '2%', fontSize: '14px' }}>
+              Total Items: {this.state.cart.length}
+            </p>
+            <p style={{ marginLeft: '2%', fontSize: '14px' }}>
               Order Subtotal: ${calculating.toFixed(2)}
               {/* Order Subtotal: ${Number(calculating) + Number(this.state.qtyy)} */}
             </p>
             <p style={{ marginLeft: '2%', fontSize: '14px' }}>
               Shipping & Handling: Free
             </p>
-            <p style={{ marginLeft: '2%', fontSize: '14px', color: 'red' }}>
+
+            <p
+              style={{
+                marginLeft: '2%',
+                fontSize: '14px',
+                color: 'red',
+                display: 'flex'
+              }}
+            >
               Tax:{' '}
               <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
             </p>
             <hr />
-            <EstimatedTotal
-              price={this.state.taxes.toFixed(2) * calculating + calculating}
-            />
+            <div
+              style={{
+                marginLeft: '2%',
+                paddingRight: '5%',
+                fontSize: '16px',
+                marginTop: '4%',
+                display: 'flex',
+                fontWeight: 900
+              }}
+            >
+              {' '}
+              Total:
+              <EstimatedTotal
+                style={{ marginLeft: '5%', display: 'flex' }}
+                price={this.state.taxes.toFixed(2) * calculating + calculating}
+              />
+            </div>
           </div>
-          <br />
+          <hr />
           {/* <button>
             <MenuItem style={checkOutButtonStyle} onClick={this.handleClose}>
               Proceed To CheckOut
             </MenuItem>
           </button> */}
-          <div style={{ display: 'flex' }}>
-            <Button color="green" size="large" style={{ display: 'flex' }}>
-              <Icon
-                style={{ marginBottom: '7%' }}
-                name="chevron circle left"
-                color="white"
-                size="big"
-              />Continue Shopping
-            </Button>
-            <Link to="/FullSizeCartView">
-              <Button>View Cart</Button>
-            </Link>
-          </div>
-          <div>
-            <CheckoutWStripe
-              amount={this.state.taxes.toFixed(2) * calculating + calculating}
-              name="Spartan Performance Meals"
-              description={'Make a Payment'}
-              receipt_email="kellylpham@gmail.com"
-              data-allow-remember-me="true"
-            />
+          <div
+            style={{
+              display: 'flex',
+              width: '100%',
+              marginLeft: '3%',
+              marginBottom: '5%'
+            }}
+          >
+            <div style={{ width: '50%', marginLeft: '2%' }}>
+              <Link to="/FullSizeCartView">
+                <Button style={{ textTransform: 'uppercase', width: '100%' }}>
+                  View Cart
+                </Button>
+              </Link>
+            </div>
+            <div style={{ width: '50%', marginLeft: '5%' }}>
+              <CheckoutWStripe
+                amount={this.state.taxes.toFixed(2) * calculating + calculating}
+                name="Spartan Performance Meals"
+                description={'Make a Payment'}
+              />
+            </div>
           </div>
         </Drawer>
       </div>

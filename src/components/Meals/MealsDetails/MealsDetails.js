@@ -108,7 +108,8 @@ export default class MealsDetails extends Component {
       marginTop: '2%',
       fontSize: '20px',
       textTransform: 'uppercase',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      display: 'flex'
     };
     const rightItemsStyle = {
       float: 'right',
@@ -238,7 +239,7 @@ export default class MealsDetails extends Component {
             }}
           >
             <Icon
-              name="long arrow alternate left"
+              name="chevron circle left"
               size="large"
               style={{ display: 'flex' }}
             />

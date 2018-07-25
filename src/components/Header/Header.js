@@ -221,13 +221,7 @@ export default class Header extends Component {
 
           <Login />
           <br />
-          <Cart style={cartStyle}> </Cart>
-          <Badge
-            id="cart-badge"
-            // badgeContent={this.props.cartNumber}
-            primary={true}
-            badgeContent={2}
-          />
+          <Cart />
         </div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
       </div>

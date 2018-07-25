@@ -12,6 +12,7 @@ import CheckoutWStripe from '../CheckoutWStripe';
 
 import MealsDetails from '../Meals/MealsDetails/MealsDetails';
 import Cart from './Cart';
+import Footer from '../Footer/Footer';
 
 export default class FullSizeCartView extends Component {
   constructor(props) {
@@ -84,7 +85,7 @@ export default class FullSizeCartView extends Component {
                 style={{
                   marginLeft: '1%',
                   boxSizing: 'contentBox',
-                  width: '96%',
+                  width: '100%',
                   padding: '.5%',
                   border: '1px solid gray'
                 }}
@@ -107,7 +108,8 @@ export default class FullSizeCartView extends Component {
                       flexWrap: 'wrap',
                       flexDirection: 'column',
                       marginTop: '1%',
-                      marginLeft: '1%'
+                      marginLeft: '1%',
+                      marginRight: '10%'
                     }}
                   >
                     <img
@@ -142,7 +144,8 @@ export default class FullSizeCartView extends Component {
                     <p style={{ fontWeight: 900, fontSize: '20px' }}>
                       {eachMeal.meals_name}
                     </p>
-                    <p style={{ fontSize: '12px' }}>Order Number: #23456778</p>
+                    {/* <p>{eachMeal.description}</p> */}
+                    <p style={{ fontSize: '12px' }}>Item: #23456778</p>
                     <div style={{ fontSize: '10px', fontWeight: 100 }}>
                       {this.props.selectedItems}
                     </div>
@@ -156,11 +159,12 @@ export default class FullSizeCartView extends Component {
                         position: 'absolute',
                         top: '0px',
                         right: '0px',
-                        color: 'red'
+                        fontSize: '20px'
                       }}
                       onClick={() => this.handleCartRemove(eachMeal)}
                     >
-                      <Icon name="trash alternate" />
+                      {/* <Icon name="trash alternate" /> */}
+                      X
                     </button>
                   </div>
                 </div>
@@ -175,100 +179,141 @@ export default class FullSizeCartView extends Component {
       );
 
     return (
-      <div
-        style={{
-          display: 'flex',
-          position: 'relative',
-          width: '100%',
-          marginTop: '5%'
-        }}
-      >
-        <h2 style={{ fontWeight: 900, display: 'block' }}>Your Bag</h2> ({`${
-          this.state.qtyCount
-          // this.props.quantityValue
-        } ${'items'}`})
+      <div>
         <div
           style={{
-            overflow: 'auto',
-            height: '700px'
+            display: 'flex',
+            position: 'relative',
+            width: '100%',
+            marginTop: '5%',
+            marginBottom: '5%'
           }}
         >
-          {' '}
-          {displayInCart}
-        </div>
-        <div
-          style={{
-            boxSizing: 'contentBox',
-            width: '35%',
-            height: '30%',
-            padding: '40px',
-            border: '1px solid white',
-            backgroundColor: '#DCDCDC',
-            marginTop: '1%'
-          }}
-        >
-          <h2
+          <div
             style={{
-              fontWeight: 900,
-              textAlign: 'center',
-              fontSize: '30px',
-              color: 'white',
-              textShadow: '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
+              overflow: 'auto',
+              height: '700px',
+              marginLeft: '2%',
+              width: '70%'
             }}
           >
-            Summary of Charges
-          </h2>
-          <hr />
-          <div style={{ marginLeft: '1%', fontSize: '14px', display: 'flex' }}>
-            Order Subtotal:
-            <div style={{ marginLeft: '65%' }}>${calculating.toFixed(2)}</div>
-          </div>
-          <div style={{ marginLeft: '1%', fontSize: '14px' }}>
-            Shipping & Handling:
-            <div style={{ marginLeft: '87%', marginTop: '-4%' }}>Free</div>
-          </div>
-          <div style={{ marginLeft: '1%', fontSize: '14px', display: 'flex' }}>
-            Tax:
-            <div style={{ marginLeft: '81%' }}>
-              <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
-            </div>
+            <h2
+              style={{
+                display: 'block',
+                border: '1px solid gray',
+                padding: '2%',
+                marginLeft: '1%',
+                color: 'black',
+                textShadow:
+                  '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
+              }}
+            >
+              YOUR BAG ({`${this.state.cart.length} ${'Item(s)'}`})
+            </h2>
+            {displayInCart}
           </div>
           <div
             style={{
+              boxSizing: 'contentBox',
+              width: '23%',
+              height: '30%',
+              padding: '40px',
+              border: '1px solid white',
+              backgroundColor: '#f5f5f5',
+              // marginTop: '1%',
               marginLeft: '1%',
-              display: 'flex',
-              fontWeight: 900,
-              fontSize: '19px'
+              marginRight: '2%'
             }}
           >
-            {' '}
-            Estimated Total:
-            <div style={{ marginLeft: '45%', color: 'black' }}>
-              <EstimatedTotal
-                price={this.state.taxes.toFixed(2) * calculating + calculating}
+            <h2
+              style={{
+                fontWeight: 900,
+                textAlign: 'center',
+                fontSize: '26px',
+                color: 'white',
+                textShadow:
+                  '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
+              }}
+            >
+              Summary of Charges
+            </h2>
+            <hr />
+            <div
+              style={{ marginLeft: '1%', fontSize: '14px', display: 'flex' }}
+            >
+              Order Subtotal:
+              <div style={{ marginLeft: '65%' }}>${calculating.toFixed(2)}</div>
+            </div>
+            <div style={{ marginLeft: '1%', fontSize: '14px' }}>
+              Shipping & Handling:
+              <div style={{ marginLeft: '87%', marginTop: '-4%' }}>Free</div>
+            </div>
+            <div
+              style={{ marginLeft: '1%', fontSize: '14px', display: 'flex' }}
+            >
+              Tax:
+              <div style={{ marginLeft: '81%' }}>
+                <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
+              </div>
+            </div>
+            <div
+              style={{
+                marginLeft: '1%',
+                display: 'flex',
+                fontWeight: 900,
+                fontSize: '19px'
+              }}
+            >
+              {' '}
+              Estimated Total:
+              <div style={{ marginLeft: '45%', color: 'black' }}>
+                <EstimatedTotal
+                  price={
+                    this.state.taxes.toFixed(2) * calculating + calculating
+                  }
+                />
+              </div>
+            </div>
+
+            <hr />
+            <Button
+              // color="#4169e1"
+              size="big"
+              style={{ marginRight: '15%', width: '100%' }}
+            >
+              {' '}
+              {/* Checkout */}
+              <CheckoutWStripe
+                amount={this.state.taxes.toFixed(2) * calculating + calculating}
+              />
+            </Button>
+            <br />
+            <div>
+              <img
+                style={{ height: '10%', width: '100%', marginTop: '5%' }}
+                src="http://www.haggertylawoffice.com/uploads/1/0/5/6/10566253/3555633_orig.png"
               />
             </div>
           </div>
-          <hr />
-          <Button
-            color="blue"
-            size="big"
-            style={{ marginRight: '15%', width: '100%' }}
-          >
-            {' '}
-            {/* Checkout */}
-            <CheckoutWStripe
-              amount={this.state.taxes.toFixed(2) * calculating + calculating}
-            />
-          </Button>
-          <br />
-          <div>
-            <img
-              style={{ height: '20%', width: '100%', marginTop: '5%' }}
-              src="http://www.haggertylawoffice.com/uploads/1/0/5/6/10566253/3555633_orig.png"
-            />
-          </div>
         </div>
+        <div style={{ marginLeft: '2%', marginBottom: '5%' }}>
+          <Button
+            color="black"
+            size="large"
+            style={{
+              textTransform: 'uppercase',
+              fontSize: '20px'
+            }}
+          >
+            <Icon
+              name="chevron circle left"
+              size="large"
+              style={{ display: 'flex' }}
+            />
+            Continue Shopping
+          </Button>
+        </div>
+        <Footer />
       </div>
     );
   }
