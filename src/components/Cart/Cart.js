@@ -170,7 +170,6 @@ export default class Cart extends Component {
               <button
                 onClick={() => {
                   this.handleCartRemove(eachMeal);
-
                   Swal({
                     title: 'Confirm',
                     text: 'Are you sure you want to delete this item?',
@@ -318,13 +317,13 @@ export default class Cart extends Component {
                 </Button>
               </Link>
             </div>
-            <div style={{ width: '50%', marginLeft: '5%' }}>
+            {/* <div style={{ width: '50%', marginLeft: '5%' }}> */}
               <CheckoutWStripe
                 amount={this.state.taxes.toFixed(2) * calculating + calculating}
                 name="Spartan Performance Meals"
                 description={'Make a Payment'}
               />
-            </div>
+            {/* </div> */}
           </div>
         </Drawer>
       </div>

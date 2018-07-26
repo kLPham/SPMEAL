@@ -145,7 +145,9 @@ export default class FullSizeCartView extends Component {
                       {eachMeal.meals_name}
                     </p>
                     {/* <p>{eachMeal.description}</p> */}
-                    <p style={{ fontSize: '12px' }}>Item: #23456778</p>
+                    <p style={{ fontSize: '12px' }}>
+                      Item: #{eachMeal.order_number}
+                    </p>
                     <div style={{ fontSize: '10px', fontWeight: 100 }}>
                       {this.props.selectedItems}
                     </div>
@@ -274,19 +276,17 @@ export default class FullSizeCartView extends Component {
                 />
               </div>
             </div>
-
             <hr />
-            <Button
+            {/* <Button
               // color="#4169e1"
               size="big"
               style={{ marginRight: '15%', width: '100%' }}
-            >
-              {' '}
-              {/* Checkout */}
-              <CheckoutWStripe
-                amount={this.state.taxes.toFixed(2) * calculating + calculating}
-              />
-            </Button>
+            > */}{' '}
+          
+            <CheckoutWStripe
+              amount={this.state.taxes.toFixed(2) * calculating + calculating}
+            />
+            {/* </Button> */}
             <br />
             <div>
               <img
