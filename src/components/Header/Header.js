@@ -217,11 +217,16 @@ export default class Header extends Component {
               </DropDownMenu>
             </a>
           </div>
-          <SearchBar />
-
-          <Login />
-          <br />
-          <Cart />
+          <div
+            style={{ display: 'flex', flexDirection: 'row', marginRight: '5%' }}
+          >
+            <SearchBar />
+            <Login />
+            <div style={{ width: '25%', height: '2%', paddingLeft: '5%' }}>
+              {' '}
+              <Cart />
+            </div>
+          </div>
         </div>
         <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
       </div>

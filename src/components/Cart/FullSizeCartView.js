@@ -29,6 +29,9 @@ export default class FullSizeCartView extends Component {
     this.handleCartRemove = this.handleCartRemove.bind(this);
     this.handleAddToCheckout = this.handleAddToCheckout.bind(this);
   }
+  static contextTypes = {
+    router: () => true
+  };
 
   //GET ITEMS FROM DETAIL PAGE: //*get back to this
   componentWillMount() {
@@ -243,7 +246,7 @@ export default class FullSizeCartView extends Component {
             <div
               style={{ marginLeft: '1%', fontSize: '14px', display: 'flex' }}
             >
-              Order Subtotal:
+              Subtotal:
               <div style={{ marginLeft: '65%' }}>${calculating.toFixed(2)}</div>
             </div>
             <div style={{ marginLeft: '1%', fontSize: '14px' }}>
@@ -263,12 +266,12 @@ export default class FullSizeCartView extends Component {
                 marginLeft: '1%',
                 display: 'flex',
                 fontWeight: 900,
-                fontSize: '19px'
+                fontSize: '15px'
               }}
             >
               {' '}
-              Estimated Total:
-              <div style={{ marginLeft: '45%', color: 'black' }}>
+              Total:
+              <div style={{ marginLeft: '70%', color: 'black' }}>
                 <EstimatedTotal
                   price={
                     this.state.taxes.toFixed(2) * calculating + calculating
@@ -277,16 +280,13 @@ export default class FullSizeCartView extends Component {
               </div>
             </div>
             <hr />
-            {/* <Button
-              // color="#4169e1"
-              size="big"
-              style={{ marginRight: '15%', width: '100%' }}
-            > */}{' '}
-          
+
             <CheckoutWStripe
               amount={this.state.taxes.toFixed(2) * calculating + calculating}
+              name="Spartan Performance Meals"
+              description={'Make a Payment'}
             />
-            {/* </Button> */}
+
             <br />
             <div>
               <img
@@ -298,6 +298,7 @@ export default class FullSizeCartView extends Component {
         </div>
         <div style={{ marginLeft: '2%', marginBottom: '5%' }}>
           <Button
+            onClick={this.context.router.history.goBack}
             color="black"
             size="large"
             style={{

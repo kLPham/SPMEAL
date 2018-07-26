@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import './CustomMeals.css';
+
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './CustomMeals.css';
@@ -50,6 +50,9 @@ class Details extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
+  static contextTypes = {
+    router: () => true
+  };
   //HANDLE ACTION BELOW:
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
@@ -223,87 +226,117 @@ class Details extends Component {
                 Submit
               </Button>
             </div>
-            <hr />
+          </div>
+          <hr />
+
+          <div style={{ marginLeft: '45%' }}>
+            {/* //OVERALL DIV */}
             {/* ///QUANTITY // */}
-            <div>
-              <h3
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'spaceAround',
+                flexWrap: 'wrap',
+                marginRight: '2%'
+              }}
+            >
+              <div
                 style={{
-                  fontSize: '16px',
-                  fontWeight: 900,
-                  color: 'grey',
-                  textTransform: 'uppercase',
-                  marginLeft: '27%'
+                  display: 'flex',
+                  flexDirection: 'column'
                 }}
               >
-                Quantity:
-              </h3>
-              <div className="QContainer">
-                <button
+                <h3
                   style={{
-                    height: '40px',
-                    width: '80px',
-                    fontSize: '20px',
-                    fontWeight: 900,
-                    color: 'grey'
-                  }}
-                  onClick={this.DecreaseItem}
-                >
-                  -
-                </button>
-                <button
-                  style={{
-                    fontSize: '20px',
+                    fontSize: '10px',
                     fontWeight: 900,
                     color: 'grey',
-                    height: '40px'
+                    textTransform: 'uppercase',
+                    marginLeft: '10%'
                   }}
                 >
-                  {this.state.show ? <h2>{this.state.clicks}</h2> : ''}
-                </button>
-                <button
+                  Quantity:
+                </h3>
+                <div
                   style={{
-                    height: '40px',
-                    width: '80px',
-                    fontSize: '20px',
-                    fontWeight: 900,
-                    color: 'grey'
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: 'spaceAround',
+                    flexWrap: 'wrap'
                   }}
-                  onClick={this.IncrementItem}
                 >
-                  +
-                </button>
+                  <button
+                    style={{
+                      height: '40px',
+                      width: '30px',
+                      fontSize: '20px',
+                      fontWeight: 900,
+                      color: 'grey'
+                    }}
+                    onClick={this.DecreaseItem}
+                  >
+                    -
+                  </button>
+                  <button
+                    style={{
+                      fontSize: '20px',
+                      fontWeight: 900,
+                      color: 'grey',
+                      height: '40px',
+                      width: '60px'
+                    }}
+                  >
+                    {this.state.show ? <h2>{this.state.clicks}</h2> : ''}
+                  </button>
+                  <button
+                    style={{
+                      height: '40px',
+                      width: '30px',
+                      fontSize: '20px',
+                      fontWeight: 900,
+                      color: 'grey'
+                    }}
+                    onClick={this.IncrementItem}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
-              <div>
-                <h2>Selected Items: {selectedItems}</h2>
-                <h2>Total Price: {totalPrice}</h2>
-                <h2>Qty: {this.state.qty}</h2>
 
-                {/* ///QUANTITY END/// */}
+              <Button
+                style={{
+                  marginLeft: '4%',
+                  marginTop: '4.5%',
+                  width: '60%',
+                  height: '20%',
 
-                <Button
-                  color="black"
-                  onClick={() => {
-                    this.handleAddToCart(mealsId);
-                    Swal({
-                      title: 'Successfully Added To Your Cart!',
-                      text: 'love',
-                      imageUrl:
-                        'https://t3.ftcdn.net/jpg/00/65/24/84/240_F_65248490_FA0iTB22m1K5CFmt9vgB78pGYCaUhf3n.jpg',
-                      imageWidth: 200,
-                      imageHeight: 200,
-                      imageAlt: 'meals image',
-                      animation: false,
-                      type: 'success',
-                      confirmButtonColor: 'green',
-                      confirmButtonText: 'Continue Shopping'
-                    });
-                  }}
-                >
-                  Add To Cart
-                </Button>
-
+                  fontSize: '20px',
+                  paddingLeft: '5%',
+                  paddingRight: '5%'
+                }}
+                color="black"
+                onClick={() => {
+                  this.handleAddToCart(mealsId);
+                  Swal({
+                    title: 'Successfully Added To Your Cart!',
+                    text: 'love',
+                    imageUrl:
+                      'https://t3.ftcdn.net/jpg/00/65/24/84/240_F_65248490_FA0iTB22m1K5CFmt9vgB78pGYCaUhf3n.jpg',
+                    imageWidth: 200,
+                    imageHeight: 200,
+                    imageAlt: 'meals image',
+                    animation: false,
+                    type: 'success',
+                    confirmButtonColor: 'green',
+                    confirmButtonText: 'Continue Shopping'
+                  });
+                }}
+              >
+                Add To Cart
+              </Button>
+              <div style={{ width: '10%', marginTop: '5%' }}>
                 <Cart
-                  style={{ fontWeight: 100 }}
                   selectedItems={
                     this.state.item +
                     ':' +
@@ -319,33 +352,51 @@ class Details extends Component {
                     Number(this.state.qty) * Number(mealsId.price)
                   }
                 />
-                {/* //BADGE TEST// */}
-                {/* {cartNumber ? (
-                  <a>
-                    <Badge
-                      id="cart-badge"
-                      badgeContent={cartNumber}
-                      // primary={true}
-                      badgeContent={4}
-                      color="primary"
-                    />
-                  </a>
-                ) : (
-                  <Cart />
-                )} */}
-                {/* //BADGE TEST ENDs// */}
               </div>
             </div>
-          </div>
-          <div>
-            {/* ICONS BELOW: */}
-
             <div
               style={{
-                marginLeft: '58%',
-                marginTop: '3%'
+                display: 'flex',
+                flexDirection: 'row',
+                marginTop: '5%',
+                marginLeft: '21%'
               }}
-            >
+            />
+            {/* </div> */}
+            {/* ///QUANTITY END/// */}
+            {/* <div>
+                <h2>Selected Items: {selectedItems}</h2>
+                <h2>Total Price: {totalPrice}</h2>
+                <h2>Qty: {this.state.qty}</h2>
+              </div> */}
+            {/* // ADD TO CART BUTTON & CART BUTTON */}
+            {/* <div
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginTop: '5%',
+                marginLeft: '21%'
+              }}
+            > */}
+            {/* <Cart
+              style={{ fontWeight: 100 }}
+              selectedItems={
+                this.state.item +
+                ':' +
+                mealsId.name +
+                '.' +
+                '  ' +
+                selectedItems
+              }
+              qty={'Qty:' + this.state.qty}
+              totalPrice={
+                'Total:' + '$' + Number(this.state.qty) * Number(mealsId.price)
+              }
+            /> */}
+            {/* </div> */}
+            <hr />
+            {/* ICONS BELOW: */}
+            <div style={{ marginTop: '5%', marginLeft: '20%' }}>
               <a href="https://www.facebook.com/Spartanperformancemeals/">
                 <Icon name="facebook" size="big" bordered color="black">
                   {' '}
@@ -370,20 +421,20 @@ class Details extends Component {
 
         <br />
         <br />
-        <Link to="/Meals/CustomizeYourMeal">
-          <Button
-            basic
-            color="grey"
-            style={{ marginBottom: '5%', marginLeft: '30%', fontSize: '20px' }}
-          >
-            <Icon
-              name="chevron circle left"
-              size="large"
-              style={{ display: 'flex' }}
-            />
-            BACK TO STEP 1: CHOOSE YOUR PROTEIN
-          </Button>
-        </Link>
+
+        <Button
+          onClick={this.context.router.history.goBack}
+          basic
+          color="grey"
+          style={{ marginBottom: '5%', marginLeft: '30%', fontSize: '20px' }}
+        >
+          <Icon
+            name="chevron circle left"
+            size="large"
+            style={{ display: 'flex' }}
+          />
+          BACK TO STEP 1: CHOOSE YOUR PROTEIN
+        </Button>
       </div>
     );
   }

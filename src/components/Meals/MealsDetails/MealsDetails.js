@@ -35,6 +35,9 @@ export default class MealsDetails extends Component {
     this.ToggleClick = this.ToggleClick.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
+  static contextTypes = {
+    router: () => true
+  };
   //CREATE HANDLE ACTIONS TYPE HERE:
 
   //GET EACH MEAL WITH A MATCHING ID:
@@ -227,25 +230,25 @@ export default class MealsDetails extends Component {
 
     return (
       <div>
-        <Link to="/Meals/FullMenu">
-          <Button
-            basic
-            color="black"
-            style={{
-              marginTop: '5%',
-              marginLeft: '5%',
-              fontSize: '20px',
-              fontWeight: 900
-            }}
-          >
-            <Icon
-              name="chevron circle left"
-              size="large"
-              style={{ display: 'flex' }}
-            />
-            BACK TO MENU
-          </Button>
-        </Link>
+        <Button
+          onClick={this.context.router.history.goBack}
+          basic
+          color="black"
+          style={{
+            marginTop: '5%',
+            marginLeft: '5%',
+            fontSize: '20px',
+            fontWeight: 900
+          }}
+        >
+          <Icon
+            name="chevron circle left"
+            size="large"
+            style={{ display: 'flex' }}
+          />
+          BACK TO MENU
+        </Button>
+
         <div> {displayMealDetails}</div>
         <br />
         <br />

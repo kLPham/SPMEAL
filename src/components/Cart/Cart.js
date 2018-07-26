@@ -4,9 +4,10 @@ import axios from 'axios';
 // import { connect } from 'react-redux';
 // import { addToCart } from '../../ducks/reducer';
 // import FaShoppingCart from 'react-icons/lib/fa/shopping-cart';
+// import ReactRouter from 'react-router-dom';
 
 import { Button, Icon } from 'semantic-ui-react';
-// import Badge from 'material-ui/Badge';
+import Badge from 'material-ui/Badge';
 
 //IMPORT MATERIALui BELOW:
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -42,6 +43,9 @@ export default class Cart extends Component {
     this.handleCartRemove = this.handleCartRemove.bind(this);
     this.handleAddToCheckout = this.handleAddToCheckout.bind(this);
   }
+  static contextTypes = {
+    router: () => true
+  };
 
   //GET ITEMS FROM DETAIL PAGE: //*get back to this
   componentWillMount() {
@@ -196,32 +200,40 @@ export default class Cart extends Component {
 
     return (
       <div>
-        {/* <FaShoppingCart style={basketStyle} onClick={this.handleCartToggle} /> */}
         <Button
+          style={{ display: 'flex', width: '100%', alignItems: 'center' }}
           color="black"
-          size="big"
-          style={{
-            display: 'flex',
-            textTransform: 'uppercase',
-            width: '100%',
-            height: '100%',
-            paddingBottom: '15%',
-            marginRight: '5%'
-          }}
+          size="small"
+          animated="fade"
+          onClick={this.handleCartToggle}
         >
-          <Icon
-            name="shopping basket"
-            size="large"
-            onClick={this.handleCartToggle}
-          />
-          Checkout
-          <div>({`${this.state.cart.length}`})</div>
-          {/* <Badge
-          id="cart-badge"
-          badgeContent={this.props.cartNumber}
-          primary={true}
-          badgeContent={this.state.cart.length}
-        /> */}
+          <Button.Content
+            visible
+            style={{
+              display: 'flex',
+              flexDirection: 'row'
+            }}
+          >
+            <Icon name="shopping basket" size="large" />
+            <Badge
+              animated="fade"
+              // badgeContent={this.props.cartNumber}
+              primary={false}
+              badgeContent={this.state.cart.length}
+              style={{ marginLeft: '-26%', marginTop: '-20%' }}
+            />
+          </Button.Content>
+          <Button.Content
+            hidden
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              // paddingLeft: '8%',
+              fontSize: '16.2px'
+            }}
+          >
+            Checkout <div>({`${this.state.cart.length}`})</div>
+          </Button.Content>
         </Button>
         <Drawer
           style={{ fontSize: '18px' }}
@@ -233,11 +245,25 @@ export default class Cart extends Component {
           onRequestChange={open => this.setState({ open })}
         >
           <MuiThemeProvider muiTheme={muiTheme}>
-            <AppBar
+            {/* <AppBar
               title="Recently Added Item(s)"
               width={90}
-              style={{ backgroundColor: 'black', fontSize: '15px' }}
-            />
+              style={{ backgroundColor: 'black', fontSize: '5px' }}
+            /> */}
+            <div
+              style={{
+                textAlign: 'center',
+                border: '1px solid black',
+                padding: '2%',
+                marginLeft: '1%',
+                color: 'black',
+                backgroundColor: '#DCDCDC'
+                // textShadow:
+                //   '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
+              }}
+            >
+              Recently Added Item(s)
+            </div>
           </MuiThemeProvider>
           <MenuItem onClick={this.handleClose} />
           <div> {displayInCart}</div>
@@ -297,11 +323,7 @@ export default class Cart extends Component {
             </div>
           </div>
           <hr />
-          {/* <button>
-            <MenuItem style={checkOutButtonStyle} onClick={this.handleClose}>
-              Proceed To CheckOut
-            </MenuItem>
-          </button> */}
+
           <div
             style={{
               display: 'flex',
@@ -310,20 +332,39 @@ export default class Cart extends Component {
               marginBottom: '5%'
             }}
           >
-            <div style={{ width: '50%', marginLeft: '2%' }}>
+            <div style={{ width: '100%' }}>
+              <Button
+                animated
+                inverted
+                color="green"
+                onClick={this.context.router.history.goBack}
+              >
+                <Button.Content visible>Continue Shopping</Button.Content>
+                <Button.Content hidden>
+                  <Icon
+                    name="angle double left"
+                    size="large"
+                    style={{ textAlign: 'center' }}
+                  />
+                </Button.Content>
+              </Button>
+            </div>
+            <div style={{ width: '100%', marginLeft: '2%', padding: '5%' }}>
               <Link to="/FullSizeCartView">
-                <Button style={{ textTransform: 'uppercase', width: '100%' }}>
-                  View Cart
+                <Button animated="vertical" color="black" size="medium">
+                  <Button.Content hidden>View Cart</Button.Content>
+                  <Button.Content visible>
+                    <Icon name="shopping basket" />
+                  </Button.Content>
                 </Button>
               </Link>
             </div>
-            {/* <div style={{ width: '50%', marginLeft: '5%' }}> */}
-              <CheckoutWStripe
-                amount={this.state.taxes.toFixed(2) * calculating + calculating}
-                name="Spartan Performance Meals"
-                description={'Make a Payment'}
-              />
-            {/* </div> */}
+
+            {/* <CheckoutWStripe
+              amount={this.state.taxes.toFixed(2) * calculating + calculating}
+              name="Spartan Performance Meals"
+              description={'Make a Payment'}
+            /> */}
           </div>
         </Drawer>
       </div>
