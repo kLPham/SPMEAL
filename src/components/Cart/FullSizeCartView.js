@@ -7,6 +7,7 @@ import { Button, Icon } from 'semantic-ui-react';
 import Trash from 'react-icons/lib/fa/trash';
 
 import TaxesFees from './TaxesFees/TaxesFees';
+import ShippingFees from './ShippingFees/ShippingFees';
 import EstimatedTotal from './EstimatedTotal/EstimatedTotal';
 import CheckoutWStripe from '../CheckoutWStripe';
 
@@ -21,6 +22,7 @@ export default class FullSizeCartView extends Component {
     this.state = {
       cart: [],
       taxes: 0.087,
+      shippingFee: 0.15,
       value: 0,
       qtyCount: 3
     };
@@ -80,7 +82,8 @@ export default class FullSizeCartView extends Component {
     let displayInCart =
       this.state.cart.length > 0 ? (
         this.state.cart.map(eachMeal => {
-          console.log(eachMeal.price * this.props.qty);
+          // console.log(eachMeal.price * this.props.qty);
+
           return (
             <div>
               <br />
@@ -178,9 +181,14 @@ export default class FullSizeCartView extends Component {
           );
         })
       ) : (
-        <p style={{ color: 'red', textAlign: 'center' }}>
-          Your Cart is empty <hr />
-        </p>
+        <div>
+          <p style={{ color: 'red', textAlign: 'center' }}>
+            You have no items in your shopping cart. <br />
+          </p>
+          <p style={{ textAlign: 'center' }}>
+            Click <a href="/Meals/FullMenu">here</a> to continue shopping.
+          </p>
+        </div>
       );
 
     return (
@@ -244,20 +252,46 @@ export default class FullSizeCartView extends Component {
             </h2>
             <hr />
             <div
-              style={{ marginLeft: '1%', fontSize: '14px', display: 'flex' }}
+              style={{
+                marginLeft: '1%',
+                fontSize: '14px',
+                display: 'flex',
+                flexDirection: 'row'
+              }}
             >
               Subtotal:
-              <div style={{ marginLeft: '65%' }}>${calculating.toFixed(2)}</div>
-            </div>
-            <div style={{ marginLeft: '1%', fontSize: '14px' }}>
-              Shipping & Handling:
-              <div style={{ marginLeft: '87%', marginTop: '-4%' }}>Free</div>
+              <div style={{ marginLeft: '55%' }}>${calculating.toFixed(2)}</div>
             </div>
             <div
-              style={{ marginLeft: '1%', fontSize: '14px', display: 'flex' }}
+              style={{
+                marginLeft: '1%',
+                fontSize: '14px',
+                display: 'flex',
+                flexDirection: 'row'
+              }}
+            >
+              Shipping & Handling:
+              <div style={{ marginLeft: '6.3%' }}>
+                {' '}
+                <ShippingFees
+                  fees={
+                    this.state.cart.length >= 3
+                      ? '(Free Shipping)'
+                      : '$' + this.state.shippingFee.toFixed(2) * calculating
+                  }
+                />
+              </div>
+            </div>
+            <div
+              style={{
+                marginLeft: '1%',
+                fontSize: '14px',
+                display: 'flex',
+                flexDirection: 'row'
+              }}
             >
               Tax:
-              <div style={{ marginLeft: '81%' }}>
+              <div style={{ marginLeft: '68%' }}>
                 <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
               </div>
             </div>
@@ -265,16 +299,19 @@ export default class FullSizeCartView extends Component {
               style={{
                 marginLeft: '1%',
                 display: 'flex',
+                flexDirection: 'row',
                 fontWeight: 900,
                 fontSize: '15px'
               }}
             >
               {' '}
-              Total:
-              <div style={{ marginLeft: '70%', color: 'black' }}>
+              Order Total:
+              <div style={{ marginLeft: '43%', color: 'black' }}>
                 <EstimatedTotal
                   price={
-                    this.state.taxes.toFixed(2) * calculating + calculating
+                    this.state.taxes.toFixed(2) * calculating +
+                    calculating +
+                    this.state.shippingFee.toFixed(2) * calculating
                   }
                 />
               </div>
@@ -282,7 +319,11 @@ export default class FullSizeCartView extends Component {
             <hr />
 
             <CheckoutWStripe
-              amount={this.state.taxes.toFixed(2) * calculating + calculating}
+              amount={
+                this.state.taxes.toFixed(2) * calculating +
+                calculating +
+                this.state.shippingFee.toFixed(2) * calculating
+              }
               name="Spartan Performance Meals"
               description={'Make a Payment'}
             />

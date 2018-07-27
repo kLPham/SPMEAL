@@ -28,6 +28,7 @@ const clientID = process.env.CLIENTID;
 const clientSecret = process.env.CLIENTSECRET;
 
 ////////////////STRIPE:entry point and bootstraps your Express application ////////////////
+
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 // const stripe = process.env.STRIPE_SECRET_KEY;
 const configureStripe = require('stripe');
@@ -35,6 +36,8 @@ const SERVER_CONFIGS = require('../src/react-express-stripe/backend/constants/se
 const configureServer = require('../src/react-express-stripe/backend/server');
 const configureRoutes = require('../src/react-express-stripe/backend/routes/index');
 
+//Import controller:
+const mealsController = require('./mealsController');
 configureServer(app);
 configureRoutes(app);
 
@@ -213,9 +216,6 @@ app.post('/api/cart', (req, res) => {
 });
 
 //get info of products using session to display to cart component
-// app.get('/api/cart', (req, res) => {
-//   return res.json(req.session.cart);
-// });
 app.get('/api/cart', (req, res, next) => {
   if (!req.session.cart) req.session.cart = [];
   res.json(req.session.cart);
@@ -231,13 +231,15 @@ app.delete('/api/cart/:meals_id', (req, res) => {
       return true;
     }
   });
-  // req.session.cart.splice(index, 1);
   res.json(req.session.cart); //send back cart from session
 });
 
 ///saveCart() saves our cart into the current Express session:
 
 //SHOPPING CART END.
+
+///CHECKOUT //
+app.post('/api/charge', mealsController.redirectAfterMakeASale);
 //////////////////////////////////////////////////////////////////
 
 ///// ALL USERS ENDPOINT BELOW ///////////////////////////////
@@ -274,6 +276,7 @@ app.delete('/api/cart/:meals_id', (req, res) => {
 //     });
 // });
 
+////
 /////////// DATABASE END HERE ////////////////////////////////////////////////////////////////////////////
 
 ////////////// UNCOMMENT THIS WHEN i am ready to have project IN PRODUCTION. Final step! ////////

@@ -190,16 +190,19 @@ class SelectOne extends Component {
           {/* ==>> SECOND SECTION: <<== */}
           <div
             style={{
-              marginLeft: '12%',
+              marginLeft: '1.5%',
               marginTop: '5%',
-              height: '100%',
-              width: '80%',
-              border: 'solid 2px grey'
+              boxSizing: 'contentBox',
+              width: '100%',
+              padding: '.5%',
+              border: '2px solid gray'
             }}
           >
-            <h3 style={{ fontWeight: 900, textAlign: 'center' }}>
+            <h2
+              style={{ fontWeight: 900, textAlign: 'center', fontSize: '20px' }}
+            >
               Overview of your customize order:
-            </h3>
+            </h2>
             <div>
               {/* Protein Size: */}
               <div className="proteinsContainer">

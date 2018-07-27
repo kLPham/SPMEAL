@@ -196,7 +196,7 @@ class Details extends Component {
               <img
                 alt="image_url"
                 src={mealsId.image_url}
-                style={{ height: '100%', width: '80%' }}
+                style={{ height: '100%', width: '70%' }}
               />
             </div>
             <div style={{ width: '45%' }}>
@@ -227,10 +227,9 @@ class Details extends Component {
               </Button>
             </div>
           </div>
-          <hr />
-
-          <div style={{ marginLeft: '45%' }}>
-            {/* //OVERALL DIV */}
+          {/* <hr /> */}
+          {/* //OVERALL DIV */}
+          <div style={{ marginLeft: '50%', marginTop: '-5%' }}>
             {/* ///QUANTITY // */}
             <div
               style={{
@@ -308,9 +307,8 @@ class Details extends Component {
                 style={{
                   marginLeft: '4%',
                   marginTop: '4.5%',
-                  width: '60%',
+                  width: '50%',
                   height: '20%',
-
                   fontSize: '20px',
                   paddingLeft: '5%',
                   paddingRight: '5%'
@@ -335,7 +333,7 @@ class Details extends Component {
               >
                 Add To Cart
               </Button>
-              <div style={{ width: '10%', marginTop: '5%' }}>
+              <div style={{ width: '10%', marginTop: '5%', height: '100%' }}>
                 <Cart
                   selectedItems={
                     this.state.item +
@@ -362,41 +360,11 @@ class Details extends Component {
                 marginLeft: '21%'
               }}
             />
-            {/* </div> */}
-            {/* ///QUANTITY END/// */}
-            {/* <div>
-                <h2>Selected Items: {selectedItems}</h2>
-                <h2>Total Price: {totalPrice}</h2>
-                <h2>Qty: {this.state.qty}</h2>
-              </div> */}
-            {/* // ADD TO CART BUTTON & CART BUTTON */}
-            {/* <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                marginTop: '5%',
-                marginLeft: '21%'
-              }}
-            > */}
-            {/* <Cart
-              style={{ fontWeight: 100 }}
-              selectedItems={
-                this.state.item +
-                ':' +
-                mealsId.name +
-                '.' +
-                '  ' +
-                selectedItems
-              }
-              qty={'Qty:' + this.state.qty}
-              totalPrice={
-                'Total:' + '$' + Number(this.state.qty) * Number(mealsId.price)
-              }
-            /> */}
-            {/* </div> */}
+
             <hr />
             {/* ICONS BELOW: */}
             <div style={{ marginTop: '5%', marginLeft: '20%' }}>
+              <h2>Connect with us</h2>
               <a href="https://www.facebook.com/Spartanperformancemeals/">
                 <Icon name="facebook" size="big" bordered color="black">
                   {' '}

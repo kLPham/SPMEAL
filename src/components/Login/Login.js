@@ -44,7 +44,7 @@ export default class Login extends Component {
     return (
       <div style={{ marginRight: '2%' }}>
         <Button
-          basic
+          inverted
           color="red"
           onClick={this.state.userid ? this.handleLogout : this.handleLogin}
         >

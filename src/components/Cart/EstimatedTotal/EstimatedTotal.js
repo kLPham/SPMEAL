@@ -10,7 +10,7 @@ export default class EstimatedTotal extends Component {
   render() {
     return (
       <div>
-        <h2 style={{ fontWeight: 900, color: 'black', fontSize: '19px' }}>
+        <h2 style={{ fontWeight: 900, color: 'black', fontSize: '15px' }}>
           ${this.props.price.toFixed(2)}
         </h2>
       </div>
