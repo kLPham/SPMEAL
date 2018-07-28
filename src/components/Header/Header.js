@@ -222,7 +222,7 @@ export default class Header extends Component {
           >
             <SearchBar />
             <Login />
-            <div style={{ width: '25%', height: '2%', paddingLeft: '5%' }}>
+            <div style={{ width: '25%', height: '.5em', paddingLeft: '5%' }}>
               {' '}
               <Cart />
             </div>

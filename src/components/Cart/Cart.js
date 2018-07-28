@@ -45,9 +45,9 @@ export default class Cart extends Component {
     this.handleCartRemove = this.handleCartRemove.bind(this);
     this.handleAddToCheckout = this.handleAddToCheckout.bind(this);
   }
-  static contextTypes = {
-    router: () => true
-  };
+  // static contextTypes = {
+  //   router: () => true
+  // };
 
   //GET ITEMS FROM DETAIL PAGE: //*get back to this
   componentWillMount() {
@@ -152,11 +152,15 @@ export default class Cart extends Component {
     // console.log(this.props.totalPrice);
     // console.log(this.props.qty);
     // console.log(this.props.selectedItems);
-
+    const fees =
+      this.state.cart.length >= 3
+        ? 0
+        : this.state.shippingFee.toFixed(2) * calculating;
     let displayInCart =
       this.state.cart.length > 0 ? (
         this.state.cart.map(eachMeal => {
           // console.log(eachMeal.price * this.props.quantityValue);
+
           return (
             <div style={wholeMealStyle}>
               <div key={eachMeal.id}>
@@ -217,7 +221,7 @@ export default class Cart extends Component {
               flexDirection: 'row'
             }}
           >
-            <Icon name="shopping basket" size="large" />
+            <Icon visible name="shopping basket" size="large" />
             <Badge
               animated="fade"
               // badgeContent={this.props.cartNumber}
@@ -292,12 +296,9 @@ export default class Cart extends Component {
             </p>
             <p style={{ marginLeft: '2%', fontSize: '14px', display: 'flex' }}>
               <div style={{ marginRight: '2%' }}>Shipping & Handling:</div>
+
               <ShippingFees
-                fees={
-                  this.state.cart.length >= 3
-                    ? '(Free Shipping)'
-                    : '$' + this.state.shippingFee.toFixed(2) * calculating
-                }
+                fees={fees === 0 ? 'Free Shipping' : '$' + fees.toFixed(2)}
               />
             </p>
 
@@ -332,7 +333,7 @@ export default class Cart extends Component {
                 price={
                   this.state.taxes.toFixed(2) * calculating +
                   calculating +
-                  this.state.shippingFee.toFixed(2) * calculating
+                  Number(fees)
                 }
               />
             </div>
@@ -350,37 +351,46 @@ export default class Cart extends Component {
             }}
           >
             <div style={{ width: '60%', display: 'flex' }}>
-              <Button
-                animated
-                inverted
-                color="green"
-                onClick={this.context.router.history.goBack}
-              >
-                <Button.Content
-                  visible
-                  style={{
-                    fontSize: '15px',
-                    height: '45%',
-                    width: '100%',
-                    textTransform: 'uppercase'
-                  }}
+              <Link to="/Meals/FullMenu">
+                <Button
+                  animated
+                  inverted
+                  color="green"
+                  // onClick={this.context.router.history.goBack}
                 >
-                  Continue Shopping
-                </Button.Content>
-                <Button.Content
-                  hidden
-                  style={{
-                    textTransform: 'uppercase',
-                    fontSize: '15px'
-                  }}
-                >
-                  <Icon
-                    name="angle double left"
-                    size="large"
-                    style={{ display: 'flex' }}
-                  />Shop Now
-                </Button.Content>
-              </Button>
+                  <Button.Content
+                    visible
+                    style={{
+                      fontSize: '15px',
+                      height: '2.23em',
+                      paddingTop: '3%',
+                      paddingRight: '5%',
+                      width: '100%',
+                      textTransform: 'uppercase'
+                    }}
+                  >
+                    Continue Shopping
+                  </Button.Content>
+
+                  <Button.Content
+                    hidden
+                    style={{
+                      textTransform: 'uppercase',
+                      fontSize: '15px'
+                    }}
+                  >
+                    <Icon
+                      name="angle double left"
+                      size="large"
+                      style={{
+                        display: 'flex',
+                        fontSize: '15px',
+                        paddingTop: '5%'
+                      }}
+                    />Shop Now
+                  </Button.Content>
+                </Button>
+              </Link>
             </div>
             <div style={{ width: '40%', marginRight: '1%' }}>
               <Link to="/FullSizeCartView">
@@ -390,7 +400,7 @@ export default class Cart extends Component {
                   </Button.Content>
                   <Button.Content
                     visible
-                    style={{ textTransform: 'uppercase' }}
+                    style={{ textTransform: 'uppercase', fontSize: '15px' }}
                   >
                     View Cart
                   </Button.Content>

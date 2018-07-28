@@ -79,6 +79,11 @@ export default class FullSizeCartView extends Component {
         return total;
       }, 0);
 
+    const fees =
+      this.state.cart.length >= 3
+        ? 0
+        : this.state.shippingFee.toFixed(2) * calculating;
+
     let displayInCart =
       this.state.cart.length > 0 ? (
         this.state.cart.map(eachMeal => {
@@ -274,11 +279,7 @@ export default class FullSizeCartView extends Component {
               <div style={{ marginLeft: '6.3%' }}>
                 {' '}
                 <ShippingFees
-                  fees={
-                    this.state.cart.length >= 3
-                      ? '(Free Shipping)'
-                      : '$' + this.state.shippingFee.toFixed(2) * calculating
-                  }
+                  fees={fees === 0 ? 'Free Shipping' : '$' + fees.toFixed(2)}
                 />
               </div>
             </div>
@@ -311,7 +312,7 @@ export default class FullSizeCartView extends Component {
                   price={
                     this.state.taxes.toFixed(2) * calculating +
                     calculating +
-                    this.state.shippingFee.toFixed(2) * calculating
+                    Number(fees)
                   }
                 />
               </div>
