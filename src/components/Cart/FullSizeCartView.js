@@ -323,7 +323,7 @@ export default class FullSizeCartView extends Component {
               amount={
                 this.state.taxes.toFixed(2) * calculating +
                 calculating +
-                this.state.shippingFee.toFixed(2) * calculating
+                Number(fees)
               }
               name="Spartan Performance Meals"
               description={'Make a Payment'}

@@ -313,7 +313,7 @@ export default class Cart extends Component {
               Tax:{' '}
               <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
             </p>
-            <hr />
+            <div>_______________________________</div>
             <div
               style={{
                 marginLeft: '25%',
