@@ -3,7 +3,8 @@ import './App.css';
 import router from './router';
 // import { connect } from 'react-redux';
 
-import Header from './components/Header/Header';
+// import NavHeader from './components/NavHeader/NavHeader';
+import HeaderTwo from './components/NavHeader/HeaderTwo';
 
 // import './semantic/dist/semantic.min.css';
 /// MATERIAL UI BELOW ///
@@ -26,7 +27,9 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div>
-          <Header />
+          {/* <NavHeader /> */}
+          <HeaderTwo />
+
           {router}
         </div>
       </MuiThemeProvider>

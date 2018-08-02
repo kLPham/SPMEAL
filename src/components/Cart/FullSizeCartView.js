@@ -95,6 +95,7 @@ export default class FullSizeCartView extends Component {
               <div
                 style={{
                   marginLeft: '1%',
+
                   boxSizing: 'contentBox',
                   width: '100%',
                   padding: '.5%',
@@ -203,7 +204,7 @@ export default class FullSizeCartView extends Component {
             display: 'flex',
             position: 'relative',
             width: '100%',
-            marginTop: '5%',
+            marginTop: '8%',
             marginBottom: '5%'
           }}
         >
@@ -218,15 +219,15 @@ export default class FullSizeCartView extends Component {
             <h2
               style={{
                 display: 'block',
-                border: '1px solid gray',
+                border: '3px solid lightgray',
                 padding: '2%',
                 marginLeft: '1%',
-                color: 'black',
+                color: 'lightgray',
                 textShadow:
                   '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
               }}
             >
-              YOUR BAG ({`${this.state.cart.length} ${'Item(s)'}`})
+              Your Bag ({`${this.state.cart.length} ${'Item(s)'}`})
             </h2>
             {displayInCart}
           </div>
@@ -236,9 +237,8 @@ export default class FullSizeCartView extends Component {
               width: '23%',
               height: '30%',
               padding: '40px',
-              border: '1px solid white',
+              border: '1px solid lightgray',
               backgroundColor: '#f5f5f5',
-              // marginTop: '1%',
               marginLeft: '1%',
               marginRight: '2%'
             }}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 // import { connect } from 'react-redux';
 // import { addToCart } from '../../ducks/reducer';
-// import FaShoppingCart from 'react-icons/lib/fa/shopping-cart';
+import FaShoppingBasket from 'react-icons/lib/fa/shopping-basket';
 // import ReactRouter from 'react-router-dom';
 
 import { Button, Icon } from 'semantic-ui-react';
@@ -103,24 +103,15 @@ export default class Cart extends Component {
       }
     });
 
-    const basketStyle = {
-      height: '35px',
-      width: '30px',
-      position: 'relative',
-      color: 'black',
-      paddingRight: '100px',
-      cursor: 'pointer'
-    };
-
-    const checkOutButtonStyle = {
-      width: '280px',
-      height: '5%',
-      backgroundColor: 'green',
-      color: 'white',
-      fontSize: '25px',
-      marginRight: '8%',
-      cursor: 'pointer'
-    };
+    // const checkOutButtonStyle = {
+    //   width: '280px',
+    //   height: '5%',
+    //   backgroundColor: 'green',
+    //   color: 'white',
+    //   fontSize: '25px',
+    //   marginRight: '8%',
+    //   cursor: 'pointer'
+    // };
     const wholeMealStyle = {
       marginLeft: '17%',
       textAlign: 'left',
@@ -207,41 +198,28 @@ export default class Cart extends Component {
 
     return (
       <div>
-        <Button
-          style={{ display: 'flex', width: '100%', alignItems: 'center' }}
-          color="black"
-          size="small"
-          animated="fade"
-          onClick={this.handleCartToggle}
-        >
-          <Button.Content
-            visible
+        <div style={{ marginLeft: '10%' }}>
+          <FaShoppingBasket
+            onClick={this.handleCartToggle}
             style={{
-              display: 'flex',
-              flexDirection: 'row'
+              height: '80%',
+              width: '80%',
+              color: 'white',
+              cursor: 'pointer'
             }}
-          >
-            <Icon visible name="shopping basket" size="large" />
-            <Badge
-              animated="fade"
-              // badgeContent={this.props.cartNumber}
-              primary={false}
-              badgeContent={this.state.cart.length}
-              style={{ marginLeft: '-26%', marginTop: '-20%' }}
-            />
-          </Button.Content>
-          <Button.Content
-            hidden
+          />
+          <Badge
+            animated="fade"
+            primary={false}
+            badgeContent={this.state.cart.length}
             style={{
-              display: 'flex',
-              flexDirection: 'row',
-              // paddingLeft: '8%',
-              fontSize: '16.2px'
+              marginLeft: '45%',
+              position: 'relative',
+              marginTop: '-100%'
             }}
-          >
-            Checkout <div>({`${this.state.cart.length}`})</div>
-          </Button.Content>
-        </Button>
+          />
+        </div>
+
         <Drawer
           style={{ fontSize: '18px' }}
           docked={false}
@@ -260,9 +238,9 @@ export default class Cart extends Component {
             <div
               style={{
                 textAlign: 'center',
-                border: '1px solid black',
+                border: '2px solid black',
                 padding: '2%',
-                marginLeft: '1%',
+                // marginLeft: '1%',
                 color: 'black',
                 backgroundColor: '#DCDCDC'
               }}
@@ -353,12 +331,28 @@ export default class Cart extends Component {
             <div style={{ width: '60%', display: 'flex' }}>
               <Link to="/Meals/FullMenu">
                 <Button
-                  animated
-                  inverted
+                  // inverted
                   color="green"
-                  // onClick={this.context.router.history.goBack}
+                  style={{
+                    fontSize: '13px',
+                    display: 'flex'
+                    // height: '2.23em',
+                    // paddingTop: '3%',
+                    // paddingRight: '5%',
+                    // width: '100%'
+                  }}
                 >
-                  <Button.Content
+                  <Icon
+                    name="angle double left"
+                    size="large"
+                    style={{
+                      display: 'flex',
+                      // fontSize: '15px',
+                      paddingTop: '6%'
+                    }}
+                  />
+                  Continue Shopping
+                  {/* <Button.Content
                     visible
                     style={{
                       fontSize: '15px',
@@ -378,23 +372,13 @@ export default class Cart extends Component {
                       textTransform: 'uppercase',
                       fontSize: '15px'
                     }}
-                  >
-                    <Icon
-                      name="angle double left"
-                      size="large"
-                      style={{
-                        display: 'flex',
-                        fontSize: '15px',
-                        paddingTop: '5%'
-                      }}
-                    />Shop Now
-                  </Button.Content>
+                  >     </Button.Content> */}
                 </Button>
               </Link>
             </div>
             <div style={{ width: '40%', marginRight: '1%' }}>
               <Link to="/FullSizeCartView">
-                <Button animated="vertical" color="black" size="large">
+                {/* <Button animated="vertical" color="black" size="large">
                   <Button.Content hidden>
                     <Icon name="shopping basket" size="large" />
                   </Button.Content>
@@ -404,6 +388,10 @@ export default class Cart extends Component {
                   >
                     View Cart
                   </Button.Content>
+                </Button> */}
+                <Button color="gray" style={{ fontSize: '14.5px' }}>
+                  View Cart{' '}
+                  {/* <Icon name="shopping basket" size="small" /> View Cart */}
                 </Button>
               </Link>
             </div>

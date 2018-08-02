@@ -9,7 +9,6 @@ export default class Login extends Component {
     this.state = {
       // userid: []
       userid: null
-      // loggedIn: false
     };
     //BIND METHODS HERE
     this.handleLogin = this.handleLogin.bind(this);
@@ -19,9 +18,6 @@ export default class Login extends Component {
   handleLogin(val) {
     window.location.href = 'http://localhost:3001/login';
   }
-  // handleLogin() {
-  //   window.location.href = '/login';
-  // }
 
   handleLogout() {
     window.location.href = 'http://localhost:3001/logout';
@@ -33,16 +29,10 @@ export default class Login extends Component {
       else this.setState({ userid: null });
     });
   }
-  // componentDidMount() {
-  //   axios.get('/api/me').then(response => {
-  //     if (!response.data) this.setState({ userid: null });
-  //     else this.setState({ userid: response.data.id });
-  //   });
-  // }
 
   render() {
     return (
-      <div style={{ marginRight: '2%' }}>
+      <div>
         <Button
           inverted
           color="red"
@@ -50,13 +40,6 @@ export default class Login extends Component {
         >
           {this.state.userid ? 'Logout' : 'Login/Register'}
         </Button>
-        {/* <a onClick={this.handleLogin}>
-          {this.state.userid.length !== 0 ? (
-            <a href="/api/logout"> Logout </a>
-          ) : (
-            'Login'
-          )}
-        </a> */}
       </div>
     );
   }

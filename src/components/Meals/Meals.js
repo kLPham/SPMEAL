@@ -58,7 +58,7 @@ class Meals extends Component {
     };
 
     return (
-      <div>
+      <div style={{ marginTop: '7%' }}>
         <img src={pageHeader} style={pageHeaderStyle} />
         <div>
           <Tabs

@@ -38,7 +38,7 @@ const configureRoutes = require('../src/react-express-stripe/backend/routes/inde
 
 //Import controller:
 const mealsController = require('./mealsController');
-const authController = require('./authController');
+
 ///ends:
 configureServer(app);
 configureRoutes(app);
@@ -116,38 +116,29 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 //AUTH ENDPOINTS:
-// app.get(
-//   '/login',
-//   passport.authenticate('auth0', {
-//     successRedirect: '/me',
-//     failureRedirect: '/login',
-//     failureFlash: true
-//   })
-// );
-
-// app.get('/me', (req, res, next) => {
-//   if (req.user) {
-//     res.json(req.user);
-//   } else {
-//     res.redirect('/login');
-//   }
-// });
-// app.get('/logout', function(req, res) {
-//   req.logout();
-//   req.session.destroy();
-//   res.redirect('/');
-// });
-//AUTH ENPOINTS ENDS:
 app.get(
   '/login',
   passport.authenticate('auth0', {
-    successRedirect: '/',
+    successRedirect: '/me',
     failureRedirect: '/login',
     failureFlash: true
   })
 );
-app.get('/logstatus', authController.checkLogStatus);
-app.get('/logout', authController.logout);
+
+app.get('/me', (req, res, next) => {
+  if (req.user) {
+    res.json(req.user);
+  } else {
+    res.redirect('/login');
+  }
+});
+app.get('/logout', function(req, res) {
+  req.logout();
+  req.session.destroy();
+  res.redirect('/');
+});
+//AUTH ENPOINTS ENDS:
+
 ///// /////             OTHER ENDPOINTS:      ///////////////////////////////////////////////////////////////////////
 
 ///// ALL MEALS ENDPOINTS BELOW /////////////////////////

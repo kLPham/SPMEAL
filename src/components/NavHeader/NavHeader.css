@@ -1,5 +1,5 @@
 .menuStyle {
-  text-transform: uppercase;
+  text-transform: capitalize;
   text-decoration: none;
   margin-left: 10px;
   color: black;

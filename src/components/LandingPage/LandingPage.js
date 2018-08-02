@@ -43,15 +43,15 @@ export default class LandingPage extends Component {
     window.location.href = 'http://localhost:3000/Meals/FeaturedLnD';
   };
   render() {
-    const bannerStyle = {
-      color: 'white',
-      backgroundColor: 'red',
-      textAlign: 'center',
-      padding: '.8%',
-      fontWeight: 'bold',
-      fontSize: '22px'
-      // zIndex: 3
-    };
+    // const bannerStyle = {
+    //   color: 'white',
+    //   backgroundColor: 'red',
+    //   textAlign: 'center',
+    //   padding: '.8%',
+    //   fontWeight: 'bold',
+    //   fontSize: '22px'
+    //   // zIndex: 3
+    // };
     const topImageStyle = {
       height: '20%',
       width: '100%'
@@ -114,7 +114,7 @@ export default class LandingPage extends Component {
     };
     return (
       <div>
-        <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div>
+        {/* <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div> */}
         {/* SECTION 1 */}
         <section>
           <MyCarousel />
@@ -344,7 +344,6 @@ export default class LandingPage extends Component {
             </div>
           </div>
         </section>
-
 
         <h2 style={{ color: 'black', fontWeight: 'bold' }}>
           ______________________________________________________________________________________________________
