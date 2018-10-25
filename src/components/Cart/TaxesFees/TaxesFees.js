@@ -7,8 +7,8 @@ export default class TaxesFees extends Component {
         style={{
           fontSize: '14px',
           marginBottom: '5%',
-          color: 'red',
-          marginLeft: '2%'
+          marginLeft: '2%',
+          color: 'black'
         }}
       >
         <p2>${this.props.taxes.toFixed(2)} </p2>

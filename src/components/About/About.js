@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './About.css';
+import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 
 import MeetUs from './MeetUs/MeetUs';
@@ -13,13 +14,13 @@ export default class About extends Component {
   }
 
   render() {
+    const story = 'The Original Story';
+    const weeklyMenu = 'Check Out Our Weekly Menus';
+    const team = ' Meet Our Team Members';
+
     return (
       <div className="overall">
         <h1 className="About">About Us</h1>
-        {/* TESTING CODES FOR BREADCRUMB */}
-        {/* <Breadcrumb divider="/" sections={sections} /> */}
-
-        {/* BREADCRUMB ENDS HERE */}
         <hr />
         {/* SECTION 1 */}
         <section>
@@ -43,7 +44,7 @@ export default class About extends Component {
           </div>
           <div />
           <div className="AImage"> </div>
-          <h1>The Origin Story</h1>
+          <h1>{story}</h1>
           <h3>
             It started with a need and a passion. The passion was bodybuilding
             and the need was food. Specific food, at specific times, multiples
@@ -73,14 +74,16 @@ export default class About extends Component {
             our mission to make sure people don’t have to make those sacrifices.
           </h3>
           <div>
-            <button className="button1">Check Out Our Weekly Menus</button>
+            <Link to="/Meals/FullMenu">
+              <button className="button1">{weeklyMenu}</button>
+            </Link>
           </div>
         </section>
         <hr />
         {/* SECTION 2 */}
         <section>
           <h2 style={{ fontWeight: 900, fontSize: '45px', marginTop: '5%' }}>
-            Meet Our Team Members
+            {team}
           </h2>
           <MeetUs />
         </section>

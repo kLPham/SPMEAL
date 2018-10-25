@@ -133,7 +133,6 @@ class Details extends Component {
 
   render() {
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
-      //TESTING CODES:
       const { imageUrl } = mealsId.image_url;
       const selectedItems =
         'Protein Size: ' +
@@ -159,34 +158,6 @@ class Details extends Component {
 
       const totalPrice = Number(this.state.value) * Number(mealsId.price);
       const meatPrice = mealsId.price;
-
-      ////CODES ABOVE WORKS!!
-
-      // const addOnValues = () => {
-      //   const ProteinSize = Number(this.props.ProteinSize);
-      //   const eachMealPrice = Number(mealsId.price);
-      //   const addOnValue = Number(this.state.addOnValue);
-      //   ProteinSize[2] === '5oz [+$1.00 USD]'
-      //     ? console.log(addOnValue + 1 + eachMealPrice)
-      //     : eachMealPrice + addOnValue,
-      //     ProteinSize[3] === '6oz [+2.00 USD]'
-      //       ? console.log(addOnValue + 2 + eachMealPrice)
-      //       : eachMealPrice + addOnValue,
-      //     ProteinSize[4] === '7oz [+$3.00 USD]'
-      //       ? console.log(addOnValue + 3 + eachMealPrice)
-      //       : eachMealPrice + addOnValue,
-      //     ProteinSize[5] === '8oz [+$4.00 USD]'
-      //       ? console.log(addOnValue + 4 + eachMealPrice)
-      //       : eachMealPrice + addOnValue,
-      //     ProteinSize[6] === '9oz [+$5.00 USD]'
-      //       ? console.log(addOnValue + 5 + eachMealPrice)
-      //       : eachMealPrice + addOnValue;
-      // };
-      // addOnValues;
-
-      /////////////////END TESTINH//
-      // const cartNumber = this.state.value.length ? this.state.value.length : '';
-      // const cartNumber = this.state.value + this.state.qty;
 
       return (
         <div>

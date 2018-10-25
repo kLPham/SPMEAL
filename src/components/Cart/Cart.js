@@ -213,9 +213,10 @@ export default class Cart extends Component {
             primary={false}
             badgeContent={this.state.cart.length}
             style={{
-              marginLeft: '45%',
+              marginLeft: '42%',
               position: 'relative',
-              marginTop: '-100%'
+              paddingBottom: '85%',
+              marginTop: '-130%'
             }}
           />
         </div>
@@ -262,7 +263,7 @@ export default class Cart extends Component {
                   '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
               }}
             >
-              Summary of Charges
+              Order Summary
             </h2>
             <p style={{ marginLeft: '2%', fontSize: '14px' }}>
               Total Item(s): {this.state.cart.length}
@@ -273,7 +274,9 @@ export default class Cart extends Component {
               )}
             </p>
             <p style={{ marginLeft: '2%', fontSize: '14px', display: 'flex' }}>
-              <div style={{ marginRight: '2%' }}>Shipping & Handling:</div>
+              <div style={{ marginRight: '2%', color: '#0000CD' }}>
+                Shipping & Handling:
+              </div>
 
               <ShippingFees
                 fees={fees === 0 ? 'Free Shipping' : '$' + fees.toFixed(2)}
@@ -284,7 +287,6 @@ export default class Cart extends Component {
               style={{
                 marginLeft: '2%',
                 fontSize: '14px',
-                color: 'red',
                 display: 'flex'
               }}
             >
@@ -306,7 +308,7 @@ export default class Cart extends Component {
               }}
             >
               {' '}
-              Total:
+              Order total:
               <EstimatedTotal
                 price={
                   this.state.taxes.toFixed(2) * calculating +

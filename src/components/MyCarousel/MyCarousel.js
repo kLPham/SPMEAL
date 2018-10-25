@@ -45,6 +45,7 @@ export default class MyCarousel extends Component {
     };
     return (
       <Carousel
+        showArrows={true}
         showThumbs={false}
         width="100%"
         transitionTime={800}
@@ -52,6 +53,7 @@ export default class MyCarousel extends Component {
         infiniteLoop={true}
         autoPlay={true}
         showStatus={false}
+        dynamicHeight={true}
       >
         {/* /// 1ST SECTION */}
         <div>
