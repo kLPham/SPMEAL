@@ -3,7 +3,7 @@ import './CustomMeals.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Paper from 'material-ui/Paper';
-import FaPlusCircle from 'react-icons/lib/fa/plus-circle';
+// import FaPlusCircle from 'react-s/lib/fa/plus-circle';
 
 export default class CustomMeals extends Component {
   constructor(props) {
@@ -97,7 +97,8 @@ export default class CustomMeals extends Component {
           <div className="bg">
             <br />
             <button onClick={this.handleCustomMealButton} style={buttonStyle}>
-              <FaPlusCircle />Custom order
+              {/* <FaPlusCircle /> */}
+              Custom order
             </button>
           </div>{' '}
         </Paper>

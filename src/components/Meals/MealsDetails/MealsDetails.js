@@ -61,12 +61,12 @@ export default class MealsDetails extends Component {
         },
         () => {
           localStorage.setItem('cart', JSON.stringify(this.state.cart));
-          Swal({
-            title: 'Successfully Added To Your Cart!',
-            text: 'Check Out Our Other Meals',
-            type: 'success',
-            confirmButtonText: 'Confirm'
-          });
+          // Swal({
+          //   title: 'Successfully Added To Your Cart!',
+          //   text: 'Check Out Our Other Meals',
+          //   type: 'success',
+          //   confirmButtonText: 'Confirm'
+          // });
         }
       )
     );
@@ -204,12 +204,30 @@ export default class MealsDetails extends Component {
               }}
             >
               <div style={{ display: 'flex' }}>
-                <button
-                  style={buttonStyle}
-                  onClick={() => this.handleAddToCart(mealsId)}
+                <Button
+                  color="black"
+                  onClick={() => {
+                    this.handleAddToCart(mealsId);
+                    Swal({
+                      text: 'Successfully Added to your bag',
+                      title: mealsId.meals_name,
+                      // imageUrl:
+                      //   'https://t3.ftcdn.net/jpg/00/65/24/84/240_F_65248490_FA0iTB22m1K5CFmt9vgB78pGYCaUhf3n.jpg',
+                      imageUrl: mealsId.image_url,
+                      imageWidth: 150,
+                      imageHeight: 150,
+                      imageAlt: 'meals image',
+                      animation: false,
+                      type: 'success',
+                      confirmButtonColor: 'black',
+                      confirmButtonText:
+                        '<a href= /Meals/FullMenu>Continue Shopping</a>',
+                      footer: '<a href= /FullSizeCartView>View Shopping bag</a>'
+                    });
+                  }}
                 >
-                  Add to Cart ({`${this.state.value}`})
-                </button>
+                  Add To Cart
+                </Button>
               </div>
               <div style={{ display: 'flex', marginLeft: '5%' }}>
                 {/* <Cart quantityValue={this.state.value} /> */}

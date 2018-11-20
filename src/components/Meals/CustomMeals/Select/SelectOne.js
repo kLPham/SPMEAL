@@ -15,9 +15,7 @@ class SelectOne extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      // value: []
-    };
+    this.state = {};
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
   // handleSubmit(event) {

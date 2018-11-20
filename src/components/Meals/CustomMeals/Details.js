@@ -33,9 +33,9 @@ class Details extends Component {
     //SET INITIAL STATE HERE
     this.state = {
       mealsToDisplay: [],
-      clicks: 0,
-      show: true,
-      value: 0,
+      // clicks: 0,
+      // show: true,
+      // value: 0,
       values: [],
       cart: JSON.parse(localStorage.getItem('cart')) || [],
       qty: 0,
@@ -44,9 +44,9 @@ class Details extends Component {
     };
 
     //BIND ACTIONS HERE
-    this.IncrementItem = this.IncrementItem.bind(this);
-    this.DecreaseItem = this.DecreaseItem.bind(this);
-    this.ToggleClick = this.ToggleClick.bind(this);
+    // this.IncrementItem = this.IncrementItem.bind(this);
+    // this.DecreaseItem = this.DecreaseItem.bind(this);
+    // this.ToggleClick = this.ToggleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
@@ -65,26 +65,26 @@ class Details extends Component {
   }
 
   // QUANTITY BELOW:
-  IncrementItem = e => {
-    e.preventDefault();
-    this.setState({
-      clicks: this.state.clicks + 1,
-      // value: this.state.value + 1,
-      qty: this.state.qty + 1
-    });
-  };
+  // IncrementItem = e => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     clicks: this.state.clicks + 1,
+  //     // value: this.state.value + 1,
+  //     qty: this.state.qty + 1
+  //   });
+  // };
 
-  DecreaseItem = e => {
-    e.preventDefault();
-    this.setState({
-      clicks: this.state.clicks - 1,
-      // value: this.state.value - 1,
-      qty: this.state.qty - 1
-    });
-  };
-  ToggleClick = () => {
-    this.setState({ show: !this.state.show });
-  };
+  // DecreaseItem = e => {
+  //   e.preventDefault();
+  //   this.setState({
+  //     clicks: this.state.clicks - 1,
+  //     // value: this.state.value - 1,
+  //     qty: this.state.qty - 1
+  //   });
+  // };
+  // ToggleClick = () => {
+  //   this.setState({ show: !this.state.show });
+  // };
   /////QUANTITY ENDS:
   ///TESTING SUBMIT BUTTON HERE ///
   handleSubmit(event) {
@@ -116,13 +116,25 @@ class Details extends Component {
   }
 
   //POST ITEMS TO CART WHEN ADDED :)
+  // handleAddToCart(item, value) {
+  //   axios.post('/api/cart', { item: item, value: value }).then(response =>
+  //     this.setState(
+  //       {
+  //         cart: response.data,
+  //         clicks: this.state.clicks,
+  //         value: this.state.value
+  //       },
+  //       () => {
+  //         localStorage.setItem('cart', JSON.stringify(this.state.cart));
+  //       }
+  //     )
+  //   );
+  // }
   handleAddToCart(item, value) {
-    axios.post('/api/cart', { item: item, value: value }).then(response =>
+    axios.post('/api/cart', { item: item }).then(response =>
       this.setState(
         {
-          cart: response.data,
-          clicks: this.state.clicks,
-          value: this.state.value
+          cart: response.data
         },
         () => {
           localStorage.setItem('cart', JSON.stringify(this.state.cart));
@@ -156,7 +168,7 @@ class Details extends Component {
         this.props.VeggieSize +
         '.';
 
-      const totalPrice = Number(this.state.value) * Number(mealsId.price);
+      // const totalPrice = Number(this.state.value) * Number(mealsId.price);
       const meatPrice = mealsId.price;
 
       return (
@@ -211,7 +223,7 @@ class Details extends Component {
                 marginRight: '2%'
               }}
             >
-              <div
+              {/* <div
                 style={{
                   display: 'flex',
                   flexDirection: 'column'
@@ -271,85 +283,110 @@ class Details extends Component {
                   >
                     +
                   </button>
-                </div>
-              </div>
-
-              <Button
-                style={{
-                  marginLeft: '4%',
-                  marginTop: '4.5%',
-                  width: '50%',
-                  height: '20%',
-                  fontSize: '20px',
-                  paddingLeft: '5%',
-                  paddingRight: '5%'
-                }}
-                color="black"
-                onClick={() => {
-                  this.handleAddToCart(mealsId);
-                  Swal({
-                    title: 'Successfully Added To Your Cart!',
-                    text: 'love',
-                    imageUrl:
-                      'https://t3.ftcdn.net/jpg/00/65/24/84/240_F_65248490_FA0iTB22m1K5CFmt9vgB78pGYCaUhf3n.jpg',
-                    imageWidth: 200,
-                    imageHeight: 200,
-                    imageAlt: 'meals image',
-                    animation: false,
-                    type: 'success',
-                    confirmButtonColor: 'green',
-                    confirmButtonText: 'Continue Shopping'
-                  });
-                }}
-              >
-                Add To Cart
-              </Button>
-              <div style={{ width: '10%', marginTop: '5%', height: '100%' }}>
-                <Cart
-                  selectedItems={
-                    this.state.item +
-                    ':' +
-                    mealsId.name +
-                    '.' +
-                    '  ' +
-                    selectedItems
-                  }
-                  qty={'Qty:' + this.state.qty}
-                  totalPrice={
-                    'Total:' +
-                    '$' +
-                    Number(this.state.qty) * Number(mealsId.price)
-                  }
-                />
-              </div>
+                </div> */}
             </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                marginTop: '5%',
-                marginLeft: '21%'
-              }}
-            />
 
-            <hr />
-            {/* ICONS BELOW: */}
-            <div style={{ marginTop: '5%', marginLeft: '20%' }}>
-              <h2>Connect with us</h2>
-              <a href="https://www.facebook.com/Spartanperformancemeals/">
-                <Icon name="facebook" size="big" bordered color="black">
-                  {' '}
-                </Icon>
-              </a>
-              <a href="https://www.instagram.com/spartanperformancemeals/">
-                <Icon name="instagram" size="big" bordered color="black" />
-              </a>
-              <a href="mailto:spartan@Spartanperformancemeals">
-                <Icon name="mail" size="big" bordered color="black" />
-              </a>
+            <Button
+              style={{
+                marginLeft: '4%',
+                marginTop: '3.7%',
+                width: '50%',
+                height: '20%',
+                fontSize: '20px',
+                paddingLeft: '5%',
+                paddingRight: '5%'
+              }}
+              color="black"
+              onClick={() => {
+                this.handleAddToCart(mealsId);
+                Swal({
+                  title:
+                    // 'Qty:' +
+                    // this.state.value +
+                    // ' ' +
+                    // ' ' +
+                    // ' ' +
+                    // ' ' +
+                    // 'Total:' + '' + '$' + totalPrice,
+                    'Total:' + '' + '$' + mealsId.price,
+                  // title: 'Successfully Added To Your Cart!',
+                  text: 'CUSTOM ORDER: ' + ' ' + ' ' + selectedItems + '',
+                  imageUrl: mealsId.image_url,
+                  imageWidth: 200,
+                  imageHeight: 200,
+                  imageAlt: 'meals image',
+                  animation: false,
+                  type: 'success',
+                  confirmButtonColor: 'black',
+                  confirmButtonText:
+                    '<a href= /Meals/FullMenu>Continue Shopping</a>',
+                  footer: '<a href= /FullSizeCartView>View Shopping bag</a>'
+                });
+              }}
+            >
+              Add To Cart
+            </Button>
+            <div style={{ width: '10%', marginTop: '5%', height: '100%' }}>
+              {/* <Cart
+                selectedItems={
+                  this.state.item +
+                  ':' +
+                  mealsId.name +
+                  '.' +
+                  '  ' +
+                  selectedItems
+                }
+                qty={'Qty:' + this.state.qty}
+                totalPrice={
+                  'Total:' +
+                  '$' +
+                  Number(this.state.qty) * Number(mealsId.price)
+                }
+              /> */}
+              <Cart
+                selectedItems={
+                  this.state.item +
+                  ':' +
+                  mealsId.name +
+                  '.' +
+                  '  ' +
+                  selectedItems
+                }
+                totalPrice={
+                  'Total:' +
+                  '$' +
+                  Number(this.state.qty) * Number(mealsId.price)
+                }
+              />
             </div>
           </div>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              marginTop: '5%',
+              marginLeft: '21%'
+            }}
+          />
+
+          <hr />
+          {/* ICONS BELOW: */}
+          <div style={{ marginTop: '5%', marginLeft: '20%' }}>
+            <h2>Connect with us</h2>
+            <a href="https://www.facebook.com/Spartanperformancemeals/">
+              <Icon name="facebook" size="big" bordered color="black">
+                {' '}
+              </Icon>
+            </a>
+            <a href="https://www.instagram.com/spartanperformancemeals/">
+              <Icon name="instagram" size="big" bordered color="black" />
+            </a>
+            <a href="mailto:spartan@Spartanperformancemeals">
+              <Icon name="mail" size="big" bordered color="black" />
+            </a>
+          </div>
         </div>
+        // </div>
       );
     });
 
