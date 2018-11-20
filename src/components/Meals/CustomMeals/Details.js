@@ -116,25 +116,17 @@ class Details extends Component {
   }
 
   //POST ITEMS TO CART WHEN ADDED :)
-  // handleAddToCart(item, value) {
-  //   axios.post('/api/cart', { item: item, value: value }).then(response =>
-  //     this.setState(
-  //       {
-  //         cart: response.data,
-  //         clicks: this.state.clicks,
-  //         value: this.state.value
-  //       },
-  //       () => {
-  //         localStorage.setItem('cart', JSON.stringify(this.state.cart));
-  //       }
-  //     )
-  //   );
-  // }
   handleAddToCart(item, value) {
     axios.post('/api/cart', { item: item }).then(response =>
       this.setState(
         {
           cart: response.data
+          // value:
+          //   this.state.value +
+          //   this.props.ProteinSize +
+          //   this.props.CarbSize +
+          //   this.props.Veggies +
+          //   this.props.VeggieSize
         },
         () => {
           localStorage.setItem('cart', JSON.stringify(this.state.cart));
@@ -170,6 +162,18 @@ class Details extends Component {
 
       // const totalPrice = Number(this.state.value) * Number(mealsId.price);
       const meatPrice = mealsId.price;
+      const addedProteinSize =
+        Number(this.props.ProteinSize) + Number(mealsId.price);
+      const addedCarbSize = Number(this.props.CarbSize) + Number(mealsId.price);
+      const addedVeggies = Number(this.props.Veggies) + Number(mealsId.price);
+      const addedVeggieSize =
+        Number(this.props.VeggieSize) + Number(mealsId.price);
+      const customPriceTotal =
+        Number(this.props.ProteinSize) +
+        Number(this.props.CarbSize) +
+        Number(this.props.Veggies) +
+        Number(this.props.VeggieSize) +
+        Number(mealsId.price);
 
       return (
         <div>
@@ -285,7 +289,6 @@ class Details extends Component {
                   </button>
                 </div> */}
             </div>
-
             <Button
               style={{
                 marginLeft: '4%',
@@ -301,16 +304,8 @@ class Details extends Component {
                 this.handleAddToCart(mealsId);
                 Swal({
                   title:
-                    // 'Qty:' +
-                    // this.state.value +
-                    // ' ' +
-                    // ' ' +
-                    // ' ' +
-                    // ' ' +
-                    // 'Total:' + '' + '$' + totalPrice,
-                    'Total:' + '' + '$' + mealsId.price,
-                  // title: 'Successfully Added To Your Cart!',
-                  text: 'CUSTOM ORDER: ' + ' ' + ' ' + selectedItems + '',
+                    'Custom Total:' + '' + '$' + customPriceTotal.toFixed(2),
+                  text: 'Custom Order Successfully added',
                   imageUrl: mealsId.image_url,
                   imageWidth: 200,
                   imageHeight: 200,
@@ -326,6 +321,18 @@ class Details extends Component {
             >
               Add To Cart
             </Button>
+            <hr />
+            TESting PRice total HEre:
+            <br />
+            Price + proPrice:{addedProteinSize}
+            <br />
+            Price + carbSize: {addedCarbSize}
+            <br />
+            Price + veggies: {addedVeggies}
+            <br />
+            Price + veggieSize: {addedVeggieSize}
+            <br />
+            Custom Meal Total Price:{customPriceTotal}
             <div style={{ width: '10%', marginTop: '5%', height: '100%' }}>
               {/* <Cart
                 selectedItems={
@@ -343,21 +350,8 @@ class Details extends Component {
                   Number(this.state.qty) * Number(mealsId.price)
                 }
               /> */}
-              <Cart
-                selectedItems={
-                  this.state.item +
-                  ':' +
-                  mealsId.name +
-                  '.' +
-                  '  ' +
-                  selectedItems
-                }
-                totalPrice={
-                  'Total:' +
-                  '$' +
-                  Number(this.state.qty) * Number(mealsId.price)
-                }
-              />
+
+              <Cart />
             </div>
           </div>
           <div
