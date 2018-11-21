@@ -332,7 +332,7 @@ class Details extends Component {
             <br />
             Price + veggieSize: {addedVeggieSize}
             <br />
-            Custom Meal Total Price:{customPriceTotal}
+            STAR:{customPriceTotal.toFixed(2)}
             <div style={{ width: '10%', marginTop: '5%', height: '100%' }}>
               {/* <Cart
                 selectedItems={
