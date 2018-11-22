@@ -23,8 +23,7 @@ export default class FullSizeCartView extends Component {
       cart: [],
       taxes: 0.087,
       shippingFee: 0.15,
-      value: 0,
-      qtyCount: 3
+      value: 0
     };
 
     //BIND METHODS HERE:
@@ -147,23 +146,18 @@ export default class FullSizeCartView extends Component {
                       height: '100%',
                       width: '50%',
                       marginTop: '1%',
-                      marginLeft: '-35%',
+                      marginLeft: '-15%',
                       fontSize: '16px'
                     }}
                   >
                     <p style={{ fontWeight: 900, fontSize: '20px' }}>
                       {eachMeal.meals_name}
                     </p>
-                    {/* <p>{eachMeal.description}</p> */}
                     <p style={{ fontSize: '12px' }}>
                       Item: #{eachMeal.order_number}
                     </p>
-                    <div style={{ fontSize: '10px', fontWeight: 100 }}>
-                      {this.props.selectedItems}
-                    </div>
                     <p>Price: ${eachMeal.price}</p>
-                    {/* QTY: {this.props.quantityValue} */}
-                    <p>{this.props.totalPrice}</p>
+                    {/* <p>{this.props.totalPrice}</p> */}
                   </div>
                   <div>
                     <button
@@ -175,8 +169,7 @@ export default class FullSizeCartView extends Component {
                       }}
                       onClick={() => this.handleCartRemove(eachMeal)}
                     >
-                      {/* <Icon name="trash alternate" /> */}
-                      X
+                      {/* <Icon name="trash alternate" /> */}X
                     </button>
                   </div>
                 </div>
@@ -262,11 +255,8 @@ export default class FullSizeCartView extends Component {
                 flexDirection: 'row'
               }}
             >
-              Items({this.state.cart.length}):<div
-                style={{ marginLeft: '55%' }}
-              >
-                ${calculating.toFixed(2)}
-              </div>
+              Items({this.state.cart.length}):
+              <div style={{ marginLeft: '55%' }}>${calculating.toFixed(2)}</div>
             </div>
             {/* <div
               style={{

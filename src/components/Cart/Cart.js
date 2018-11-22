@@ -102,16 +102,6 @@ export default class Cart extends Component {
         height: 70
       }
     });
-
-    // const checkOutButtonStyle = {
-    //   width: '280px',
-    //   height: '5%',
-    //   backgroundColor: 'green',
-    //   color: 'white',
-    //   fontSize: '25px',
-    //   marginRight: '8%',
-    //   cursor: 'pointer'
-    // };
     const wholeMealStyle = {
       marginLeft: '17%',
       textAlign: 'left',
@@ -134,15 +124,10 @@ export default class Cart extends Component {
     const calculating =
       this.state.cart.length &&
       this.state.cart.reduce((total, eachMeal) => {
-        // var priceTotal = eachMeal.price * this.props.quantityValue; NEED TO FIX QUANTITY*
         var priceTotal = eachMeal.price * eachMeal.quantity;
         total += priceTotal;
         return total;
       }, 0);
-
-    // console.log(this.props.totalPrice);
-    // console.log(this.props.qty);
-    // console.log(this.props.selectedItems);
     const fees =
       this.state.cart.length >= 3
         ? 0
@@ -150,8 +135,6 @@ export default class Cart extends Component {
     let displayInCart =
       this.state.cart.length > 0 ? (
         this.state.cart.map(eachMeal => {
-          // console.log(eachMeal.price * this.props.quantityValue);
-
           return (
             <div style={wholeMealStyle}>
               <div key={eachMeal.id}>
@@ -241,7 +224,6 @@ export default class Cart extends Component {
                 textAlign: 'center',
                 border: '2px solid black',
                 padding: '2%',
-                // marginLeft: '1%',
                 color: 'black',
                 backgroundColor: '#DCDCDC'
               }}
@@ -269,9 +251,8 @@ export default class Cart extends Component {
               Total Item(s): {this.state.cart.length}
             </p>
             <p style={{ marginLeft: '2%', fontSize: '14px', display: 'flex' }}>
-              <div style={{ marginRight: '2%' }}>Order Subtotal:</div> ${calculating.toFixed(
-                2
-              )}
+              <div style={{ marginRight: '2%' }}>Order Subtotal:</div> $
+              {calculating.toFixed(2)}
             </p>
             <p style={{ marginLeft: '2%', fontSize: '14px', display: 'flex' }}>
               <div style={{ marginRight: '2%', color: '#0000CD' }}>
@@ -333,15 +314,10 @@ export default class Cart extends Component {
             <div style={{ width: '60%', display: 'flex' }}>
               <Link to="/Meals/FullMenu">
                 <Button
-                  // inverted
                   color="green"
                   style={{
                     fontSize: '13px',
                     display: 'flex'
-                    // height: '2.23em',
-                    // paddingTop: '3%',
-                    // paddingRight: '5%',
-                    // width: '100%'
                   }}
                 >
                   <Icon
@@ -349,48 +325,15 @@ export default class Cart extends Component {
                     size="large"
                     style={{
                       display: 'flex',
-                      // fontSize: '15px',
                       paddingTop: '6%'
                     }}
                   />
                   Continue Shopping
-                  {/* <Button.Content
-                    visible
-                    style={{
-                      fontSize: '15px',
-                      height: '2.23em',
-                      paddingTop: '3%',
-                      paddingRight: '5%',
-                      width: '100%',
-                      textTransform: 'uppercase'
-                    }}
-                  >
-                    Continue Shopping
-                  </Button.Content>
-
-                  <Button.Content
-                    hidden
-                    style={{
-                      textTransform: 'uppercase',
-                      fontSize: '15px'
-                    }}
-                  >     </Button.Content> */}
                 </Button>
               </Link>
             </div>
             <div style={{ width: '40%', marginRight: '1%' }}>
               <Link to="/FullSizeCartView">
-                {/* <Button animated="vertical" color="black" size="large">
-                  <Button.Content hidden>
-                    <Icon name="shopping basket" size="large" />
-                  </Button.Content>
-                  <Button.Content
-                    visible
-                    style={{ textTransform: 'uppercase', fontSize: '15px' }}
-                  >
-                    View Cart
-                  </Button.Content>
-                </Button> */}
                 <Button color="gray" style={{ fontSize: '14.5px' }}>
                   View Cart{' '}
                   {/* <Icon name="shopping basket" size="small" /> View Cart */}

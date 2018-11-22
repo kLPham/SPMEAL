@@ -28,7 +28,6 @@ const clientID = process.env.CLIENTID;
 const clientSecret = process.env.CLIENTSECRET;
 
 ////////////////STRIPE:entry point and bootstraps your Express application ////////////////
-
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 // const stripe = process.env.STRIPE_SECRET_KEY;
 const configureStripe = require('stripe');

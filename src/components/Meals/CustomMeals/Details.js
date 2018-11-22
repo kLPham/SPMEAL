@@ -6,8 +6,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './CustomMeals.css';
 import ProteinOp from './ProteinsOptions/ProteinOp';
-import Cart from '../../Cart/Cart';
-// import Quantity from '../../Quantity/Quantity';
 
 import Option from 'muicss/lib/react/option';
 import Select from 'muicss/lib/react/select';
@@ -33,20 +31,12 @@ class Details extends Component {
     //SET INITIAL STATE HERE
     this.state = {
       mealsToDisplay: [],
-      // clicks: 0,
-      // show: true,
-      // value: 0,
       values: [],
       cart: JSON.parse(localStorage.getItem('cart')) || [],
-      qty: 0,
       item: 'Protein'
-      // show: false
     };
 
     //BIND ACTIONS HERE
-    // this.IncrementItem = this.IncrementItem.bind(this);
-    // this.DecreaseItem = this.DecreaseItem.bind(this);
-    // this.ToggleClick = this.ToggleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
@@ -63,30 +53,6 @@ class Details extends Component {
         console.log(response.data);
       });
   }
-
-  // QUANTITY BELOW:
-  // IncrementItem = e => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     clicks: this.state.clicks + 1,
-  //     // value: this.state.value + 1,
-  //     qty: this.state.qty + 1
-  //   });
-  // };
-
-  // DecreaseItem = e => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     clicks: this.state.clicks - 1,
-  //     // value: this.state.value - 1,
-  //     qty: this.state.qty - 1
-  //   });
-  // };
-  // ToggleClick = () => {
-  //   this.setState({ show: !this.state.show });
-  // };
-  /////QUANTITY ENDS:
-  ///TESTING SUBMIT BUTTON HERE ///
   handleSubmit(event) {
     alert(
       'You have Submitted:' +
@@ -116,20 +82,18 @@ class Details extends Component {
   }
 
   //POST ITEMS TO CART WHEN ADDED :)
-  handleAddToCart(item, value) {
-    axios.post('/api/cart', { item: item }).then(response =>
+  handleAddToCart(item, values) {
+    axios.post('/api/cart', { item: item, values: values }).then(response =>
       this.setState(
         {
-          cart: response.data
-          // value:
-          //   this.state.value +
-          //   this.props.ProteinSize +
-          //   this.props.CarbSize +
-          //   this.props.Veggies +
-          //   this.props.VeggieSize
+          cart: response.data,
+          values: this.props
         },
         () => {
-          localStorage.setItem('cart', JSON.stringify(this.state.cart));
+          localStorage.setItem(
+            'cart',
+            JSON.stringify(this.state.cart, this.props)
+          );
         }
       )
     );
@@ -214,81 +178,9 @@ class Details extends Component {
               </Button>
             </div>
           </div>
-          {/* <hr /> */}
+
           {/* //OVERALL DIV */}
           <div style={{ marginLeft: '50%', marginTop: '-5%' }}>
-            {/* ///QUANTITY // */}
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'row',
-                justifyContent: 'spaceAround',
-                flexWrap: 'wrap',
-                marginRight: '2%'
-              }}
-            >
-              {/* <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column'
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: '10px',
-                    fontWeight: 900,
-                    color: 'grey',
-                    textTransform: 'uppercase',
-                    marginLeft: '10%'
-                  }}
-                >
-                  Quantity:
-                </h3>
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    justifyContent: 'spaceAround',
-                    flexWrap: 'wrap'
-                  }}
-                >
-                  <button
-                    style={{
-                      height: '40px',
-                      width: '30px',
-                      fontSize: '20px',
-                      fontWeight: 900,
-                      color: 'grey'
-                    }}
-                    onClick={this.DecreaseItem}
-                  >
-                    -
-                  </button>
-                  <button
-                    style={{
-                      fontSize: '20px',
-                      fontWeight: 900,
-                      color: 'grey',
-                      height: '40px',
-                      width: '60px'
-                    }}
-                  >
-                    {this.state.show ? <h2>{this.state.clicks}</h2> : ''}
-                  </button>
-                  <button
-                    style={{
-                      height: '40px',
-                      width: '30px',
-                      fontSize: '20px',
-                      fontWeight: 900,
-                      color: 'grey'
-                    }}
-                    onClick={this.IncrementItem}
-                  >
-                    +
-                  </button>
-                </div> */}
-            </div>
             <Button
               style={{
                 marginLeft: '4%',
@@ -333,26 +225,7 @@ class Details extends Component {
             Price + veggieSize: {addedVeggieSize}
             <br />
             STAR:{customPriceTotal.toFixed(2)}
-            <div style={{ width: '10%', marginTop: '5%', height: '100%' }}>
-              {/* <Cart
-                selectedItems={
-                  this.state.item +
-                  ':' +
-                  mealsId.name +
-                  '.' +
-                  '  ' +
-                  selectedItems
-                }
-                qty={'Qty:' + this.state.qty}
-                totalPrice={
-                  'Total:' +
-                  '$' +
-                  Number(this.state.qty) * Number(mealsId.price)
-                }
-              /> */}
-
-              <Cart />
-            </div>
+            <div style={{ width: '10%', marginTop: '5%', height: '100%' }} />
           </div>
           <div
             style={{
@@ -380,7 +253,6 @@ class Details extends Component {
             </a>
           </div>
         </div>
-        // </div>
       );
     });
 
@@ -388,10 +260,8 @@ class Details extends Component {
       <div>
         <hr />
         <div> {displayMealDetails}</div>
-
         <br />
         <br />
-
         <Button
           onClick={this.context.router.history.goBack}
           basic
