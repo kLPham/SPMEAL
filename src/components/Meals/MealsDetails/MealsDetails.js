@@ -11,7 +11,6 @@ import { Icon, Button } from 'semantic-ui-react';
 import Cart from '../../Cart/Cart';
 // import FullSizeCartView from '../../Cart/FullSizeCartView';
 import Swal from 'sweetalert2';
-import Qty from '../../Cart/Qty/Qty';
 
 export default class MealsDetails extends Component {
   constructor(props) {
@@ -20,19 +19,12 @@ export default class MealsDetails extends Component {
     //SET INITIAL STATE HERE
     this.state = {
       mealsToDisplay: [],
-      clicks: 1,
-      show: true,
-      value: 1,
-      qty: [],
       item: 'Protein',
       cart: JSON.parse(localStorage.getItem('cart')) || []
       // cart: []
     };
 
     //BIND ACTIONS HERE
-    this.IncrementItem = this.IncrementItem.bind(this);
-    this.DecreaseItem = this.DecreaseItem.bind(this);
-    this.ToggleClick = this.ToggleClick.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
   }
   static contextTypes = {
@@ -50,88 +42,30 @@ export default class MealsDetails extends Component {
       });
   }
   //POST ITEMS TO CART WHEN ADDED :)
-
-  handleAddToCart(item, value) {
-    axios.post('/api/cart', { item: item, value: value }).then(response =>
+  handleAddToCart(item) {
+    axios.post('/api/cart', { item: item }).then(response =>
       this.setState(
         {
-          cart: response.data,
-          clicks: this.state.clicks,
-          value: this.state.value
+          cart: response.data
         },
         () => {
           localStorage.setItem('cart', JSON.stringify(this.state.cart));
-          // Swal({
-          //   title: 'Successfully Added To Your Cart!',
-          //   text: 'Check Out Our Other Meals',
-          //   type: 'success',
-          //   confirmButtonText: 'Confirm'
-          // });
         }
       )
     );
   }
-  IncrementItem = e => {
-    e.preventDefault();
-    this.setState({
-      clicks: this.state.clicks + 1,
-      value: this.state.value + 1
-      // qty: this.state.qty + 1
-    });
-  };
 
-  DecreaseItem = e => {
-    e.preventDefault();
-    this.setState({
-      clicks: this.state.clicks - 1,
-      value: this.state.value - 1
-      // qty: this.state.qty - 1
-    });
-  };
-  ToggleClick = () => {
-    this.setState({ show: !this.state.show });
-  };
   render() {
     const style = {
       position: 'relative',
       display: 'row',
-      borderStyle: 'ridge',
-      borderColor: 'gray',
-      marginLeft: '13%',
+      // borderStyle: 'ridge',
+      // borderColor: 'white',
+      marginLeft: '8%',
       marginRight: '13%',
       marginTop: '2%',
       paddingTop: '5%',
       paddingBottom: '3%'
-    };
-    const buttonStyle = {
-      backgroundColor: 'black',
-      color: 'white',
-      height: '50px',
-      width: '100%',
-      marginTop: '2%',
-      fontSize: '20px',
-      textTransform: 'uppercase',
-      cursor: 'pointer',
-      display: 'flex'
-    };
-    const rightItemsStyle = {
-      float: 'right',
-      position: 'absolute',
-      top: '10%',
-      right: '7%',
-      fontSize: '25px'
-    };
-    const imageStyle = {
-      marginLeft: '5%',
-      height: '50%',
-      width: '50%'
-    };
-    const descripStyle = {
-      borderStyle: 'double',
-      padding: '2.5%',
-      fontSize: '15px',
-      width: '89%',
-      textAlign: 'center'
     };
     const iconsStyle = {
       margin: '20px'
@@ -144,97 +78,58 @@ export default class MealsDetails extends Component {
     ];
 
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
-      const qtyTest = Number(this.state.value);
       return (
-        <div key={mealsId.meals_id} style={style}>
-          <div style={imageStyle}>
+        <div key={mealsId.meals_id} style={{ display: 'flex' }}>
+          {/* //LEft Side: */}
+          <div>
             <img alt="image_url" src={mealsId.image_url} />
-            <p style={descripStyle}>{mealsId.description}</p>
           </div>
           <br />
-          <div style={rightItemsStyle}>
-            <p>{mealsId.meals_name}</p>
+          {/* //Right Side: */}
+          <div
+            style={{
+              marginLeft: '5%',
+              overFlow: 'auto',
+              height: '500px',
+              width: '50%'
+            }}
+          >
+            <p style={{ fontWeight: 900, fontSize: '3em', color: '#565353' }}>
+              {mealsId.meals_name}
+            </p>
+            <p style={{ fontWeight: 700, fontSize: '16px', color: '#ffc212' }}>
+              {mealsId.nutrition_value}
+            </p>
+            <p style={{ color: '#565353', fontSize: '16px' }}>
+              {mealsId.description}
+            </p>
             <p>${mealsId.price}</p>
-            {/* ///QUANTITY // */}
-            {/* <Qty  /> */}
-            <div>
-              <div
-                style={{
-                  color: 'grey'
+            <div style={{ display: 'flex' }}>
+              <Button
+                color="black"
+                onClick={() => {
+                  this.handleAddToCart(mealsId);
+                  Swal({
+                    text: 'Successfully Added to your bag',
+                    title: mealsId.meals_name,
+                    imageUrl: mealsId.image_url,
+                    imageWidth: 150,
+                    imageHeight: 150,
+                    imageAlt: 'meals image',
+                    animation: false,
+                    type: 'success',
+                    confirmButtonColor: 'black',
+                    confirmButtonText:
+                      '<a href= /Meals/FullMenu>Continue Shopping</a>',
+                    footer: '<a href= /FullSizeCartView>View Shopping bag</a>'
+                  });
                 }}
-                className="QContainer"
               >
-                Qty:
-                <button
-                  style={{
-                    fontWeight: 900,
-                    color: 'grey',
-                    height: '40px'
-                  }}
-                  onClick={this.DecreaseItem}
-                >
-                  -
-                </button>
-                <button
-                  style={{
-                    fontSize: '20px',
-                    fontWeight: 900,
-                    color: 'grey',
-                    height: '40px'
-                  }}
-                >
-                  {this.state.show ? <h2>{this.state.clicks}</h2> : ''}
-                </button>
-                <button
-                  style={{
-                    fontWeight: 900,
-                    color: 'grey',
-                    height: '40px'
-                  }}
-                  onClick={this.IncrementItem}
-                >
-                  +
-                </button>
-              </div>
+                Add To Cart
+              </Button>
             </div>
-            <div
-              style={{
-                position: 'relative',
-                display: 'flex'
-              }}
-            >
-              <div style={{ display: 'flex' }}>
-                <Button
-                  color="black"
-                  onClick={() => {
-                    this.handleAddToCart(mealsId);
-                    Swal({
-                      text: 'Successfully Added to your bag',
-                      title: mealsId.meals_name,
-                      // imageUrl:
-                      //   'https://t3.ftcdn.net/jpg/00/65/24/84/240_F_65248490_FA0iTB22m1K5CFmt9vgB78pGYCaUhf3n.jpg',
-                      imageUrl: mealsId.image_url,
-                      imageWidth: 150,
-                      imageHeight: 150,
-                      imageAlt: 'meals image',
-                      animation: false,
-                      type: 'success',
-                      confirmButtonColor: 'black',
-                      confirmButtonText:
-                        '<a href= /Meals/FullMenu>Continue Shopping</a>',
-                      footer: '<a href= /FullSizeCartView>View Shopping bag</a>'
-                    });
-                  }}
-                >
-                  Add To Cart
-                </Button>
-              </div>
-              <div style={{ display: 'flex', marginLeft: '5%' }}>
-                {/* <Cart quantityValue={this.state.value} /> */}
-              </div>
-            </div>
+            <div style={{ display: 'flex', marginLeft: '5%' }} />
             <hr />
-
             <SocialIcons
               urls={urls}
               style={iconsStyle}
@@ -253,7 +148,7 @@ export default class MealsDetails extends Component {
           basic
           color="black"
           style={{
-            marginTop: '5%',
+            marginTop: '9%',
             marginLeft: '5%',
             fontSize: '20px',
             fontWeight: 900
@@ -267,7 +162,21 @@ export default class MealsDetails extends Component {
           BACK TO MENU
         </Button>
 
-        <div> {displayMealDetails}</div>
+        <div
+          style={{
+            display: 'block',
+            position: 'relative',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            marginTop: '5%',
+            marginLeft: 'auto',
+            marginRight: '0',
+            width: '90%'
+          }}
+        >
+          {' '}
+          {displayMealDetails}
+        </div>
         <br />
         <br />
         <br />
