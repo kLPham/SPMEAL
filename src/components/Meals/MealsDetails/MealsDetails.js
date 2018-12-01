@@ -85,19 +85,6 @@ export default class MealsDetails extends Component {
     ];
 
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
-      // data={[["Blueberry", 44], ["Strawberry", 23], ...]}
-      //data here:
-      // const dataPie = {
-      //     [ 'Diary & Eggs',20], ['Produce',30],['Grain',5],['Sugar & Fat',10],['Meat',20],['Other',15]
-      //   };
-      const data = [
-        { name: 'Diary & Eggs', data: { '2017-01-01': 3, '2017-01-02': 4 } },
-        { name: 'Produce', data: { '2017-01-01': 5, '2017-01-02': 3 } },
-        { name: 'Grain', data: { '2017-01-01': 5, '2017-01-02': 3 } },
-        { name: 'Sugar & Fat', data: { '2017-01-01': 5, '2017-01-02': 3 } },
-        { name: 'Meat', data: { '2017-01-01': 5, '2017-01-02': 3 } },
-        { name: 'Other', data: { '2017-01-01': 5, '2017-01-02': 3 } }
-      ];
       return (
         <div key={mealsId.meals_id} style={{ display: 'flex' }}>
           {/* //LEft Side: */}
