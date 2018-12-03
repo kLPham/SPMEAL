@@ -17,7 +17,9 @@ import mitten from './mitten.png';
 import '../Meals.css';
 
 //importing the all the charts here:
-import { LineChart, PieChart, BarChart } from 'react-chartkick';
+// import { LineChart, PieChart, BarChart } from 'react-chartkick';
+import { Doughnut } from 'react-chartjs-2';
+// import { Line } from 'react-chartjs-2';
 
 export default class MealsDetails extends Component {
   constructor(props) {
@@ -63,19 +65,9 @@ export default class MealsDetails extends Component {
   }
 
   render() {
-    const style = {
-      position: 'relative',
-      display: 'row',
-      // borderStyle: 'ridge',
-      // borderColor: 'white',
-      marginLeft: '8%',
-      marginRight: '13%',
-      marginTop: '2%',
-      paddingTop: '5%',
-      paddingBottom: '3%'
-    };
     const iconsStyle = {
-      margin: '20px'
+      marginLeft: '25%',
+      marginTop: '5%'
     };
     const urls = [
       'https://www.facebook.com/',
@@ -83,13 +75,47 @@ export default class MealsDetails extends Component {
       'https://twitter.com/',
       'https://www.pinterest.com/'
     ];
-
+    //TESTINHG DATA:
+    // const data = {
+    //   labels: ['fat', 'proteins', 'carbs'],
+    //   datasets: [
+    //     {
+    //       data: [46, 31, 17],
+    //       backgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
+    //       hoverBackgroundColor: ['#4169E1', '#FF7F50', '#3CB371']
+    //     }
+    //   ]
+    // };
+    const smallHeader = {
+      fontWeight: 900,
+      display: 'flex',
+      fontSize: '31px',
+      lineHeight: '40px'
+    };
+    const howToPreImgStyle = { height: '50px', width: '50px', display: 'flex' };
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
+      // const data = mealsId.calories;
+      const data = {
+        labels: ['fat', 'proteins', 'carbs'],
+        datasets: [
+          {
+            data: [46, 31, 17],
+            backgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
+            hoverBackgroundColor: ['#4169E1', '#FF7F50', '#3CB371']
+          }
+        ]
+      };
       return (
         <div key={mealsId.meals_id} style={{ display: 'flex' }}>
           {/* //LEft Side: */}
-          <div>
+          <div style={{ marginLeft: '-5%' }}>
             <img alt="image_url" src={mealsId.image_url} />
+            <SocialIcons
+              urls={urls}
+              style={iconsStyle}
+              color="black"
+              className="icons"
+            />
           </div>
           <br />
           {/* //Right Side: */}
@@ -97,11 +123,13 @@ export default class MealsDetails extends Component {
             style={{
               marginLeft: '5%',
               overFlow: 'auto',
-              height: '500px',
-              width: '50%'
+              height: '600px',
+              width: '55%',
+              overflow: 'hidden scroll',
+              overflowWrap: 'breakWord'
             }}
           >
-            <p style={{ fontWeight: 900, fontSize: '3em', color: '#565353' }}>
+            <p style={{ fontWeight: 900, fontSize: '49px', color: '#565353' }}>
               {mealsId.meals_name}
             </p>
             <p style={{ fontWeight: 700, fontSize: '16px', color: '#ffc212' }}>
@@ -135,23 +163,15 @@ export default class MealsDetails extends Component {
             </div>
             <hr />
             <div>
-              <h2
-                style={{ fontWeight: 900, fontSize: '25px', display: 'flex' }}
-              >
-                Ingredients
-              </h2>
+              <h2 style={smallHeader}>Ingredients</h2>
               <p style={{ fontWeight: 700, fontSize: '17px' }}>contains:</p>
               <p>{mealsId.ingredients}</p>
             </div>
             <hr />
             <div>
-              <h2
-                style={{ fontWeight: 900, fontSize: '25px', display: 'flex' }}
-              >
-                Nutrition profile
-              </h2>
+              <h2 style={smallHeader}>Nutrition profile</h2>
               <div style={{ display: 'flex', width: '100%' }}>
-                <PieChart
+                {/* <PieChart
                   data={[
                     ['Diary & Eggs', 20],
                     ['Produce', 30],
@@ -160,61 +180,77 @@ export default class MealsDetails extends Component {
                     ['Meat', 20],
                     ['Other', 15]
                   ]}
-                />
+                /> */}
+                <Doughnut data={data} />
+                {/* <Line /> */}
                 {/* <LineChart data={data} /> */}
-                <BarChart
+                {/* <BarChart
                   data={[['protein', 46], ['carbs', 31], ['fat', 17]]}
-                />
+                /> */}
               </div>
             </div>
             <hr />
-            <div style={{ width: '80%' }}>
-              <h2
-                style={{ fontWeight: 900, fontSize: '25px', display: 'flex' }}
-              >
-                How to prepare
-              </h2>
+            <div
+              style={{
+                width: '95%',
+                marginLeft: '2%',
+                borderStyle: 'double',
+                borderWidth: '5px',
+                borderColor: 'black',
+                borderRadius: '10px',
+                padding: '5%'
+              }}
+            >
+              <h2 style={smallHeader}>How to prepare</h2>
               <div
                 style={{
                   display: 'flex',
-                  marginLeft: '20%',
+                  justifyContent: 'center',
                   marginTop: '10%',
-                  fontSize: '17px',
-                  justifyContent: 'spaceAround'
+                  fontSize: '17px'
                 }}
               >
-                <p style={{ fontWeight: 700, marginRight: '30%' }}>
-                  <img
-                    alt="image of a mitten"
-                    src={mitten}
+                <center>
+                  <p style={{ fontWeight: 700, fontSize: '20px' }}>
+                    <img
+                      alt="image of a mitten"
+                      src={mitten}
+                      style={howToPreImgStyle}
+                    />
+                    Oven <p style={{ fontWeight: 'lighter' }}>{mealsId.oven}</p>
+                    <p style={{ fontSize: '9px', fontWeight: 600 }}>
+                      RECOMMENDED FOR BEST FLAVOR
+                    </p>
+                  </p>
+                </center>
+                <center>
+                  <p
                     style={{
-                      height: '50px',
-                      width: '50px',
-                      display: 'flex'
+                      fontWeight: 700,
+                      marginLeft: '55%',
+                      fontSize: '20px'
                     }}
-                  />
-                  Oven
-                  <p style={{ fontWeight: 'lighter' }}>{mealsId.oven}</p>
-                </p>
-                <p style={{ marginLeft: '30%', fontWeight: 700 }}>
-                  <img
-                    alt="image of a microwave"
-                    src={microwave}
-                    style={{
-                      height: '50px',
-                      width: '50px',
-                      display: 'flex'
-                    }}
-                  />
-                  Microwave
-                  <p style={{ fontWeight: 'lighter' }}>{mealsId.microwave}</p>
-                </p>
+                  >
+                    <img
+                      alt="image of a microwave"
+                      src={microwave}
+                      style={howToPreImgStyle}
+                    />
+                    Microwave
+                    <p style={{ fontWeight: 'lighter' }}>{mealsId.microwave}</p>
+                    <p style={{ fontSize: '9px', fontWeight: 600 }}>
+                      BEST WHEN YOU'RE IN A HURRY
+                    </p>
+                  </p>
+                </center>
               </div>
             </div>
+            <hr />
             <hr />
             <div style={{ display: 'flex' }}>
               <Button
                 color="black"
+                style={{ width: '100%', height: '20%', fontSize: '25px' }}
                 onClick={() => {
                   this.handleAddToCart(mealsId);
                   Swal({
@@ -238,12 +274,6 @@ export default class MealsDetails extends Component {
             </div>
             <div style={{ display: 'flex', marginLeft: '5%' }} />
             <hr />
-            <SocialIcons
-              urls={urls}
-              style={iconsStyle}
-              color="black"
-              className="icons"
-            />
           </div>
         </div>
       );
