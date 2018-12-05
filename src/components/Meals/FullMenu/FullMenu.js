@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './FullMenu.css';
+
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 /// IMPORT MATERIAL-UI ///
-import RaisedButton from 'material-ui/RaisedButton';
-import IconButton from 'material-ui/IconButton';
-import Paper from 'material-ui/Paper';
 
-//TESTING FAV ICON TOGGLE
+//TESTING viewmore
+import ViewMore from '../ViewMore/ViewMore';
 
 export default class FullMenu extends Component {
   constructor(props) {
@@ -34,7 +33,6 @@ export default class FullMenu extends Component {
       float: 'left',
       position: 'relative',
       textAlign: 'center',
-      marginBottom: '5%',
       marginLeft: '3.5%',
       marginRight: '1%'
     };
@@ -43,33 +41,28 @@ export default class FullMenu extends Component {
       height: '100%',
       width: '100%'
     };
-    const hStyle = {
-      backgroundColor: 'white',
-      width: '100%',
-      height: '15%'
-    };
 
     const allMeals = this.state.displayAllMeals.map(allMeals => {
       return (
-        <div>
-          <Paper zDepth={4} style={styles}>
-            <Paper zDepth={4}>
-              <div key={allMeals.id}>
-                <Link to={`/Meals/Details/${allMeals.meals_id}`}>
-                  <img
-                    alt="image_url"
-                    src={allMeals.image_url}
-                    style={imageStyle}
-                  />
-                </Link>
-                <div style={{ fontWeight: 900 }}>
-                  <p>{allMeals.meals_name}</p>
-                  <p>${allMeals.price}</p>
-                </div>
-                <br />
-              </div>
-            </Paper>
-          </Paper>
+        <div style={styles}>
+          <div key={allMeals.id}>
+            <figure className="effect">
+              <img
+                alt="image_url"
+                src={allMeals.image_url}
+                style={imageStyle}
+                className="image"
+              />
+              <p>{allMeals.meals_name}</p>
+              <Link to={`/Meals/Details/${allMeals.meals_id}`}>
+                {' '}
+                <p style={{ fontSize: '20px' }} className="description">
+                  Quick View{' '}
+                  <p style={{ color: 'white' }}>{allMeals.calories} Cal</p>
+                </p>{' '}
+              </Link>
+            </figure>
+          </div>
         </div>
       );
     });
@@ -77,7 +70,7 @@ export default class FullMenu extends Component {
     return (
       <div className="fbContent">
         {' '}
-        <hr />
+        {/* <hr /> */}
         {allMeals}
       </div>
     );

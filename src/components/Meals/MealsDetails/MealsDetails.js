@@ -18,7 +18,7 @@ import '../Meals.css';
 
 //importing the all the charts here:
 // import { LineChart, PieChart, BarChart } from 'react-chartkick';
-import { Doughnut } from 'react-chartjs-2';
+import { Doughnut, HorizontalBar } from 'react-chartjs-2';
 // import { Line } from 'react-chartjs-2';
 
 export default class MealsDetails extends Component {
@@ -75,36 +75,42 @@ export default class MealsDetails extends Component {
       'https://twitter.com/',
       'https://www.pinterest.com/'
     ];
-    //TESTINHG DATA:
-    // const data = {
-    //   labels: ['fat', 'proteins', 'carbs'],
-    //   datasets: [
-    //     {
-    //       data: [46, 31, 17],
-    //       backgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
-    //       hoverBackgroundColor: ['#4169E1', '#FF7F50', '#3CB371']
-    //     }
-    //   ]
-    // };
+
     const smallHeader = {
       fontWeight: 900,
       display: 'flex',
       fontSize: '31px',
       lineHeight: '40px'
     };
+    const recommendText = {
+      fontSize: '9px',
+      fontWeight: 600,
+      color: '#008000'
+    };
     const howToPreImgStyle = { height: '50px', width: '50px', display: 'flex' };
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
-      // const data = mealsId.calories;
-      const data = {
-        labels: ['fat', 'proteins', 'carbs'],
+      //TESTINHG DATA:
+      let fat = mealsId.fats;
+      let protein = mealsId.proteins;
+      let carb = mealsId.carbs;
+      const doughNutData = {
+        labels: ['fats', 'proteins', 'carbs'],
         datasets: [
           {
-            data: [46, 31, 17],
+            data: [29, 33, 18],
             backgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
-            hoverBackgroundColor: ['#4169E1', '#FF7F50', '#3CB371']
+            hoverBackgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
+            options: {
+              legend: 'right'
+            },
+            width: 500
           }
         ]
       };
+      const options = {
+        maintainAspectRatio: false // Don't maintain w/h ratio
+      };
+
       return (
         <div key={mealsId.meals_id} style={{ display: 'flex' }}>
           {/* //LEft Side: */}
@@ -132,12 +138,28 @@ export default class MealsDetails extends Component {
             <p style={{ fontWeight: 900, fontSize: '49px', color: '#565353' }}>
               {mealsId.meals_name}
             </p>
-            <p style={{ fontWeight: 700, fontSize: '16px', color: '#ffc212' }}>
+
+            <p
+              style={{
+                fontWeight: 700,
+                fontSize: '16px',
+                color: '#ffc212',
+                lineHeight: '20px'
+              }}
+            >
               {mealsId.nutrition_value}
             </p>
-            <p style={{ color: '#565353', fontSize: '16px' }}>
+            <p
+              style={{
+                color: '#565353',
+                fontWeight: 400,
+                fontSize: '16px',
+                lineHeight: '24px'
+              }}
+            >
               {mealsId.description}
             </p>
+            <p>{fat + ' ' + ' ' + protein + ' ' + ' ' + carb}</p>
             <div
               style={{
                 display: 'flex',
@@ -162,34 +184,45 @@ export default class MealsDetails extends Component {
               </p>
             </div>
             <hr />
+            <br />
+            <br />
             <div>
               <h2 style={smallHeader}>Ingredients</h2>
               <p style={{ fontWeight: 700, fontSize: '17px' }}>contains:</p>
-              <p>{mealsId.ingredients}</p>
+              <p
+                style={{
+                  color: '#565353',
+                  fontWeight: 400,
+                  fontSize: '16px',
+                  lineHeight: '24px'
+                }}
+              >
+                {mealsId.ingredients}
+              </p>
             </div>
             <hr />
             <div>
+              <hr />
+              <br />
+              <br />
               <h2 style={smallHeader}>Nutrition profile</h2>
               <div style={{ display: 'flex', width: '100%' }}>
-                {/* <PieChart
-                  data={[
-                    ['Diary & Eggs', 20],
-                    ['Produce', 30],
-                    ['Grain', 5],
-                    ['Sugar & Fat', 10],
-                    ['Meat', 20],
-                    ['Other', 15]
-                  ]}
-                /> */}
-                <Doughnut data={data} />
-                {/* <Line /> */}
-                {/* <LineChart data={data} /> */}
-                {/* <BarChart
-                  data={[['protein', 46], ['carbs', 31], ['fat', 17]]}
-                /> */}
+                <Doughnut
+                  data={doughNutData}
+                  width={10}
+                  height={10}
+                  options={{ maintainAspectRatio: true }}
+                  legend={{ position: 'right', labels: { boxWidth: 30 } }}
+                  labels={{ boxWidth: 10 }}
+                />
               </div>
             </div>
             <hr />
+            <br />
+            <br />
+            <hr />
+            <br />
+            <br />
             <div
               style={{
                 width: '95%',
@@ -218,9 +251,7 @@ export default class MealsDetails extends Component {
                       style={howToPreImgStyle}
                     />
                     Oven <p style={{ fontWeight: 'lighter' }}>{mealsId.oven}</p>
-                    <p style={{ fontSize: '9px', fontWeight: 600 }}>
-                      RECOMMENDED FOR BEST FLAVOR
-                    </p>
+                    <p style={recommendText}>RECOMMENDED FOR BEST FLAVOR</p>
                   </p>
                 </center>
                 <center>
@@ -238,15 +269,13 @@ export default class MealsDetails extends Component {
                     />
                     Microwave
                     <p style={{ fontWeight: 'lighter' }}>{mealsId.microwave}</p>
-                    <p style={{ fontSize: '9px', fontWeight: 600 }}>
-                      BEST WHEN YOU'RE IN A HURRY
-                    </p>
+                    <p style={recommendText}>BEST WHEN YOU'RE IN A HURRY</p>
                   </p>
                 </center>
               </div>
             </div>
             <hr />
-            <hr />
+
             <div style={{ display: 'flex' }}>
               <Button
                 color="black"
