@@ -17,9 +17,7 @@ import mitten from './mitten.png';
 import '../Meals.css';
 
 //importing the all the charts here:
-// import { LineChart, PieChart, BarChart } from 'react-chartkick';
-import { Doughnut, HorizontalBar } from 'react-chartjs-2';
-// import { Line } from 'react-chartjs-2';
+import Chart from './Chart';
 
 export default class MealsDetails extends Component {
   constructor(props) {
@@ -29,7 +27,8 @@ export default class MealsDetails extends Component {
     this.state = {
       mealsToDisplay: [],
       item: 'Protein',
-      cart: JSON.parse(localStorage.getItem('cart')) || []
+      cart: JSON.parse(localStorage.getItem('cart')) || [],
+      chartData: {}
       // cart: []
     };
 
@@ -39,7 +38,33 @@ export default class MealsDetails extends Component {
   static contextTypes = {
     router: () => true
   };
+
   //CREATE HANDLE ACTIONS TYPE HERE:
+
+  //create a lifecyle to run chartData: (this will run when the chart component loads)
+  componentWillMount() {
+    this.getChartData();
+  }
+  getChartData() {
+    //api call here
+    this.setState({
+      chartData: {
+        labels: ['fats', 'proteins', 'carbs'],
+        datasets: [
+          {
+            label: 'All Nutrition Facts',
+            data: [29, 33, 18],
+            backgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
+            hoverBackgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
+            options: {
+              legend: 'right'
+            },
+            width: 500
+          }
+        ]
+      }
+    });
+  }
 
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
@@ -89,27 +114,9 @@ export default class MealsDetails extends Component {
     };
     const howToPreImgStyle = { height: '50px', width: '50px', display: 'flex' };
     const displayMealDetails = this.state.mealsToDisplay.map(mealsId => {
-      //TESTINHG DATA:
       let fat = mealsId.fats;
       let protein = mealsId.proteins;
       let carb = mealsId.carbs;
-      const doughNutData = {
-        labels: ['fats', 'proteins', 'carbs'],
-        datasets: [
-          {
-            data: [29, 33, 18],
-            backgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
-            hoverBackgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
-            options: {
-              legend: 'right'
-            },
-            width: 500
-          }
-        ]
-      };
-      const options = {
-        maintainAspectRatio: false // Don't maintain w/h ratio
-      };
 
       return (
         <div key={mealsId.meals_id} style={{ display: 'flex' }}>
@@ -206,16 +213,7 @@ export default class MealsDetails extends Component {
               <br />
               <br />
               <h2 style={smallHeader}>Nutrition profile</h2>
-              <div style={{ display: 'flex', width: '100%' }}>
-                <Doughnut
-                  data={doughNutData}
-                  width={10}
-                  height={10}
-                  options={{ maintainAspectRatio: true }}
-                  legend={{ position: 'right', labels: { boxWidth: 30 } }}
-                  labels={{ boxWidth: 10 }}
-                />
-              </div>
+              <Chart chartData={this.state.chartData} />
             </div>
             <hr />
             <br />

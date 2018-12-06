@@ -5,9 +5,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 /// IMPORT MATERIAL-UI ///
 
-//TESTING viewmore
-import ViewMore from '../ViewMore/ViewMore';
-
 export default class FullMenu extends Component {
   constructor(props) {
     super(props);
@@ -58,7 +55,16 @@ export default class FullMenu extends Component {
                 {' '}
                 <p style={{ fontSize: '20px' }} className="description">
                   Quick View{' '}
-                  <p style={{ color: 'white' }}>{allMeals.calories} Cal</p>
+                  <p
+                    style={{
+                      color: 'white',
+                      textTransform: 'lowerCase',
+                      fontWeight: 400,
+                      fontSize: '14px'
+                    }}
+                  >
+                    {allMeals.calories} Cal
+                  </p>
                 </p>{' '}
               </Link>
             </figure>

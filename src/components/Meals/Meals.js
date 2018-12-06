@@ -36,7 +36,8 @@ class Meals extends Component {
   render() {
     const pageHeaderStyle = {
       height: '20%',
-      width: '100%'
+      width: '100%',
+      filter: 'brightness(86%)'
     };
     const cutleryStyle = {
       height: '25px',
@@ -45,6 +46,7 @@ class Meals extends Component {
     };
     const styles = {
       headline: {
+        position: 'relative',
         fontSize: 25,
         textTransform: 'uppercase',
         marginBottom: 12,
@@ -61,15 +63,31 @@ class Meals extends Component {
     return (
       <div style={{ marginTop: '7%' }}>
         <img src={pageHeader} style={pageHeaderStyle} />
+        <h2
+          style={{
+            position: 'absolute',
+            top: '25%',
+            left: '35%',
+            transform: 'translate(-20%, -50%)',
+            color: '#ffffff',
+            zIndex: 1,
+            fontWeight: 700
+          }}
+        >
+          YOUR HOME JUST GOT A LOT MORE DELICIOUS.
+        </h2>
         <div>
           <Tabs
             value={this.props.history.location.pathname}
             onChange={this.handleCallToRouter}
           >
+            {/* <img src={pageHeader} style={pageHeaderStyle} /> */}
             <Tab label="Full Menu" value="/Meals/FullMenu" style={tabStyle}>
               {' '}
+              {/* <img src={pageHeader} style={pageHeaderStyle} /> */}
               <h2 style={styles.headline}>
-                Full Menu<FaCutlery style={cutleryStyle} />
+                Full Menu
+                <FaCutlery style={cutleryStyle} />
               </h2>
             </Tab>
 
@@ -81,7 +99,8 @@ class Meals extends Component {
             >
               <h2 style={styles.headline}>
                 {' '}
-                Breakfast<FaCutlery style={cutleryStyle} />
+                Breakfast
+                <FaCutlery style={cutleryStyle} />
               </h2>
             </Tab>
 
@@ -92,14 +111,16 @@ class Meals extends Component {
             >
               <h2 style={styles.headline}>
                 {' '}
-                Lunch & Dinner<FaCutlery style={cutleryStyle} />
+                Lunch & Dinner
+                <FaCutlery style={cutleryStyle} />
               </h2>
             </Tab>
             {/* TESTING ITEMS ENDS */}
             <Tab label="By the LB" value="/Meals/ByLB" style={tabStyle}>
               {' '}
               <h2 style={styles.headline}>
-                By the LB<FaCutlery style={cutleryStyle} />
+                By the LB
+                <FaCutlery style={cutleryStyle} />
               </h2>{' '}
             </Tab>
             <Tab
@@ -109,7 +130,8 @@ class Meals extends Component {
             >
               <h2 style={styles.headline}>
                 {' '}
-                Signature Meals<FaCutlery style={cutleryStyle} />
+                Signature Meals
+                <FaCutlery style={cutleryStyle} />
               </h2>
             </Tab>
             {/* <Tab label="Spartan By the LB" value="/Meals/ByLB" style={tabStyle}>
@@ -124,13 +146,15 @@ class Meals extends Component {
               style={tabStyle}
             >
               <h2 style={styles.headline}>
-                Custom Meals<FaCutlery style={cutleryStyle} />
+                Custom Meals
+                <FaCutlery style={cutleryStyle} />
               </h2>{' '}
             </Tab>
             {/* TESTING DESSERTS */}
             <Tab label="Dessert" value="/Meals/Dessert" style={tabStyle}>
               <h2 style={styles.headline}>
-                Dessert<FaCutlery style={cutleryStyle} />
+                Dessert
+                <FaCutlery style={cutleryStyle} />
               </h2>
             </Tab>
           </Tabs>
