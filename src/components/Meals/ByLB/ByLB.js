@@ -24,7 +24,7 @@ export default class ByLB extends Component {
     });
   }
   render() {
-    const style = {
+    const styles = {
       width: '20%',
       float: 'left',
       position: 'relative',
@@ -38,42 +38,46 @@ export default class ByLB extends Component {
       height: '100%',
       width: '100%'
     };
+
     const allMeals = this.state.displayMeals.map(mealsByTheLbs => {
       return (
-        <div>
-          <div>
-            <Paper zDepth={3} style={style}>
-              <div>
-                <Paper zDepth={3}>
-                  <div key={mealsByTheLbs.id}>
-                    <Link to={`/Meals/Details/${mealsByTheLbs.meals_id}`}>
-                      <img
-                        style={imageStyle}
-                        alt="image_url"
-                        src={mealsByTheLbs.image_url}
-                      />
-                    </Link>
-                    <div>
-                      <p>{mealsByTheLbs.meals_name}</p>
-                      <p>${mealsByTheLbs.price}</p>
-                    </div>
-                    <br />
-                  </div>
-                </Paper>
-              </div>
-            </Paper>
+        <div style={styles}>
+          <div key={mealsByTheLbs.id}>
+            <figure className="effect">
+              <img
+                alt="image_url"
+                src={mealsByTheLbs.image_url}
+                style={imageStyle}
+                className="image"
+              />
+              <p>{mealsByTheLbs.meals_name}</p>
+              <Link to={`/Meals/Details/${mealsByTheLbs.meals_id}`}>
+                {' '}
+                <p style={{ fontSize: '20px' }} className="description">
+                  Quick View{' '}
+                  <p
+                    style={{
+                      color: 'white',
+                      textTransform: 'lowerCase',
+                      fontWeight: 400,
+                      fontSize: '14px'
+                    }}
+                  >
+                    {mealsByTheLbs.calories} Cal
+                  </p>
+                </p>{' '}
+              </Link>
+            </figure>
           </div>
         </div>
       );
     });
 
     return (
-      <div>
-        <div className="fbContent">
-          <hr />
-          <hr />
-          {allMeals}{' '}
-        </div>
+      <div className="fbContent">
+        {' '}
+        {/* <hr /> */}
+        {allMeals}
       </div>
     );
   }

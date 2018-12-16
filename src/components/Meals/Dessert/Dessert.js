@@ -21,40 +21,50 @@ export default class Dessert extends Component {
   }
 
   render() {
-    const allMeals = this.state.displayMeals.map(dessert => {
-      const style = {
-        width: '20%',
-        float: 'left',
-        position: 'relative',
-        textAlign: 'center',
-        marginBottom: '2%',
-        marginLeft: '4%'
-      };
-      const imageStyle = {
-        height: '100%',
-        width: '100%'
-      };
+    const styles = {
+      width: '20%',
+      float: 'left',
+      position: 'relative',
+      textAlign: 'center',
+      marginLeft: '3.5%',
+      marginRight: '1%'
+    };
+    const imageStyle = {
+      marginTop: '5%',
+      height: '100%',
+      width: '100%'
+    };
 
+    const allMeals = this.state.displayMeals.map(desserts => {
       return (
-        <div>
-          <Paper zDepth={3} style={style}>
-            <div key={dessert.id}>
-              <div>
-                <Link to={`/Meals/Details/${dessert.meals_id}`}>
-                  <img
-                    style={imageStyle}
-                    alt="image_url"
-                    src={dessert.image_url}
-                    // className="fbimg"
-                  />
-                  <p>${dessert.price}</p>
-                </Link>
-              </div>
-              <div>
-                <p>{dessert.description}</p>
-              </div>
-            </div>
-          </Paper>
+        <div style={styles}>
+          <div key={desserts.id}>
+            <figure className="effect">
+              <img
+                alt="image_url"
+                src={desserts.image_url}
+                style={imageStyle}
+                className="image"
+              />
+              <p>{desserts.meals_name}</p>
+              <Link to={`/Meals/Details/${desserts.meals_id}`}>
+                {' '}
+                <p style={{ fontSize: '20px' }} className="description">
+                  Quick View{' '}
+                  <p
+                    style={{
+                      color: 'white',
+                      textTransform: 'lowerCase',
+                      fontWeight: 400,
+                      fontSize: '14px'
+                    }}
+                  >
+                    {desserts.calories} Cal
+                  </p>
+                </p>{' '}
+              </Link>
+            </figure>
+          </div>
         </div>
       );
     });
@@ -62,7 +72,7 @@ export default class Dessert extends Component {
     return (
       <div className="fbContent">
         {' '}
-        <hr />
+        {/* <hr /> */}
         {allMeals}
       </div>
     );

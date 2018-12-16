@@ -22,7 +22,7 @@ export default class FeaturedBreakfast extends Component {
 
   render() {
     const allMeals = this.state.displayMeals.map(featuredBreakfast => {
-      const style = {
+      const styles = {
         width: '20%',
         float: 'left',
         position: 'relative',
@@ -36,23 +36,34 @@ export default class FeaturedBreakfast extends Component {
       };
 
       return (
-        <div>
-          <Paper zDepth={3} style={style}>
-            <div key={featuredBreakfast.id}>
+        <div style={styles}>
+          <div key={featuredBreakfast.id}>
+            <figure className="effect">
+              <img
+                alt="image_url"
+                src={featuredBreakfast.image_url}
+                style={imageStyle}
+                className="image"
+              />
+              <p>{featuredBreakfast.meals_name}</p>
               <Link to={`/Meals/Details/${featuredBreakfast.meals_id}`}>
-                <img
-                  style={imageStyle}
-                  alt="image_url"
-                  src={featuredBreakfast.image_url}
-                  // className="fbimg"
-                />
+                {' '}
+                <p style={{ fontSize: '20px' }} className="description">
+                  Quick View{' '}
+                  <p
+                    style={{
+                      color: 'white',
+                      textTransform: 'lowerCase',
+                      fontWeight: 400,
+                      fontSize: '14px'
+                    }}
+                  >
+                    {featuredBreakfast.calories} Cal
+                  </p>
+                </p>{' '}
               </Link>
-              <div>
-                <p>{featuredBreakfast.meals_name}</p>
-                <p>{featuredBreakfast.price}</p>
-              </div>
-            </div>
-          </Paper>
+            </figure>
+          </div>
         </div>
       );
     });
@@ -60,7 +71,7 @@ export default class FeaturedBreakfast extends Component {
     return (
       <div className="fbContent">
         {' '}
-        <hr />
+        {/* <hr /> */}
         {allMeals}
       </div>
     );

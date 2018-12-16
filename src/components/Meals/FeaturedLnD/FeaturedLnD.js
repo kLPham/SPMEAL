@@ -25,13 +25,11 @@ export default class FeaturedLnD extends Component {
 
   render() {
     const allMeals = this.state.displayMeals.map(featuredLnD => {
-      const style = {
-        // height: '15%',
+      const styles = {
         width: '20%',
         float: 'left',
         position: 'relative',
         textAlign: 'center',
-        // marginRight: '1%',
         marginBottom: '5%',
         marginLeft: '4%'
       };
@@ -41,28 +39,34 @@ export default class FeaturedLnD extends Component {
       };
 
       return (
-        <div>
-          <Paper zDepth={3} style={style}>
-            <div>
-              <Paper>
-                <div key={featuredLnD.id}>
-                  <Link to={`/Meals/Details/${featuredLnD.meals_id}`}>
-                    <img
-                      style={imageStyle}
-                      alt="image_url"
-                      src={featuredLnD.image_url}
-                      // className="fbimg"
-                    />
-                  </Link>
-
-                  <div>
-                    <p>{featuredLnD.meals_name}</p>
-                    <p>{featuredLnD.price}</p>
-                  </div>
-                </div>
-              </Paper>
-            </div>
-          </Paper>
+        <div style={styles}>
+          <div key={featuredLnD.id}>
+            <figure className="effect">
+              <img
+                alt="image_url"
+                src={featuredLnD.image_url}
+                style={imageStyle}
+                className="image"
+              />
+              <p>{featuredLnD.meals_name}</p>
+              <Link to={`/Meals/Details/${featuredLnD.meals_id}`}>
+                {' '}
+                <p style={{ fontSize: '20px' }} className="description">
+                  Quick View{' '}
+                  <p
+                    style={{
+                      color: 'white',
+                      textTransform: 'lowerCase',
+                      fontWeight: 400,
+                      fontSize: '14px'
+                    }}
+                  >
+                    {featuredLnD.calories} Cal
+                  </p>
+                </p>{' '}
+              </Link>
+            </figure>
+          </div>
         </div>
       );
     });
@@ -70,7 +74,7 @@ export default class FeaturedLnD extends Component {
     return (
       <div className="fbContent">
         {' '}
-        <hr />
+        {/* <hr /> */}
         {allMeals}
       </div>
     );

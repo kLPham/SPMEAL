@@ -14,3 +14,23 @@
   margin-bottom: -1vh;
   background-color: #faf7f7;
 }
+figure.effect:hover img.image {
+  opacity: 0.5;
+}
+figure.effect p.description {
+  position: absolute;
+  left: 28%;
+  top: 45%;
+  font-weight: 900;
+  opacity: 1;
+  color: rgb(235, 39, 13);
+  text-transform: uppercase;
+  font-size: 200;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+  -webkit-backface-visibility: hidden; /* Fix for Chrome 37.0.2062.120 (Mac) */
+}
+figure.effect:hover p.description {
+  opacity: 1;
+}

@@ -22,7 +22,7 @@ export default class SignatureMeals extends Component {
 
   render() {
     const allMeals = this.state.displayMeals.map(signatureMeals => {
-      const style = {
+      const styles = {
         width: '20%',
         float: 'left',
         position: 'relative',
@@ -38,28 +38,33 @@ export default class SignatureMeals extends Component {
       };
 
       return (
-        <div>
-          <div>
-            <Paper zDepth={3} style={style}>
-              <div>
-                <Paper zDepth={3}>
-                  <div key={signatureMeals.id}>
-                    <Link to={`/Meals/Details/${signatureMeals.meals_id}`}>
-                      <img
-                        style={imageStyle}
-                        alt="image_url"
-                        src={signatureMeals.image_url}
-                      />
-                    </Link>
-                    <div>
-                      <p>{signatureMeals.meals_name}</p>
-                      <p>${signatureMeals.price}</p>
-                    </div>
-                    <br />
-                  </div>
-                </Paper>
-              </div>
-            </Paper>
+        <div style={styles}>
+          <div key={signatureMeals.id}>
+            <figure className="effect">
+              <img
+                alt="image_url"
+                src={signatureMeals.image_url}
+                style={imageStyle}
+                className="image"
+              />
+              <p>{signatureMeals.meals_name}</p>
+              <Link to={`/Meals/Details/${signatureMeals.meals_id}`}>
+                {' '}
+                <p style={{ fontSize: '20px' }} className="description">
+                  Quick View{' '}
+                  <p
+                    style={{
+                      color: 'white',
+                      textTransform: 'lowerCase',
+                      fontWeight: 400,
+                      fontSize: '14px'
+                    }}
+                  >
+                    {signatureMeals.calories} Cal
+                  </p>
+                </p>{' '}
+              </Link>
+            </figure>
           </div>
         </div>
       );
@@ -68,7 +73,7 @@ export default class SignatureMeals extends Component {
     return (
       <div className="fbContent">
         {' '}
-        <hr />
+        {/* <hr /> */}
         {allMeals}
       </div>
     );
