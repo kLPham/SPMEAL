@@ -109,10 +109,10 @@ export default class MyCarousel extends Component {
         {/* ///2ND SECTION  */}
         <div>
           <img
-            src="https://static1.squarespace.com/static/59de7a244c0dbfb7c50e812a/t/5a2f230b53450aa1428fcfa9/1513038700106/"
+            src="https://cdn.shopify.com/s/files/1/1957/2713/files/header-custom-meals_1500x.jpg?v=1538686606"
             className="carouselImage"
           />
-          <div
+          {/* <div
             style={{
               color: 'red',
               marginTop: '-90vh',
@@ -190,14 +190,14 @@ export default class MyCarousel extends Component {
             >
               Get Started
             </Button>
-          </div>
+          </div> */}
         </div>
 
         {/* ///3RD SECTION*/}
         <div>
           <img
             className="carouselImage"
-            src="http://www.wheninmanila.com/wp-content/uploads/2015/11/53-1024x768.jpg"
+            src="http://demo.pukkathemes.com/elliot/wp-content/uploads/2015/06/food-salad-restaurant-person.jpg"
           />
           <div
             style={{
@@ -222,7 +222,7 @@ export default class MyCarousel extends Component {
                 fontFamily: 'SansSerif'
               }}
             >
-              Fresh NEW Menu
+              It's ok to share...New menu style are here
             </span>
             <div>
               <Button
@@ -241,7 +241,7 @@ export default class MyCarousel extends Component {
           </div>
         </div>
         {/* /// 4TH SECTION */}
-        <div>
+        {/* <div>
           <img
             className="carouselImage"
             src="https://scontent-dfw5-1.xx.fbcdn.net/v/t31.0-8/17349831_2258884694335947_7635505346216742361_o.jpg?_nc_cat=0&oh=f8cfd1fa6da599761613b444a5b83930&oe=5B574AB0"
@@ -282,7 +282,7 @@ export default class MyCarousel extends Component {
               CHECK OUT OUR SUPPLEMENT LINE.
             </a>
           </span>
-        </div>
+        </div> */}
       </Carousel>
     );
   }

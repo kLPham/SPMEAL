@@ -23,6 +23,11 @@ import ReactPlayer from 'react-player';
 import MyCarousel from './../MyCarousel/MyCarousel';
 import FeaturedBreakfast from '../Meals/FeaturedBreakfast/FeaturedBreakfast';
 import FeaturedLnD from '../Meals/FeaturedLnD/FeaturedLnD';
+import SignatureMeals from '../Meals/SignatureMeals/SignatureMeals';
+
+import CarouselCover from './CarouselCover';
+
+// import { Carousel } from 'react-responsive-carousel';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -38,20 +43,11 @@ export default class LandingPage extends Component {
     this.setState({ open: true });
     window.location.href = 'http://localhost:3000/Meals/FeaturedBreakfast';
   };
-  handleViewLnDButton = () => {
-    this.setState({ open: true });
-    window.location.href = 'http://localhost:3000/Meals/FeaturedLnD';
-  };
+  // handleViewLnDButton = () => {
+  //   this.setState({ open: true });
+  //   window.location.href = 'http://localhost:3000/Meals/FeaturedLnD';
+  // };
   render() {
-    // const bannerStyle = {
-    //   color: 'white',
-    //   backgroundColor: 'red',
-    //   textAlign: 'center',
-    //   padding: '.8%',
-    //   fontWeight: 'bold',
-    //   fontSize: '22px'
-    //   // zIndex: 3
-    // };
     const topImageStyle = {
       height: '20%',
       width: '100%'
@@ -114,13 +110,11 @@ export default class LandingPage extends Component {
     };
     return (
       <div>
-        {/* <div style={bannerStyle}>Now SHIPPING NATIONWIDE as low as $15</div> */}
         {/* SECTION 1 */}
         <section>
           <MyCarousel />
         </section>
         {/* SECTION 2*/}
-
         <br />
         <br />
         <br />
@@ -213,48 +207,64 @@ export default class LandingPage extends Component {
         {/* SECTION 3 */}
         <section className="section3Container">
           <div className="landingFeature">Explore Our Menu</div>
+          <h2
+            style={{ color: 'black', fontWeight: 'bold', marginBottom: '5%' }}
+          >
+            ______________________________________________
+          </h2>
           <hr />
-          <div className="fb">
-            <h2 className="landingFeatures">Featured Breakfast </h2>
-
+          <div>
+            <CarouselCover />
             <Button
               style={{
                 color: 'white',
-                backgroundColor: '#7CFC00',
-                borderRadius: '6px',
-                position: 'absolute',
-                right: '8%',
-                marginTop: '5%',
-                fontSize: '25px'
+                backgroundColor: 'gray',
+                borderRadius: '10px',
+                position: 'relative',
+                marginLeft: '45%'
               }}
+              className="btnn"
               size="large"
               variant="raised"
-              onClick={this.handleViewBreakfastButton}
+              onClick={this.handleShopNowButton}
             >
-              VIEW NOW
+              View More
             </Button>
           </div>
-          <FeaturedBreakfast />
+
+          {/* <FeaturedBreakfast />{' '} */}
+          {/* <Button
+            style={{
+              color: 'white',
+              backgroundColor: '#0DCE27',
+              borderRadius: '6px',
+              position: 'absolute',
+              marginTop: '45%',
+              marginLeft: '40%',
+              fontSize: '25px'
+            }}
+            size="large"
+            variant="raised"
+            onClick={this.handleViewBreakfastButton}
+          >
+            VIEW NOW
+          </Button> */}
         </section>
-        <br />
-        <br />
 
         {/* SECTION 4 */}
-        <h2 style={{ color: 'black', fontWeight: 'bold' }}>
+        {/* <h2 style={{ color: 'black', fontWeight: 'bold' }}>
           ______________________________________________
-        </h2>
-        <section className="section3Container">
+        </h2> */}
+        {/* <section className="section3Container">
           <div className="fb">
             <h2 className="landingFeatures">Featured Lunches & Dinners</h2>
 
             <Button
               style={{
                 color: 'white',
-                backgroundColor: '#7CFC00',
+                backgroundColor: '#0DCE27',
                 borderRadius: '6px',
-                position: 'absolute',
-                right: '8%',
-                marginTop: '5%',
+             
                 fontSize: '25px'
               }}
               size="large"
@@ -264,37 +274,42 @@ export default class LandingPage extends Component {
               VIEW NOW
             </Button>
           </div>
-          <FeaturedLnD />
-        </section>
-        <hr />
+        
+        </section> */}
+
         {/* SECTION 5 */}
         <section>
           <div className="landingFeature">
             Balanced Nutrition for Healthy Living
+            {/* <h2
+              style={{ color: 'black', fontWeight: 'bold', marginBottom: '5%' }}
+            >
+              ______________________________________________
+            </h2> */}
+            <img
+              alt="image of a plate"
+              src="https://balance.bistromd.com/Skins/Balance/Images/Balance/bg2.jpg"
+              style={{ height: '90%', width: '100%' }}
+            />
+            <Button
+              className="centered"
+              style={{
+                backgroundColor: 'orange',
+                color: 'white',
+                paddingBottom: '6%',
+                paddingTop: '2%',
+                textAlign: 'center',
+                fontSize: '35px',
+                textTransform: 'uppercase',
+                cursor: 'pointer'
+              }}
+              size="large"
+              variant="raised"
+              onClick={this.handleShopNowButton}
+            >
+              Get Started!
+            </Button>
           </div>
-          <img
-            alt="image of a plate"
-            src="https://balance.bistromd.com/Skins/Balance/Images/Balance/bg2.jpg"
-            style={{ height: '90%', width: '100%' }}
-          />
-          <Button
-            className="centered"
-            style={{
-              backgroundColor: 'orange',
-              color: 'white',
-              paddingBottom: '6%',
-              paddingTop: '2%',
-              textAlign: 'center',
-              fontSize: '35px',
-              textTransform: 'uppercase',
-              cursor: 'pointer'
-            }}
-            size="large"
-            variant="raised"
-            onClick={this.handleShopNowButton}
-          >
-            Get Started!
-          </Button>
         </section>
 
         {/* SECTION 6 */}

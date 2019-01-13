@@ -221,20 +221,14 @@
   margin-top: 4%;
 }
 .landingContainer {
-  /* margin-top: 5%; */
+  width: 100%;
   margin-bottom: 5%;
   width: 150px;
   margin-left: 7.1%;
   margin-right: 4.5%;
   float: left;
 }
-/* .landingImage {
-  margin-top: -10%;
-  width: 150px;
-  height: 200px;
-  float: left;
-  margin-right: 5%;
-} */
+
 .darkerImg2 {
   filter: brightness(75%);
 }
@@ -275,7 +269,7 @@
 /* SECTION 3 */
 .section3Container {
   background-color: white;
-  height: 90vh;
+  height: 80vh;
   width: 100%;
   /* height: 10%; */
 }
@@ -283,7 +277,7 @@
   font-family: Times, Georgia, serif;
   font-size: 65px;
   /* line-height: 50px; */
-  margin-top: 4%;
+  margin-top: 2%;
   text-align: center;
 }
 .fb {
@@ -307,4 +301,13 @@
   padding-left: 2%;
   padding-right: 2%;
   border-radius: 10px;
+}
+
+.lpCar {
+  height: 500px;
+  width: 100%;
+  overflow: auto;
+  margin-bottom: -1vh;
+  margin-left: 2.5%;
+  background-color: #faf7f7;
 }
