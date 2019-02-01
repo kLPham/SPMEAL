@@ -74,7 +74,7 @@
 .linkStyle {
   text-decoration: none;
   margin-left: 9px;
-  color: black;
+  color: gray;
 }
 .linkStyle:hover {
   color: red;

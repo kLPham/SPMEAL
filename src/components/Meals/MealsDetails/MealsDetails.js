@@ -91,7 +91,7 @@ export default class MealsDetails extends Component {
 
   render() {
     const iconsStyle = {
-      marginLeft: '25%',
+      marginLeft: '15%',
       marginTop: '5%'
     };
     const urls = [
@@ -121,23 +121,30 @@ export default class MealsDetails extends Component {
       return (
         <div key={mealsId.meals_id} style={{ display: 'flex' }}>
           {/* //LEft Side: */}
-          <div style={{ marginLeft: '-5%' }}>
-            <img alt="image_url" src={mealsId.image_url} />
+          <div>
+            <img
+              style={{
+                height: '60%',
+                width: '90%'
+              }}
+              alt="image_url"
+              src={mealsId.image_url}
+            />
             <SocialIcons
               urls={urls}
               style={iconsStyle}
               color="black"
-              className="icons"
+              // className="icons"
             />
           </div>
-          <br />
+
           {/* //Right Side: */}
           <div
             style={{
-              marginLeft: '5%',
+              marginRight: '9%',
               overFlow: 'auto',
               height: '600px',
-              width: '55%',
+              width: '150em',
               overflow: 'hidden scroll',
               overflowWrap: 'breakWord'
             }}
@@ -299,7 +306,7 @@ export default class MealsDetails extends Component {
                 Add To Cart
               </Button>
             </div>
-            <div style={{ display: 'flex', marginLeft: '5%' }} />
+            {/* <div style={{ display: 'flex' }} /> */}
             <hr />
           </div>
         </div>
