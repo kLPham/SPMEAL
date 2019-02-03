@@ -31,14 +31,18 @@ export default class CarouselCover extends Component {
       <div>
         <StyleRoot>
           <Coverflow
-            displayQuantityOfSide={2}
+            displayQuantityOfSide={1.5}
+            // navigation={false}
+            // enableHeading={false}
+            width={960}
+            height={480}
             navigation
             infiniteScroll
             enableHeading
             media={{
               '@media (max-width: 1000px)': {
-                width: '960px',
-                height: '580px',
+                // width: '960px',
+                // height: '580px',
                 paddingRight: '2%'
               },
               '@media (min-width: 1900px)': {
@@ -49,6 +53,12 @@ export default class CarouselCover extends Component {
           >
             <img
               src="https://d37rttg87jr6ah.cloudfront.net/static/product_photo_web/ab_j_oatmeal-2018-12-09-23-36-49_1242x1242.png"
+              //   alt="breakfast"
+              data-action="https://www.google.com/"
+            />
+
+            <img
+              src="   https://d37rttg87jr6ah.cloudfront.net/static/product_photo_web/over_easy_burger_with_sweet_potato-2018-12-09-23-16-17_768x768.png"
               //   alt="breakfast"
               data-action="https://www.google.com/"
             />

@@ -232,6 +232,21 @@ export default class LandingPage extends Component {
             </Button>
           </div>
 
+          <br />
+          <br />
+          <br />
+          <br />
+          {/* <h2
+            style={{
+              color: 'black',
+              fontWeight: 'bold',
+              marginTop: '25',
+              marginBottom: '5%'
+            }}
+          >
+            ______________________________________________
+          </h2> */}
+
           {/* <FeaturedBreakfast />{' '} */}
           {/* <Button
             style={{
@@ -278,6 +293,7 @@ export default class LandingPage extends Component {
         </section> */}
 
         {/* SECTION 5 */}
+
         <section>
           <div className="landingFeature">
             Balanced Nutrition for Healthy Living
