@@ -66,6 +66,7 @@ export default class MyCarousel extends Component {
               color: 'white',
               marginTop: '-90vh',
               fontSize: '4em',
+              fontStyle: 'oblique',
               display: 'flex'
             }}
           >
@@ -109,25 +110,67 @@ export default class MyCarousel extends Component {
         {/* ///2ND SECTION  */}
         <div>
           <img
+            className="carouselImage"
+            src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2016/5/19/0/FNK_300-Calorie-Breakfasts-Opener_s4x3.jpg.rend.hgtvcom.966.725.suffix/1463631026438.jpeg"
+          />
+          <div
+            style={{
+              marginTop: '-90vh',
+              // zIndex: 1,
+              fontSize: '4em',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              paddingTop: '25%'
+            }}
+          >
+            <p
+              style={{
+                background: 'black',
+                color: 'white',
+                borderColor: 'gray',
+                borderRadius: '15px',
+                width: '70%',
+                // paddingLeft: '.5%',
+                // paddingRight: '.5%',
+                fontSize: '40px',
+                fontWeight: 900,
+                textTransform: 'upperCase',
+                fontFamily: 'SansSerif'
+              }}
+            >
+              Simple - Convenient - Fresh - Affordable
+            </p>
+
+            <div>
+              <Button
+                style={{
+                  color: 'black',
+                  fontSize: '35px',
+                  backgroundColor: 'white',
+                  marginTop: '10%',
+                  // marginRight: '25%',
+                  alignItems: 'center',
+                  fontWeight: 900,
+                  textTransform: 'upperCase'
+                }}
+                size="large"
+                variant="raised"
+                onClick={this.handleShopNowButton}
+              >
+                See The Menu
+              </Button>
+            </div>
+          </div>
+        </div>
+        {/* ///3RD SECTION*/}
+        <div>
+          <img
             src="https://reviewed-com-res.cloudinary.com/image/fetch/s--1tvhakF9--/b_white,c_fill,cs_srgb,f_auto,fl_progressive.strip_profile,g_center,q_auto,w_747/https://reviewed-production.s3.amazonaws.com/1479493028000/GettyImages-530418242.jpg"
             className="carouselImage"
           />
-          <Button
-            style={{
-              color: 'black',
-              backgroundColor: 'white',
-              marginRight: '25%',
-              position: 'absolute',
-              left: '2%',
-              top: '40%'
-            }}
-            size="large"
-            variant="raised"
-            onClick={this.handleShopNowButton}
-          >
-            Start Now
-          </Button>
-          {/* <div
+
+          <div
             style={{
               color: 'red',
               marginTop: '-90vh',
@@ -149,24 +192,24 @@ export default class MyCarousel extends Component {
                   fontFamily: 'SansSerif'
                 }}
               >
-                You're In Control.
+                Eat Healthy Your Way!
               </span>
 
               <p2
                 style={{
-                  backgroundColor: 'red',
-                  color: 'white',
+                  backgroundColor: '	#7CFC00',
+                  color: 'orange',
                   marginTop: '5%',
-                  padding: '1.3%',
-                  fontSize: '16px',
+                  padding: '2%',
+                  fontSize: '20px',
                   fontWeight: 'bold',
                   fontStyle: 'oblique',
                   fontFamily: 'SansSerif'
                 }}
               >
-                Custom meals to fit any taste or diet.{' '}
+                Chef Prepared Custom Meals...Just a Click Away!
               </p2>
-              <p2
+              {/* <p2
                 style={{
                   backgroundColor: 'red',
                   color: 'white',
@@ -179,7 +222,7 @@ export default class MyCarousel extends Component {
                 }}
               >
                 Let our chef do the hard part.
-              </p2>
+              </p2> */}
             </div>
           </div>
           <div
@@ -203,13 +246,12 @@ export default class MyCarousel extends Component {
               variant="raised"
               onClick={this.handleButtonClick}
             >
-              Get Started
+              Start Now
             </Button>
-          </div> */}
+          </div>
         </div>
 
-        {/* ///3RD SECTION*/}
-        <div>
+        {/* <div>
           <img
             className="carouselImage"
             src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2016/5/19/0/FNK_300-Calorie-Breakfasts-Opener_s4x3.jpg.rend.hgtvcom.966.725.suffix/1463631026438.jpeg"
@@ -241,7 +283,7 @@ export default class MyCarousel extends Component {
                 fontFamily: 'SansSerif'
               }}
             >
-              <p>It's ok to share...New menu style are here</p>
+              <p>Sharable meals</p>
             </span>
             <div>
               <Button
@@ -256,29 +298,16 @@ export default class MyCarousel extends Component {
               >
                 Be a Secret Chef
               </Button>
-            </div>
+            </div> 
           </div>
-        </div>
+        </div> */}
         {/* /// 4TH SECTION */}
         <div>
           <img
             className="carouselImage"
             src="https://scontent-dfw5-2.xx.fbcdn.net/v/t1.0-9/47038488_2115673675413779_8927643923409534976_o.jpg?_nc_cat=110&_nc_ht=scontent-dfw5-2.xx&oh=db3c4f29b7d1702dfdb0f97a6094e6a4&oe=5CC1D71F"
           />
-          {/* <span
-            style={{
-              color: 'red',
-              fontSize: '20px',
-              fontWeight: 'bold',
-              backgroundColor: 'white',
-              padding: '1.3%',
-              position: 'absolute',
-              top: '35%',
-              left: '20%'
-            }}
-          >
-            WANT A SPARTAN BODY?
-          </span> */}
+
           <span
             style={{
               color: 'red',
