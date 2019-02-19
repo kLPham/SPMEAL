@@ -16,7 +16,7 @@ export default class FullMenu extends Component {
 
     //BIND METHODS BELOW:
   }
-  // /// REQUEST FOR DATA OF ALL MEALS ///
+  // /// REQUEST FOR DATA OF ALL MEALS from server ///
   componentDidMount() {
     axios.get('/api/meals').then(response => {
       this.setState({ displayAllMeals: response.data });

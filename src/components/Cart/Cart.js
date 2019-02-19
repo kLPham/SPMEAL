@@ -81,16 +81,13 @@ export default class Cart extends Component {
 
   //POST ON checkout PAGE
   handleAddToCheckout(item) {
-    //:)
     axios
       .post('/api/CheckoutWStripe', { item: item })
       .then(response => this.setState({ checkout: response.data }))
       .catch(console.log);
     window.location.href = 'http://localhost:3000/CheckoutWStripe';
-    // alert("let's go pay!");
     Swal({
       title: 'Go To Checkout!',
-      // text: '',
       type: 'success',
       confirmButtonText: 'Confirm'
     });

@@ -8,7 +8,7 @@ export default class Chart extends Component {
     super(props);
 
     this.state = {
-      doughnutData: props.chartData
+      doughnutData: props.myDonutData
     };
 
     //BIND METHODS HERE
@@ -19,9 +19,10 @@ export default class Chart extends Component {
     return (
       <div>
         <Doughnut
+          ref="chart"
           data={this.state.doughnutData}
-          width={10}
-          height={10}
+          width={80}
+          height={40}
           options={{
             title: {
               display: true,

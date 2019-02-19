@@ -61,3 +61,10 @@
   width: 80%;
   background-color: #ddd;
 } */
+.innerText {
+  font-size: 20px;
+  padding-top: 1%;
+}
+.text {
+  font-size: 40px;
+}

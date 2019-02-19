@@ -17,7 +17,10 @@ import mitten from './mitten.png';
 import '../Meals.css';
 
 //importing the all the charts here:
-import Chart from './Chart';
+// import Chart from './Chart';
+// import { Doughnut } from 'react-chartjs-2';
+import DonutChart from 'react-donut-chart';
+import RatingHeart from './RatingHeart';
 
 export default class MealsDetails extends Component {
   constructor(props) {
@@ -26,45 +29,24 @@ export default class MealsDetails extends Component {
     //SET INITIAL STATE HERE
     this.state = {
       mealsToDisplay: [],
-      item: 'Protein',
+      item: '',
       cart: JSON.parse(localStorage.getItem('cart')) || [],
-      chartData: {}
+      donut: ''
+
+      // myDonutData: {}
       // cart: []
     };
 
     //BIND ACTIONS HERE
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    // this.onMouseEnter = this.onMouseEnter.bind(this);
+    // this.colorFunction = this.colorFunction.bind(this);
   }
   static contextTypes = {
     router: () => true
   };
 
   //CREATE HANDLE ACTIONS TYPE HERE:
-
-  //create a lifecyle to run chartData: (this will run when the chart component loads)
-  componentWillMount() {
-    this.getChartData();
-  }
-  getChartData() {
-    //api call here
-    this.setState({
-      chartData: {
-        labels: ['fats', 'proteins', 'carbs'],
-        datasets: [
-          {
-            label: 'All Nutrition Facts',
-            data: [29, 33, 18],
-            backgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
-            hoverBackgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
-            options: {
-              legend: 'right'
-            },
-            width: 500
-          }
-        ]
-      }
-    });
-  }
 
   //GET EACH MEAL WITH A MATCHING ID:
   componentDidMount() {
@@ -88,6 +70,53 @@ export default class MealsDetails extends Component {
       )
     );
   }
+
+  //donut Data below
+  // onMouseEnter = (donut) => {
+  //   this.setState({ donut: this.state.donut });
+  // };
+  // onMouseEnter = item => {
+  //   console.log(`mousssing over: ${item.label}`);
+  //   return item;
+  // };
+
+  //   onMouseEnter = {
+  //     (item) => {
+  //         console.log(`mousing over: ${item.label}`);
+  //         return item;
+  //     }
+  // }
+  formatValues = (values, total) => {
+    `${((values / total) * 100).toFixed(2)}%`;
+  };
+  // colorFunction = (colors, index) => {
+  //   colors[index % colors.length];
+  // };
+
+  //create a lifecyle method to run myDonutData: (this will run when the chart component loads)
+  // componentWillMount() {
+  //   this.goGetMyDonutData();
+  // }
+  // //Make api call here!
+  // goGetMyDonutData() {
+  //   this.setState({
+  //     data: {
+  //       labels: ['fats', 'proteins', 'carbs'],
+  //       datasets: [
+  //         {
+  //           label: 'All Nutrition Facts',
+  //           data: [29, 33, 18],
+  //           backgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
+  //           hoverBackgroundColor: ['#4169E1', '#FF7F50', '#3CB371'],
+  //           options: {
+  //             legend: 'right'
+  //           },
+  //           width: 500
+  //         }
+  //       ]
+  //     }
+  //   });
+  // }
 
   render() {
     const iconsStyle = {
@@ -117,15 +146,17 @@ export default class MealsDetails extends Component {
       let fat = mealsId.fats;
       let protein = mealsId.proteins;
       let carb = mealsId.carbs;
+      let calories = mealsId.calories;
+      // let labelss = mealsId.fats + mealsId.proteins + mealsId.calories;
 
       return (
         <div key={mealsId.meals_id} style={{ display: 'flex' }}>
           {/* //LEft Side: */}
-          <div>
+          <div style={{ marginLeft: '-8%', marginRight: '.5%' }}>
             <img
               style={{
                 height: '60%',
-                width: '90%'
+                width: '30em'
               }}
               alt="image_url"
               src={mealsId.image_url}
@@ -141,7 +172,7 @@ export default class MealsDetails extends Component {
           {/* //Right Side: */}
           <div
             style={{
-              marginRight: '9%',
+              marginRight: '3%',
               overFlow: 'auto',
               height: '600px',
               width: '150em',
@@ -149,7 +180,15 @@ export default class MealsDetails extends Component {
               overflowWrap: 'breakWord'
             }}
           >
-            <p style={{ fontWeight: 900, fontSize: '49px', color: '#565353' }}>
+            <RatingHeart style={{ display: 'flex' }} />
+            <p
+              style={{
+                fontWeight: 900,
+                fontSize: '49px',
+                color: '#565353',
+                marginTop: '10%'
+              }}
+            >
               {mealsId.meals_name}
             </p>
 
@@ -173,7 +212,7 @@ export default class MealsDetails extends Component {
             >
               {mealsId.description}
             </p>
-            <p>{fat + ' ' + ' ' + protein + ' ' + ' ' + carb}</p>
+            {/* <p>{fat + ' ' + ' ' + protein + ' ' + ' ' + carb}</p> */}
             <div
               style={{
                 display: 'flex',
@@ -198,8 +237,7 @@ export default class MealsDetails extends Component {
               </p>
             </div>
             <hr />
-            <br />
-            <br />
+
             <div>
               <h2 style={smallHeader}>Ingredients</h2>
               <p style={{ fontWeight: 700, fontSize: '17px' }}>contains:</p>
@@ -214,20 +252,77 @@ export default class MealsDetails extends Component {
                 {mealsId.ingredients}
               </p>
             </div>
-            <hr />
+
             <div>
               <hr />
               <br />
-              <br />
               <h2 style={smallHeader}>Nutrition profile</h2>
-              <Chart chartData={this.state.chartData} />
+
+              {/* <Chart chartData={this.state.chartData} /> */}
+              {/* <Chart myDonutData={this.state.myDonutData} /> */}
+              {/* 
+              <Doughnut
+                data={data}
+                ref="chart"
+                width={80}
+                height={40}
+                options={{
+                  title: {
+                    display: true,
+                    text: 'All Nutrition Facts',
+                    fontSize: 30
+                  },
+                  legend: {
+                    display: true,
+                    position: 'right'
+                  }
+                }}
+              /> */}
+
+              <DonutChart
+                height={500}
+                width={550}
+                colors={['red', 'blue', 'yellow']}
+                selectedOffset={0.07}
+                formatValues={this.formatValues}
+                onMouseEnter={item => {
+                  console.log(`mousing over: ${item.label}`);
+                  return item;
+                }}
+                // onClick={(item, toggled) => {
+                //   if (toggled) {
+                //     console.log(`selecting: ${item.label}`);
+                //   } else {
+                //     console.log(`unselecting: ${item.label}`);
+                //   }
+                //   return item;
+                // }}
+
+                colorFunction={this.colorFunction}
+                data={[
+                  {
+                    label: 'Fats',
+                    value: fat,
+                    isEmpty: false,
+                    className: 'innerText'
+                    // innertext: fat
+                  },
+                  {
+                    label: 'Proteins',
+                    value: protein,
+                    isEmpty: false,
+                    className: 'innerText'
+                  },
+                  {
+                    label: 'Carbs',
+                    value: carb,
+                    isEmpty: false,
+                    className: 'innerText'
+                  }
+                ]}
+              />
             </div>
-            <hr />
-            <br />
-            <br />
-            <hr />
-            <br />
-            <br />
+
             <div
               style={{
                 width: '95%',
@@ -306,7 +401,7 @@ export default class MealsDetails extends Component {
                 Add To Cart
               </Button>
             </div>
-            {/* <div style={{ display: 'flex' }} /> */}
+
             <hr />
           </div>
         </div>

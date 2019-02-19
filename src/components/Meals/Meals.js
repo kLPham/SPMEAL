@@ -91,7 +91,6 @@ class Meals extends Component {
               </h2>
             </Tab>
 
-            {/* TESTING ITEMS */}
             <Tab
               label="Breakfast"
               value="/Meals/FeaturedBreakfast"
@@ -115,7 +114,7 @@ class Meals extends Component {
                 <FaCutlery style={cutleryStyle} />
               </h2>
             </Tab>
-            {/* TESTING ITEMS ENDS */}
+
             <Tab label="By the LB" value="/Meals/ByLB" style={tabStyle}>
               {' '}
               <h2 style={styles.headline}>
@@ -134,12 +133,7 @@ class Meals extends Component {
                 <FaCutlery style={cutleryStyle} />
               </h2>
             </Tab>
-            {/* <Tab label="Spartan By the LB" value="/Meals/ByLB" style={tabStyle}>
-              {' '}
-              <h2 style={styles.headline}>
-                By the LB<FaCutlery style={cutleryStyle} />
-              </h2>{' '}
-            </Tab> */}
+
             <Tab
               label="Custom Meals"
               value="/Meals/CustomMeals"
@@ -150,7 +144,7 @@ class Meals extends Component {
                 <FaCutlery style={cutleryStyle} />
               </h2>{' '}
             </Tab>
-            {/* TESTING DESSERTS */}
+
             <Tab label="Dessert" value="/Meals/Dessert" style={tabStyle}>
               <h2 style={styles.headline}>
                 Dessert

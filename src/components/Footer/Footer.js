@@ -42,6 +42,10 @@ export default class Footer extends Component {
       height: '20px',
       width: '100%',
       backgroundColor: 'gainsboro',
+      // backgroundColor: '#222',
+      // color: '#fff',
+      fontFamily:
+        ' galano_grotesque,Helvetica Neue,Helvetica,Arial,Sans,sans-serif',
       color: 'black',
       textAlign: 'left',
       fontSize: '11px',
@@ -77,7 +81,8 @@ export default class Footer extends Component {
           <span className="SpanRight">
             <h3>Contact Us</h3>
             <p1 className="size">
-              <FaPhoneSquare style={phoneStyle} />1.972.984.0817
+              <FaPhoneSquare style={phoneStyle} />
+              1.972.984.0817
             </p1>
             <br />
             <br />
