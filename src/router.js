@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Cart from './components/Cart/Cart';
+import DeliveryOrPickup from './components/Cart/DeliveryOrPickup';
 import Delivery from './components/Cart/Delivery';
 import Pickup from './components/Cart/Pickup';
 import FullSizeCartView from './components/Cart/FullSizeCartView';
@@ -37,8 +38,18 @@ export default (
     <Route path="/About" component={About} />
     <Route path="/Contact" component={Contact} />
     <Route path="/Cart" component={Cart} />
-    <Route path="/Cart/Delivery" component={Delivery} />
-    <Route path="/Cart/Pickup" component={Pickup} />
+    <Route
+      path="DeliveryOrPickup"
+      render={() => (
+        <DeliveryOrPickup>
+          <Switch>
+            <Route path="/Cart/Delivery" component={Delivery} />
+            <Route path="/Cart/Pickup" component={Pickup} />
+          </Switch>
+        </DeliveryOrPickup>
+      )}
+    />
+
     <Route path="/FullSizeCartView" component={FullSizeCartView} />
     <Route path="/Meals/Details/:meals_id" component={MealsDetails} />
     <Route path="/Customize_meals/Details/:meals_id" component={Details} />

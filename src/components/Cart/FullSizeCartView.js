@@ -15,6 +15,7 @@ import CheckoutWStripe from '../CheckoutWStripe';
 import MealsDetails from '../Meals/MealsDetails/MealsDetails';
 import Cart from './Cart';
 import Footer from '../Footer/Footer';
+import DeliveryOrPickup from './DeliveryOrPickup';
 
 export default class FullSizeCartView extends Component {
   constructor(props) {
@@ -263,7 +264,7 @@ export default class FullSizeCartView extends Component {
                 backgroundColor: '#1a1a1a'
               }}
             >
-              delivery pickup
+              <DeliveryOrPickup />
             </div>
             {displayInCart}
           </div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { Tabs, Tab } from 'material-ui/Tabs';
 
-export default class DeliveryOrPickup extends Component {
+class DeliveryOrPickup extends Component {
   constructor(props) {
     super(props);
 
@@ -20,21 +20,25 @@ export default class DeliveryOrPickup extends Component {
   render() {
     return (
       <div>
-        <Tabs
-          value={this.props.history.location.pathname}
-          onChange={this.handleCallToRouter}
-        >
-          {/* <img src={pageHeader} style={pageHeaderStyle} /> */}
-          <Tab label="Delivery" value="/Cart/Delivery">
-            {' '}
-            {/* <h2>Delivery</h2> */}
-          </Tab>
-          <Tab label="Pickup" value="/Cart/Pickup">
-            {/* {' '}
+        <div>
+          <Tabs
+            value={this.props.history.location.pathname}
+            onChange={this.handleCallToRouter}
+          >
+            {/* <img src={pageHeader} style={pageHeaderStyle} /> */}
+            <Tab label="Delivery" value="/Cart/Delivery">
+              {' '}
+              {/* <h2>Delivery</h2> */}
+            </Tab>
+            <Tab label="Pickup" value="/Cart/Pickup">
+              {/* {' '}
             <h2>Pickup</h2> */}
-          </Tab>
-        </Tabs>
+            </Tab>
+          </Tabs>
+        </div>
+        {this.props.children}
       </div>
     );
   }
 }
+export default withRouter(DeliveryOrPickup);
