@@ -223,14 +223,17 @@ export default class MealsDetails extends Component {
                 fontWeight: 700
               }}
             >
-              <p style={{ marginRight: '70%' }}>{mealsId.calories} cal</p>
+              <p style={{ marginRight: '60%', fontSize: '25px' }}>
+                {mealsId.calories} calories
+              </p>
               <p
                 style={{
                   borderStyle: 'ridge',
-                  borderWidth: '1px',
+                  borderWidth: '2px',
                   borderColor: 'black',
                   borderRadius: '10px',
-                  padding: '5px'
+                  padding: '10px',
+                  fontSize: '20px'
                 }}
               >
                 ${mealsId.price}
@@ -383,18 +386,23 @@ export default class MealsDetails extends Component {
                 onClick={() => {
                   this.handleAddToCart(mealsId);
                   Swal({
-                    text: 'Successfully Added to your bag',
+                    // text: 'Added to your bag.',
                     title: mealsId.meals_name,
                     imageUrl: mealsId.image_url,
                     imageWidth: 150,
                     imageHeight: 150,
                     imageAlt: 'meals image',
-                    animation: false,
+                    text: '$' + mealsId.price,
+                    animation: true,
                     type: 'success',
                     confirmButtonColor: 'black',
                     confirmButtonText:
                       '<a href= /Meals/FullMenu>Continue Shopping</a>',
-                    footer: '<a href= /FullSizeCartView>View Shopping bag</a>'
+                    footer:
+                      '<a href= /FullSizeCartView>View Shopping bag</a>' +
+                      '(' +
+                      this.state.cart.length +
+                      ')'
                   });
                 }}
               >

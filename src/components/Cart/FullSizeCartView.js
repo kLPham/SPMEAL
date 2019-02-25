@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import FaShoppingCart from 'react-icons/lib/fa/shopping-cart';
-import { Button, Icon } from 'semantic-ui-react';
+
+import { Header, Segment, Button, Icon } from 'semantic-ui-react';
 
 import Trash from 'react-icons/lib/fa/trash';
 
@@ -90,13 +91,17 @@ export default class FullSizeCartView extends Component {
           return (
             <div>
               <br />
+
               <div
+                //meals box left side
                 style={{
                   marginLeft: '1%',
                   boxSizing: 'contentBox',
-                  width: '99%',
+                  width: '90%',
                   padding: '.5%',
-                  border: '1px solid gray'
+                  border: '1px solid white',
+                  borderRadius: '10px',
+                  backgroundColor: 'white'
                 }}
               >
                 <div
@@ -140,11 +145,11 @@ export default class FullSizeCartView extends Component {
                     >
                       Save For Later
                     </Button>
-                  </div>
+                  </div>{' '}
                   <div
                     style={{
                       height: '100%',
-                      width: '50%',
+                      // width: '50%',
                       marginTop: '1%',
                       marginLeft: '-15%',
                       fontSize: '16px'
@@ -157,8 +162,7 @@ export default class FullSizeCartView extends Component {
                       Item: #{eachMeal.order_number}
                     </p>
                     <p>Price: ${eachMeal.price}</p>
-                    {/* <p>{this.props.totalPrice}</p> */}
-                  </div>
+                  </div>{' '}
                   <div>
                     <button
                       style={{
@@ -189,48 +193,92 @@ export default class FullSizeCartView extends Component {
       );
 
     return (
-      <div>
+      <div
+        //mother container
+        style={{
+          boxSizing: 'contentBox',
+          width: '100%',
+          height: '50%',
+          padding: '.5%',
+          border: '1px solid gray',
+          backgroundColor: '#f5f5f5',
+          borderRadius: '10px'
+        }}
+      >
+        <h2
+          style={{
+            textAlign: 'left',
+            fontWeight: 900,
+            fontFamily: 'Impact, Charcoal, sans-serif',
+            lineHeight: '56px',
+            fontSize: '39px',
+            color: '#565353',
+            marginTop: '10%',
+            // borderRadius: '10px',
+            marginLeft: '5%',
+            color: 'black'
+            // backgroundColor: '#f5f5f5'
+            // textShadow:
+            //   '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
+          }}
+        >
+          basket
+          {/* <p style={{ fontSize: '15px' }}>
+                ({`${this.state.cart.length} ${'Item(s)'}`})
+              </p> */}
+        </h2>
         <div
           style={{
             display: 'flex',
             position: 'relative',
             width: '100%',
-            marginTop: '8%',
-            marginBottom: '5%'
+            borderRadius: '10px'
           }}
         >
           <div
             style={{
               overflow: 'auto',
               height: '700px',
-              marginLeft: '2%',
-              width: '70%'
+              marginLeft: '4%',
+              width: '60%',
+              backgroundColor: '#f5f5f5',
+              borderRadius: '10px'
             }}
           >
-            <h2
+            {/* //your bag box */}
+            {/* test top */}
+
+            <div
               style={{
                 display: 'block',
-                border: '1px solid 	black',
-                padding: '2%',
+                border: '1px solid 	white',
                 marginLeft: '1%',
-                color: 'black'
-                // textShadow:
-                //   '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
+                fontWeight: 900,
+                height: '30%',
+                width: '90%',
+                fontFamily: 'galano_grotesque',
+                color: '#565353',
+                borderRadius: '10px',
+                color: 'white',
+                backgroundColor: '#1a1a1a'
               }}
             >
-              Your Bag ({`${this.state.cart.length} ${'Item(s)'}`})
-            </h2>
+              delivery pickup
+            </div>
             {displayInCart}
           </div>
+          {/* //RIGHT SIDE */}
           <div
             style={{
               boxSizing: 'contentBox',
-              width: '23%',
+              width: '30%',
               height: '30%',
               padding: '40px',
-              border: '1px solid lightgray',
-              backgroundColor: '#f5f5f5',
-              marginLeft: '1%',
+              border: '1px solid white',
+              backgroundColor: 'white',
+              borderRadius: '10px',
+              // marginTop: '7%',
+              // marginLeft: '1%',
               marginRight: '2%'
             }}
           >
@@ -240,6 +288,7 @@ export default class FullSizeCartView extends Component {
                 textAlign: 'center',
                 fontSize: '26px',
                 color: 'white',
+
                 textShadow:
                   '-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black'
               }}
@@ -341,7 +390,7 @@ export default class FullSizeCartView extends Component {
             </div>
           </div>
         </div>
-        <div style={{ marginLeft: '2%', marginBottom: '5%' }}>
+        <div style={{ marginLeft: '2%', marginTop: '5%', marginBottom: '5%' }}>
           <Button
             onClick={this.context.router.history.goBack}
             color="black"

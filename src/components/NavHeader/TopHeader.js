@@ -17,7 +17,7 @@ export default class TopHeader extends Component {
     const { activeItem } = this.state;
 
     return (
-      <div style={{ backgroundColor: 'black', position: 'fixed', top: 0 }}>
+      <div style={{ position: 'fixed', top: 0 }}>
         <Menu secondary>
           <Menu.Item
             name="home"
