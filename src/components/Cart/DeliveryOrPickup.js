@@ -14,26 +14,33 @@ class DeliveryOrPickup extends Component {
     //BIND METHODS BELOW:
   }
   ///CREATE HANDLING CHANGES HERE:
-  handleCallToRouter = value => {
+  handleCallToRouter(value) {
     this.props.history.push(value);
-  };
+  }
+
   render() {
+    const tabStyle = {
+      backgroundColor: 'black',
+      color: '#f2f2f2',
+      fontWeight: 900
+    };
     return (
       <div>
-        <div>
+        <div style={{ color: 'white' }}>
           <Tabs
             value={this.props.history.location.pathname}
             onChange={this.handleCallToRouter}
           >
-            {/* <img src={pageHeader} style={pageHeaderStyle} /> */}
-            <Tab label="Delivery" value="/Cart/Delivery">
-              {' '}
-              {/* <h2>Delivery</h2> */}
-            </Tab>
-            <Tab label="Pickup" value="/Cart/Pickup">
-              {/* {' '}
-            <h2>Pickup</h2> */}
-            </Tab>
+            <Tab
+              label="Delivery"
+              value="/DeliveryOrPickup/Delivery"
+              style={tabStyle}
+            />
+            <Tab
+              label="Pickup"
+              value="/DeliveryOrPickup/Pickup"
+              style={tabStyle}
+            />
           </Tabs>
         </div>
         {this.props.children}

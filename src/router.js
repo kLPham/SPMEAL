@@ -39,12 +39,12 @@ export default (
     <Route path="/Contact" component={Contact} />
     <Route path="/Cart" component={Cart} />
     <Route
-      path="DeliveryOrPickup"
+      path="/DeliveryOrPickup"
       render={() => (
         <DeliveryOrPickup>
           <Switch>
-            <Route path="/Cart/Delivery" component={Delivery} />
-            <Route path="/Cart/Pickup" component={Pickup} />
+            <Route path="/DeliveryOrPickup/Delivery" component={Delivery} />
+            <Route path="/DeliveryOrPickup/Pickup" component={Pickup} />
           </Switch>
         </DeliveryOrPickup>
       )}

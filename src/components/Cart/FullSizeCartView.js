@@ -15,7 +15,12 @@ import CheckoutWStripe from '../CheckoutWStripe';
 import MealsDetails from '../Meals/MealsDetails/MealsDetails';
 import Cart from './Cart';
 import Footer from '../Footer/Footer';
-import DeliveryOrPickup from './DeliveryOrPickup';
+// import DeliveryOrPickup from './DeliveryOrPickup';
+
+import ScrollableTabsButtonForce from './ScrollableTabsButtonForce';
+import Quant from './Qty/Quant';
+
+import Swal from 'sweetalert2';
 
 export default class FullSizeCartView extends Component {
   constructor(props) {
@@ -25,7 +30,7 @@ export default class FullSizeCartView extends Component {
       cart: [],
       taxes: 0.087,
       shippingFee: 0.15,
-      value: 0
+      value: 1
     };
 
     //BIND METHODS HERE:
@@ -57,7 +62,11 @@ export default class FullSizeCartView extends Component {
       .delete(`/api/cart/${meals.meals_id}`)
       .then(response => this.setState({ cart: response.data }))
       .catch(console.log);
-    alert('This meal has been remove from your shopping cart!');
+    Swal({
+      title: 'Item is removed from your bag!',
+      type: 'warning',
+      confirmButtonText: 'Confirm'
+    });
   }
 
   //POST ON checkout PAGE
@@ -67,7 +76,11 @@ export default class FullSizeCartView extends Component {
       .then(response => this.setState({ checkout: response.data }))
       .catch(console.log);
     window.location.href = 'http://localhost:3000/CheckoutWStripe';
-    alert("let's go pay!");
+    Swal({
+      title: 'Go To Checkout!',
+      type: 'success',
+      confirmButtonText: 'Confirm'
+    });
   }
 
   render() {
@@ -163,6 +176,9 @@ export default class FullSizeCartView extends Component {
                       Item: #{eachMeal.order_number}
                     </p>
                     <p>Price: ${eachMeal.price}</p>
+                    <p>
+                      <Quant value={this.state.value} />
+                    </p>
                   </div>{' '}
                   <div>
                     <button
@@ -183,12 +199,34 @@ export default class FullSizeCartView extends Component {
           );
         })
       ) : (
-        <div>
-          <p style={{ color: 'red', textAlign: 'center' }}>
-            You have no items in your shopping cart. <br />
+        <div
+          style={{
+            boxSizing: 'contentBox',
+            height: '30%',
+            width: '90%',
+            border: '1px solid white',
+            backgroundColor: 'white',
+            marginLeft: '1%',
+            marginTop: '2%',
+            borderRadius: '10px',
+            textAlign: 'center'
+          }}
+        >
+          <p
+            style={{
+              fontSize: '20px',
+              color: 'red',
+              textAlign: 'center',
+              marginTop: '8%'
+            }}
+          >
+            Your cart is currently empty. <br />
           </p>
-          <p style={{ textAlign: 'center' }}>
-            Click <a href="/Meals/FullMenu">here</a> to continue shopping.
+          <p style={{ textAlign: 'center', fontSize: '15px' }}>
+            Continue browsing{' '}
+            <a href="/Meals/FullMenu" style={{ textDecoration: 'underline' }}>
+              here
+            </a>
           </p>
         </div>
       );
@@ -258,13 +296,14 @@ export default class FullSizeCartView extends Component {
                 height: '30%',
                 width: '90%',
                 fontFamily: 'galano_grotesque',
-                color: '#565353',
+                // color: '#565353',
                 borderRadius: '10px',
-                color: 'white',
-                backgroundColor: '#1a1a1a'
+                backgroundColor: 'white'
+                // backgroundColor: '#1a1a1a'
               }}
             >
-              <DeliveryOrPickup />
+              {/* <DeliveryOrPickup /> */}
+              <ScrollableTabsButtonForce cart={this.state.cart.length} />
             </div>
             {displayInCart}
           </div>
@@ -305,10 +344,10 @@ export default class FullSizeCartView extends Component {
                 flexDirection: 'row'
               }}
             >
-              Items({this.state.cart.length}):
-              <div style={{ marginLeft: '55%' }}>${calculating.toFixed(2)}</div>
+              Items Selected:
+              <div style={{ marginLeft: '55%' }}>{this.state.cart.length}</div>
             </div>
-            {/* <div
+            <div
               style={{
                 marginLeft: '1%',
                 fontSize: '14px',
@@ -318,7 +357,7 @@ export default class FullSizeCartView extends Component {
             >
               Subtotal:
               <div style={{ marginLeft: '55%' }}>${calculating.toFixed(2)}</div>
-            </div> */}
+            </div>
             <div
               style={{
                 marginLeft: '1%',
@@ -328,7 +367,7 @@ export default class FullSizeCartView extends Component {
                 color: '#0000CD'
               }}
             >
-              Shipping & handling:
+              Shipping & Handling:
               <div style={{ marginLeft: '10%' }}>
                 {' '}
                 <ShippingFees
@@ -344,7 +383,7 @@ export default class FullSizeCartView extends Component {
                 flexDirection: 'row'
               }}
             >
-              Tax:
+              Taxes:
               <div style={{ marginLeft: '68%' }}>
                 <TaxesFees taxes={this.state.taxes.toFixed(2) * calculating} />
               </div>
@@ -359,7 +398,7 @@ export default class FullSizeCartView extends Component {
               }}
             >
               {' '}
-              Order total:
+              Estimated Total:
               <div style={{ marginLeft: '43%' }}>
                 <EstimatedTotal
                   price={
