@@ -55,8 +55,16 @@ class ScrollableTabsButtonForce extends Component {
     const tabStyle = {
       fontWeight: 700,
       fontSize: '16px',
-      textTransform: 'lowerCase'
+      textTransform: 'lowerCase',
+      borderRadius: '10px',
+      border: '1px solid white'
     };
+    const pStyle = {
+      fontSize: '12px',
+      color: 'black',
+      marginLeft: '1%'
+    };
+    const hpickupStyle = { color: 'green', fontSize: '16px' };
     return (
       <div className={classes.root}>
         <AppBar position="center" color="error">
@@ -84,12 +92,39 @@ class ScrollableTabsButtonForce extends Component {
         {value === 1 && (
           <TabContainer>
             {' '}
-            <h2 style={{ fontSize: '25px' }}>
+            {/* <h2 style={{ fontSize: '25px' }}>
               McKinney: <br />
               <p2 style={{ fontSize: '16px' }}>
                 400 N Central Expressway Ste 102 McKinney, Texas
               </p2>
-            </h2>
+            </h2> */}
+            {/* <h2 style={{ fontSize: '15px' }}>Pick a Location Near You.</h2> */}
+            <ul>
+              <li>
+                <h3 style={hpickupStyle}>
+                  EMPIRE FITNESS{' '}
+                  <p style={pStyle}>
+                    {' '}
+                    400 N Central ExpressWay ste 102 Mckinney, Tx 75069
+                  </p>
+                </h3>
+              </li>
+              <li>
+                <h3 style={hpickupStyle}>
+                  Metro-Flex Ft Worth, The Castle{' '}
+                  <p style={pStyle}> 5501 Thelin St Fort Worth, Tx 76115</p>
+                </h3>
+              </li>
+              <li>
+                <h3 style={hpickupStyle}>
+                  Extreme Iron Pro Gym
+                  <p style={pStyle}>
+                    {' '}
+                    17390 Preston Rd STE 360, Dallas, Tx 75252
+                  </p>
+                </h3>
+              </li>
+            </ul>
           </TabContainer>
         )}
         {value === 2 && (
@@ -101,9 +136,21 @@ class ScrollableTabsButtonForce extends Component {
         )}
         {value === 3 && (
           <TabContainer>
-            <h2 style={{ fontSize: '25px' }}>
-              Please call us at 1.972.984.0817 if you need any help{' '}
-            </h2>
+            <div style={{ fontSize: '25px' }}>
+              <div>
+                <h4 style={hpickupStyle}>Need assistant? Call us at:</h4>
+                <p style={pStyle}> 1.972.984.0817</p>{' '}
+              </div>
+              <br />
+              <div>
+                <h4 style={hpickupStyle}>
+                  If you need any help Contact SPM Headquarters:{' '}
+                </h4>
+                <p style={pStyle}>
+                  400 N Central Expressway Ste 102 McKinney, Texas
+                </p>
+              </div>
+            </div>
           </TabContainer>
         )}
       </div>

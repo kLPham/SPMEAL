@@ -303,8 +303,14 @@ export default class FullSizeCartView extends Component {
               }}
             >
               {/* <DeliveryOrPickup /> */}
-              <ScrollableTabsButtonForce cart={this.state.cart.length} />
+              <ScrollableTabsButtonForce
+                cart={this.state.cart.length}
+               
+              />
             </div>
+            <br />
+            <br />
+
             {displayInCart}
           </div>
           {/* //RIGHT SIDE */}
@@ -344,7 +350,7 @@ export default class FullSizeCartView extends Component {
                 flexDirection: 'row'
               }}
             >
-              Items Selected:
+              Total Items:
               <div style={{ marginLeft: '55%' }}>{this.state.cart.length}</div>
             </div>
             <div
