@@ -18,6 +18,8 @@ import PageviewIcon from '@material-ui/icons/Pageview';
 import pink from '@material-ui/core/colors/pink';
 import green from '@material-ui/core/colors/green';
 
+import FormDialog from './FormDialog';
+
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ padding: 8 * 3 }}>
@@ -39,14 +41,38 @@ const styles = theme => ({
   }
 });
 
-class ScrollableTabsButtonForce extends Component {
-  state = {
-    value: 0
-  };
+class DeliveryNPickup extends Component {
+  constructor(props) {
+    super(props);
 
-  handleChange = (event, value) => {
+    //SET INTITIAL STATE HERE:
+    this.state = {
+      value: 0,
+      open: false
+    };
+
+    //BIND HANDLERS HERE:
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClickOpen = this.handleClickOpen.bind(this);
+
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleChange(event, value) {
     this.setState({ value });
-  };
+  }
+
+  //handle toggle open dialog when select delivery:
+  handleClickOpen() {
+    this.setState({ open: true });
+  }
+
+  handleClose() {
+    this.setState({ open: false });
+  }
+  // handleActive(tab) {
+  //   alert(tab.props);
+  // }
 
   render() {
     const { classes } = this.props;
@@ -72,32 +98,33 @@ class ScrollableTabsButtonForce extends Component {
             value={value}
             onChange={this.handleChange}
             scrollable
+            fullWidth
             scrollButtons="on"
             indicatorColor="primary"
             textColor="primary"
           >
-            <Tab style={tabStyle} label="Delivery" icon={<PhoneIcon />}>
-              <h2 style={{ fontSize: '25px' }} />
-            </Tab>
-            <Tab style={tabStyle} label="Pickup" icon={<PageviewIcon />} />
+            <Tab style={tabStyle} label="Delivery" icon={<PhoneIcon />} />
+            <Tab style={tabStyle} label="Pickup" icon={<PageviewIcon />} />{' '}
             <Tab style={tabStyle} label="Your Cart" icon={<ShoppingBasket />} />
             <Tab style={tabStyle} label="Help" icon={<HelpIcon />} />
+            {/* <Tab
+              style={tabStyle}
+              label="onActive"
+              data-route="/"
+              onActive={this.handleActive}
+            /> */}
           </Tabs>
         </AppBar>
         {value === 0 && (
           <TabContainer>
-            <h2 style={{ fontSize: '25px' }}> Please Call Us!</h2>
+            <h2 style={{ fontSize: '25px' }}>
+              {' '}
+              <FormDialog />
+            </h2>
           </TabContainer>
         )}
         {value === 1 && (
           <TabContainer>
-            {' '}
-            {/* <h2 style={{ fontSize: '25px' }}>
-              McKinney: <br />
-              <p2 style={{ fontSize: '16px' }}>
-                400 N Central Expressway Ste 102 McKinney, Texas
-              </p2>
-            </h2> */}
             {/* <h2 style={{ fontSize: '15px' }}>Pick a Location Near You.</h2> */}
             <ul>
               <li>
@@ -138,14 +165,12 @@ class ScrollableTabsButtonForce extends Component {
           <TabContainer>
             <div style={{ fontSize: '25px' }}>
               <div>
-                <h4 style={hpickupStyle}>Need assistant? Call us at:</h4>
-                <p style={pStyle}> 1.972.984.0817</p>{' '}
+                <h4 style={hpickupStyle}>Need assistant? Contact Us:</h4>
+                <p style={pStyle}> 972.984.0817</p>{' '}
               </div>
               <br />
               <div>
-                <h4 style={hpickupStyle}>
-                  If you need any help Contact SPM Headquarters:{' '}
-                </h4>
+                <h4 style={hpickupStyle}>Contact SPM Headquarters: </h4>
                 <p style={pStyle}>
                   400 N Central Expressway Ste 102 McKinney, Texas
                 </p>
@@ -153,13 +178,20 @@ class ScrollableTabsButtonForce extends Component {
             </div>
           </TabContainer>
         )}
+        {/* {value === 4 && (
+          <TabContainer>
+            <div>
+              <p>Jsut trying this out</p>
+            </div>
+          </TabContainer>
+        )} */}
       </div>
     );
   }
 }
 
-ScrollableTabsButtonForce.propTypes = {
+DeliveryNPickup.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ScrollableTabsButtonForce);
+export default withStyles(styles)(DeliveryNPickup);

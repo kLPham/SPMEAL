@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+// import axios from 'axios';
+// import { Link } from 'react-router-dom';
 
 export default class Pickup extends Component {
   constructor(props) {
@@ -17,7 +16,7 @@ export default class Pickup extends Component {
   render() {
     return (
       <div>
-        <h3>addison 4941 Belt Line Rd Dallas, TX 75254</h3>
+        <h3>What is your address?</h3>
       </div>
     );
   }

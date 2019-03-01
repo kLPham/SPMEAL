@@ -17,7 +17,7 @@ import Cart from './Cart';
 import Footer from '../Footer/Footer';
 // import DeliveryOrPickup from './DeliveryOrPickup';
 
-import ScrollableTabsButtonForce from './ScrollableTabsButtonForce';
+import DeliveryNPickup from './DeliveryNPickup/DeliveryNPickup';
 import Quant from './Qty/Quant';
 
 import Swal from 'sweetalert2';
@@ -184,8 +184,8 @@ export default class FullSizeCartView extends Component {
                     <button
                       style={{
                         position: 'absolute',
-                        top: '0px',
-                        right: '0px',
+                        top: 0,
+                        right: 0,
                         fontSize: '20px'
                       }}
                       onClick={() => this.handleCartRemove(eachMeal)}
@@ -303,10 +303,7 @@ export default class FullSizeCartView extends Component {
               }}
             >
               {/* <DeliveryOrPickup /> */}
-              <ScrollableTabsButtonForce
-                cart={this.state.cart.length}
-               
-              />
+              <DeliveryNPickup cart={this.state.cart.length} />
             </div>
             <br />
             <br />
