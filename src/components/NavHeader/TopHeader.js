@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import 
 import { Input, Menu } from 'semantic-ui-react';
 import SearchBar from '../SearchBar/SearchBar';
 import Login from '../Login/Login';
 import Cart from '../Cart/Cart';
+
 
 export default class TopHeader extends Component {
   constructor(props) {

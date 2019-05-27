@@ -31,14 +31,17 @@ export default class CarouselCover extends Component {
       <div>
         <StyleRoot>
           <Coverflow
-            displayQuantityOfSide={1.5}
-            // navigation={false}
-            // enableHeading={false}
+            // displayQuantityOfSide={1.5}
+            // width={960}
+            // height={480}
+            // navigation
+            // infiniteScroll
+            // enableHeading
             width={960}
             height={480}
-            navigation
-            infiniteScroll
-            enableHeading
+            displayQuantityOfSide={2}
+            navigation={false}
+            enableHeading={false}
             media={{
               '@media (max-width: 1000px)': {
                 // width: '960px',

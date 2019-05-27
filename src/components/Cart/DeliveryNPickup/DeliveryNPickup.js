@@ -48,7 +48,14 @@ class DeliveryNPickup extends Component {
     //SET INTITIAL STATE HERE:
     this.state = {
       value: 0,
-      open: false
+      open: false,
+      //inital state for delivery form below:
+      name: 'Kelly',
+      streetNumberNName: '4227 Boyer Pl',
+      aptOrSuite: 0,
+      city: 'Dallas',
+      stateCity: 'TX',
+      zip: 75219
     };
 
     //BIND HANDLERS HERE:
@@ -103,9 +110,14 @@ class DeliveryNPickup extends Component {
             indicatorColor="primary"
             textColor="primary"
           >
-            <Tab style={tabStyle} label="Delivery" icon={<PhoneIcon />} />
+            <Tab
+              style={tabStyle}
+              label="Your Basket"
+              // onAction={this.handleClickOpen}
+              icon={<ShoppingBasket />}
+            />
             <Tab style={tabStyle} label="Pickup" icon={<PageviewIcon />} />{' '}
-            <Tab style={tabStyle} label="Your Cart" icon={<ShoppingBasket />} />
+            <Tab style={tabStyle} label="Delivery" icon={<PhoneIcon />} />
             <Tab style={tabStyle} label="Help" icon={<HelpIcon />} />
             {/* <Tab
               style={tabStyle}
@@ -118,8 +130,7 @@ class DeliveryNPickup extends Component {
         {value === 0 && (
           <TabContainer>
             <h2 style={{ fontSize: '25px' }}>
-              {' '}
-              <FormDialog />
+              You have {this.props.cart} items in your cart.
             </h2>
           </TabContainer>
         )}
@@ -157,8 +168,26 @@ class DeliveryNPickup extends Component {
         {value === 2 && (
           <TabContainer>
             <h2 style={{ fontSize: '25px' }}>
-              You have {this.props.cart} items in your cart.
+              {' '}
+              <FormDialog
+                key={0}
+                id={0}
+                isSaved={false}
+                numSaves={10}
+                name={this.state.name}
+                address="12345 lovefield Dr"
+                streetNumberNName={this.state.streetNumberNName}
+                aptOrSuite={this.state.aptOrSuite}
+                city={this.state.city}
+                stateCity={this.state.stateCity}
+                zip={this.state.zip}
+              >
+                Address Form
+              </FormDialog>
             </h2>
+            {/* <h2 style={{ fontSize: '25px' }}>
+              You have {this.props.cart} items in your cart.
+            </h2> */}
           </TabContainer>
         )}
         {value === 3 && (

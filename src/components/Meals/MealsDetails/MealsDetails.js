@@ -48,7 +48,7 @@ export default class MealsDetails extends Component {
 
   //CREATE HANDLE ACTIONS TYPE HERE:
 
-  //GET EACH MEAL WITH A MATCHING ID:
+  //GET EACH MEAL WITH A MATCHING ID:This method is automatically called once when the component has finished rendering.
   componentDidMount() {
     axios
       .get(`/api/meal/${this.props.match.params.meals_id}`)

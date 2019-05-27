@@ -202,25 +202,35 @@ export default class FullSizeCartView extends Component {
         <div
           style={{
             boxSizing: 'contentBox',
-            height: '30%',
+            height: '45%',
             width: '90%',
             border: '1px solid white',
             backgroundColor: 'white',
             marginLeft: '1%',
             marginTop: '2%',
             borderRadius: '10px',
-            textAlign: 'center'
+            textAlign: 'center',
+            display: 'block',
+            overflow: 'auto'
           }}
         >
+          <img
+            alt="empty basket"
+            style={{
+              height: '50%',
+              width: '20%',
+              marginTop: '5.5%'
+            }}
+            src="https://static8.depositphotos.com/1168906/895/v/950/depositphotos_8950326-stock-illustration-plastic-market-shopping-basket-in.jpg"
+          />
           <p
             style={{
               fontSize: '20px',
               color: 'red',
-              textAlign: 'center',
-              marginTop: '8%'
+              textAlign: 'center'
             }}
           >
-            Your cart is currently empty. <br />
+            Your basket is currently empty. <br />
           </p>
           <p style={{ textAlign: 'center', fontSize: '15px' }}>
             Continue browsing{' '}
@@ -269,6 +279,7 @@ export default class FullSizeCartView extends Component {
         <div
           style={{
             display: 'flex',
+
             position: 'relative',
             width: '100%',
             borderRadius: '10px'
@@ -276,7 +287,6 @@ export default class FullSizeCartView extends Component {
         >
           <div
             style={{
-              overflow: 'auto',
               height: '700px',
               marginLeft: '4%',
               width: '60%',

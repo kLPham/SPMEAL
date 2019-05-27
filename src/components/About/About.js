@@ -20,7 +20,7 @@ export default class About extends Component {
 
     return (
       <div className="overall">
-        <h1 className="About">About Us</h1>
+        <h1 className="About">About Us</h1>              |
         <hr />
         {/* SECTION 1 */}
         <section>
