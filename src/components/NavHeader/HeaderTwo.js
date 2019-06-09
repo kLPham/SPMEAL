@@ -16,7 +16,7 @@ import SearchBar from '../SearchBar/SearchBar';
 
 import Login from '../Login/Login';
 // import TopHeader from './TopHeader';
-import HeaderOne from './HeaderOne';
+
 import { Navbar, Nav, NavItem, NavDropdown } from 'react-bootstrap';
 import { Icon } from 'semantic-ui-react';
 
