@@ -17,7 +17,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
-    "auth0-js": "^9.5.1",
+    "auth0-js": "^9.13.2",
     "axios": "^0.18.0",
     "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.2",
